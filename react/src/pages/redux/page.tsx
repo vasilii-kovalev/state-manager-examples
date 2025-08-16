@@ -1,6 +1,13 @@
 import {
 	type FC,
 } from "react";
+import {
+	Provider,
+} from "react-redux";
+
+import {
+	store,
+} from "./store";
 
 const ReduxPage: FC = () => {
 	return (
@@ -10,6 +17,16 @@ const ReduxPage: FC = () => {
 	);
 };
 
+const ReduxPageWithContext: FC = () => {
+	return (
+		<Provider
+			store={store}
+		>
+			<ReduxPage/>
+		</Provider>
+	);
+};
+
 export {
-	ReduxPage,
+	ReduxPageWithContext as ReduxPage,
 };
