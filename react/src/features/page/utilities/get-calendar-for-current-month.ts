@@ -1,7 +1,6 @@
 import {
 	eachDayOfInterval,
 	endOfMonth,
-	formatISO,
 	isWeekend,
 	startOfMonth,
 } from "date-fns";
@@ -15,6 +14,9 @@ import {
 import {
 	type CalendarDay,
 } from "@/features/calendar/types";
+import {
+	formatDateString,
+} from "@/features/dates-and-time/utilities/format-date-string";
 
 const getCalendarForCurrentMonth = (): Array<CalendarDay> => {
 	const today = new Date();
@@ -25,17 +27,10 @@ const getCalendarForCurrentMonth = (): Array<CalendarDay> => {
 
 	try {
 		return days.map<CalendarDay>((date) => {
-			const dateString = formatISO(
-				date,
-				{
-					representation: "date",
-				},
-			);
-
 			return parse(
 				CalendarDaySchema,
 				{
-					date: dateString,
+					date: formatDateString(date),
 					norm: isWeekend(date)
 						? 0
 						: 8,

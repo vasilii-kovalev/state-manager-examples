@@ -7,10 +7,10 @@ import {
 
 const getPageDataDefault = (): PageData => {
 	return {
-		activitiesById: {},
+		activities: [],
 		calendar: getCalendarForCurrentMonth(),
-		tasksById: {},
-		worklogsById: {},
+		tasks: [],
+		worklogs: [],
 	};
 };
 

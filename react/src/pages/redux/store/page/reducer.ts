@@ -2,20 +2,16 @@ import {
 	createSlice,
 	type PayloadAction,
 } from "@reduxjs/toolkit";
-import {
-	parse,
-} from "valibot";
-
-import {
-	type PageData,
-} from "@/features/page/types";
 
 import {
 	PAGE_STATE_DEFAULT,
-} from "../../constants";
+} from "@/features/page/constants";
 import {
-	PageStateSchema,
-} from "../../schemas";
+	type PageData,
+} from "@/features/page/types";
+import {
+	convertPageDataToPageState,
+} from "@/features/page/utilities/convert-page-data-to-page-state";
 
 const pageSlice = createSlice({
 	initialState: PAGE_STATE_DEFAULT,
@@ -29,10 +25,7 @@ const pageSlice = createSlice({
 			action: PayloadAction<PageData>,
 		) => {
 			try {
-				const pageState = parse(
-					PageStateSchema,
-					action.payload,
-				);
+				const pageState = convertPageDataToPageState(action.payload);
 
 				return pageState;
 			} catch (error) {
