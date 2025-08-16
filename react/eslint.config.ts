@@ -2273,6 +2273,14 @@ const eslintConfig = disableAutofix(
 				"@typescript-eslint/naming-convention": DISABLED,
 			},
 		},
+		{
+			files: [
+				"src/routes/__root.tsx",
+			],
+			rules: {
+				"@eslint-react/naming-convention/filename": DISABLED,
+			},
+		},
 	),
 );
 

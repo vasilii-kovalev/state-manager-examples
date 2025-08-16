@@ -1,3 +1,6 @@
+import {
+	tanstackRouter,
+} from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import sonda from "sonda/vite";
 import {
@@ -16,6 +19,10 @@ const config = defineConfig({
 			configNames: [
 				"tsconfig.app.json",
 			],
+		}),
+		tanstackRouter({
+			autoCodeSplitting: true,
+			target: "react",
 		}),
 		react(),
 		sonda(),
