@@ -6,6 +6,9 @@ import {
 	TanStackRouterDevtools,
 } from "@tanstack/react-router-devtools";
 import {
+	isNull,
+} from "es-toolkit";
+import {
 	StrictMode,
 } from "react";
 import {
@@ -28,7 +31,7 @@ declare module "@tanstack/react-router" {
 
 const rootElement = document.getElementById("root");
 
-if (rootElement !== null) {
+if (!isNull(rootElement)) {
 	const root = createRoot(rootElement);
 
 	root.render(

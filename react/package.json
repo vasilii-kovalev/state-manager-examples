@@ -14,6 +14,7 @@
 	"dependencies": {
 		"@tanstack/react-router": "1.131.16",
 		"@tanstack/react-router-devtools": "1.131.16",
+		"es-toolkit": "1.39.9",
 		"react": "19.1.1",
 		"react-dom": "19.1.1"
 	},
