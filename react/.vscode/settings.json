@@ -1,0 +1,14 @@
+{
+	"[javascript][javascriptreact][typescript][typescriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	/*
+		Necessary to support ESLint TypeScript config file.
+		More info: https://github.com/microsoft/vscode-eslint/issues/1917#issuecomment-3059655482
+	*/
+	"eslint.runtime": "bun",
+	"typescript.tsdk": "node_modules\\typescript\\lib"
+}
