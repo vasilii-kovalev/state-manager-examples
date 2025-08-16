@@ -2,8 +2,14 @@ import {
 	configureStore,
 } from "@reduxjs/toolkit";
 
+import {
+	pageReducer,
+} from "./page/reducer";
+
 const store = configureStore({
-	reducer: {},
+	reducer: {
+		page: pageReducer,
+	},
 });
 
 type RootState = ReturnType<typeof store.getState>;

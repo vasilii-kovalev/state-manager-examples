@@ -1,4 +1,11 @@
 import {
+	QueryClient,
+	QueryClientProvider,
+} from "@tanstack/react-query";
+import {
+	ReactQueryDevtools,
+} from "@tanstack/react-query-devtools";
+import {
 	createRouter,
 	RouterProvider,
 } from "@tanstack/react-router";
@@ -29,6 +36,8 @@ declare module "@tanstack/react-router" {
 	}
 }
 
+const queryClient = new QueryClient();
+
 const rootElement = document.getElementById("root");
 
 if (!isNull(rootElement)) {
@@ -36,12 +45,20 @@ if (!isNull(rootElement)) {
 
 	root.render(
 		<StrictMode>
-			<RouterProvider
-				router={router}
-			/>
+			<QueryClientProvider
+				client={queryClient}
+			>
+				<RouterProvider
+					router={router}
+				/>
+			</QueryClientProvider>
 
 			<TanStackRouterDevtools
 				router={router}
+			/>
+
+			<ReactQueryDevtools
+				client={queryClient}
 			/>
 		</StrictMode>,
 	);
