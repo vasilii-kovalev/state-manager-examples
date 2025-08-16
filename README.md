@@ -1,1 +1,5 @@
-# state-manager-examples
+# State manager examples
+
+## License
+
+[MIT](./LICENSE)
