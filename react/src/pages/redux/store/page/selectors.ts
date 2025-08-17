@@ -1,6 +1,9 @@
 import {
 	createSelector,
 } from "@reduxjs/toolkit";
+import {
+	isEmpty,
+} from "es-toolkit/compat";
 
 import {
 	type ActivityId,
@@ -66,6 +69,12 @@ const selectCalendar = (
 	state: PageState,
 ): PageState["calendar"] => {
 	return state.calendar;
+};
+
+const selectSelectedWorklogIds = (
+	state: PageState,
+): PageState["selectedWorklogIds"] => {
+	return state.selectedWorklogIds;
 };
 
 const selectWorklogs = createSelector(
@@ -173,6 +182,28 @@ const selectActivitiesForTask = createSelector(
 		return activities.filter((activity) => {
 			return activity.taskId === taskId;
 		});
+	},
+);
+
+const selectHasWorklogsInActivity = createSelector(
+	[
+		selectWorklogsForActivity,
+	],
+	(
+		worklogs,
+	): boolean => {
+		return !isEmpty(worklogs);
+	},
+);
+
+const selectHasWorklogsInTask = createSelector(
+	[
+		selectWorklogsForTask,
+	],
+	(
+		worklogs,
+	): boolean => {
+		return !isEmpty(worklogs);
 	},
 );
 
@@ -295,9 +326,55 @@ const selectHasUnSavedChanges = createSelector(
 	},
 );
 
+const selectIsActivitySelected = createSelector(
+	[
+		selectWorklogsForActivity,
+		selectSelectedWorklogIds,
+	],
+	(
+		worklogs,
+		selectedWorklogIds,
+	): boolean => {
+		return worklogs.every((worklog) => {
+			return selectedWorklogIds.includes(worklog.id);
+		});
+	},
+);
+
+const selectIsTaskSelected = createSelector(
+	[
+		selectWorklogsForTask,
+		selectSelectedWorklogIds,
+	],
+	(
+		worklogs,
+		selectedWorklogIds,
+	): boolean => {
+		return worklogs.every((worklog) => {
+			return selectedWorklogIds.includes(worklog.id);
+		});
+	},
+);
+
+const selectHasSelectedWorklogs = createSelector(
+	[
+		selectSelectedWorklogIds,
+	],
+	(
+		selectedWorklogIds,
+	): boolean => {
+		return !isEmpty(selectedWorklogIds);
+	},
+);
+
 export {
 	selectActivitiesForTask,
+	selectHasSelectedWorklogs,
 	selectHasUnSavedChanges,
+	selectHasWorklogsInActivity,
+	selectHasWorklogsInTask,
+	selectIsActivitySelected,
+	selectIsTaskSelected,
 	selectReportingStatisticsByDate,
 	selectReportingStatisticsByDateForActivity,
 	selectReportingStatisticsByDateForTask,

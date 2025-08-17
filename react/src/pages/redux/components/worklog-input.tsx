@@ -1,5 +1,7 @@
 import {
+	type ChangeEventHandler,
 	type FC,
+	useState,
 } from "react";
 
 import {
@@ -13,10 +15,23 @@ interface WorklogCellProps {
 const WorklogInput: FC<WorklogCellProps> = ({
 	duration,
 }) => {
+	const [
+		durationLocal,
+		setDurationLocal,
+	] = useState<string>(() => {
+		return duration.toString();
+	});
+
+	const handleDurationChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+		setDurationLocal(event.target.value);
+	};
+
 	return (
-		<span>
-			{duration}
-		</span>
+		<input
+			onChange={handleDurationChange}
+			type="text"
+			value={durationLocal}
+		/>
 	);
 };
 

@@ -25,5 +25,6 @@ const TaskSchema = object({
 
 export {
 	TaskIdSchema,
+	TaskNameSchema,
 	TaskSchema,
 };

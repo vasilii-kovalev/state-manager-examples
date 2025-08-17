@@ -6,46 +6,60 @@ import {
 } from "react-redux";
 
 import {
-	type PageTask,
+	type PageActivity,
 } from "@/features/page/types";
 
 import {
 	type RootState,
 } from "../store";
 import {
-	selectReportingStatisticsSummaryForTask,
+	selectReportingStatisticsSummaryForActivity,
 } from "../store/page/selectors";
+import {
+	ActivityNameInput,
+} from "./activity-name-input";
 import {
 	Cell,
 } from "./cell";
 import {
+	RemoveActivityButton,
+} from "./remove-activity-button";
+import {
 	ReportedDurationOfNorm,
 } from "./reported-duration-of-norm";
 
-interface TaskTitleCellProps {
-	task: PageTask;
+interface ActivityInfoCellProps {
+	activity: PageActivity;
 }
 
-const TaskTitleCell: FC<TaskTitleCellProps> = ({
-	task,
+const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
+	activity,
 }) => {
 	const reportingStatisticsSummary = useSelector((state: RootState) => {
-		return selectReportingStatisticsSummaryForTask(
+		return selectReportingStatisticsSummaryForActivity(
 			state.page,
-			task.id,
+			activity.id,
 		);
 	});
 
 	return (
 		<Cell>
+			<ActivityNameInput
+				name={activity.name}
+			/>
+
 			<ReportedDurationOfNorm
 				norm={reportingStatisticsSummary.norm}
 				reported={reportingStatisticsSummary.reported}
+			/>
+
+			<RemoveActivityButton
+				activityId={activity.id}
 			/>
 		</Cell>
 	);
 };
 
 export {
-	TaskTitleCell,
+	ActivityInfoCell,
 };

@@ -30,5 +30,6 @@ const ActivitySchema = object({
 
 export {
 	ActivityIdSchema,
+	ActivityNameSchema,
 	ActivitySchema,
 };

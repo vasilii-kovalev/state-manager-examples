@@ -12,13 +12,16 @@ import {
 	selectReportingStatisticsSummary,
 } from "../store/page/selectors";
 import {
+	AddTaskButton,
+} from "./add-task-button";
+import {
 	Cell,
 } from "./cell";
 import {
 	ReportedDurationOfNorm,
 } from "./reported-duration-of-norm";
 
-const SummaryTitleCell: FC = () => {
+const SummaryInfoCell: FC = () => {
 	const reportingStatisticsSummary = useSelector((state: RootState) => {
 		return selectReportingStatisticsSummary(state.page);
 	});
@@ -29,10 +32,12 @@ const SummaryTitleCell: FC = () => {
 				norm={reportingStatisticsSummary.norm}
 				reported={reportingStatisticsSummary.reported}
 			/>
+
+			<AddTaskButton/>
 		</Cell>
 	);
 };
 
 export {
-	SummaryTitleCell,
+	SummaryInfoCell,
 };
