@@ -1,5 +1,6 @@
 import {
 	type FC,
+	Fragment,
 	useEffect,
 } from "react";
 import {
@@ -12,13 +13,16 @@ import {
 } from "@/hooks/use-page-data";
 
 import {
+	Table,
+} from "./components/table";
+import {
 	type Dispatch,
 	store,
 } from "./store";
 import {
 	resetState,
 	setInitialState,
-} from "./store/page/reducer";
+} from "./store/page/slice";
 
 const ReduxPage: FC = () => {
 	const dispatch = useDispatch<Dispatch>();
@@ -41,9 +45,13 @@ const ReduxPage: FC = () => {
 	);
 
 	return (
-		<h1>
-			Redux page
-		</h1>
+		<Fragment>
+			<h1>
+				Redux page
+			</h1>
+
+			<Table/>
+		</Fragment>
 	);
 };
 

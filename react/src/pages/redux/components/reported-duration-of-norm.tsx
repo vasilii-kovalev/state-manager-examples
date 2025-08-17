@@ -23,12 +23,14 @@ const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = ({
 		<span>
 			<TotalDuration
 				duration={reported}
+				shouldRenderZero={true}
 			/>
 
 			{" / "}
 
 			<TotalDuration
 				duration={norm}
+				shouldRenderZero={true}
 			/>
 		</span>
 	);

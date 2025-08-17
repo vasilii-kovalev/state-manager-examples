@@ -2,6 +2,7 @@ import {
 	type FC,
 } from "react";
 import {
+	useDispatch,
 	useSelector,
 } from "react-redux";
 
@@ -10,11 +11,15 @@ import {
 } from "@/features/activity/types";
 
 import {
+	type Dispatch,
 	type RootState,
 } from "../store";
 import {
 	selectHasWorklogsInActivity,
 } from "../store/page/selectors";
+import {
+	removeActivity,
+} from "../store/page/slice";
 
 interface RemoveActivityButtonProps {
 	activityId: ActivityId;
@@ -23,6 +28,8 @@ interface RemoveActivityButtonProps {
 const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 	activityId,
 }) => {
+	const dispatch = useDispatch<Dispatch>();
+
 	const hasWorklogs = useSelector((state: RootState) => {
 		return selectHasWorklogsInActivity(
 			state.page,
@@ -30,9 +37,14 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 		);
 	});
 
+	const handleRemoveActivity = (): void => {
+		dispatch(removeActivity(activityId));
+	};
+
 	return (
 		<button
 			disabled={hasWorklogs}
+			onClick={handleRemoveActivity}
 			type="button"
 		>
 			Remove activity

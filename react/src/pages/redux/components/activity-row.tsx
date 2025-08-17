@@ -1,0 +1,62 @@
+import {
+	type FC,
+} from "react";
+import {
+	useSelector,
+} from "react-redux";
+
+import {
+	type PageActivity,
+} from "@/features/page/types";
+
+import {
+	type RootState,
+} from "../store";
+import {
+	selectCalendar,
+} from "../store/page/selectors";
+import {
+	ActivityInfoCell,
+} from "./activity-info-cell";
+import {
+	Row,
+} from "./row";
+import {
+	WorklogCell,
+} from "./worklog-cell";
+
+interface ActivityRowProps {
+	activity: PageActivity;
+}
+
+const ActivityRow: FC<ActivityRowProps> = ({
+	activity,
+}) => {
+	const calendar = useSelector((state: RootState) => {
+		return selectCalendar(state.page);
+	});
+
+	return (
+		<Row>
+			<ActivityInfoCell
+				activity={activity}
+			/>
+
+			{
+				calendar.map((calendarDay) => {
+					return (
+						<WorklogCell
+							activityId={activity.id}
+							date={calendarDay.date}
+							key={calendarDay.date}
+						/>
+					);
+				})
+			}
+		</Row>
+	);
+};
+
+export {
+	ActivityRow,
+};

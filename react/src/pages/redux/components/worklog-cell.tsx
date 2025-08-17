@@ -9,14 +9,18 @@ import {
 } from "react-redux";
 
 import {
-	type PageWorklog,
-} from "@/features/page/types";
+	type ActivityId,
+} from "@/features/activity/types";
+import {
+	type DateString,
+} from "@/features/dates-and-time/types";
 
 import {
 	type RootState,
 } from "../store";
 import {
 	selectHasSelectedWorklogs,
+	selectWorklogsForActivityByDate,
 } from "../store/page/selectors";
 import {
 	Cell,
@@ -29,17 +33,27 @@ import {
 } from "./worklog-input";
 
 interface WorklogCellProps {
-	worklog: PageWorklog;
+	activityId: ActivityId;
+	date: DateString;
 }
 
 const WorklogCell: FC<WorklogCellProps> = ({
-	worklog,
+	activityId,
+	date,
 }) => {
+	const worklog = useSelector((state: RootState) => {
+		const worklogsByDate = selectWorklogsForActivityByDate(
+			state.page,
+			activityId,
+		);
+
+		return worklogsByDate[date];
+	});
 	const hasSelectedWorklogs = useSelector((state: RootState) => {
 		return selectHasSelectedWorklogs(state.page);
 	});
 
-	const isWeekendDay = isWeekend(worklog.date);
+	const isWeekendDay = isWeekend(date);
 
 	if (
 		hasSelectedWorklogs
@@ -48,7 +62,7 @@ const WorklogCell: FC<WorklogCellProps> = ({
 		return (
 			<Cell>
 				<TotalDuration
-					duration={worklog.duration}
+					duration={worklog?.duration}
 				/>
 			</Cell>
 		);
@@ -57,7 +71,7 @@ const WorklogCell: FC<WorklogCellProps> = ({
 	return (
 		<Cell>
 			<WorklogInput
-				duration={worklog.duration}
+				duration={worklog?.duration}
 			/>
 		</Cell>
 	);

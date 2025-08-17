@@ -3,9 +3,18 @@ import {
 } from "valibot";
 
 import {
+	type ActivityId,
+} from "../activity/types";
+import {
 	type DateString,
 	type Duration,
 } from "../dates-and-time/types";
+import {
+	type TaskId,
+} from "../task/types";
+import {
+	type WorklogId,
+} from "../worklog/types";
 import {
 	type PageActivitySchema,
 	type PageDataSchema,
@@ -31,13 +40,25 @@ interface ReportingStatisticsSummary {
 
 type ReportingStatisticsByDate = Record<DateString, ReportingStatisticsSummary>;
 
-interface EntityWithId {
-	id: string;
+type EntityId =
+	| WorklogId
+	| ActivityId
+	| TaskId;
+
+interface EntityWithId<
+	Id extends EntityId = EntityId,
+> {
+	id: Id;
 }
 
-interface NormalizedEntities<Entity extends EntityWithId> {
-	byId: Record<Entity["id"], Entity>;
-	ids: Array<Entity["id"]>;
+interface NormalizedEntities<
+	// Putting `Id` after `Entity` is more convenient for usage.
+	// eslint-disable-next-line @typescript-eslint/no-use-before-define
+	Entity extends EntityWithId<Id>,
+	Id extends EntityId = EntityId,
+> {
+	byId: Record<Id, Entity>;
+	ids: Array<Id>;
 }
 
 export {

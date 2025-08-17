@@ -2,6 +2,7 @@ import {
 	type FC,
 } from "react";
 import {
+	useDispatch,
 	useSelector,
 } from "react-redux";
 
@@ -10,11 +11,15 @@ import {
 } from "@/features/task/types";
 
 import {
+	type Dispatch,
 	type RootState,
 } from "../store";
 import {
 	selectHasWorklogsInTask,
 } from "../store/page/selectors";
+import {
+	removeTask,
+} from "../store/page/slice";
 
 interface RemoveTaskButtonProps {
 	taskId: TaskId;
@@ -23,6 +28,8 @@ interface RemoveTaskButtonProps {
 const RemoveTaskButton: FC<RemoveTaskButtonProps> = ({
 	taskId,
 }) => {
+	const dispatch = useDispatch<Dispatch>();
+
 	const hasWorklogs = useSelector((state: RootState) => {
 		return selectHasWorklogsInTask(
 			state.page,
@@ -30,9 +37,14 @@ const RemoveTaskButton: FC<RemoveTaskButtonProps> = ({
 		);
 	});
 
+	const handleRemoveTask = (): void => {
+		dispatch(removeTask(taskId));
+	};
+
 	return (
 		<button
 			disabled={hasWorklogs}
+			onClick={handleRemoveTask}
 			type="button"
 		>
 			Remove task

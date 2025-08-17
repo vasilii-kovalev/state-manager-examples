@@ -1,4 +1,5 @@
 import {
+	createDraftSafeSelector,
 	createSelector,
 } from "@reduxjs/toolkit";
 import {
@@ -7,7 +8,11 @@ import {
 
 import {
 	type ActivityId,
+	type ActivityName,
 } from "@/features/activity/types";
+import {
+	type DateString,
+} from "@/features/dates-and-time/types";
 import {
 	type PageActivity,
 	type PageState,
@@ -165,7 +170,7 @@ const selectWorklogsForTask = createSelector(
 	},
 );
 
-const selectActivitiesForTask = createSelector(
+const selectActivitiesForTask = createDraftSafeSelector(
 	[
 		selectActivities,
 		(
@@ -182,6 +187,34 @@ const selectActivitiesForTask = createSelector(
 		return activities.filter((activity) => {
 			return activity.taskId === taskId;
 		});
+	},
+);
+
+type WorklogsByDate = Record<DateString, PageWorklog>;
+
+const selectWorklogsForActivityByDate = createSelector(
+	[
+		selectWorklogsForActivity,
+	],
+	(
+		worklogs,
+	): WorklogsByDate => {
+		return worklogs.reduce<WorklogsByDate>(
+			(
+				worklogsByDateCurrent,
+				worklog,
+			) => {
+				const {
+					date,
+				} = worklog;
+
+				// eslint-disable-next-line no-param-reassign
+				worklogsByDateCurrent[date] = worklog;
+
+				return worklogsByDateCurrent;
+			},
+			{},
+		);
 	},
 );
 
@@ -204,22 +237,6 @@ const selectHasWorklogsInTask = createSelector(
 		worklogs,
 	): boolean => {
 		return !isEmpty(worklogs);
-	},
-);
-
-const selectReportingStatisticsByDateForActivity = createSelector(
-	[
-		selectWorklogsForActivity,
-		selectCalendar,
-	],
-	(
-		worklogs,
-		calendar,
-	): ReportingStatisticsByDate => {
-		return getReportingStatisticsByDate({
-			calendar,
-			worklogs,
-		});
 	},
 );
 
@@ -367,8 +384,40 @@ const selectHasSelectedWorklogs = createSelector(
 	},
 );
 
+const selectActivityNamesInTask = createSelector(
+	[
+		selectActivitiesForTask,
+		(
+			state: PageState,
+			activityIdToExclude: ActivityId,
+		): ActivityId => {
+			return activityIdToExclude;
+		},
+	],
+	(
+		activities,
+		activityIdToExclude,
+	): Array<ActivityName> => {
+		return activities.reduce<Array<ActivityName>>(
+			(
+				activityNamesCurrent,
+				activity,
+			) => {
+				if (activity.id !== activityIdToExclude) {
+					activityNamesCurrent.push(activity.name);
+				}
+
+				return activityNamesCurrent;
+			},
+			[],
+		);
+	},
+);
+
 export {
 	selectActivitiesForTask,
+	selectActivityNamesInTask,
+	selectCalendar,
 	selectHasSelectedWorklogs,
 	selectHasUnSavedChanges,
 	selectHasWorklogsInActivity,
@@ -376,11 +425,11 @@ export {
 	selectIsActivitySelected,
 	selectIsTaskSelected,
 	selectReportingStatisticsByDate,
-	selectReportingStatisticsByDateForActivity,
 	selectReportingStatisticsByDateForTask,
 	selectReportingStatisticsSummary,
 	selectReportingStatisticsSummaryForActivity,
 	selectReportingStatisticsSummaryForTask,
 	selectTasks,
 	selectWorklogsForActivity,
+	selectWorklogsForActivityByDate,
 };

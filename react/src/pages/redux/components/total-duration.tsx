@@ -14,14 +14,19 @@ import {
 
 interface TotalDurationProps {
 	duration: Duration | undefined;
+	shouldRenderZero?: boolean;
 }
 
 const TotalDuration: FC<TotalDurationProps> = ({
 	duration,
+	shouldRenderZero = false,
 }) => {
 	if (
 		isUndefined(duration)
-		|| duration === 0
+		|| (
+			duration === 0
+			&& !shouldRenderZero
+		)
 	) {
 		return null;
 	}

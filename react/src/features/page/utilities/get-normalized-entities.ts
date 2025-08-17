@@ -13,7 +13,6 @@ const getNormalizedEntities = <Entity extends EntityWithId>(
 			normalizedEntitiesCurrent,
 			entity,
 		) => {
-			// @ts-expect-error This implementation is correct.
 			// eslint-disable-next-line no-param-reassign
 			normalizedEntitiesCurrent.byId[entity.id] = entity;
 

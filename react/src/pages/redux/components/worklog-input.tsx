@@ -1,6 +1,10 @@
 import {
+	isUndefined,
+} from "es-toolkit";
+import {
 	type ChangeEventHandler,
 	type FC,
+	useCallback,
 	useState,
 } from "react";
 
@@ -9,17 +13,33 @@ import {
 } from "@/features/dates-and-time/types";
 
 interface WorklogCellProps {
-	duration: Duration;
+	duration: Duration | undefined;
 }
 
 const WorklogInput: FC<WorklogCellProps> = ({
 	duration,
 }) => {
+	const getInitialDurationLocalValue = useCallback(
+		(): string => {
+			if (
+				isUndefined(duration)
+				|| duration === 0
+			) {
+				return "";
+			}
+
+			return duration.toString();
+		},
+		[
+			duration,
+		],
+	);
+
 	const [
 		durationLocal,
 		setDurationLocal,
 	] = useState<string>(() => {
-		return duration.toString();
+		return getInitialDurationLocalValue();
 	});
 
 	const handleDurationChange: ChangeEventHandler<HTMLInputElement> = (event) => {

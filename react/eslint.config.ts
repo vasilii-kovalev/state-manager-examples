@@ -2281,6 +2281,20 @@ const eslintConfig = disableAutofix(
 				"@eslint-react/naming-convention/filename": DISABLED,
 			},
 		},
+		{
+			files: [
+				"src/pages/redux/**/slice.ts",
+			],
+			rules: {
+				"no-param-reassign": [
+					ERROR,
+					{
+						props: false,
+					},
+				],
+				"@typescript-eslint/no-dynamic-delete": DISABLED,
+			},
+		},
 	),
 );
 
