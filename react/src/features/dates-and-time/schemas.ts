@@ -1,6 +1,5 @@
 import {
 	flavor,
-	integer,
 	isoDate,
 	maxValue,
 	minValue,
@@ -21,7 +20,6 @@ const DateStringSchema = pipe(
 
 const DurationSchema = pipe(
 	number(),
-	integer(),
 	minValue(0),
 	maxValue(DURATION_MAX),
 	flavor("duration"),

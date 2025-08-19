@@ -7,10 +7,16 @@ import {
 	useCallback,
 	useState,
 } from "react";
+import {
+	safeParse,
+} from "valibot";
 
 import {
 	type Duration,
 } from "@/features/dates-and-time/types";
+import {
+	WorklogInputSchema,
+} from "@/pages/schemas";
 
 interface WorklogCellProps {
 	duration: Duration | undefined;
@@ -43,11 +49,25 @@ const WorklogInput: FC<WorklogCellProps> = ({
 	});
 
 	const handleDurationChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-		setDurationLocal(event.target.value);
+		const {
+			value,
+		} = event.target;
+
+		const parsedInput = safeParse(
+			WorklogInputSchema,
+			value,
+		);
+
+		if (!parsedInput.success) {
+			return;
+		}
+
+		setDurationLocal(parsedInput.output);
 	};
 
 	return (
 		<input
+			inputMode="numeric"
 			onChange={handleDurationChange}
 			type="text"
 			value={durationLocal}
