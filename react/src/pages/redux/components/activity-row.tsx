@@ -49,6 +49,7 @@ const ActivityRow: FC<ActivityRowProps> = ({
 							activityId={activity.id}
 							date={calendarDay.date}
 							key={calendarDay.date}
+							taskId={activity.taskId}
 						/>
 					);
 				})

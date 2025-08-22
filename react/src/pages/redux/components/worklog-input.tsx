@@ -2,9 +2,6 @@ import {
 	isUndefined,
 } from "es-toolkit";
 import {
-	nanoid,
-} from "nanoid";
-import {
 	type ChangeEventHandler,
 	type FC,
 	useState,
@@ -26,6 +23,12 @@ import {
 	type DateString,
 	type Duration,
 } from "@/features/dates-and-time/types";
+import {
+	getNewWorklog,
+} from "@/features/page/utilities/get-new-worklog";
+import {
+	type TaskId,
+} from "@/features/task/types";
 import {
 	type WorklogId,
 } from "@/features/worklog/types";
@@ -60,6 +63,7 @@ interface WorklogCellProps {
 	date: DateString;
 	duration: Duration | undefined;
 	id: WorklogId | undefined;
+	taskId: TaskId;
 }
 
 const WorklogInput: FC<WorklogCellProps> = ({
@@ -67,6 +71,7 @@ const WorklogInput: FC<WorklogCellProps> = ({
 	date,
 	duration,
 	id,
+	taskId,
 }) => {
 	const dispatch = useDispatch<Dispatch>();
 
@@ -119,16 +124,14 @@ const WorklogInput: FC<WorklogCellProps> = ({
 				);
 			}
 		} else if (durationNext > 0) {
-			const newWorklogId = nanoid();
+			const newWorklog = getNewWorklog({
+				activityId,
+				date,
+				duration: durationNext,
+				taskId,
+			});
 
-			dispatch(
-				addWorklog({
-					activityId,
-					date,
-					duration: durationNext,
-					id: newWorklogId,
-				}),
-			);
+			dispatch(addWorklog(newWorklog));
 		}
 
 		/*

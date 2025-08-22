@@ -58,37 +58,9 @@ const pageSlice = createSlice({
 		},
 		addWorklog: (
 			state,
-			action: PayloadAction<
-				Pick<
-					PageWorklog,
-					| "activityId"
-					| "date"
-					| "duration"
-					| "id"
-				>
-			>,
+			action: PayloadAction<PageWorklog>,
 		) => {
-			const {
-				activityId,
-				date,
-				duration,
-				id,
-			} = action.payload;
-
-			const activity = state.activitiesById[activityId];
-
-			if (isUndefined(activity)) {
-				return;
-			}
-
-			const worklog: PageWorklog = {
-				activityId,
-				date,
-				duration,
-				id,
-				isChanged: true,
-				taskId: activity.taskId,
-			};
+			const worklog = action.payload;
 
 			state.worklogIds.push(worklog.id);
 
