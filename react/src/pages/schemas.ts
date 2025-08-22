@@ -7,7 +7,7 @@ import {
 // Floating point number with optional decimal part containing up to 2 digits.
 // The `/u` flag is intentionally omitted to only support ASCII digits.
 // eslint-disable-next-line require-unicode-regexp
-const WORKLOG_INPUT_REGEXP = /^\d{0,2}(?<decimal>\.\d{0,2})?$/;
+const WORKLOG_INPUT_REGEXP = /^\d+(?<decimal>\.\d{0,2})?$/;
 
 const WorklogInputSchema = pipe(
 	string(),
