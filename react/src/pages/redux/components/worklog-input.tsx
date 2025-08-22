@@ -2,50 +2,79 @@ import {
 	isUndefined,
 } from "es-toolkit";
 import {
+	nanoid,
+} from "nanoid";
+import {
 	type ChangeEventHandler,
 	type FC,
-	useCallback,
 	useState,
 } from "react";
+import {
+	useDispatch,
+} from "react-redux";
 import {
 	safeParse,
 } from "valibot";
 
 import {
+	type ActivityId,
+} from "@/features/activity/types";
+import {
+	DurationSchema,
+} from "@/features/dates-and-time/schemas";
+import {
+	type DateString,
 	type Duration,
 } from "@/features/dates-and-time/types";
+import {
+	type WorklogId,
+} from "@/features/worklog/types";
 import {
 	WorklogInputSchema,
 } from "@/pages/schemas";
 
+import {
+	type Dispatch,
+} from "../store";
+import {
+	addWorklog,
+	removeWorklog,
+	updateWorklogDuration,
+} from "../store/page/slice";
+
+const getInitialDurationLocalValue = (
+	duration: Duration | undefined,
+): string => {
+	if (
+		isUndefined(duration)
+		|| duration === 0
+	) {
+		return "";
+	}
+
+	return duration.toString();
+};
+
 interface WorklogCellProps {
+	activityId: ActivityId;
+	date: DateString;
 	duration: Duration | undefined;
+	id: WorklogId | undefined;
 }
 
 const WorklogInput: FC<WorklogCellProps> = ({
+	activityId,
+	date,
 	duration,
+	id,
 }) => {
-	const getInitialDurationLocalValue = useCallback(
-		(): string => {
-			if (
-				isUndefined(duration)
-				|| duration === 0
-			) {
-				return "";
-			}
-
-			return duration.toString();
-		},
-		[
-			duration,
-		],
-	);
+	const dispatch = useDispatch<Dispatch>();
 
 	const [
 		durationLocal,
 		setDurationLocal,
 	] = useState<string>(() => {
-		return getInitialDurationLocalValue();
+		return getInitialDurationLocalValue(duration);
 	});
 
 	const handleDurationChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -65,9 +94,54 @@ const WorklogInput: FC<WorklogCellProps> = ({
 		setDurationLocal(parsedInput.output);
 	};
 
+	const handleOnBlur = (): void => {
+		const numberDuration = Number(durationLocal);
+		const durationNextResult = safeParse(
+			DurationSchema,
+			numberDuration,
+		);
+
+		if (!durationNextResult.success) {
+			return;
+		}
+
+		const durationNext = durationNextResult.output;
+
+		if (!isUndefined(id)) {
+			if (durationNext === 0) {
+				dispatch(removeWorklog(id));
+			} else if (duration !== durationNext) {
+				dispatch(
+					updateWorklogDuration({
+						duration: durationNext,
+						id,
+					}),
+				);
+			}
+		} else if (durationNext > 0) {
+			const newWorklogId = nanoid();
+
+			dispatch(
+				addWorklog({
+					activityId,
+					date,
+					duration: durationNext,
+					id: newWorklogId,
+				}),
+			);
+		}
+
+		/*
+			Sets the value with unnecessary parts stripped out.
+			For example, if the user typed in "1.00", it will be set to "1".
+		*/
+		setDurationLocal(getInitialDurationLocalValue(durationNext));
+	};
+
 	return (
 		<input
 			inputMode="numeric"
+			onBlur={handleOnBlur}
 			onChange={handleDurationChange}
 			type="text"
 			value={durationLocal}

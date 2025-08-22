@@ -71,7 +71,10 @@ const WorklogCell: FC<WorklogCellProps> = ({
 	return (
 		<Cell>
 			<WorklogInput
+				activityId={activityId}
+				date={date}
 				duration={worklog?.duration}
+				id={worklog?.id}
 			/>
 		</Cell>
 	);

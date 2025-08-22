@@ -2,6 +2,9 @@ import {
 	createSlice,
 	type PayloadAction,
 } from "@reduxjs/toolkit";
+import {
+	isUndefined,
+} from "es-toolkit";
 
 import {
 	type ActivityId,
@@ -13,6 +16,7 @@ import {
 	type PageActivity,
 	type PageData,
 	type PageTask,
+	type PageWorklog,
 } from "@/features/page/types";
 import {
 	convertPageDataToPageState,
@@ -20,6 +24,9 @@ import {
 import {
 	type TaskId,
 } from "@/features/task/types";
+import {
+	type WorklogId,
+} from "@/features/worklog/types";
 
 import {
 	selectActivitiesForTask,
@@ -48,6 +55,44 @@ const pageSlice = createSlice({
 			state.tasksById[task.id] = task;
 
 			state.taskIds.unshift(task.id);
+		},
+		addWorklog: (
+			state,
+			action: PayloadAction<
+				Pick<
+					PageWorklog,
+					| "activityId"
+					| "date"
+					| "duration"
+					| "id"
+				>
+			>,
+		) => {
+			const {
+				activityId,
+				date,
+				duration,
+				id,
+			} = action.payload;
+
+			const activity = state.activitiesById[activityId];
+
+			if (isUndefined(activity)) {
+				return;
+			}
+
+			const worklog: PageWorklog = {
+				activityId,
+				date,
+				duration,
+				id,
+				isChanged: true,
+				taskId: activity.taskId,
+			};
+
+			state.worklogIds.push(worklog.id);
+
+			state.worklogsById[worklog.id] = worklog;
 		},
 		removeActivity: (
 			state,
@@ -88,6 +133,18 @@ const pageSlice = createSlice({
 				});
 			});
 		},
+		removeWorklog: (
+			state,
+			action: PayloadAction<WorklogId>,
+		) => {
+			const worklogId = action.payload;
+
+			delete state.worklogsById[worklogId];
+
+			state.worklogIds = state.worklogIds.filter((worklogIdCurrent) => {
+				return worklogIdCurrent !== worklogId;
+			});
+		},
 		resetState: () => {
 			return PAGE_STATE_DEFAULT;
 		},
@@ -105,6 +162,31 @@ const pageSlice = createSlice({
 				return PAGE_STATE_DEFAULT;
 			}
 		},
+		updateWorklogDuration: (
+			state,
+			action: PayloadAction<
+				Pick<
+					PageWorklog,
+					| "duration"
+					| "id"
+				>
+			>,
+		) => {
+			const {
+				duration,
+				id,
+			} = action.payload;
+
+			const worklog = state.worklogsById[id];
+
+			if (isUndefined(worklog)) {
+				return;
+			}
+
+			worklog.duration = duration;
+
+			worklog.isChanged = true;
+		},
 	},
 });
 
@@ -112,18 +194,24 @@ const pageReducer = pageSlice.reducer;
 const {
 	addActivity,
 	addTask,
+	addWorklog,
 	removeActivity,
 	removeTask,
+	removeWorklog,
 	resetState,
 	setInitialState,
+	updateWorklogDuration,
 } = pageSlice.actions;
 
 export {
 	addActivity,
 	addTask,
+	addWorklog,
 	pageReducer,
 	removeActivity,
 	removeTask,
+	removeWorklog,
 	resetState,
 	setInitialState,
+	updateWorklogDuration,
 };
