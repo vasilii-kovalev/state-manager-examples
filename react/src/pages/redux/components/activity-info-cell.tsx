@@ -45,6 +45,7 @@ const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
 	return (
 		<Cell>
 			<ActivityNameInput
+				id={activity.id}
 				name={activity.name}
 			/>
 

@@ -134,6 +134,56 @@ const pageSlice = createSlice({
 				return PAGE_STATE_DEFAULT;
 			}
 		},
+		updateActivityName: (
+			state,
+			action: PayloadAction<
+				Pick<
+					PageActivity,
+					| "id"
+					| "name"
+				>
+			>,
+		) => {
+			const {
+				id,
+				name,
+			} = action.payload;
+
+			const activity = state.activitiesById[id];
+
+			if (isUndefined(activity)) {
+				return;
+			}
+
+			activity.name = name;
+
+			activity.isChanged = true;
+		},
+		updateTaskName: (
+			state,
+			action: PayloadAction<
+				Pick<
+					PageTask,
+					| "id"
+					| "name"
+				>
+			>,
+		) => {
+			const {
+				id,
+				name,
+			} = action.payload;
+
+			const task = state.tasksById[id];
+
+			if (isUndefined(task)) {
+				return;
+			}
+
+			task.name = name;
+
+			task.isChanged = true;
+		},
 		updateWorklogDuration: (
 			state,
 			action: PayloadAction<
@@ -172,6 +222,8 @@ const {
 	removeWorklog,
 	resetState,
 	setInitialState,
+	updateActivityName,
+	updateTaskName,
 	updateWorklogDuration,
 } = pageSlice.actions;
 
@@ -185,5 +237,7 @@ export {
 	removeWorklog,
 	resetState,
 	setInitialState,
+	updateActivityName,
+	updateTaskName,
 	updateWorklogDuration,
 };

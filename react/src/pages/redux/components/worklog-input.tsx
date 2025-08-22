@@ -101,16 +101,16 @@ const WorklogInput: FC<WorklogCellProps> = ({
 
 	const handleOnBlur = (): void => {
 		const numberDuration = Number(durationLocal);
-		const durationNextResult = safeParse(
+		const durationNextParseResult = safeParse(
 			DurationSchema,
 			numberDuration,
 		);
 
-		if (!durationNextResult.success) {
+		if (!durationNextParseResult.success) {
 			return;
 		}
 
-		const durationNext = durationNextResult.output;
+		const durationNext = durationNextParseResult.output;
 
 		if (!isUndefined(id)) {
 			if (durationNext === 0) {

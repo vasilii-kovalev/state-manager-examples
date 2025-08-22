@@ -4,6 +4,7 @@ import {
 	object,
 	pipe,
 	string,
+	trim,
 } from "valibot";
 
 import {
@@ -19,6 +20,7 @@ const ActivityIdSchema = pipe(
 const ActivityNameSchema = pipe(
 	string(),
 	nonEmpty(),
+	trim(),
 	flavor("activity-name"),
 );
 

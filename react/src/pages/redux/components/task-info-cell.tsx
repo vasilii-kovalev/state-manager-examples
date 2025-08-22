@@ -48,6 +48,7 @@ const TaskInfoCell: FC<TaskInfoCellProps> = ({
 	return (
 		<Cell>
 			<TaskNameInput
+				id={task.id}
 				name={task.name}
 			/>
 
