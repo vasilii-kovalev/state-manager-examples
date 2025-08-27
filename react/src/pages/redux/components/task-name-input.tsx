@@ -4,6 +4,7 @@ import {
 import {
 	type ChangeEventHandler,
 	type FC,
+	Fragment,
 	useState,
 } from "react";
 import {
@@ -32,6 +33,9 @@ import {
 import {
 	updateTaskName,
 } from "../store/page/slice";
+import {
+	DuplicatedTaskNameIcon,
+} from "./duplicated-task-name-icon";
 
 interface TaskNameInputProps {
 	id: TaskId;
@@ -89,14 +93,21 @@ const TaskNameInput: FC<TaskNameInputProps> = ({
 	};
 
 	return (
-		<input
-			disabled={hasSelectedWorklogs}
-			onBlur={handleOnBlur}
-			onChange={handleNameChange}
-			placeholder={name}
-			type="text"
-			value={nameLocal}
-		/>
+		<Fragment>
+			<input
+				disabled={hasSelectedWorklogs}
+				onBlur={handleOnBlur}
+				onChange={handleNameChange}
+				placeholder={name}
+				type="text"
+				value={nameLocal}
+			/>
+
+			<DuplicatedTaskNameIcon
+				name={nameLocal}
+				taskId={id}
+			/>
+		</Fragment>
 	);
 };
 

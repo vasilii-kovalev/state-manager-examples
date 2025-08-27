@@ -14,6 +14,10 @@ interface GetTaskNamesParams {
 	taskIdToExclude?: TaskId;
 }
 
+/*
+	Can't use `selectTaskNames` selector, because the result will be memoized,
+	which is undesirable in this case.
+*/
 const getTaskNames = ({
 	taskIdToExclude,
 }: GetTaskNamesParams = {}): Thunk<Array<TaskName>> => {

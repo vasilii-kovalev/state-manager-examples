@@ -18,6 +18,10 @@ interface GetTaskNamesParams {
 	activityIdToExclude?: ActivityId;
 }
 
+/*
+	Can't use `selectActivityNamesInTask` selector, because the result will be memoized,
+	which is undesirable in this case.
+*/
 const getActivityNamesInTask = ({
 	taskId,
 	activityIdToExclude,

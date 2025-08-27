@@ -32,6 +32,7 @@ import {
 } from "@/features/page/utilities/get-reporting-statistics-summary";
 import {
 	type TaskId,
+	type TaskName,
 } from "@/features/task/types";
 
 const selectWorklogsById = (
@@ -389,6 +390,7 @@ const selectActivityNamesInTask = createSelector(
 		selectActivitiesForTask,
 		(
 			state: PageState,
+			taskId: TaskId,
 			activityIdToExclude: ActivityId,
 		): ActivityId => {
 			return activityIdToExclude;
@@ -414,6 +416,36 @@ const selectActivityNamesInTask = createSelector(
 	},
 );
 
+const selectTaskNames = createSelector(
+	[
+		selectTasks,
+		(
+			state: PageState,
+			taskIdToExclude: TaskId,
+		): TaskId => {
+			return taskIdToExclude;
+		},
+	],
+	(
+		tasks,
+		taskIdToExclude,
+	): Array<TaskName> => {
+		return tasks.reduce<Array<TaskName>>(
+			(
+				taskNamesCurrent,
+				task,
+			) => {
+				if (task.id !== taskIdToExclude) {
+					taskNamesCurrent.push(task.name);
+				}
+
+				return taskNamesCurrent;
+			},
+			[],
+		);
+	},
+);
+
 export {
 	selectActivitiesForTask,
 	selectActivityNamesInTask,
@@ -429,6 +461,7 @@ export {
 	selectReportingStatisticsSummary,
 	selectReportingStatisticsSummaryForActivity,
 	selectReportingStatisticsSummaryForTask,
+	selectTaskNames,
 	selectTasks,
 	selectWorklogsForActivity,
 	selectWorklogsForActivityByDate,

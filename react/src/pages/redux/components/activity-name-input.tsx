@@ -4,6 +4,7 @@ import {
 import {
 	type ChangeEventHandler,
 	type FC,
+	Fragment,
 	useState,
 } from "react";
 import {
@@ -21,6 +22,9 @@ import {
 	type ActivityId,
 	type ActivityName,
 } from "@/features/activity/types";
+import {
+	type TaskId,
+} from "@/features/task/types";
 
 import {
 	type Dispatch,
@@ -32,14 +36,19 @@ import {
 import {
 	updateActivityName,
 } from "../store/page/slice";
+import {
+	DuplicatedActivityNameIcon,
+} from "./duplicated-activity-name-icon";
 
 interface ActivityNameInputProps {
-	id: ActivityId;
+	activityId: ActivityId;
+	taskId: TaskId;
 	name: ActivityName;
 }
 
 const ActivityNameInput: FC<ActivityNameInputProps> = ({
-	id,
+	activityId,
+	taskId,
 	name,
 }) => {
 	const dispatch = useDispatch<Dispatch>();
@@ -78,7 +87,7 @@ const ActivityNameInput: FC<ActivityNameInputProps> = ({
 		if (nameNext !== name) {
 			dispatch(
 				updateActivityName({
-					id,
+					id: activityId,
 					name: nameNext,
 				}),
 			);
@@ -89,14 +98,22 @@ const ActivityNameInput: FC<ActivityNameInputProps> = ({
 	};
 
 	return (
-		<input
-			disabled={hasSelectedWorklogs}
-			onBlur={handleOnBlur}
-			onChange={handleNameChange}
-			placeholder={name}
-			type="text"
-			value={nameLocal}
-		/>
+		<Fragment>
+			<input
+				disabled={hasSelectedWorklogs}
+				onBlur={handleOnBlur}
+				onChange={handleNameChange}
+				placeholder={name}
+				type="text"
+				value={nameLocal}
+			/>
+
+			<DuplicatedActivityNameIcon
+				activityId={activityId}
+				name={nameLocal}
+				taskId={taskId}
+			/>
+		</Fragment>
 	);
 };
 
