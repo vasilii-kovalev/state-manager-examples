@@ -35,11 +35,12 @@ const convertPageDataToPageState = (
 			activitiesById,
 			activityIds,
 			calendar: pageData.calendar,
+			selectedWorklogIds: [],
 			taskIds,
 			tasksById,
 			worklogIds,
 			worklogsById,
-		},
+		} satisfies PageState,
 	);
 };
 

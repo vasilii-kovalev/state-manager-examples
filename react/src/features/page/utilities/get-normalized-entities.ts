@@ -1,12 +1,17 @@
 import {
+	type EntityId,
 	type EntityWithId,
 	type NormalizedEntities,
 } from "../types";
 
-const getNormalizedEntities = <Entity extends EntityWithId>(
+const getNormalizedEntities = <
+	// eslint-disable-next-line @typescript-eslint/no-use-before-define
+	Entity extends EntityWithId<Id>,
+	Id extends EntityId = Entity["id"],
+>(
 	entities: Array<Entity>,
-): NormalizedEntities<Entity> => {
-	type NormalizedEntitiesType = NormalizedEntities<Entity>;
+): NormalizedEntities<Entity, Id> => {
+	type NormalizedEntitiesType = NormalizedEntities<Entity, Id>;
 
 	return entities.reduce<NormalizedEntitiesType>(
 		(

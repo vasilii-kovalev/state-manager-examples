@@ -1,6 +1,5 @@
 import {
 	array,
-	exactOptional,
 	object,
 	record,
 } from "valibot";
@@ -35,10 +34,7 @@ const PageStateSchema = object({
 	),
 	activityIds: array(ActivityIdSchema),
 	calendar: PageDataSchema.entries.calendar,
-	selectedWorklogIds: exactOptional(
-		array(WorklogIdSchema),
-		[],
-	),
+	selectedWorklogIds: array(WorklogIdSchema),
 	taskIds: array(TaskIdSchema),
 	tasksById: record(
 		TaskIdSchema,

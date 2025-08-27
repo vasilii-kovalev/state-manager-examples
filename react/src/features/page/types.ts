@@ -53,6 +53,7 @@ interface NormalizedEntities<
 }
 
 export {
+	type EntityId,
 	type EntityWithId,
 	type NormalizedEntities,
 	type PageData,
