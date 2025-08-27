@@ -10,25 +10,25 @@ import {
 	type RootState,
 } from "../store";
 import {
-	selectTasks,
+	selectGroups,
 } from "../store/page/selectors";
 import {
-	TaskRow,
-} from "./task-row";
+	GroupRow,
+} from "./group-row";
 
-const TaskRows: FC = () => {
-	const tasks = useSelector((state: RootState) => {
-		return selectTasks(state.page);
+const GroupRows: FC = () => {
+	const groups = useSelector((state: RootState) => {
+		return selectGroups(state.page);
 	});
 
 	return (
 		<Fragment>
 			{
-				tasks.map((task) => {
+				groups.map((group) => {
 					return (
-						<TaskRow
-							key={task.id}
-							task={task}
+						<GroupRow
+							group={group}
+							key={group.id}
 						/>
 					);
 				})
@@ -38,5 +38,5 @@ const TaskRows: FC = () => {
 };
 
 export {
-	TaskRows,
+	GroupRows,
 };

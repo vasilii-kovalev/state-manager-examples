@@ -8,8 +8,8 @@ import {
 } from "valibot";
 
 import {
-	TaskIdSchema,
-} from "../task/schemas";
+	GroupIdSchema,
+} from "../group/schemas";
 
 const ActivityIdSchema = pipe(
 	string(),
@@ -25,9 +25,9 @@ const ActivityNameSchema = pipe(
 );
 
 const ActivitySchema = object({
+	groupId: GroupIdSchema,
 	id: ActivityIdSchema,
 	name: ActivityNameSchema,
-	taskId: TaskIdSchema,
 });
 
 export {

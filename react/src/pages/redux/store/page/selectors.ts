@@ -15,6 +15,11 @@ import {
 	type DateString,
 } from "@/features/dates-and-time/types";
 import {
+	type Group,
+	type GroupId,
+	type GroupName,
+} from "@/features/group/types";
+import {
 	type PageState,
 	type ReportingStatisticsByDate,
 	type ReportingStatisticsSummary,
@@ -28,11 +33,6 @@ import {
 import {
 	getReportingStatisticsSummary,
 } from "@/features/page/utilities/get-reporting-statistics-summary";
-import {
-	type Task,
-	type TaskId,
-	type TaskName,
-} from "@/features/task/types";
 import {
 	type Worklog,
 } from "@/features/worklog/types";
@@ -61,16 +61,16 @@ const selectActivityIds = (
 	return state.activityIds;
 };
 
-const selectTasksById = (
+const selectGroupsById = (
 	state: PageState,
-): PageState["tasksById"] => {
-	return state.tasksById;
+): PageState["groupsById"] => {
+	return state.groupsById;
 };
 
-const selectTaskIds = (
+const selectGroupIds = (
 	state: PageState,
-): PageState["taskIds"] => {
-	return state.taskIds;
+): PageState["groupIds"] => {
+	return state.groupIds;
 };
 
 const selectCalendar = (
@@ -117,18 +117,18 @@ const selectActivities = createSelector(
 	},
 );
 
-const selectTasks = createSelector(
+const selectGroups = createSelector(
 	[
-		selectTasksById,
-		selectTaskIds,
+		selectGroupsById,
+		selectGroupIds,
 	],
 	(
-		tasksById,
-		taskIds,
-	): Array<Task> => {
+		groupsById,
+		groupIds,
+	): Array<Group> => {
 		return getEntities({
-			byId: tasksById,
-			ids: taskIds,
+			byId: groupsById,
+			ids: groupIds,
 		});
 	},
 );
@@ -153,42 +153,42 @@ const selectWorklogsForActivity = createSelector(
 	},
 );
 
-const selectWorklogsForTask = createSelector(
+const selectWorklogsForGroup = createSelector(
 	[
 		selectWorklogs,
 		(
 			state: PageState,
-			taskId: TaskId,
-		): TaskId => {
-			return taskId;
+			groupId: GroupId,
+		): GroupId => {
+			return groupId;
 		},
 	],
 	(
 		worklogs,
-		taskId,
+		groupId,
 	): Array<Worklog> => {
 		return worklogs.filter((worklog) => {
-			return worklog.taskId === taskId;
+			return worklog.groupId === groupId;
 		});
 	},
 );
 
-const selectActivitiesForTask = createDraftSafeSelector(
+const selectActivitiesForGroup = createDraftSafeSelector(
 	[
 		selectActivities,
 		(
 			state: PageState,
-			taskId: TaskId,
-		): TaskId => {
-			return taskId;
+			groupId: GroupId,
+		): GroupId => {
+			return groupId;
 		},
 	],
 	(
 		activities,
-		taskId,
+		groupId,
 	): Array<Activity> => {
 		return activities.filter((activity) => {
-			return activity.taskId === taskId;
+			return activity.groupId === groupId;
 		});
 	},
 );
@@ -232,9 +232,9 @@ const selectHasWorklogsInActivity = createSelector(
 	},
 );
 
-const selectHasWorklogsInTask = createSelector(
+const selectHasWorklogsInGroup = createSelector(
 	[
-		selectWorklogsForTask,
+		selectWorklogsForGroup,
 	],
 	(
 		worklogs,
@@ -243,9 +243,9 @@ const selectHasWorklogsInTask = createSelector(
 	},
 );
 
-const selectReportingStatisticsByDateForTask = createSelector(
+const selectReportingStatisticsByDateForGroup = createSelector(
 	[
-		selectWorklogsForTask,
+		selectWorklogsForGroup,
 		selectCalendar,
 	],
 	(
@@ -291,9 +291,9 @@ const selectReportingStatisticsSummaryForActivity = createSelector(
 	},
 );
 
-const selectReportingStatisticsSummaryForTask = createSelector(
+const selectReportingStatisticsSummaryForGroup = createSelector(
 	[
-		selectWorklogsForTask,
+		selectWorklogsForGroup,
 		selectCalendar,
 	],
 	(
@@ -327,7 +327,7 @@ const selectHasUnSavedChanges = createSelector(
 	[
 		selectWorklogs,
 		selectActivities,
-		selectTasks,
+		selectGroups,
 	],
 	(): boolean => {
 		return false;
@@ -349,9 +349,9 @@ const selectIsActivitySelected = createSelector(
 	},
 );
 
-const selectIsTaskSelected = createSelector(
+const selectIsGroupSelected = createSelector(
 	[
-		selectWorklogsForTask,
+		selectWorklogsForGroup,
 		selectSelectedWorklogIds,
 	],
 	(
@@ -375,12 +375,12 @@ const selectHasSelectedWorklogs = createSelector(
 	},
 );
 
-const selectActivityNamesInTask = createSelector(
+const selectActivityNamesInGroup = createSelector(
 	[
-		selectActivitiesForTask,
+		selectActivitiesForGroup,
 		(
 			state: PageState,
-			taskId: TaskId,
+			groupId: GroupId,
 			activityIdToExclude: ActivityId,
 		): ActivityId => {
 			return activityIdToExclude;
@@ -406,30 +406,30 @@ const selectActivityNamesInTask = createSelector(
 	},
 );
 
-const selectTaskNames = createSelector(
+const selectGroupNames = createSelector(
 	[
-		selectTasks,
+		selectGroups,
 		(
 			state: PageState,
-			taskIdToExclude: TaskId,
-		): TaskId => {
-			return taskIdToExclude;
+			groupIdToExclude: GroupId,
+		): GroupId => {
+			return groupIdToExclude;
 		},
 	],
 	(
-		tasks,
-		taskIdToExclude,
-	): Array<TaskName> => {
-		return tasks.reduce<Array<TaskName>>(
+		groups,
+		groupIdToExclude,
+	): Array<GroupName> => {
+		return groups.reduce<Array<GroupName>>(
 			(
-				taskNamesCurrent,
-				task,
+				groupNamesCurrent,
+				group,
 			) => {
-				if (task.id !== taskIdToExclude) {
-					taskNamesCurrent.push(task.name);
+				if (group.id !== groupIdToExclude) {
+					groupNamesCurrent.push(group.name);
 				}
 
-				return taskNamesCurrent;
+				return groupNamesCurrent;
 			},
 			[],
 		);
@@ -437,22 +437,22 @@ const selectTaskNames = createSelector(
 );
 
 export {
-	selectActivitiesForTask,
-	selectActivityNamesInTask,
+	selectActivitiesForGroup,
+	selectActivityNamesInGroup,
 	selectCalendar,
+	selectGroupNames,
+	selectGroups,
 	selectHasSelectedWorklogs,
 	selectHasUnSavedChanges,
 	selectHasWorklogsInActivity,
-	selectHasWorklogsInTask,
+	selectHasWorklogsInGroup,
 	selectIsActivitySelected,
-	selectIsTaskSelected,
+	selectIsGroupSelected,
 	selectReportingStatisticsByDate,
-	selectReportingStatisticsByDateForTask,
+	selectReportingStatisticsByDateForGroup,
 	selectReportingStatisticsSummary,
 	selectReportingStatisticsSummaryForActivity,
-	selectReportingStatisticsSummaryForTask,
-	selectTaskNames,
-	selectTasks,
+	selectReportingStatisticsSummaryForGroup,
 	selectWorklogsForActivity,
 	selectWorklogsForActivityByDate,
 };

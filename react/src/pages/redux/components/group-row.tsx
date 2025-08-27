@@ -7,8 +7,8 @@ import {
 } from "react-redux";
 
 import {
-	type Task,
-} from "@/features/task/types";
+	type Group,
+} from "@/features/group/types";
 
 import {
 	type RootState,
@@ -20,21 +20,21 @@ import {
 	ActivityRows,
 } from "./activity-rows";
 import {
+	GroupDateCell,
+} from "./group-date-cell";
+import {
+	GroupInfoCell,
+} from "./group-info-cell";
+import {
 	Row,
 } from "./row";
-import {
-	TaskDateCell,
-} from "./task-date-cell";
-import {
-	TaskInfoCell,
-} from "./task-info-cell";
 
-interface TaskRowProps {
-	task: Task;
+interface GroupRowProps {
+	group: Group;
 }
 
-const TaskRow: FC<TaskRowProps> = ({
-	task,
+const GroupRow: FC<GroupRowProps> = ({
+	group,
 }) => {
 	const calendar = useSelector((state: RootState) => {
 		return selectCalendar(state.page);
@@ -43,17 +43,17 @@ const TaskRow: FC<TaskRowProps> = ({
 	return (
 		<Fragment>
 			<Row>
-				<TaskInfoCell
-					task={task}
+				<GroupInfoCell
+					group={group}
 				/>
 
 				{
 					calendar.map((calendarDay) => {
 						return (
-							<TaskDateCell
+							<GroupDateCell
 								date={calendarDay.date}
+								groupId={group.id}
 								key={calendarDay.date}
-								taskId={task.id}
 							/>
 						);
 					})
@@ -61,12 +61,12 @@ const TaskRow: FC<TaskRowProps> = ({
 			</Row>
 
 			<ActivityRows
-				taskId={task.id}
+				groupId={group.id}
 			/>
 		</Fragment>
 	);
 };
 
 export {
-	TaskRow,
+	GroupRow,
 };

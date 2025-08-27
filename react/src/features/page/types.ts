@@ -10,8 +10,8 @@ import {
 	type Duration,
 } from "../dates-and-time/types";
 import {
-	type TaskId,
-} from "../task/types";
+	type GroupId,
+} from "../group/types";
 import {
 	type WorklogId,
 } from "../worklog/types";
@@ -34,7 +34,7 @@ type ReportingStatisticsByDate = Record<DateString, ReportingStatisticsSummary>;
 type EntityId =
 	| WorklogId
 	| ActivityId
-	| TaskId;
+	| GroupId;
 
 interface EntityWithId<
 	Id extends EntityId = EntityId,

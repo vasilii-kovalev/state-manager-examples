@@ -3,29 +3,29 @@ import {
 	type ActivityName,
 } from "@/features/activity/types";
 import {
+	type GroupId,
+} from "@/features/group/types";
+import {
 	getEntities,
 } from "@/features/page/utilities/get-entities";
-import {
-	type TaskId,
-} from "@/features/task/types";
 
 import {
 	type Thunk,
 } from "../store";
 
-interface GetTaskNamesParams {
-	taskId: TaskId;
+interface GetGroupNamesParams {
+	groupId: GroupId;
 	activityIdToExclude?: ActivityId;
 }
 
 /*
-	Can't use `selectActivityNamesInTask` selector, because the result will be memoized,
+	Can't use `selectActivityNamesInGroup` selector, because the result will be memoized,
 	which is undesirable in this case.
 */
-const getActivityNamesInTask = ({
-	taskId,
+const getActivityNamesInGroup = ({
+	groupId,
 	activityIdToExclude,
-}: GetTaskNamesParams): Thunk<Array<ActivityName>> => {
+}: GetGroupNamesParams): Thunk<Array<ActivityName>> => {
 	return (
 		dispatch,
 		getState,
@@ -39,7 +39,7 @@ const getActivityNamesInTask = ({
 			byId: activitiesById,
 			filter: (activity) => {
 				return (
-					activity.taskId === taskId
+					activity.groupId === groupId
 					&& activity.id !== activityIdToExclude
 				);
 			},
@@ -53,5 +53,5 @@ const getActivityNamesInTask = ({
 };
 
 export {
-	getActivityNamesInTask,
+	getActivityNamesInGroup,
 };

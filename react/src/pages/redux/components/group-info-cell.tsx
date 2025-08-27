@@ -6,14 +6,14 @@ import {
 } from "react-redux";
 
 import {
-	type Task,
-} from "@/features/task/types";
+	type Group,
+} from "@/features/group/types";
 
 import {
 	type RootState,
 } from "../store";
 import {
-	selectReportingStatisticsSummaryForTask,
+	selectReportingStatisticsSummaryForGroup,
 } from "../store/page/selectors";
 import {
 	AddActivityButton,
@@ -22,34 +22,34 @@ import {
 	Cell,
 } from "./cell";
 import {
-	RemoveTaskButton,
-} from "./remove-task-button";
+	GroupNameInput,
+} from "./group-name-input";
+import {
+	RemoveGroupButton,
+} from "./remove-group-button";
 import {
 	ReportedDurationOfNorm,
 } from "./reported-duration-of-norm";
-import {
-	TaskNameInput,
-} from "./task-name-input";
 
-interface TaskInfoCellProps {
-	task: Task;
+interface GroupInfoCellProps {
+	group: Group;
 }
 
-const TaskInfoCell: FC<TaskInfoCellProps> = ({
-	task,
+const GroupInfoCell: FC<GroupInfoCellProps> = ({
+	group,
 }) => {
 	const reportingStatisticsSummary = useSelector((state: RootState) => {
-		return selectReportingStatisticsSummaryForTask(
+		return selectReportingStatisticsSummaryForGroup(
 			state.page,
-			task.id,
+			group.id,
 		);
 	});
 
 	return (
 		<Cell>
-			<TaskNameInput
-				id={task.id}
-				name={task.name}
+			<GroupNameInput
+				id={group.id}
+				name={group.name}
 			/>
 
 			<ReportedDurationOfNorm
@@ -58,16 +58,16 @@ const TaskInfoCell: FC<TaskInfoCellProps> = ({
 			/>
 
 			<AddActivityButton
-				taskId={task.id}
+				groupId={group.id}
 			/>
 
-			<RemoveTaskButton
-				taskId={task.id}
+			<RemoveGroupButton
+				groupId={group.id}
 			/>
 		</Cell>
 	);
 };
 
 export {
-	TaskInfoCell,
+	GroupInfoCell,
 };

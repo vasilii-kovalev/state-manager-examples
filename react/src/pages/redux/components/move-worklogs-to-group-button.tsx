@@ -2,16 +2,16 @@ import {
 	type FC,
 } from "react";
 
-const MoveWorklogsToTaskButton: FC = () => {
+const MoveWorklogsToGroupButton: FC = () => {
 	return (
 		<button
 			type="button"
 		>
-			Move worklogs to task
+			Move worklogs to group
 		</button>
 	);
 };
 
 export {
-	MoveWorklogsToTaskButton,
+	MoveWorklogsToGroupButton,
 };

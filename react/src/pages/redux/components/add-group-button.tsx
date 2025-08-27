@@ -9,26 +9,26 @@ import {
 	type Dispatch,
 } from "../store";
 import {
-	addTask,
-} from "../utilities/add-task";
+	addGroup,
+} from "../utilities/add-group";
 
-const AddTaskButton: FC = () => {
+const AddGroupButton: FC = () => {
 	const dispatch = useDispatch<Dispatch>();
 
-	const handleAddTask = (): void => {
-		dispatch(addTask());
+	const handleAddGroup = (): void => {
+		dispatch(addGroup());
 	};
 
 	return (
 		<button
-			onClick={handleAddTask}
+			onClick={handleAddGroup}
 			type="button"
 		>
-			Add task
+			Add group
 		</button>
 	);
 };
 
 export {
-	AddTaskButton,
+	AddGroupButton,
 };

@@ -6,27 +6,27 @@ import {
 } from "react-redux";
 
 import {
-	type TaskId,
-} from "@/features/task/types";
+	type GroupId,
+} from "@/features/group/types";
 
 import {
 	type RootState,
 } from "../store";
 import {
-	selectIsTaskSelected,
+	selectIsGroupSelected,
 } from "../store/page/selectors";
 
-interface TaskSelectionCheckboxProps {
-	taskId: TaskId;
+interface GroupSelectionCheckboxProps {
+	groupId: GroupId;
 }
 
-const TaskSelectionCheckbox: FC<TaskSelectionCheckboxProps> = ({
-	taskId,
+const GroupSelectionCheckbox: FC<GroupSelectionCheckboxProps> = ({
+	groupId,
 }) => {
 	const isChecked = useSelector((state: RootState) => {
-		return selectIsTaskSelected(
+		return selectIsGroupSelected(
 			state.page,
-			taskId,
+			groupId,
 		);
 	});
 
@@ -39,5 +39,5 @@ const TaskSelectionCheckbox: FC<TaskSelectionCheckboxProps> = ({
 };
 
 export {
-	TaskSelectionCheckbox,
+	GroupSelectionCheckbox,
 };

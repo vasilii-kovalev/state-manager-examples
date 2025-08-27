@@ -14,8 +14,8 @@ import {
 	DurationSchema,
 } from "../dates-and-time/schemas";
 import {
-	TaskIdSchema,
-} from "../task/schemas";
+	GroupIdSchema,
+} from "../group/schemas";
 
 const WorklogIdSchema = pipe(
 	string(),
@@ -27,8 +27,8 @@ const WorklogSchema = object({
 	activityId: ActivityIdSchema,
 	date: DateStringSchema,
 	duration: DurationSchema,
+	groupId: GroupIdSchema,
 	id: WorklogIdSchema,
-	taskId: TaskIdSchema,
 });
 
 export {

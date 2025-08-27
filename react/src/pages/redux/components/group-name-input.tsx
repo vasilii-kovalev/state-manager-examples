@@ -16,12 +16,12 @@ import {
 } from "valibot";
 
 import {
-	TaskNameSchema,
-} from "@/features/task/schemas";
+	GroupNameSchema,
+} from "@/features/group/schemas";
 import {
-	type TaskId,
-	type TaskName,
-} from "@/features/task/types";
+	type GroupId,
+	type GroupName,
+} from "@/features/group/types";
 
 import {
 	type Dispatch,
@@ -31,18 +31,18 @@ import {
 	selectHasSelectedWorklogs,
 } from "../store/page/selectors";
 import {
-	updateTaskName,
+	updateGroupName,
 } from "../store/page/slice";
 import {
-	DuplicatedTaskNameIcon,
-} from "./duplicated-task-name-icon";
+	DuplicatedGroupNameIcon,
+} from "./duplicated-group-name-icon";
 
-interface TaskNameInputProps {
-	id: TaskId;
-	name: TaskName;
+interface GroupNameInputProps {
+	id: GroupId;
+	name: GroupName;
 }
 
-const TaskNameInput: FC<TaskNameInputProps> = ({
+const GroupNameInput: FC<GroupNameInputProps> = ({
 	id,
 	name,
 }) => {
@@ -69,7 +69,7 @@ const TaskNameInput: FC<TaskNameInputProps> = ({
 		}
 
 		const nameNextParseResult = safeParse(
-			TaskNameSchema,
+			GroupNameSchema,
 			nameLocal,
 		);
 
@@ -81,7 +81,7 @@ const TaskNameInput: FC<TaskNameInputProps> = ({
 
 		if (nameNext !== name) {
 			dispatch(
-				updateTaskName({
+				updateGroupName({
 					id,
 					name: nameNext,
 				}),
@@ -103,14 +103,14 @@ const TaskNameInput: FC<TaskNameInputProps> = ({
 				value={nameLocal}
 			/>
 
-			<DuplicatedTaskNameIcon
+			<DuplicatedGroupNameIcon
+				groupId={id}
 				name={nameLocal}
-				taskId={id}
 			/>
 		</Fragment>
 	);
 };
 
 export {
-	TaskNameInput,
+	GroupNameInput,
 };

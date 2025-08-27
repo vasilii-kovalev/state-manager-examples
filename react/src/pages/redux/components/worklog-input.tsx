@@ -24,11 +24,11 @@ import {
 	type Duration,
 } from "@/features/dates-and-time/types";
 import {
+	type GroupId,
+} from "@/features/group/types";
+import {
 	getNewWorklog,
 } from "@/features/page/utilities/get-new-worklog";
-import {
-	type TaskId,
-} from "@/features/task/types";
 import {
 	type WorklogId,
 } from "@/features/worklog/types";
@@ -63,7 +63,7 @@ interface WorklogCellProps {
 	date: DateString;
 	duration: Duration | undefined;
 	id: WorklogId | undefined;
-	taskId: TaskId;
+	groupId: GroupId;
 }
 
 const WorklogInput: FC<WorklogCellProps> = ({
@@ -71,7 +71,7 @@ const WorklogInput: FC<WorklogCellProps> = ({
 	date,
 	duration,
 	id,
-	taskId,
+	groupId,
 }) => {
 	const dispatch = useDispatch<Dispatch>();
 
@@ -128,7 +128,7 @@ const WorklogInput: FC<WorklogCellProps> = ({
 				activityId,
 				date,
 				duration: durationNext,
-				taskId,
+				groupId,
 			});
 
 			dispatch(addWorklog(newWorklog));

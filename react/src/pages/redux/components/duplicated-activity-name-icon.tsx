@@ -11,31 +11,31 @@ import {
 	type ActivityName,
 } from "@/features/activity/types";
 import {
-	type TaskId,
-} from "@/features/task/types";
+	type GroupId,
+} from "@/features/group/types";
 
 import {
 	type RootState,
 } from "../store";
 import {
-	selectActivityNamesInTask,
+	selectActivityNamesInGroup,
 } from "../store/page/selectors";
 
 interface DuplicatedActivityNameIconProps {
 	activityId: ActivityId;
 	name: ActivityName;
-	taskId: TaskId;
+	groupId: GroupId;
 }
 
 const DuplicatedActivityNameIcon: FC<DuplicatedActivityNameIconProps> = ({
 	activityId,
 	name,
-	taskId,
+	groupId,
 }) => {
 	const existingActivityNames = useSelector((state: RootState) => {
-		return selectActivityNamesInTask(
+		return selectActivityNamesInGroup(
 			state.page,
-			taskId,
+			groupId,
 			activityId,
 		);
 	});

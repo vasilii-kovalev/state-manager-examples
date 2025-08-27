@@ -12,8 +12,8 @@ import {
 	selectReportingStatisticsSummary,
 } from "../store/page/selectors";
 import {
-	AddTaskButton,
-} from "./add-task-button";
+	AddGroupButton,
+} from "./add-group-button";
 import {
 	Cell,
 } from "./cell";
@@ -33,7 +33,7 @@ const SummaryInfoCell: FC = () => {
 				reported={reportingStatisticsSummary.reported}
 			/>
 
-			<AddTaskButton/>
+			<AddGroupButton/>
 		</Cell>
 	);
 };

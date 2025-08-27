@@ -12,9 +12,9 @@ import {
 	CalendarDaySchema,
 } from "../calendar/schemas";
 import {
-	TaskIdSchema,
-	TaskSchema,
-} from "../task/schemas";
+	GroupIdSchema,
+	GroupSchema,
+} from "../group/schemas";
 import {
 	WorklogIdSchema,
 	WorklogSchema,
@@ -23,7 +23,7 @@ import {
 const PageDataSchema = object({
 	activities: array(ActivitySchema),
 	calendar: array(CalendarDaySchema),
-	tasks: array(TaskSchema),
+	groups: array(GroupSchema),
 	worklogs: array(WorklogSchema),
 });
 
@@ -34,12 +34,12 @@ const PageStateSchema = object({
 	),
 	activityIds: array(ActivityIdSchema),
 	calendar: PageDataSchema.entries.calendar,
-	selectedWorklogIds: array(WorklogIdSchema),
-	taskIds: array(TaskIdSchema),
-	tasksById: record(
-		TaskIdSchema,
-		TaskSchema,
+	groupIds: array(GroupIdSchema),
+	groupsById: record(
+		GroupIdSchema,
+		GroupSchema,
 	),
+	selectedWorklogIds: array(WorklogIdSchema),
 	worklogIds: array(WorklogIdSchema),
 	worklogsById: record(
 		WorklogIdSchema,

@@ -6,8 +6,8 @@ import {
 } from "react-redux";
 
 import {
-	type TaskId,
-} from "@/features/task/types";
+	type GroupId,
+} from "@/features/group/types";
 
 import {
 	type Dispatch,
@@ -17,16 +17,16 @@ import {
 } from "../utilities/add-activity";
 
 interface AddActivityButtonProps {
-	taskId: TaskId;
+	groupId: GroupId;
 }
 
 const AddActivityButton: FC<AddActivityButtonProps> = ({
-	taskId,
+	groupId,
 }) => {
 	const dispatch = useDispatch<Dispatch>();
 
 	const handleAddActivity = (): void => {
-		dispatch(addActivity(taskId));
+		dispatch(addActivity(groupId));
 	};
 
 	return (

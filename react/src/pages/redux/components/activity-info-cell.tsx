@@ -46,8 +46,8 @@ const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
 		<Cell>
 			<ActivityNameInput
 				activityId={activity.id}
+				groupId={activity.groupId}
 				name={activity.name}
-				taskId={activity.taskId}
 			/>
 
 			<ReportedDurationOfNorm

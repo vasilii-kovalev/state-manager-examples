@@ -6,14 +6,14 @@ import {
 	ActivitySchema,
 } from "@/features/activity/schemas";
 import {
+	type GroupId,
+} from "@/features/group/types";
+import {
 	getNewActivity,
 } from "@/features/page/utilities/get-new-activity";
 import {
 	getNewActivityName,
 } from "@/features/page/utilities/get-new-activity-name";
-import {
-	type TaskId,
-} from "@/features/task/types";
 
 import {
 	type Thunk,
@@ -22,22 +22,22 @@ import {
 	addActivity as addActivityAction,
 } from "../store/page/slice";
 import {
-	getActivityNamesInTask,
-} from "./get-activity-names-in-task";
+	getActivityNamesInGroup,
+} from "./get-activity-names-in-group";
 
-const addActivity = (taskId: TaskId): Thunk<void> => {
+const addActivity = (groupId: GroupId): Thunk<void> => {
 	return (dispatch) => {
 		const existingNames = dispatch(
-			getActivityNamesInTask({
-				taskId,
+			getActivityNamesInGroup({
+				groupId,
 			}),
 		);
 		const name = getNewActivityName(existingNames);
 		const activity = parse(
 			ActivitySchema,
 			getNewActivity({
+				groupId,
 				name,
-				taskId,
 			}),
 		);
 

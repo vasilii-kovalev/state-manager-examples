@@ -11,7 +11,7 @@ const PAGE_DATA_PROCESSING_DELAY = 2_000;
 const PAGE_DATA_DEFAULT: PageData = {
 	activities: [],
 	calendar: [],
-	tasks: [],
+	groups: [],
 	worklogs: [],
 };
 
@@ -19,9 +19,9 @@ const PAGE_STATE_DEFAULT: PageState = {
 	activitiesById: {},
 	activityIds: [],
 	calendar: [],
+	groupIds: [],
+	groupsById: {},
 	selectedWorklogIds: [],
-	taskIds: [],
-	tasksById: {},
 	worklogIds: [],
 	worklogsById: {},
 };

@@ -9,32 +9,32 @@ import {
 	type DateString,
 } from "@/features/dates-and-time/types";
 import {
-	type TaskId,
-} from "@/features/task/types";
+	type GroupId,
+} from "@/features/group/types";
 
 import {
 	type RootState,
 } from "../store";
 import {
-	selectReportingStatisticsByDateForTask,
+	selectReportingStatisticsByDateForGroup,
 } from "../store/page/selectors";
 import {
 	TotalDurationCell,
 } from "./total-duration-cell";
 
-interface TaskDateCellProps {
-	taskId: TaskId;
+interface GroupDateCellProps {
+	groupId: GroupId;
 	date: DateString;
 }
 
-const TaskDateCell: FC<TaskDateCellProps> = ({
-	taskId,
+const GroupDateCell: FC<GroupDateCellProps> = ({
+	groupId,
 	date,
 }) => {
 	const reportingStatisticsForDate = useSelector((state: RootState) => {
-		const reportingStatisticsByDate = selectReportingStatisticsByDateForTask(
+		const reportingStatisticsByDate = selectReportingStatisticsByDateForGroup(
 			state.page,
-			taskId,
+			groupId,
 		);
 
 		return reportingStatisticsByDate[date];
@@ -48,5 +48,5 @@ const TaskDateCell: FC<TaskDateCellProps> = ({
 };
 
 export {
-	TaskDateCell,
+	GroupDateCell,
 };

@@ -15,14 +15,14 @@ import {
 	selectCalendar,
 } from "../store/page/selectors";
 import {
+	GroupRows,
+} from "./group-rows";
+import {
 	HeaderRow,
 } from "./header-row";
 import {
 	SummaryRow,
 } from "./summary-row";
-import {
-	TaskRows,
-} from "./task-rows";
 
 const Table: FC = () => {
 	const calendar = useSelector((state: RootState) => {
@@ -41,7 +41,7 @@ const Table: FC = () => {
 
 			<tbody>
 				<SummaryRow/>
-				<TaskRows/>
+				<GroupRows/>
 			</tbody>
 		</table>
 	);

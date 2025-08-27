@@ -13,8 +13,8 @@ const getNewWorklog = (
 		activityId: "",
 		date: "",
 		duration: 0,
+		groupId: "",
 		id: nanoid(),
-		taskId: "",
 		...override,
 	};
 };

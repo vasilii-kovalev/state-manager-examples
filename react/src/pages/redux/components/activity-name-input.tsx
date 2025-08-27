@@ -23,8 +23,8 @@ import {
 	type ActivityName,
 } from "@/features/activity/types";
 import {
-	type TaskId,
-} from "@/features/task/types";
+	type GroupId,
+} from "@/features/group/types";
 
 import {
 	type Dispatch,
@@ -42,13 +42,13 @@ import {
 
 interface ActivityNameInputProps {
 	activityId: ActivityId;
-	taskId: TaskId;
+	groupId: GroupId;
 	name: ActivityName;
 }
 
 const ActivityNameInput: FC<ActivityNameInputProps> = ({
 	activityId,
-	taskId,
+	groupId,
 	name,
 }) => {
 	const dispatch = useDispatch<Dispatch>();
@@ -110,8 +110,8 @@ const ActivityNameInput: FC<ActivityNameInputProps> = ({
 
 			<DuplicatedActivityNameIcon
 				activityId={activityId}
+				groupId={groupId}
 				name={nameLocal}
-				taskId={taskId}
 			/>
 		</Fragment>
 	);

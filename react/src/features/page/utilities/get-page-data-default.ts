@@ -9,7 +9,7 @@ const getPageDataDefault = (): PageData => {
 	return {
 		activities: [],
 		calendar: getCalendarForCurrentMonth(),
-		tasks: [],
+		groups: [],
 		worklogs: [],
 	};
 };

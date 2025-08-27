@@ -15,8 +15,8 @@ import {
 	type DateString,
 } from "@/features/dates-and-time/types";
 import {
-	type TaskId,
-} from "@/features/task/types";
+	type GroupId,
+} from "@/features/group/types";
 
 import {
 	type RootState,
@@ -38,13 +38,13 @@ import {
 interface WorklogCellProps {
 	activityId: ActivityId;
 	date: DateString;
-	taskId: TaskId;
+	groupId: GroupId;
 }
 
 const WorklogCell: FC<WorklogCellProps> = ({
 	activityId,
 	date,
-	taskId,
+	groupId,
 }) => {
 	const worklog = useSelector((state: RootState) => {
 		const worklogsByDate = selectWorklogsForActivityByDate(
@@ -79,8 +79,8 @@ const WorklogCell: FC<WorklogCellProps> = ({
 				activityId={activityId}
 				date={date}
 				duration={worklog?.duration}
+				groupId={groupId}
 				id={worklog?.id}
-				taskId={taskId}
 			/>
 		</Cell>
 	);

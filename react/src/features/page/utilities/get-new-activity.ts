@@ -10,9 +10,9 @@ const getNewActivity = (
 	override?: Partial<Activity>,
 ): Activity => {
 	return {
+		groupId: "",
 		id: nanoid(),
 		name: "",
-		taskId: "",
 		...override,
 	};
 };

@@ -21,9 +21,9 @@ const convertPageDataToPageState = (
 		ids: activityIds,
 	} = getNormalizedEntities(pageData.activities);
 	const {
-		byId: tasksById,
-		ids: taskIds,
-	} = getNormalizedEntities(pageData.tasks);
+		byId: groupsById,
+		ids: groupIds,
+	} = getNormalizedEntities(pageData.groups);
 	const {
 		byId: worklogsById,
 		ids: worklogIds,
@@ -35,9 +35,9 @@ const convertPageDataToPageState = (
 			activitiesById,
 			activityIds,
 			calendar: pageData.calendar,
+			groupIds,
+			groupsById,
 			selectedWorklogIds: [],
-			taskIds,
-			tasksById,
 			worklogIds,
 			worklogsById,
 		} satisfies PageState,

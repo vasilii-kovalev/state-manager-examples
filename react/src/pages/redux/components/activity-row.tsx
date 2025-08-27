@@ -48,8 +48,8 @@ const ActivityRow: FC<ActivityRowProps> = ({
 						<WorklogCell
 							activityId={activity.id}
 							date={calendarDay.date}
+							groupId={activity.groupId}
 							key={calendarDay.date}
-							taskId={activity.taskId}
 						/>
 					);
 				})

@@ -7,51 +7,51 @@ import {
 } from "react-redux";
 
 import {
-	type TaskId,
-} from "@/features/task/types";
+	type GroupId,
+} from "@/features/group/types";
 
 import {
 	type Dispatch,
 	type RootState,
 } from "../store";
 import {
-	selectHasWorklogsInTask,
+	selectHasWorklogsInGroup,
 } from "../store/page/selectors";
 import {
-	removeTask,
+	removeGroup,
 } from "../store/page/slice";
 
-interface RemoveTaskButtonProps {
-	taskId: TaskId;
+interface RemoveGroupButtonProps {
+	groupId: GroupId;
 }
 
-const RemoveTaskButton: FC<RemoveTaskButtonProps> = ({
-	taskId,
+const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
+	groupId,
 }) => {
 	const dispatch = useDispatch<Dispatch>();
 
 	const hasWorklogs = useSelector((state: RootState) => {
-		return selectHasWorklogsInTask(
+		return selectHasWorklogsInGroup(
 			state.page,
-			taskId,
+			groupId,
 		);
 	});
 
-	const handleRemoveTask = (): void => {
-		dispatch(removeTask(taskId));
+	const handleRemoveGroup = (): void => {
+		dispatch(removeGroup(groupId));
 	};
 
 	return (
 		<button
 			disabled={hasWorklogs}
-			onClick={handleRemoveTask}
+			onClick={handleRemoveGroup}
 			type="button"
 		>
-			Remove task
+			Remove group
 		</button>
 	);
 };
 
 export {
-	RemoveTaskButton,
+	RemoveGroupButton,
 };

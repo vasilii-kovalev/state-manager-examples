@@ -7,30 +7,30 @@ import {
 } from "react-redux";
 
 import {
-	type TaskId,
-} from "@/features/task/types";
+	type GroupId,
+} from "@/features/group/types";
 
 import {
 	type RootState,
 } from "../store";
 import {
-	selectActivitiesForTask,
+	selectActivitiesForGroup,
 } from "../store/page/selectors";
 import {
 	ActivityRow,
 } from "./activity-row";
 
 interface ActivityRowsProps {
-	taskId: TaskId;
+	groupId: GroupId;
 }
 
 const ActivityRows: FC<ActivityRowsProps> = ({
-	taskId,
+	groupId,
 }) => {
 	const activities = useSelector((state: RootState) => {
-		return selectActivitiesForTask(
+		return selectActivitiesForGroup(
 			state.page,
-			taskId,
+			groupId,
 		);
 	});
 

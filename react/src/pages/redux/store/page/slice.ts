@@ -11,6 +11,10 @@ import {
 	type ActivityId,
 } from "@/features/activity/types";
 import {
+	type Group,
+	type GroupId,
+} from "@/features/group/types";
+import {
 	PAGE_STATE_DEFAULT,
 } from "@/features/page/constants";
 import {
@@ -20,16 +24,12 @@ import {
 	convertPageDataToPageState,
 } from "@/features/page/utilities/convert-page-data-to-page-state";
 import {
-	type Task,
-	type TaskId,
-} from "@/features/task/types";
-import {
 	type Worklog,
 	type WorklogId,
 } from "@/features/worklog/types";
 
 import {
-	selectActivitiesForTask,
+	selectActivitiesForGroup,
 } from "./selectors";
 
 const pageSlice = createSlice({
@@ -46,15 +46,15 @@ const pageSlice = createSlice({
 
 			state.activityIds.unshift(activity.id);
 		},
-		addTask: (
+		addGroup: (
 			state,
-			action: PayloadAction<Task>,
+			action: PayloadAction<Group>,
 		) => {
-			const task = action.payload;
+			const group = action.payload;
 
-			state.tasksById[task.id] = task;
+			state.groupsById[group.id] = group;
 
-			state.taskIds.unshift(task.id);
+			state.groupIds.unshift(group.id);
 		},
 		addWorklog: (
 			state,
@@ -78,29 +78,29 @@ const pageSlice = createSlice({
 				return activityIdCurrent !== activityId;
 			});
 		},
-		removeTask: (
+		removeGroup: (
 			state,
-			action: PayloadAction<TaskId>,
+			action: PayloadAction<GroupId>,
 		) => {
-			const taskId = action.payload;
+			const groupId = action.payload;
 
-			delete state.tasksById[taskId];
+			delete state.groupsById[groupId];
 
-			state.taskIds = state.taskIds.filter((taskIdCurrent) => {
-				return taskIdCurrent !== taskId;
+			state.groupIds = state.groupIds.filter((groupIdCurrent) => {
+				return groupIdCurrent !== groupId;
 			});
 
-			const activitiesForTask = selectActivitiesForTask(
+			const activitiesForGroup = selectActivitiesForGroup(
 				state,
-				taskId,
+				groupId,
 			);
 
-			activitiesForTask.forEach((activity) => {
+			activitiesForGroup.forEach((activity) => {
 				delete state.activitiesById[activity.id];
 			});
 
 			state.activityIds = state.activityIds.filter((activityIdCurrent) => {
-				return !activitiesForTask.some((activity) => {
+				return !activitiesForGroup.some((activity) => {
 					return activity.id === activityIdCurrent;
 				});
 			});
@@ -157,11 +157,11 @@ const pageSlice = createSlice({
 
 			activity.name = name;
 		},
-		updateTaskName: (
+		updateGroupName: (
 			state,
 			action: PayloadAction<
 				Pick<
-					Task,
+					Group,
 					| "id"
 					| "name"
 				>
@@ -172,13 +172,13 @@ const pageSlice = createSlice({
 				name,
 			} = action.payload;
 
-			const task = state.tasksById[id];
+			const group = state.groupsById[id];
 
-			if (isUndefined(task)) {
+			if (isUndefined(group)) {
 				return;
 			}
 
-			task.name = name;
+			group.name = name;
 		},
 		updateWorklogDuration: (
 			state,
@@ -209,29 +209,29 @@ const pageSlice = createSlice({
 const pageReducer = pageSlice.reducer;
 const {
 	addActivity,
-	addTask,
+	addGroup,
 	addWorklog,
 	removeActivity,
-	removeTask,
+	removeGroup,
 	removeWorklog,
 	resetState,
 	setInitialState,
 	updateActivityName,
-	updateTaskName,
+	updateGroupName,
 	updateWorklogDuration,
 } = pageSlice.actions;
 
 export {
 	addActivity,
-	addTask,
+	addGroup,
 	addWorklog,
 	pageReducer,
 	removeActivity,
-	removeTask,
+	removeGroup,
 	removeWorklog,
 	resetState,
 	setInitialState,
 	updateActivityName,
-	updateTaskName,
+	updateGroupName,
 	updateWorklogDuration,
 };
