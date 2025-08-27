@@ -3,18 +3,17 @@ import {
 } from "nanoid";
 
 import {
-	type PageWorklog,
-} from "../types";
+	type Worklog,
+} from "@/features/worklog/types";
 
 const getNewWorklog = (
-	override?: Partial<PageWorklog>,
-): PageWorklog => {
+	override?: Partial<Worklog>,
+): Worklog => {
 	return {
 		activityId: "",
 		date: "",
 		duration: 0,
 		id: nanoid(),
-		isChanged: true,
 		taskId: "",
 		...override,
 	};

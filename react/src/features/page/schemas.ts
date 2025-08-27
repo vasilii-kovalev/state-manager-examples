@@ -1,6 +1,5 @@
 import {
 	array,
-	boolean,
 	exactOptional,
 	object,
 	record,
@@ -29,36 +28,10 @@ const PageDataSchema = object({
 	worklogs: array(WorklogSchema),
 });
 
-const IsChangedSchema = boolean();
-
-const PageWorklogSchema = object({
-	...WorklogSchema.entries,
-	isChanged: exactOptional(
-		IsChangedSchema,
-		false,
-	),
-});
-
-const PageActivitySchema = object({
-	...ActivitySchema.entries,
-	isChanged: exactOptional(
-		IsChangedSchema,
-		false,
-	),
-});
-
-const PageTaskSchema = object({
-	...TaskSchema.entries,
-	isChanged: exactOptional(
-		IsChangedSchema,
-		false,
-	),
-});
-
 const PageStateSchema = object({
 	activitiesById: record(
 		ActivityIdSchema,
-		PageActivitySchema,
+		ActivitySchema,
 	),
 	activityIds: array(ActivityIdSchema),
 	calendar: PageDataSchema.entries.calendar,
@@ -69,19 +42,16 @@ const PageStateSchema = object({
 	taskIds: array(TaskIdSchema),
 	tasksById: record(
 		TaskIdSchema,
-		PageTaskSchema,
+		TaskSchema,
 	),
 	worklogIds: array(WorklogIdSchema),
 	worklogsById: record(
 		WorklogIdSchema,
-		PageWorklogSchema,
+		WorklogSchema,
 	),
 });
 
 export {
-	PageActivitySchema,
 	PageDataSchema,
 	PageStateSchema,
-	PageTaskSchema,
-	PageWorklogSchema,
 };

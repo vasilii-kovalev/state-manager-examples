@@ -7,6 +7,7 @@ import {
 } from "es-toolkit/compat";
 
 import {
+	type Activity,
 	type ActivityId,
 	type ActivityName,
 } from "@/features/activity/types";
@@ -14,10 +15,7 @@ import {
 	type DateString,
 } from "@/features/dates-and-time/types";
 import {
-	type PageActivity,
 	type PageState,
-	type PageTask,
-	type PageWorklog,
 	type ReportingStatisticsByDate,
 	type ReportingStatisticsSummary,
 } from "@/features/page/types";
@@ -31,9 +29,13 @@ import {
 	getReportingStatisticsSummary,
 } from "@/features/page/utilities/get-reporting-statistics-summary";
 import {
+	type Task,
 	type TaskId,
 	type TaskName,
 } from "@/features/task/types";
+import {
+	type Worklog,
+} from "@/features/worklog/types";
 
 const selectWorklogsById = (
 	state: PageState,
@@ -91,7 +93,7 @@ const selectWorklogs = createSelector(
 	(
 		worklogsById,
 		worklogIds,
-	): Array<PageWorklog> => {
+	): Array<Worklog> => {
 		return getEntities({
 			byId: worklogsById,
 			ids: worklogIds,
@@ -107,7 +109,7 @@ const selectActivities = createSelector(
 	(
 		activitiesById,
 		activityIds,
-	): Array<PageActivity> => {
+	): Array<Activity> => {
 		return getEntities({
 			byId: activitiesById,
 			ids: activityIds,
@@ -123,7 +125,7 @@ const selectTasks = createSelector(
 	(
 		tasksById,
 		taskIds,
-	): Array<PageTask> => {
+	): Array<Task> => {
 		return getEntities({
 			byId: tasksById,
 			ids: taskIds,
@@ -144,7 +146,7 @@ const selectWorklogsForActivity = createSelector(
 	(
 		worklogs,
 		activityId,
-	): Array<PageWorklog> => {
+	): Array<Worklog> => {
 		return worklogs.filter((worklog) => {
 			return worklog.activityId === activityId;
 		});
@@ -164,7 +166,7 @@ const selectWorklogsForTask = createSelector(
 	(
 		worklogs,
 		taskId,
-	): Array<PageWorklog> => {
+	): Array<Worklog> => {
 		return worklogs.filter((worklog) => {
 			return worklog.taskId === taskId;
 		});
@@ -184,14 +186,14 @@ const selectActivitiesForTask = createDraftSafeSelector(
 	(
 		activities,
 		taskId,
-	): Array<PageActivity> => {
+	): Array<Activity> => {
 		return activities.filter((activity) => {
 			return activity.taskId === taskId;
 		});
 	},
 );
 
-type WorklogsByDate = Record<DateString, PageWorklog>;
+type WorklogsByDate = Record<DateString, Worklog>;
 
 const selectWorklogsForActivityByDate = createSelector(
 	[
@@ -327,20 +329,8 @@ const selectHasUnSavedChanges = createSelector(
 		selectActivities,
 		selectTasks,
 	],
-	(
-		worklogs,
-		activities,
-		tasks,
-	): boolean => {
-		const entities = [
-			...worklogs,
-			...activities,
-			...tasks,
-		];
-
-		return entities.some((entity) => {
-			return entity.isChanged;
-		});
+	(): boolean => {
+		return false;
 	},
 );
 

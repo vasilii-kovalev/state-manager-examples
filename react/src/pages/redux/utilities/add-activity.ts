@@ -3,8 +3,8 @@ import {
 } from "valibot";
 
 import {
-	PageActivitySchema,
-} from "@/features/page/schemas";
+	ActivitySchema,
+} from "@/features/activity/schemas";
 import {
 	getNewActivity,
 } from "@/features/page/utilities/get-new-activity";
@@ -34,7 +34,7 @@ const addActivity = (taskId: TaskId): Thunk<void> => {
 		);
 		const name = getNewActivityName(existingNames);
 		const activity = parse(
-			PageActivitySchema,
+			ActivitySchema,
 			getNewActivity({
 				name,
 				taskId,

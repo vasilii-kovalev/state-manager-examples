@@ -6,8 +6,8 @@ import {
 } from "react-redux";
 
 import {
-	type PageActivity,
-} from "@/features/page/types";
+	type Activity,
+} from "@/features/activity/types";
 
 import {
 	type RootState,
@@ -29,7 +29,7 @@ import {
 } from "./reported-duration-of-norm";
 
 interface ActivityInfoCellProps {
-	activity: PageActivity;
+	activity: Activity;
 }
 
 const ActivityInfoCell: FC<ActivityInfoCellProps> = ({

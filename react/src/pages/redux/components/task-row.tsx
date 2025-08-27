@@ -7,8 +7,8 @@ import {
 } from "react-redux";
 
 import {
-	type PageTask,
-} from "@/features/page/types";
+	type Task,
+} from "@/features/task/types";
 
 import {
 	type RootState,
@@ -30,7 +30,7 @@ import {
 } from "./task-info-cell";
 
 interface TaskRowProps {
-	task: PageTask;
+	task: Task;
 }
 
 const TaskRow: FC<TaskRowProps> = ({

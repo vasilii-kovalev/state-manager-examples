@@ -6,8 +6,8 @@ import {
 } from "react-redux";
 
 import {
-	type PageTask,
-} from "@/features/page/types";
+	type Task,
+} from "@/features/task/types";
 
 import {
 	type RootState,
@@ -32,7 +32,7 @@ import {
 } from "./task-name-input";
 
 interface TaskInfoCellProps {
-	task: PageTask;
+	task: Task;
 }
 
 const TaskInfoCell: FC<TaskInfoCellProps> = ({

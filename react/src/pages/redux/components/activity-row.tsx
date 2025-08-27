@@ -6,8 +6,8 @@ import {
 } from "react-redux";
 
 import {
-	type PageActivity,
-} from "@/features/page/types";
+	type Activity,
+} from "@/features/activity/types";
 
 import {
 	type RootState,
@@ -26,7 +26,7 @@ import {
 } from "./worklog-cell";
 
 interface ActivityRowProps {
-	activity: PageActivity;
+	activity: Activity;
 }
 
 const ActivityRow: FC<ActivityRowProps> = ({

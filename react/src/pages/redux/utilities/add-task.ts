@@ -3,14 +3,14 @@ import {
 } from "valibot";
 
 import {
-	PageTaskSchema,
-} from "@/features/page/schemas";
-import {
 	getNewTask,
 } from "@/features/page/utilities/get-new-task";
 import {
 	getNewTaskName,
 } from "@/features/page/utilities/get-new-task-name";
+import {
+	TaskSchema,
+} from "@/features/task/schemas";
 
 import {
 	type Thunk,
@@ -27,7 +27,7 @@ const addTask = (): Thunk<void> => {
 		const existingNames = dispatch(getTaskNames());
 		const name = getNewTaskName(existingNames);
 		const task = parse(
-			PageTaskSchema,
+			TaskSchema,
 			getNewTask({
 				name,
 			}),

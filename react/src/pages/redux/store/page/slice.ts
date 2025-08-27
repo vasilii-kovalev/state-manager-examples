@@ -7,24 +7,24 @@ import {
 } from "es-toolkit";
 
 import {
+	type Activity,
 	type ActivityId,
 } from "@/features/activity/types";
 import {
 	PAGE_STATE_DEFAULT,
 } from "@/features/page/constants";
 import {
-	type PageActivity,
 	type PageData,
-	type PageTask,
-	type PageWorklog,
 } from "@/features/page/types";
 import {
 	convertPageDataToPageState,
 } from "@/features/page/utilities/convert-page-data-to-page-state";
 import {
+	type Task,
 	type TaskId,
 } from "@/features/task/types";
 import {
+	type Worklog,
 	type WorklogId,
 } from "@/features/worklog/types";
 
@@ -38,7 +38,7 @@ const pageSlice = createSlice({
 	reducers: {
 		addActivity: (
 			state,
-			action: PayloadAction<PageActivity>,
+			action: PayloadAction<Activity>,
 		) => {
 			const activity = action.payload;
 
@@ -48,7 +48,7 @@ const pageSlice = createSlice({
 		},
 		addTask: (
 			state,
-			action: PayloadAction<PageTask>,
+			action: PayloadAction<Task>,
 		) => {
 			const task = action.payload;
 
@@ -58,7 +58,7 @@ const pageSlice = createSlice({
 		},
 		addWorklog: (
 			state,
-			action: PayloadAction<PageWorklog>,
+			action: PayloadAction<Worklog>,
 		) => {
 			const worklog = action.payload;
 
@@ -138,7 +138,7 @@ const pageSlice = createSlice({
 			state,
 			action: PayloadAction<
 				Pick<
-					PageActivity,
+					Activity,
 					| "id"
 					| "name"
 				>
@@ -156,14 +156,12 @@ const pageSlice = createSlice({
 			}
 
 			activity.name = name;
-
-			activity.isChanged = true;
 		},
 		updateTaskName: (
 			state,
 			action: PayloadAction<
 				Pick<
-					PageTask,
+					Task,
 					| "id"
 					| "name"
 				>
@@ -181,14 +179,12 @@ const pageSlice = createSlice({
 			}
 
 			task.name = name;
-
-			task.isChanged = true;
 		},
 		updateWorklogDuration: (
 			state,
 			action: PayloadAction<
 				Pick<
-					PageWorklog,
+					Worklog,
 					| "duration"
 					| "id"
 				>
@@ -206,8 +202,6 @@ const pageSlice = createSlice({
 			}
 
 			worklog.duration = duration;
-
-			worklog.isChanged = true;
 		},
 	},
 });

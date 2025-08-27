@@ -16,22 +16,13 @@ import {
 	type WorklogId,
 } from "../worklog/types";
 import {
-	type PageActivitySchema,
 	type PageDataSchema,
 	type PageStateSchema,
-	type PageTaskSchema,
-	type PageWorklogSchema,
 } from "./schemas";
 
 type PageData = InferOutput<typeof PageDataSchema>;
 
 type PageState = InferOutput<typeof PageStateSchema>;
-
-type PageWorklog = InferOutput<typeof PageWorklogSchema>;
-
-type PageActivity = InferOutput<typeof PageActivitySchema>;
-
-type PageTask = InferOutput<typeof PageTaskSchema>;
 
 interface ReportingStatisticsSummary {
 	reported: Duration;
@@ -64,11 +55,8 @@ interface NormalizedEntities<
 export {
 	type EntityWithId,
 	type NormalizedEntities,
-	type PageActivity,
 	type PageData,
 	type PageState,
-	type PageTask,
-	type PageWorklog,
 	type ReportingStatisticsByDate,
 	type ReportingStatisticsSummary,
 };

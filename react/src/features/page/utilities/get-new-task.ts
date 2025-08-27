@@ -3,15 +3,14 @@ import {
 } from "nanoid";
 
 import {
-	type PageTask,
-} from "../types";
+	type Task,
+} from "@/features/task/types";
 
 const getNewTask = (
-	override?: Partial<PageTask>,
-): PageTask => {
+	override?: Partial<Task>,
+): Task => {
 	return {
 		id: nanoid(),
-		isChanged: true,
 		name: "",
 		...override,
 	};
