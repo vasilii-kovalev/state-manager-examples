@@ -9,9 +9,24 @@ import {
 } from "react-redux";
 
 import {
+	FullPageLoader,
+} from "@/components/full-page-loader";
+import {
+	PAGE_STATE_DEFAULT,
+} from "@/features/page/constants";
+import {
+	convertPageDataToPageState,
+} from "@/features/page/utilities/convert-page-data-to-page-state";
+import {
 	usePageData,
 } from "@/hooks/use-page-data";
 
+import {
+	PageActionsRow,
+} from "./components/page-actions-row";
+import {
+	PageLeaveBlocker,
+} from "./components/page-leave-blocker";
 import {
 	Table,
 } from "./components/table";
@@ -29,7 +44,15 @@ const ReduxPage: FC = () => {
 
 	usePageData({
 		onSuccess: (pageData) => {
-			dispatch(setInitialState(pageData));
+			try {
+				const pageState = convertPageDataToPageState(pageData);
+
+				dispatch(setInitialState(pageState));
+			} catch (error) {
+				console.error(error);
+
+				dispatch(setInitialState(PAGE_STATE_DEFAULT));
+			}
 		},
 	});
 
@@ -50,7 +73,10 @@ const ReduxPage: FC = () => {
 				Redux page
 			</h1>
 
+			<PageActionsRow/>
 			<Table/>
+			<FullPageLoader/>
+			<PageLeaveBlocker/>
 		</Fragment>
 	);
 };

@@ -2,16 +2,14 @@ import {
 	isNull,
 } from "es-toolkit";
 import {
-	null_,
 	parse,
-	union,
 } from "valibot";
 
 import {
 	PAGE_DATA_LOCAL_STORAGE_KEY,
 } from "../constants";
 import {
-	PageDataSchema,
+	PageDataStringifiedSchema,
 } from "../schemas";
 import {
 	type PageData,
@@ -24,19 +22,14 @@ const getPageDataFromLocalStorage = (): PageData => {
 	try {
 		const pageDataFromLocalStorage = localStorage.getItem(PAGE_DATA_LOCAL_STORAGE_KEY);
 
-		const pageData = parse(
-			union([
-				PageDataSchema,
-				null_(),
-			]),
-			pageDataFromLocalStorage,
-		);
-
-		if (isNull(pageData)) {
+		if (isNull(pageDataFromLocalStorage)) {
 			return getPageDataDefault();
 		}
 
-		return pageData;
+		return parse(
+			PageDataStringifiedSchema,
+			pageDataFromLocalStorage,
+		);
 	} catch (error) {
 		console.error(error);
 

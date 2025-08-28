@@ -1,0 +1,23 @@
+.loader {
+	align-items: center;
+	background-color: rgb(0, 0, 0, 0.1);
+	display: none;
+	height: 100vh;
+	inset: 0;
+	opacity: 0;
+	justify-content: center;
+	position: absolute;
+	transition: opacity 0.3s ease-in-out, display 0.3s ease-in-out allow-discrete;
+	width: 100vw;
+}
+
+.visible {
+	opacity: 1;
+	display: flex;
+}
+
+@starting-style {
+	.loader.visible {
+		opacity: 0;
+	}
+}

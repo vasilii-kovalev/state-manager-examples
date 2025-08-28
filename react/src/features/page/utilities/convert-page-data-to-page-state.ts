@@ -37,6 +37,7 @@ const convertPageDataToPageState = (
 			calendar: pageData.calendar,
 			groupIds,
 			groupsById,
+			hasChanges: false,
 			selectedWorklogIds: [],
 			worklogIds,
 			worklogsById,

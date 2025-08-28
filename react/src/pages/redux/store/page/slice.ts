@@ -18,11 +18,8 @@ import {
 	PAGE_STATE_DEFAULT,
 } from "@/features/page/constants";
 import {
-	type PageData,
+	type PageState,
 } from "@/features/page/types";
-import {
-	convertPageDataToPageState,
-} from "@/features/page/utilities/convert-page-data-to-page-state";
 import {
 	type Worklog,
 	type WorklogId,
@@ -45,6 +42,8 @@ const pageSlice = createSlice({
 			state.activitiesById[activity.id] = activity;
 
 			state.activityIds.unshift(activity.id);
+
+			state.hasChanges = true;
 		},
 		addGroup: (
 			state,
@@ -55,6 +54,8 @@ const pageSlice = createSlice({
 			state.groupsById[group.id] = group;
 
 			state.groupIds.unshift(group.id);
+
+			state.hasChanges = true;
 		},
 		addWorklog: (
 			state,
@@ -65,6 +66,8 @@ const pageSlice = createSlice({
 			state.worklogIds.push(worklog.id);
 
 			state.worklogsById[worklog.id] = worklog;
+
+			state.hasChanges = true;
 		},
 		removeActivity: (
 			state,
@@ -77,6 +80,8 @@ const pageSlice = createSlice({
 			state.activityIds = state.activityIds.filter((activityIdCurrent) => {
 				return activityIdCurrent !== activityId;
 			});
+
+			state.hasChanges = true;
 		},
 		removeGroup: (
 			state,
@@ -104,6 +109,8 @@ const pageSlice = createSlice({
 					return activity.id === activityIdCurrent;
 				});
 			});
+
+			state.hasChanges = true;
 		},
 		removeWorklog: (
 			state,
@@ -116,23 +123,17 @@ const pageSlice = createSlice({
 			state.worklogIds = state.worklogIds.filter((worklogIdCurrent) => {
 				return worklogIdCurrent !== worklogId;
 			});
+
+			state.hasChanges = true;
 		},
 		resetState: () => {
 			return PAGE_STATE_DEFAULT;
 		},
 		setInitialState: (
 			state,
-			action: PayloadAction<PageData>,
+			action: PayloadAction<PageState>,
 		) => {
-			try {
-				const pageState = convertPageDataToPageState(action.payload);
-
-				return pageState;
-			} catch (error) {
-				console.error(error);
-
-				return PAGE_STATE_DEFAULT;
-			}
+			return action.payload;
 		},
 		updateActivityName: (
 			state,
@@ -156,6 +157,8 @@ const pageSlice = createSlice({
 			}
 
 			activity.name = name;
+
+			state.hasChanges = true;
 		},
 		updateGroupName: (
 			state,
@@ -179,6 +182,8 @@ const pageSlice = createSlice({
 			}
 
 			group.name = name;
+
+			state.hasChanges = true;
 		},
 		updateWorklogDuration: (
 			state,
@@ -202,6 +207,8 @@ const pageSlice = createSlice({
 			}
 
 			worklog.duration = duration;
+
+			state.hasChanges = true;
 		},
 	},
 });

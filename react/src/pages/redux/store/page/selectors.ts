@@ -85,6 +85,12 @@ const selectSelectedWorklogIds = (
 	return state.selectedWorklogIds;
 };
 
+const selectHasChanges = (
+	state: PageState,
+): PageState["hasChanges"] => {
+	return state.hasChanges;
+};
+
 const selectWorklogs = createSelector(
 	[
 		selectWorklogsById,
@@ -323,17 +329,6 @@ const selectReportingStatisticsSummary = createSelector(
 	},
 );
 
-const selectHasUnSavedChanges = createSelector(
-	[
-		selectWorklogs,
-		selectActivities,
-		selectGroups,
-	],
-	(): boolean => {
-		return false;
-	},
-);
-
 const selectIsActivitySelected = createSelector(
 	[
 		selectWorklogsForActivity,
@@ -442,8 +437,8 @@ export {
 	selectCalendar,
 	selectGroupNames,
 	selectGroups,
+	selectHasChanges,
 	selectHasSelectedWorklogs,
-	selectHasUnSavedChanges,
 	selectHasWorklogsInActivity,
 	selectHasWorklogsInGroup,
 	selectIsActivitySelected,

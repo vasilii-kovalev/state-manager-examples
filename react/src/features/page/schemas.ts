@@ -1,7 +1,11 @@
 import {
 	array,
+	boolean,
 	object,
+	parseJson,
+	pipe,
 	record,
+	string,
 } from "valibot";
 
 import {
@@ -27,6 +31,12 @@ const PageDataSchema = object({
 	worklogs: array(WorklogSchema),
 });
 
+const PageDataStringifiedSchema = pipe(
+	string(),
+	parseJson(),
+	PageDataSchema,
+);
+
 const PageStateSchema = object({
 	activitiesById: record(
 		ActivityIdSchema,
@@ -39,6 +49,7 @@ const PageStateSchema = object({
 		GroupIdSchema,
 		GroupSchema,
 	),
+	hasChanges: boolean(),
 	selectedWorklogIds: array(WorklogIdSchema),
 	worklogIds: array(WorklogIdSchema),
 	worklogsById: record(
@@ -49,5 +60,6 @@ const PageStateSchema = object({
 
 export {
 	PageDataSchema,
+	PageDataStringifiedSchema,
 	PageStateSchema,
 };
