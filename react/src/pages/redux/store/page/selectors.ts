@@ -20,6 +20,7 @@ import {
 	type GroupName,
 } from "@/features/group/types";
 import {
+	type EntitySelectionState,
 	type PageState,
 	type ReportingStatisticsByDate,
 	type ReportingStatisticsSummary,
@@ -27,6 +28,9 @@ import {
 import {
 	getEntities,
 } from "@/features/page/utilities/get-entities";
+import {
+	getEntitySelectionStateForGroups,
+} from "@/features/page/utilities/get-entity-selection-state-for-groups";
 import {
 	getReportingStatisticsByDate,
 } from "@/features/page/utilities/get-reporting-statistics-by-date";
@@ -249,6 +253,17 @@ const selectHasWorklogsInGroup = createSelector(
 	},
 );
 
+const selectHasWorklogs = createSelector(
+	[
+		selectWorklogs,
+	],
+	(
+		worklogs,
+	): boolean => {
+		return !isEmpty(worklogs);
+	},
+);
+
 const selectReportingStatisticsByDateForGroup = createSelector(
 	[
 		selectWorklogsForGroup,
@@ -431,6 +446,54 @@ const selectGroupNames = createSelector(
 	},
 );
 
+const selectSelectionStateForActivity = createSelector(
+	[
+		selectWorklogsForActivity,
+		selectSelectedWorklogIds,
+	],
+	(
+		worklogs,
+		selectedWorklogIds,
+	): EntitySelectionState => {
+		return getEntitySelectionStateForGroups({
+			selectedWorklogIds,
+			worklogs,
+		});
+	},
+);
+
+const selectSelectionStateForGroup = createSelector(
+	[
+		selectWorklogsForGroup,
+		selectSelectedWorklogIds,
+	],
+	(
+		worklogs,
+		selectedWorklogIds,
+	): EntitySelectionState => {
+		return getEntitySelectionStateForGroups({
+			selectedWorklogIds,
+			worklogs,
+		});
+	},
+);
+
+const selectSelectionState = createSelector(
+	[
+		selectWorklogs,
+		selectSelectedWorklogIds,
+	],
+	(
+		worklogs,
+		selectedWorklogIds,
+	): EntitySelectionState => {
+		return getEntitySelectionStateForGroups({
+			selectedWorklogIds,
+			worklogs,
+		});
+	},
+);
+
 export {
 	selectActivitiesForGroup,
 	selectActivityNamesInGroup,
@@ -439,6 +502,7 @@ export {
 	selectGroups,
 	selectHasChanges,
 	selectHasSelectedWorklogs,
+	selectHasWorklogs,
 	selectHasWorklogsInActivity,
 	selectHasWorklogsInGroup,
 	selectIsActivitySelected,
@@ -448,6 +512,9 @@ export {
 	selectReportingStatisticsSummary,
 	selectReportingStatisticsSummaryForActivity,
 	selectReportingStatisticsSummaryForGroup,
+	selectSelectionState,
+	selectSelectionStateForActivity,
+	selectSelectionStateForGroup,
 	selectWorklogsForActivity,
 	selectWorklogsForActivityByDate,
 };

@@ -16,6 +16,9 @@ import {
 	type WorklogId,
 } from "../worklog/types";
 import {
+	type ENTITY_SELECTION_STATE,
+} from "./constants";
+import {
 	type PageDataSchema,
 	type PageStateSchema,
 } from "./schemas";
@@ -52,8 +55,11 @@ interface NormalizedEntities<
 	ids: Array<Id>;
 }
 
+type EntitySelectionState = typeof ENTITY_SELECTION_STATE[keyof typeof ENTITY_SELECTION_STATE];
+
 export {
 	type EntityId,
+	type EntitySelectionState,
 	type EntityWithId,
 	type NormalizedEntities,
 	type PageData,

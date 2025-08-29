@@ -27,6 +27,9 @@ import {
 import {
 	ReportedDurationOfNorm,
 } from "./reported-duration-of-norm";
+import {
+	SelectActivityCheckbox,
+} from "./select-activity-checkbox";
 
 interface ActivityInfoCellProps {
 	activity: Activity;
@@ -44,6 +47,10 @@ const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
 
 	return (
 		<Cell>
+			<SelectActivityCheckbox
+				activityId={activity.id}
+			/>
+
 			<ActivityNameInput
 				activityId={activity.id}
 				groupId={activity.groupId}

@@ -30,6 +30,9 @@ import {
 import {
 	ReportedDurationOfNorm,
 } from "./reported-duration-of-norm";
+import {
+	SelectGroupCheckbox,
+} from "./select-group-checkbox";
 
 interface GroupInfoCellProps {
 	group: Group;
@@ -47,6 +50,10 @@ const GroupInfoCell: FC<GroupInfoCellProps> = ({
 
 	return (
 		<Cell>
+			<SelectGroupCheckbox
+				groupId={group.id}
+			/>
+
 			<GroupNameInput
 				id={group.id}
 				name={group.name}

@@ -29,6 +29,11 @@ import {
 	selectActivitiesForGroup,
 } from "./selectors";
 
+interface UpdateWorklogSelectionActionPayload {
+	isSelected: boolean;
+	worklogs: Array<Worklog>;
+}
+
 const pageSlice = createSlice({
 	initialState: PAGE_STATE_DEFAULT,
 	name: "page",
@@ -210,6 +215,25 @@ const pageSlice = createSlice({
 
 			state.hasChanges = true;
 		},
+		updateWorklogSelection: (
+			state,
+			action: PayloadAction<UpdateWorklogSelectionActionPayload>,
+		) => {
+			const {
+				isSelected,
+				worklogs,
+			} = action.payload;
+
+			const worklogIds = worklogs.map((worklog) => {
+				return worklog.id;
+			});
+
+			state.selectedWorklogIds = isSelected
+				? state.selectedWorklogIds.concat(worklogIds)
+				: state.selectedWorklogIds.filter((worklogId) => {
+					return !worklogIds.includes(worklogId);
+				});
+		},
 	},
 });
 
@@ -226,6 +250,7 @@ const {
 	updateActivityName,
 	updateGroupName,
 	updateWorklogDuration,
+	updateWorklogSelection,
 } = pageSlice.actions;
 
 export {
@@ -241,4 +266,5 @@ export {
 	updateActivityName,
 	updateGroupName,
 	updateWorklogDuration,
+	updateWorklogSelection,
 };

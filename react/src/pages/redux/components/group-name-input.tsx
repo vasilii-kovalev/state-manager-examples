@@ -61,7 +61,7 @@ const GroupNameInput: FC<GroupNameInputProps> = ({
 		setNameLocal(event.target.value);
 	};
 
-	const handleOnBlur = (): void => {
+	const handleBlur = (): void => {
 		if (isEmpty(nameLocal)) {
 			setNameLocal(name);
 
@@ -96,7 +96,7 @@ const GroupNameInput: FC<GroupNameInputProps> = ({
 		<Fragment>
 			<input
 				disabled={hasSelectedWorklogs}
-				onBlur={handleOnBlur}
+				onBlur={handleBlur}
 				onChange={handleNameChange}
 				placeholder={name}
 				type="text"

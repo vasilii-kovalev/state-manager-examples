@@ -99,7 +99,7 @@ const WorklogInput: FC<WorklogCellProps> = ({
 		setDurationLocal(parsedInput.output);
 	};
 
-	const handleOnBlur = (): void => {
+	const handleBlur = (): void => {
 		const numberDuration = Number(durationLocal);
 		const durationNextParseResult = safeParse(
 			DurationSchema,
@@ -144,7 +144,7 @@ const WorklogInput: FC<WorklogCellProps> = ({
 	return (
 		<input
 			inputMode="numeric"
-			onBlur={handleOnBlur}
+			onBlur={handleBlur}
 			onChange={handleDurationChange}
 			type="text"
 			value={durationLocal}
