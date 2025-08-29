@@ -6,7 +6,7 @@ import {
 const PAGE_DATA_LOCAL_STORAGE_KEY = "page-data";
 
 // In milliseconds.
-const PAGE_DATA_PROCESSING_DELAY = 300;
+const PAGE_DATA_PROCESSING_DELAY = 1_000;
 
 const PAGE_DATA_DEFAULT: PageData = {
 	activities: [],

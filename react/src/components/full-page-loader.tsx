@@ -6,6 +6,10 @@ import {
 	type FC,
 } from "react";
 
+import {
+	getClass,
+} from "@/utilities/get-class";
+
 import css from "./full-page-loader.module.css";
 
 const FullPageLoader: FC = () => {
@@ -19,16 +23,15 @@ const FullPageLoader: FC = () => {
 
 	return (
 		<div
-			className={`
-				${
-		css.loader
-		}
-				${
-		isVisible
-			? css.visible
-			: ""
-		}
-			`}
+			className={
+				getClass([
+					css.loader,
+					[
+						css.visible,
+						isVisible,
+					],
+				])
+			}
 		>
 			Please, wait...
 		</div>
