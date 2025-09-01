@@ -22,6 +22,9 @@ import {
 	Cell,
 } from "./cell";
 import {
+	MoveWorklogsToActivityButton,
+} from "./move-worklogs-to-activity-button";
+import {
 	RemoveActivityButton,
 } from "./remove-activity-button";
 import {
@@ -63,6 +66,10 @@ const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
 			/>
 
 			<RemoveActivityButton
+				activityId={activity.id}
+			/>
+
+			<MoveWorklogsToActivityButton
 				activityId={activity.id}
 			/>
 		</Cell>

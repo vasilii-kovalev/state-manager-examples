@@ -74,6 +74,33 @@ const pageSlice = createSlice({
 
 			state.hasChanges = true;
 		},
+		moveWorklog: (
+			state,
+			action: PayloadAction<
+				Pick<
+					Worklog,
+					| "activityId"
+					| "groupId"
+					| "id"
+				>
+			>,
+		) => {
+			const {
+				activityId,
+				groupId,
+				id,
+			} = action.payload;
+
+			const worklog = state.worklogsById[id];
+
+			if (isUndefined(worklog)) {
+				return;
+			}
+
+			worklog.activityId = activityId;
+
+			worklog.groupId = groupId;
+		},
 		removeActivity: (
 			state,
 			action: PayloadAction<ActivityId>,
@@ -139,6 +166,11 @@ const pageSlice = createSlice({
 			action: PayloadAction<PageState>,
 		) => {
 			return action.payload;
+		},
+		unselectWorklogs: (
+			state,
+		) => {
+			state.selectedWorklogIds = PAGE_STATE_DEFAULT.selectedWorklogIds;
 		},
 		updateActivityName: (
 			state,
@@ -242,11 +274,13 @@ const {
 	addActivity,
 	addGroup,
 	addWorklog,
+	moveWorklog,
 	removeActivity,
 	removeGroup,
 	removeWorklog,
 	resetState,
 	setInitialState,
+	unselectWorklogs,
 	updateActivityName,
 	updateGroupName,
 	updateWorklogDuration,
@@ -257,12 +291,14 @@ export {
 	addActivity,
 	addGroup,
 	addWorklog,
+	moveWorklog,
 	pageReducer,
 	removeActivity,
 	removeGroup,
 	removeWorklog,
 	resetState,
 	setInitialState,
+	unselectWorklogs,
 	updateActivityName,
 	updateGroupName,
 	updateWorklogDuration,
