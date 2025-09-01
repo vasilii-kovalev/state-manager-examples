@@ -25,6 +25,9 @@ import {
 	GroupNameInput,
 } from "./group-name-input";
 import {
+	MoveWorklogsToGroupButton,
+} from "./move-worklogs-to-group-button";
+import {
 	RemoveGroupButton,
 } from "./remove-group-button";
 import {
@@ -69,6 +72,10 @@ const GroupInfoCell: FC<GroupInfoCellProps> = ({
 			/>
 
 			<RemoveGroupButton
+				groupId={group.id}
+			/>
+
+			<MoveWorklogsToGroupButton
 				groupId={group.id}
 			/>
 		</Cell>

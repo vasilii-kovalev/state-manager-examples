@@ -9,7 +9,7 @@ import {
 	type Thunk,
 } from "../store";
 import {
-	updateWorklogSelection,
+	updateWorklogsSelection,
 } from "../store/page/slice";
 
 interface UpdateWorklogsSelectionForActivity {
@@ -39,7 +39,7 @@ const updateWorklogsSelectionForActivity = ({
 		});
 
 		dispatch(
-			updateWorklogSelection({
+			updateWorklogsSelection({
 				isSelected,
 				worklogs: activityWorklogs,
 			}),

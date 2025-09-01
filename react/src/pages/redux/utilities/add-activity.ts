@@ -1,10 +1,17 @@
 import {
+	isUndefined,
+} from "es-toolkit";
+import {
 	parse,
 } from "valibot";
 
 import {
 	ActivitySchema,
 } from "@/features/activity/schemas";
+import {
+	type ActivityId,
+	type ActivityName,
+} from "@/features/activity/types";
 import {
 	type GroupId,
 } from "@/features/group/types";
@@ -25,23 +32,41 @@ import {
 	getActivityNamesInGroup,
 } from "./get-activity-names-in-group";
 
-const addActivity = (groupId: GroupId): Thunk<void> => {
-	return (dispatch) => {
-		const existingNames = dispatch(
-			getActivityNamesInGroup({
-				groupId,
-			}),
-		);
-		const name = getNewActivityName(existingNames);
+interface AddActivityParams {
+	groupId: GroupId;
+	name?: ActivityName;
+}
+
+const addActivity = ({
+	groupId,
+	name,
+}: AddActivityParams): Thunk<ActivityId> => {
+	return (
+		dispatch,
+	) => {
+		let activityName = name;
+
+		if (isUndefined(activityName)) {
+			const existingNames = dispatch(
+				getActivityNamesInGroup({
+					groupId,
+				}),
+			);
+
+			activityName = getNewActivityName(existingNames);
+		}
+
 		const activity = parse(
 			ActivitySchema,
 			getNewActivity({
 				groupId,
-				name,
+				name: activityName,
 			}),
 		);
 
 		dispatch(addActivityAction(activity));
+
+		return activity.id;
 	};
 };
 

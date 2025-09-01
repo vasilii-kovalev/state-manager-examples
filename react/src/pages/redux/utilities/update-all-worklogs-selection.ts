@@ -6,14 +6,14 @@ import {
 	type Thunk,
 } from "../store";
 import {
-	updateWorklogSelection,
+	updateWorklogsSelection,
 } from "../store/page/slice";
 
 interface UpdateWorklogsSelection {
 	isSelected: boolean;
 }
 
-const updateWorklogsSelection = ({
+const updateAllWorklogsSelection = ({
 	isSelected,
 }: UpdateWorklogsSelection): Thunk<void> => {
 	return (
@@ -31,7 +31,7 @@ const updateWorklogsSelection = ({
 		});
 
 		dispatch(
-			updateWorklogSelection({
+			updateWorklogsSelection({
 				isSelected,
 				worklogs,
 			}),
@@ -40,5 +40,5 @@ const updateWorklogsSelection = ({
 };
 
 export {
-	updateWorklogsSelection,
+	updateAllWorklogsSelection,
 };

@@ -26,7 +26,11 @@ const AddActivityButton: FC<AddActivityButtonProps> = ({
 	const dispatch = useDispatch<Dispatch>();
 
 	const handleAddActivity = (): void => {
-		dispatch(addActivity(groupId));
+		dispatch(
+			addActivity({
+				groupId,
+			}),
+		);
 	};
 
 	return (

@@ -19,8 +19,8 @@ import {
 	selectSelectionState,
 } from "../store/page/selectors";
 import {
-	updateWorklogsSelection,
-} from "../utilities/update-worklogs-selection";
+	updateAllWorklogsSelection,
+} from "../utilities/update-all-worklogs-selection";
 
 const SelectGroupsCheckbox: FC = () => {
 	const dispatch = useDispatch<Dispatch>();
@@ -36,7 +36,7 @@ const SelectGroupsCheckbox: FC = () => {
 		isSelectedNext: boolean,
 	): void => {
 		dispatch(
-			updateWorklogsSelection({
+			updateAllWorklogsSelection({
 				isSelected: isSelectedNext,
 			}),
 		);

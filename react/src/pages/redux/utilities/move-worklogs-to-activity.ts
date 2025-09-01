@@ -10,11 +10,11 @@ import {
 	type Thunk,
 } from "../store";
 import {
-	moveWorklog,
-	removeWorklog,
 	unselectWorklogs,
-	updateWorklogDuration,
 } from "../store/page/slice";
+import {
+	moveWorklogToActivity,
+} from "./move-worklog-to-activity";
 
 const moveWorklogsToActivity = (
 	activityId: ActivityId,
@@ -42,32 +42,13 @@ const moveWorklogsToActivity = (
 				return;
 			}
 
-			const worklogs = Object.values(worklogsById);
-			const existingWorklog = worklogs.find((worklogCurrent) => {
-				return (
-					worklogCurrent.activityId === activity.id
-					&& worklogCurrent.date === worklog.date
-				);
-			});
-
-			if (isUndefined(existingWorklog)) {
-				dispatch(
-					moveWorklog({
-						activityId: activity.id,
-						groupId: activity.groupId,
-						id: worklog.id,
-					}),
-				);
-			} else {
-				dispatch(
-					updateWorklogDuration({
-						duration: existingWorklog.duration + worklog.duration,
-						id: existingWorklog.id,
-					}),
-				);
-
-				dispatch(removeWorklog(worklog.id));
-			}
+			dispatch(
+				moveWorklogToActivity({
+					activityId: activity.id,
+					groupId: activity.groupId,
+					id: worklog.id,
+				}),
+			);
 		});
 
 		dispatch(unselectWorklogs());
