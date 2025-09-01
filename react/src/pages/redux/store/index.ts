@@ -1,5 +1,6 @@
 import {
 	type Action,
+	combineReducers,
 	configureStore,
 	type ThunkAction,
 } from "@reduxjs/toolkit";
@@ -8,10 +9,12 @@ import {
 	pageReducer,
 } from "./page/slice";
 
+const rootReducer = combineReducers({
+	page: pageReducer,
+});
+
 const store = configureStore({
-	reducer: {
-		page: pageReducer,
-	},
+	reducer: rootReducer,
 });
 
 type RootState = ReturnType<typeof store.getState>;
@@ -27,6 +30,7 @@ type Thunk<ReturnType> = ThunkAction<
 
 export {
 	type Dispatch,
+	rootReducer,
 	type RootState,
 	store,
 	type Thunk,

@@ -11,10 +11,14 @@ import {
 } from "../store";
 import {
 	unselectWorklogs,
+	updateStateFromTransaction,
 } from "../store/page/slice";
 import {
 	moveWorklogToActivity,
 } from "./move-worklog-to-activity";
+import {
+	performTransaction,
+} from "./perform-transaction";
 
 const moveWorklogsToActivity = (
 	activityId: ActivityId,
@@ -55,6 +59,26 @@ const moveWorklogsToActivity = (
 	};
 };
 
+const moveWorklogsToActivityWithTransaction: typeof moveWorklogsToActivity = (
+	...params
+) => {
+	return performTransaction({
+		onFinish: (
+			dispatch,
+			getState,
+		) => {
+			const pageStateNext = getState().page;
+
+			dispatch(updateStateFromTransaction(pageStateNext));
+		},
+		transaction: (
+			dispatch,
+		) => {
+			dispatch(moveWorklogsToActivity(...params));
+		},
+	});
+};
+
 export {
-	moveWorklogsToActivity,
+	moveWorklogsToActivityWithTransaction as moveWorklogsToActivity,
 };

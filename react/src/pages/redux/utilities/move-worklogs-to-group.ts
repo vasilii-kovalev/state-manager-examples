@@ -12,6 +12,7 @@ import {
 import {
 	moveWorklog,
 	unselectWorklogs,
+	updateStateFromTransaction,
 } from "../store/page/slice";
 import {
 	addActivity,
@@ -19,6 +20,9 @@ import {
 import {
 	moveWorklogToActivity,
 } from "./move-worklog-to-activity";
+import {
+	performTransaction,
+} from "./perform-transaction";
 
 const moveWorklogsToGroup = (
 	groupId: GroupId,
@@ -90,6 +94,26 @@ const moveWorklogsToGroup = (
 	};
 };
 
+const moveWorklogsToGroupWithTransaction: typeof moveWorklogsToGroup = (
+	...params
+) => {
+	return performTransaction({
+		onFinish: (
+			dispatch,
+			getState,
+		) => {
+			const pageStateNext = getState().page;
+
+			dispatch(updateStateFromTransaction(pageStateNext));
+		},
+		transaction: (
+			dispatch,
+		) => {
+			dispatch(moveWorklogsToGroup(...params));
+		},
+	});
+};
+
 export {
-	moveWorklogsToGroup,
+	moveWorklogsToGroupWithTransaction as moveWorklogsToGroup,
 };

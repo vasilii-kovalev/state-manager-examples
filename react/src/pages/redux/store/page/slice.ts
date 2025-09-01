@@ -222,6 +222,12 @@ const pageSlice = createSlice({
 
 			state.hasChanges = true;
 		},
+		updateStateFromTransaction: (
+			state,
+			action: PayloadAction<PageState>,
+		) => {
+			return action.payload;
+		},
 		updateWorklogDuration: (
 			state,
 			action: PayloadAction<
@@ -283,6 +289,7 @@ const {
 	unselectWorklogs,
 	updateActivityName,
 	updateGroupName,
+	updateStateFromTransaction,
 	updateWorklogDuration,
 	updateWorklogsSelection,
 } = pageSlice.actions;
@@ -301,6 +308,7 @@ export {
 	unselectWorklogs,
 	updateActivityName,
 	updateGroupName,
+	updateStateFromTransaction,
 	updateWorklogDuration,
 	updateWorklogsSelection,
 };
