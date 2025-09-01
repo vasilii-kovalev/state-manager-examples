@@ -6,6 +6,9 @@ import {
 	GroupSchema,
 } from "@/features/group/schemas";
 import {
+	type GroupId,
+} from "@/features/group/types";
+import {
 	getNewGroup,
 } from "@/features/page/utilities/get-new-group";
 import {
@@ -22,8 +25,10 @@ import {
 	getGroupNames,
 } from "./get-group-names";
 
-const addGroup = (): Thunk<void> => {
-	return (dispatch) => {
+const addGroup = (): Thunk<GroupId> => {
+	return (
+		dispatch,
+	) => {
 		const existingNames = dispatch(getGroupNames());
 		const name = getNewGroupName(existingNames);
 		const group = parse(
@@ -34,6 +39,8 @@ const addGroup = (): Thunk<void> => {
 		);
 
 		dispatch(addGroupAction(group));
+
+		return group.id;
 	};
 };
 
