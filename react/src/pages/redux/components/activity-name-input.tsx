@@ -1,20 +1,13 @@
 import {
-	isEmpty,
-} from "es-toolkit/compat";
-import {
-	type ChangeEventHandler,
 	type FC,
-	Fragment,
-	useState,
 } from "react";
 import {
 	useDispatch,
-	useSelector,
 } from "react-redux";
-import {
-	safeParse,
-} from "valibot";
 
+import {
+	FlexRow,
+} from "@/components/flex-row";
 import {
 	ActivityNameSchema,
 } from "@/features/activity/schemas";
@@ -25,20 +18,22 @@ import {
 import {
 	type GroupId,
 } from "@/features/group/types";
+import {
+	useLocalName,
+} from "@/hooks/use-local-name";
 
 import {
 	type Dispatch,
-	type RootState,
 } from "../store";
-import {
-	selectHasSelectedWorklogs,
-} from "../store/page/selectors";
 import {
 	updateActivityName,
 } from "../store/page/slice";
 import {
 	DuplicatedActivityNameIcon,
 } from "./duplicated-activity-name-icon";
+import {
+	NameInput,
+} from "./name-input";
 
 interface ActivityNameInputProps {
 	activityId: ActivityId;
@@ -53,67 +48,41 @@ const ActivityNameInput: FC<ActivityNameInputProps> = ({
 }) => {
 	const dispatch = useDispatch<Dispatch>();
 
-	const hasSelectedWorklogs = useSelector((state: RootState) => {
-		return selectHasSelectedWorklogs(state.page);
-	});
-
-	const [
+	const {
 		nameLocal,
 		setNameLocal,
-	] = useState<string>(name);
+	} = useLocalName(name);
 
-	const handleNameChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-		setNameLocal(event.target.value);
-	};
-
-	const handleBlur = (): void => {
-		if (isEmpty(nameLocal)) {
-			setNameLocal(name);
-
-			return;
-		}
-
-		const nameNextParseResult = safeParse(
-			ActivityNameSchema,
-			nameLocal,
+	const handleBlur = (
+		nameNext: ActivityName,
+	): void => {
+		dispatch(
+			updateActivityName({
+				id: activityId,
+				name: nameNext,
+			}),
 		);
-
-		if (!nameNextParseResult.success) {
-			return;
-		}
-
-		const nameNext = nameNextParseResult.output;
-
-		if (nameNext !== name) {
-			dispatch(
-				updateActivityName({
-					id: activityId,
-					name: nameNext,
-				}),
-			);
-		}
-
-		// The parsed name is trimmed, so we need to update the local state as well.
-		setNameLocal(nameNext);
 	};
 
 	return (
-		<Fragment>
-			<input
-				disabled={hasSelectedWorklogs}
-				onBlur={handleBlur}
-				onChange={handleNameChange}
-				placeholder={name}
-				type="text"
-				value={nameLocal}
-			/>
-
+		<FlexRow
+			className="gap-col-1"
+		>
 			<DuplicatedActivityNameIcon
 				activityId={activityId}
 				groupId={groupId}
-				name={nameLocal}
+				name={name}
 			/>
-		</Fragment>
+
+			<NameInput
+				className="w-36"
+				name={name}
+				nameLocal={nameLocal}
+				onBlur={handleBlur}
+				setNameLocal={setNameLocal}
+				validationSchema={ActivityNameSchema}
+			/>
+		</FlexRow>
 	);
 };
 

@@ -7,8 +7,14 @@ import {
 } from "react-redux";
 
 import {
+	Tooltip,
+} from "@/components/tooltip";
+import {
 	type GroupId,
 } from "@/features/group/types";
+import {
+	getClass,
+} from "@/utilities/get-class";
 
 import {
 	type Dispatch,
@@ -42,13 +48,35 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
 	};
 
 	return (
-		<button
-			disabled={hasWorklogs}
-			onClick={handleRemoveGroup}
-			type="button"
-		>
-			Remove group
-		</button>
+		<Tooltip<HTMLButtonElement>
+			renderBody={() => {
+				return "Remove group";
+			}}
+			renderTarget={({
+				className,
+				tooltipId,
+				...targetProps
+			}) => {
+				return (
+					<button
+						{...targetProps}
+						aria-describedby={tooltipId}
+						className={
+							getClass([
+								className,
+								"icon-button control",
+							])
+						}
+						disabled={hasWorklogs}
+						onClick={handleRemoveGroup}
+						type="button"
+					>
+						-
+					</button>
+				);
+			}}
+			targetId={`remove-group-button-${groupId}`}
+		/>
 	);
 };
 

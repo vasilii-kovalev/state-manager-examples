@@ -7,8 +7,14 @@ import {
 } from "react-redux";
 
 import {
+	Tooltip,
+} from "@/components/tooltip";
+import {
 	type ActivityId,
 } from "@/features/activity/types";
+import {
+	getClass,
+} from "@/utilities/get-class";
 
 import {
 	type Dispatch,
@@ -42,13 +48,35 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 	};
 
 	return (
-		<button
-			disabled={hasWorklogs}
-			onClick={handleRemoveActivity}
-			type="button"
-		>
-			Remove activity
-		</button>
+		<Tooltip<HTMLButtonElement>
+			renderBody={() => {
+				return "Remove activity";
+			}}
+			renderTarget={({
+				className,
+				tooltipId,
+				...targetProps
+			}) => {
+				return (
+					<button
+						{...targetProps}
+						aria-describedby={tooltipId}
+						className={
+							getClass([
+								className,
+								"icon-button control",
+							])
+						}
+						disabled={hasWorklogs}
+						onClick={handleRemoveActivity}
+						type="button"
+					>
+						-
+					</button>
+				);
+			}}
+			targetId={`remove-activity-button-${activityId}`}
+		/>
 	);
 };
 

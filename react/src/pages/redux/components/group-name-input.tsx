@@ -1,19 +1,10 @@
 import {
-	isEmpty,
-} from "es-toolkit/compat";
-import {
-	type ChangeEventHandler,
 	type FC,
 	Fragment,
-	useState,
 } from "react";
 import {
 	useDispatch,
-	useSelector,
 } from "react-redux";
-import {
-	safeParse,
-} from "valibot";
 
 import {
 	GroupNameSchema,
@@ -22,20 +13,22 @@ import {
 	type GroupId,
 	type GroupName,
 } from "@/features/group/types";
+import {
+	useLocalName,
+} from "@/hooks/use-local-name";
 
 import {
 	type Dispatch,
-	type RootState,
 } from "../store";
-import {
-	selectHasSelectedWorklogs,
-} from "../store/page/selectors";
 import {
 	updateGroupName,
 } from "../store/page/slice";
 import {
 	DuplicatedGroupNameIcon,
 } from "./duplicated-group-name-icon";
+import {
+	NameInput,
+} from "./name-input";
 
 interface GroupNameInputProps {
 	id: GroupId;
@@ -48,59 +41,31 @@ const GroupNameInput: FC<GroupNameInputProps> = ({
 }) => {
 	const dispatch = useDispatch<Dispatch>();
 
-	const hasSelectedWorklogs = useSelector((state: RootState) => {
-		return selectHasSelectedWorklogs(state.page);
-	});
-
-	const [
+	const {
 		nameLocal,
 		setNameLocal,
-	] = useState<string>(name);
+	} = useLocalName(name);
 
-	const handleNameChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-		setNameLocal(event.target.value);
-	};
-
-	const handleBlur = (): void => {
-		if (isEmpty(nameLocal)) {
-			setNameLocal(name);
-
-			return;
-		}
-
-		const nameNextParseResult = safeParse(
-			GroupNameSchema,
-			nameLocal,
+	const handleBlur = (
+		nameNext: GroupName,
+	): void => {
+		dispatch(
+			updateGroupName({
+				id,
+				name: nameNext,
+			}),
 		);
-
-		if (!nameNextParseResult.success) {
-			return;
-		}
-
-		const nameNext = nameNextParseResult.output;
-
-		if (nameNext !== name) {
-			dispatch(
-				updateGroupName({
-					id,
-					name: nameNext,
-				}),
-			);
-		}
-
-		// The parsed name is trimmed, so we need to update the local state as well.
-		setNameLocal(nameNext);
 	};
 
 	return (
 		<Fragment>
-			<input
-				disabled={hasSelectedWorklogs}
+			<NameInput
+				className="w-42"
+				name={name}
+				nameLocal={nameLocal}
 				onBlur={handleBlur}
-				onChange={handleNameChange}
-				placeholder={name}
-				type="text"
-				value={nameLocal}
+				setNameLocal={setNameLocal}
+				validationSchema={GroupNameSchema}
 			/>
 
 			<DuplicatedGroupNameIcon

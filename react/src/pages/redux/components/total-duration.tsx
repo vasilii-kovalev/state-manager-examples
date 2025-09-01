@@ -13,11 +13,13 @@ import {
 } from "@/features/dates-and-time/utilities/format-duration";
 
 interface TotalDurationProps {
+	className?: string;
 	duration: Duration | undefined;
 	shouldRenderZero?: boolean;
 }
 
 const TotalDuration: FC<TotalDurationProps> = ({
+	className,
 	duration,
 	shouldRenderZero = false,
 }) => {
@@ -32,7 +34,9 @@ const TotalDuration: FC<TotalDurationProps> = ({
 	}
 
 	return (
-		<span>
+		<span
+			className={className}
+		>
 			{formatDuration(duration)}
 		</span>
 	);

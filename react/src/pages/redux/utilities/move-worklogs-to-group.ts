@@ -44,7 +44,7 @@ const moveWorklogsToGroup = (
 				return;
 			}
 
-			// No need to move if already in the target group.
+			// No need to move if worklog is already in the target group.
 			if (worklog.groupId === groupId) {
 				return;
 			}

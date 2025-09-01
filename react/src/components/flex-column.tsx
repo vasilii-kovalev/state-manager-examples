@@ -8,22 +8,20 @@ import {
 	getClass,
 } from "@/utilities/get-class";
 
-type CellProps = DetailedHTMLProps<HTMLAttributes<HTMLTableCellElement>, HTMLTableCellElement>;
+type FlexColumnProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 
-const Cell: FC<CellProps> = (
-	props,
-) => {
+const FlexColumn: FC<FlexColumnProps> = (props) => {
 	const {
 		className,
 	} = props;
 
 	return (
-		<td
+		<div
 			{...props}
 			className={
 				getClass([
-					"cell",
 					className,
+					"flex flex-col",
 				])
 			}
 		/>
@@ -31,5 +29,5 @@ const Cell: FC<CellProps> = (
 };
 
 export {
-	Cell,
+	FlexColumn,
 };

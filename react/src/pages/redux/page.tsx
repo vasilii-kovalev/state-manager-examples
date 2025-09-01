@@ -28,6 +28,9 @@ import {
 	PageLeaveBlocker,
 } from "./components/page-leave-blocker";
 import {
+	PageTitle,
+} from "./components/page-title";
+import {
 	Table,
 } from "./components/table";
 import {
@@ -69,12 +72,13 @@ const ReduxPage: FC = () => {
 
 	return (
 		<Fragment>
-			<h1>
-				Redux page
-			</h1>
-
+			<PageTitle/>
 			<PageActionsRow/>
-			<Table/>
+
+			<Table
+				className="m-bs-4"
+			/>
+
 			<FullPageLoader/>
 			<PageLeaveBlocker/>
 		</Fragment>

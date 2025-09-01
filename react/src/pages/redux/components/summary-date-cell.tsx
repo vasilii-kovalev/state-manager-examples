@@ -34,6 +34,7 @@ const SummaryDateCell: FC<SummaryDateCellProps> = ({
 
 	return (
 		<TotalDurationCell
+			date={date}
 			reportingStatisticsSummary={reportingStatisticsForDate}
 		/>
 	);

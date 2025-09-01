@@ -143,6 +143,7 @@ const WorklogInput: FC<WorklogCellProps> = ({
 
 	return (
 		<input
+			className="control h-full w-full b-0 text-center"
 			inputMode="numeric"
 			onBlur={handleBlur}
 			onChange={handleDurationChange}

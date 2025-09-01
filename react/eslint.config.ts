@@ -4,6 +4,7 @@ import {
 	disableAutofix,
 } from "@morev/eslint-disable-autofix";
 import stylistic from "@stylistic/eslint-plugin";
+import unocss from "@unocss/eslint-config/flat";
 import {
 	type Linter,
 } from "eslint";
@@ -74,6 +75,7 @@ const eslintConfig = disableAutofix(
 				importConfigs.typescript,
 				stylistic.configs.all,
 				typeScriptConfigs.all,
+				unocss,
 			],
 			settings: {
 				"import-x/resolver": {
@@ -2261,6 +2263,21 @@ const eslintConfig = disableAutofix(
 						propertyValue: "parens-new-line",
 					},
 				],
+
+				/*
+					==================================================
+					UnoCSS plugin
+					==================================================
+				*/
+
+				// https://unocss.dev/integrations/eslint#unocss-order
+				"unocss/order": ERROR,
+				"unocss/order-attributify": ERROR,
+				// https://unocss.dev/integrations/eslint#unocss-blocklist
+				"unocss/blocklist": ERROR,
+				// https://unocss.dev/integrations/eslint#unocss-enforce-class-compile
+				// The rule is disabled because compile class transformer is not used.
+				"unocss/enforce-class-compile": DISABLED,
 			},
 		},
 		{
@@ -2293,6 +2310,14 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				"@typescript-eslint/no-dynamic-delete": DISABLED,
+			},
+		},
+		{
+			files: [
+				"uno.config.ts",
+			],
+			rules: {
+				"@typescript-eslint/naming-convention": DISABLED,
 			},
 		},
 	),

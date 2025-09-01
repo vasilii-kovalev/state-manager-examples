@@ -1,11 +1,13 @@
 import {
 	type FC,
-	Fragment,
 } from "react";
 import {
 	useSelector,
 } from "react-redux";
 
+import {
+	Tooltip,
+} from "@/components/tooltip";
 import {
 	type ActivityId,
 	type ActivityName,
@@ -13,6 +15,9 @@ import {
 import {
 	type GroupId,
 } from "@/features/group/types";
+import {
+	getClass,
+} from "@/utilities/get-class";
 
 import {
 	type RootState,
@@ -40,15 +45,45 @@ const DuplicatedActivityNameIcon: FC<DuplicatedActivityNameIconProps> = ({
 		);
 	});
 
-	if (existingActivityNames.includes(name)) {
-		return (
-			<Fragment>
-				(!)
-			</Fragment>
-		);
-	}
+	return (
+		<Tooltip<HTMLDivElement>
+			renderBody={() => {
+				return "There are multiple activities with this name in the group";
+			}}
+			renderTarget={({
+				className,
+				tooltipId,
+				...targetProps
+			}) => {
+				const hasDuplicate = existingActivityNames.includes(name);
 
-	return null;
+				return (
+					<div
+						{...targetProps}
+						aria-describedby={tooltipId}
+						className={
+							getClass([
+								className,
+								"p-1 w-3 h-5 flex-inline justify-center",
+							])
+						}
+						tabIndex={
+							hasDuplicate
+								? 0
+								: undefined
+						}
+					>
+						{
+							hasDuplicate
+								? "!"
+								: null
+						}
+					</div>
+				);
+			}}
+			targetId={`duplicated-activity-name-${activityId}`}
+		/>
+	);
 };
 
 export {

@@ -6,6 +6,13 @@ import {
 } from "react-redux";
 
 import {
+	Tooltip,
+} from "@/components/tooltip";
+import {
+	getClass,
+} from "@/utilities/get-class";
+
+import {
 	type Dispatch,
 } from "../store";
 import {
@@ -20,12 +27,34 @@ const AddGroupButton: FC = () => {
 	};
 
 	return (
-		<button
-			onClick={handleAddGroup}
-			type="button"
-		>
-			Add group
-		</button>
+		<Tooltip<HTMLButtonElement>
+			renderBody={() => {
+				return "Add group";
+			}}
+			renderTarget={({
+				className,
+				tooltipId,
+				...targetProps
+			}) => {
+				return (
+					<button
+						{...targetProps}
+						aria-describedby={tooltipId}
+						className={
+							getClass([
+								className,
+								"icon-button control",
+							])
+						}
+						onClick={handleAddGroup}
+						type="button"
+					>
+						+
+					</button>
+				);
+			}}
+			targetId="add-group-button"
+		/>
 	);
 };
 

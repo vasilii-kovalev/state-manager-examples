@@ -1,4 +1,6 @@
-import "./theme.css";
+import "@unocss/reset/normalize.css";
+// eslint-disable-next-line import-x/no-unresolved
+import "virtual:uno.css";
 
 import {
 	QueryClient,

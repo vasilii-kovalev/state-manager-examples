@@ -1,10 +1,19 @@
 import {
+	isWeekend,
+} from "date-fns";
+import {
 	type FC,
 } from "react";
 
 import {
+	type DateString,
+} from "@/features/dates-and-time/types";
+import {
 	type ReportingStatisticsSummary,
 } from "@/features/page/types";
+import {
+	getClass,
+} from "@/utilities/get-class";
 
 import {
 	Cell,
@@ -14,14 +23,25 @@ import {
 } from "./total-duration";
 
 interface TotalDurationCellProps {
+	date: DateString;
 	reportingStatisticsSummary: ReportingStatisticsSummary | undefined;
 }
 
 const TotalDurationCell: FC<TotalDurationCellProps> = ({
+	date,
 	reportingStatisticsSummary,
 }) => {
 	return (
-		<Cell>
+		<Cell
+			className={
+				getClass([
+					[
+						"bg-weekend",
+						isWeekend(date),
+					],
+				])
+			}
+		>
 			<TotalDuration
 				duration={reportingStatisticsSummary?.reported}
 			/>

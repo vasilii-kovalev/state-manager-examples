@@ -1,0 +1,8 @@
+.target {
+	anchor-name: var(--anchor-name);
+}
+
+.tooltip {
+	position-anchor: var(--anchor-name);
+	position-area: top;
+}

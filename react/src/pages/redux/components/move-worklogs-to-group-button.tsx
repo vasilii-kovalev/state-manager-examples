@@ -7,8 +7,14 @@ import {
 } from "react-redux";
 
 import {
+	Tooltip,
+} from "@/components/tooltip";
+import {
 	type GroupId,
 } from "@/features/group/types";
+import {
+	getClass,
+} from "@/utilities/get-class";
 
 import {
 	type Dispatch,
@@ -43,12 +49,34 @@ const MoveWorklogsToGroupButton: FC<MoveWorklogsToGroupButtonProps> = ({
 	};
 
 	return (
-		<button
-			onClick={handleMoveWorklogsToGroup}
-			type="button"
-		>
-			Move worklogs to group
-		</button>
+		<Tooltip<HTMLButtonElement>
+			renderBody={() => {
+				return "Move worklogs to group";
+			}}
+			renderTarget={({
+				className,
+				tooltipId,
+				...targetProps
+			}) => {
+				return (
+					<button
+						{...targetProps}
+						aria-describedby={tooltipId}
+						className={
+							getClass([
+								className,
+								"icon-button control",
+							])
+						}
+						onClick={handleMoveWorklogsToGroup}
+						type="button"
+					>
+						←
+					</button>
+				);
+			}}
+			targetId={`move-worklogs-to-group-button-${groupId}`}
+		/>
 	);
 };
 

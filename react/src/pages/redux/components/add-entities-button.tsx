@@ -21,6 +21,7 @@ const AddEntitiesButton: FC = () => {
 
 	return (
 		<button
+			className="control"
 			onClick={handleAddEntities}
 			type="button"
 		>

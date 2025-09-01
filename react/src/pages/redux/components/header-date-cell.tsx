@@ -3,6 +3,9 @@ import {
 } from "react";
 
 import {
+	FlexColumn,
+} from "@/components/flex-column";
+import {
 	type DateString,
 } from "@/features/dates-and-time/types";
 import {
@@ -20,14 +23,20 @@ const HeaderDateCell: FC<HeaderDateCellProps> = ({
 	date,
 }) => {
 	return (
-		<th>
-			<span>
-				{formatDayWithLeadingZero(date)}
-			</span>
+		<th
+			className="cell"
+		>
+			<FlexColumn
+				className="justify-center gap-row-2"
+			>
+				<span>
+					{formatDayWithLeadingZero(date)}
+				</span>
 
-			<span>
-				{formatWeekdayShort(date)}
-			</span>
+				<span>
+					{formatWeekdayShort(date)}
+				</span>
+			</FlexColumn>
 		</th>
 	);
 };

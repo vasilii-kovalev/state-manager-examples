@@ -6,6 +6,9 @@ import {
 } from "react-redux";
 
 import {
+	FlexRow,
+} from "@/components/flex-row";
+import {
 	type Activity,
 } from "@/features/activity/types";
 
@@ -49,29 +52,43 @@ const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
 	});
 
 	return (
-		<Cell>
-			<SelectActivityCheckbox
-				activityId={activity.id}
-			/>
+		<Cell
+			className="info-column"
+		>
+			<FlexRow
+				className="justify-between gap-col-4"
+			>
+				<FlexRow
+					className="gap-col-2"
+				>
+					<SelectActivityCheckbox
+						activityId={activity.id}
+					/>
 
-			<ActivityNameInput
-				activityId={activity.id}
-				groupId={activity.groupId}
-				name={activity.name}
-			/>
+					<ActivityNameInput
+						activityId={activity.id}
+						groupId={activity.groupId}
+						name={activity.name}
+					/>
 
-			<ReportedDurationOfNorm
-				norm={reportingStatisticsSummary.norm}
-				reported={reportingStatisticsSummary.reported}
-			/>
+					<ReportedDurationOfNorm
+						norm={reportingStatisticsSummary.norm}
+						reported={reportingStatisticsSummary.reported}
+					/>
+				</FlexRow>
 
-			<RemoveActivityButton
-				activityId={activity.id}
-			/>
+				<FlexRow
+					className="gap-col-2"
+				>
+					<RemoveActivityButton
+						activityId={activity.id}
+					/>
 
-			<MoveWorklogsToActivityButton
-				activityId={activity.id}
-			/>
+					<MoveWorklogsToActivityButton
+						activityId={activity.id}
+					/>
+				</FlexRow>
+			</FlexRow>
 		</Cell>
 	);
 };

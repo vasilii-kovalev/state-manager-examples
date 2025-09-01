@@ -6,8 +6,14 @@ import {
 } from "react-redux";
 
 import {
+	Tooltip,
+} from "@/components/tooltip";
+import {
 	type GroupId,
 } from "@/features/group/types";
+import {
+	getClass,
+} from "@/utilities/get-class";
 
 import {
 	type Dispatch,
@@ -34,12 +40,34 @@ const AddActivityButton: FC<AddActivityButtonProps> = ({
 	};
 
 	return (
-		<button
-			onClick={handleAddActivity}
-			type="button"
-		>
-			Add activity
-		</button>
+		<Tooltip<HTMLButtonElement>
+			renderBody={() => {
+				return "Add activity";
+			}}
+			renderTarget={({
+				className,
+				tooltipId,
+				...targetProps
+			}) => {
+				return (
+					<button
+						{...targetProps}
+						aria-describedby={tooltipId}
+						className={
+							getClass([
+								className,
+								"icon-button control",
+							])
+						}
+						onClick={handleAddActivity}
+						type="button"
+					>
+						+
+					</button>
+				);
+			}}
+			targetId={`add-activity-button-${groupId}`}
+		/>
 	);
 };
 

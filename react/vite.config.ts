@@ -3,6 +3,7 @@ import {
 } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
 import sonda from "sonda/vite";
+import unoCSS from "unocss/vite";
 import {
 	defineConfig,
 } from "vite";
@@ -25,6 +26,7 @@ const config = defineConfig({
 			target: "react",
 		}),
 		react(),
+		unoCSS(),
 		sonda(),
 	],
 });

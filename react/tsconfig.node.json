@@ -26,6 +26,7 @@
 	},
 	"include": [
 		"vite.config.ts",
-		"eslint.config.ts"
+		"eslint.config.ts",
+		"uno.config.ts"
 	]
 }

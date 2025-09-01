@@ -41,6 +41,7 @@ const SelectEntityCheckbox: FC<SelectEntityCheckboxProps> = ({
 	return (
 		<input
 			checked={selectionState === ENTITY_SELECTION_STATE.SELECTED}
+			className="control"
 			disabled={isDisabled}
 			onChange={(event) => {
 				onSelectionChange(event.target.checked);

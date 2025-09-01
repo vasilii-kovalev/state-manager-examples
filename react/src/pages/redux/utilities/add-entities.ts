@@ -19,8 +19,8 @@ import {
 	performTransaction,
 } from "./perform-transaction";
 
-const GROUPS_COUNT = 5;
-const ACTIVITIES_PER_GROUP_COUNT = 5;
+const GROUPS_COUNT = 2;
+const ACTIVITIES_PER_GROUP_COUNT = 2;
 const WORKLOG_DURATION = 8;
 
 const addEntities = (): Thunk<void> => {

@@ -21,6 +21,7 @@ const RemoveEntitiesButton: FC = () => {
 
 	return (
 		<button
+			className="control"
 			onClick={handleRemoveEntities}
 			type="button"
 		>

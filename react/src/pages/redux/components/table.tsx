@@ -2,11 +2,17 @@ import {
 	isEmpty,
 } from "es-toolkit/compat";
 import {
+	type DetailedHTMLProps,
 	type FC,
+	type HTMLAttributes,
 } from "react";
 import {
 	useSelector,
 } from "react-redux";
+
+import {
+	getClass,
+} from "@/utilities/get-class";
 
 import {
 	type RootState,
@@ -24,7 +30,11 @@ import {
 	SummaryRow,
 } from "./summary-row";
 
-const Table: FC = () => {
+type TableProps = DetailedHTMLProps<HTMLAttributes<HTMLTableElement>, HTMLTableElement>;
+
+const Table: FC<TableProps> = ({
+	className,
+}) => {
 	const calendar = useSelector((state: RootState) => {
 		return selectCalendar(state.page);
 	});
@@ -34,7 +44,14 @@ const Table: FC = () => {
 	}
 
 	return (
-		<table>
+		<table
+			className={
+				getClass([
+					className,
+					"b-collapse w-full",
+				])
+			}
+		>
 			<thead>
 				<HeaderRow/>
 			</thead>

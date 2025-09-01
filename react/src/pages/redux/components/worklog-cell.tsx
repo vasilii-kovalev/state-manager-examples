@@ -60,10 +60,15 @@ const WorklogCell: FC<WorklogCellProps> = ({
 
 	const isWeekendDay = isWeekend(date);
 
-	if (
-		hasSelectedWorklogs
-		|| isWeekendDay
-	) {
+	if (isWeekendDay) {
+		return (
+			<Cell
+				className="bg-weekend"
+			/>
+		);
+	}
+
+	if (hasSelectedWorklogs) {
 		return (
 			<Cell>
 				<TotalDuration
@@ -74,7 +79,9 @@ const WorklogCell: FC<WorklogCellProps> = ({
 	}
 
 	return (
-		<Cell>
+		<Cell
+			className="p-0"
+		>
 			<WorklogInput
 				activityId={activityId}
 				date={date}

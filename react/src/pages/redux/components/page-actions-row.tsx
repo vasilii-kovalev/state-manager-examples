@@ -3,6 +3,10 @@ import {
 } from "react";
 
 import {
+	FlexRow,
+} from "@/components/flex-row";
+
+import {
 	AddEntitiesButton,
 } from "./add-entities-button";
 import {
@@ -14,11 +18,13 @@ import {
 
 const PageActionsRow: FC = () => {
 	return (
-		<div>
+		<FlexRow
+			className="gap-col-2"
+		>
 			<SaveChangesButton/>
 			<AddEntitiesButton/>
 			<RemoveEntitiesButton/>
-		</div>
+		</FlexRow>
 	);
 };
 

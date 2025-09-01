@@ -20,8 +20,11 @@ const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = ({
 	reported,
 }) => {
 	return (
-		<span>
+		<div
+			className="flex-inline shrink-0"
+		>
 			<TotalDuration
+				className="w-14 text-end"
 				duration={reported}
 				shouldRenderZero={true}
 			/>
@@ -29,10 +32,11 @@ const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = ({
 			{" / "}
 
 			<TotalDuration
+				className="w-14 text-start"
 				duration={norm}
 				shouldRenderZero={true}
 			/>
-		</span>
+		</div>
 	);
 };
 

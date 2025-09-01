@@ -51,6 +51,7 @@ const SaveChangesButton: FC = () => {
 
 	return (
 		<button
+			className="control"
 			disabled={!hasChanges}
 			onClick={() => {
 				handleSaveChanges();

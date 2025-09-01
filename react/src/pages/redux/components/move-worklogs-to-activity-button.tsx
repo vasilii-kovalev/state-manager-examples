@@ -7,8 +7,14 @@ import {
 } from "react-redux";
 
 import {
+	Tooltip,
+} from "@/components/tooltip";
+import {
 	type ActivityId,
 } from "@/features/activity/types";
+import {
+	getClass,
+} from "@/utilities/get-class";
 
 import {
 	type Dispatch,
@@ -43,12 +49,34 @@ const MoveWorklogsToActivityButton: FC<MoveWorklogsToActivityButtonProps> = ({
 	};
 
 	return (
-		<button
-			onClick={handleMoveWorklogsToActivity}
-			type="button"
-		>
-			Move worklogs to activity
-		</button>
+		<Tooltip<HTMLButtonElement>
+			renderBody={() => {
+				return "Move worklogs to activity";
+			}}
+			renderTarget={({
+				className,
+				tooltipId,
+				...targetProps
+			}) => {
+				return (
+					<button
+						{...targetProps}
+						aria-describedby={tooltipId}
+						className={
+							getClass([
+								className,
+								"icon-button control",
+							])
+						}
+						onClick={handleMoveWorklogsToActivity}
+						type="button"
+					>
+						←
+					</button>
+				);
+			}}
+			targetId={`move-worklogs-to-activity-button-${activityId}`}
+		/>
 	);
 };
 

@@ -40,6 +40,11 @@ const moveWorklogsToActivity = (
 				return;
 			}
 
+			// No need to move if worklog is already in the target activity.
+			if (worklog.activityId === activityId) {
+				return;
+			}
+
 			const activity = activitiesById[activityId];
 
 			if (isUndefined(activity)) {
