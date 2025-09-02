@@ -4,5 +4,7 @@
 
 .tooltip {
 	position-anchor: var(--anchor-name);
-	position-area: top;
+	position-area: block-start;
+	position-try-fallbacks: flip-block, block-start span-inline-end, block-end span-inline-end, block-start span-inline-start, block-end span-inline-start;
+	position-try-order: most-width;
 }

@@ -57,7 +57,6 @@ const SaveChangesButton: FC = () => {
 
 	return (
 		<Tooltip<HTMLButtonElement>
-			className="m-is-28"
 			renderBody={() => {
 				return "Save changes to Local Storage";
 			}}

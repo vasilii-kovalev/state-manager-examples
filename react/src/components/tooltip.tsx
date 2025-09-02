@@ -29,14 +29,12 @@ interface RenderTargetProps<TargetElement extends HTMLElement> {
 }
 
 interface TooltipProps<TargetElement extends HTMLElement> {
-	className?: string;
 	renderBody: () => ReactNode;
 	renderTarget: (props: RenderTargetProps<TargetElement>) => ReactNode;
 	targetId: string;
 }
 
 const Tooltip = <TargetElement extends HTMLElement>({
-	className,
 	renderBody,
 	renderTarget,
 	targetId,
@@ -88,8 +86,7 @@ const Tooltip = <TargetElement extends HTMLElement>({
 				className={
 					getClass([
 						css.tooltip,
-						"m-0 m-be-1 b-1px b-solid p-2 max-w-64",
-						className,
+						"m-0 m-block-1 b-1px b-solid p-2 max-w-64",
 					])
 				}
 				id={tooltipId}
