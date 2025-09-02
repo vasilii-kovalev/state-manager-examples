@@ -27,8 +27,8 @@ const FullPageLoader: FC = () => {
 				getClass([
 					css.loader,
 					[
-						css.visible,
 						isVisible,
+						css.visible,
 					],
 				])
 			}

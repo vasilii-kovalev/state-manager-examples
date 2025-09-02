@@ -4,7 +4,7 @@ import {
 
 type OptionalClass = string | undefined;
 
-type OptionalClassWithCondition = [OptionalClass, boolean];
+type OptionalClassWithCondition = [boolean, OptionalClass, OptionalClass?];
 
 const getClass = (
 	items: Array<OptionalClass | OptionalClassWithCondition>,
@@ -18,13 +18,14 @@ const getClass = (
 
 			if (Array.isArray(item)) {
 				const [
-					itemClass,
 					shouldAdd,
+					classForTrue,
+					classForFalse,
 				] = item;
 
-				if (shouldAdd) {
-					classToAdd = itemClass;
-				}
+				classToAdd = shouldAdd
+					? classForTrue
+					: classForFalse;
 			} else {
 				classToAdd = item;
 			}

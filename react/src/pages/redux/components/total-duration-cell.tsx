@@ -35,9 +35,16 @@ const TotalDurationCell: FC<TotalDurationCellProps> = ({
 		<Cell
 			className={
 				getClass([
+					"bg-gray-50",
 					[
-						"bg-weekend",
 						isWeekend(date),
+						/*
+							`!important` is required, because shortcuts have less specificity.
+							If a higher specificity is set in the UnoCSS config in `layers`,
+							the default classes won't be able to override shortcuts in other places.
+							So this is a lesser evil.
+						*/
+						"!bg-weekend",
 					],
 				])
 			}

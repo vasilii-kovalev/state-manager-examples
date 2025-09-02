@@ -22,15 +22,11 @@ import {
 	type RootState,
 } from "../store";
 import {
-	selectHasSelectedWorklogs,
 	selectWorklogsForActivityByDate,
 } from "../store/page/selectors";
 import {
 	Cell,
 } from "./cell";
-import {
-	TotalDuration,
-} from "./total-duration";
 import {
 	WorklogInput,
 } from "./worklog-input";
@@ -54,9 +50,6 @@ const WorklogCell: FC<WorklogCellProps> = ({
 
 		return worklogsByDate[date];
 	});
-	const hasSelectedWorklogs = useSelector((state: RootState) => {
-		return selectHasSelectedWorklogs(state.page);
-	});
 
 	const isWeekendDay = isWeekend(date);
 
@@ -65,16 +58,6 @@ const WorklogCell: FC<WorklogCellProps> = ({
 			<Cell
 				className="bg-weekend"
 			/>
-		);
-	}
-
-	if (hasSelectedWorklogs) {
-		return (
-			<Cell>
-				<TotalDuration
-					duration={worklog?.duration}
-				/>
-			</Cell>
 		);
 	}
 
@@ -88,6 +71,8 @@ const WorklogCell: FC<WorklogCellProps> = ({
 				duration={worklog?.duration}
 				groupId={groupId}
 				id={worklog?.id}
+				// To reset the internal state of the input when the duration changes outside.
+				key={worklog?.duration ?? 0}
 			/>
 		</Cell>
 	);
