@@ -6,6 +6,13 @@ import {
 } from "react-redux";
 
 import {
+	Tooltip,
+} from "@/components/tooltip";
+import {
+	getClass,
+} from "@/utilities/get-class";
+
+import {
 	type Dispatch,
 } from "../store";
 import {
@@ -20,13 +27,34 @@ const RemoveEntitiesButton: FC = () => {
 	};
 
 	return (
-		<button
-			className="control"
-			onClick={handleRemoveEntities}
-			type="button"
-		>
-			Remove entities
-		</button>
+		<Tooltip<HTMLButtonElement>
+			renderBody={() => {
+				return "Remove all groups, activities and worklogs";
+			}}
+			renderTarget={({
+				className,
+				tooltipId,
+				...targetProps
+			}) => {
+				return (
+					<button
+						{...targetProps}
+						aria-describedby={tooltipId}
+						className={
+							getClass([
+								className,
+								"control",
+							])
+						}
+						onClick={handleRemoveEntities}
+						type="button"
+					>
+						Remove entities
+					</button>
+				);
+			}}
+			targetId="remove-entities-button"
+		/>
 	);
 };
 

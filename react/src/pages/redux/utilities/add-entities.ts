@@ -19,11 +19,17 @@ import {
 	performTransaction,
 } from "./perform-transaction";
 
-const GROUPS_COUNT = 2;
-const ACTIVITIES_PER_GROUP_COUNT = 2;
-const WORKLOG_DURATION = 8;
+interface AddEntitiesParams {
+	activitiesPerGroupCount: number;
+	groupsCount: number;
+	worklogDuration: number;
+}
 
-const addEntities = (): Thunk<void> => {
+const addEntities = ({
+	activitiesPerGroupCount,
+	groupsCount,
+	worklogDuration,
+}: AddEntitiesParams): Thunk<void> => {
 	return (
 		dispatch,
 		getState,
@@ -34,14 +40,14 @@ const addEntities = (): Thunk<void> => {
 
 		for (
 			let groupIndex = 0;
-			groupIndex < GROUPS_COUNT;
+			groupIndex < groupsCount;
 			groupIndex += 1
 		) {
 			const groupId = dispatch(addGroup());
 
 			for (
 				let activityIndex = 0;
-				activityIndex < ACTIVITIES_PER_GROUP_COUNT;
+				activityIndex < activitiesPerGroupCount;
 				activityIndex += 1
 			) {
 				const activityId = dispatch(
@@ -55,7 +61,7 @@ const addEntities = (): Thunk<void> => {
 						const worklog = getNewWorklog({
 							activityId,
 							date: calendarDay.date,
-							duration: WORKLOG_DURATION,
+							duration: worklogDuration,
 							groupId,
 						});
 

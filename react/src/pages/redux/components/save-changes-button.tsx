@@ -11,8 +11,14 @@ import {
 } from "react-redux";
 
 import {
+	Tooltip,
+} from "@/components/tooltip";
+import {
 	QUERY_KEYS,
 } from "@/constants";
+import {
+	getClass,
+} from "@/utilities/get-class";
 
 import {
 	type Dispatch,
@@ -50,16 +56,38 @@ const SaveChangesButton: FC = () => {
 	});
 
 	return (
-		<button
-			className="control"
-			disabled={!hasChanges}
-			onClick={() => {
-				handleSaveChanges();
+		<Tooltip<HTMLButtonElement>
+			className="m-is-28"
+			renderBody={() => {
+				return "Save changes to Local Storage";
 			}}
-			type="button"
-		>
-			Save changes
-		</button>
+			renderTarget={({
+				className,
+				tooltipId,
+				...targetProps
+			}) => {
+				return (
+					<button
+						{...targetProps}
+						aria-describedby={tooltipId}
+						className={
+							getClass([
+								className,
+								"control",
+							])
+						}
+						disabled={!hasChanges}
+						onClick={() => {
+							handleSaveChanges();
+						}}
+						type="button"
+					>
+						Save changes
+					</button>
+				);
+			}}
+			targetId="save-changes-button"
+		/>
 	);
 };
 
