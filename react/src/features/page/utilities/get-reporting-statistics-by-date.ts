@@ -49,6 +49,9 @@ const getReportingStatisticsByDate = ({
 				reportingStatisticsForDate.reported = getReportedDuration(worklogsForDate);
 			}
 
+			// eslint-disable-next-line no-param-reassign
+			reportingStatisticsByDateCurrent[calendarDay.date] = reportingStatisticsForDate;
+
 			return reportingStatisticsByDateCurrent;
 		},
 		{},

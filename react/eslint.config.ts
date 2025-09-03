@@ -237,7 +237,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-unused-private-class-members
 				"no-unused-private-class-members": ERROR,
 				// https://eslint.org/docs/latest/rules/no-unused-vars
-				"no-unused-vars": ERROR,
+				// The "@typescript-eslint/no-unused-vars" rule takes care of it.
+				"no-unused-vars": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-use-before-define
 				"no-use-before-define": ERROR,
 				// https://eslint.org/docs/latest/rules/no-useless-assignment

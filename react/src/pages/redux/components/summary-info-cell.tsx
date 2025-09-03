@@ -51,6 +51,7 @@ const SummaryInfoCell: FC = () => {
 					/>
 
 					<ReportedDurationOfNorm
+						location="summary-info-cell"
 						norm={reportingStatisticsSummary.norm}
 						reported={reportingStatisticsSummary.reported}
 					/>

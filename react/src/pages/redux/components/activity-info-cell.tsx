@@ -72,6 +72,7 @@ const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
 					/>
 
 					<ReportedDurationOfNorm
+						location={`activity-info-cell-${activity.id}`}
 						norm={reportingStatisticsSummary.norm}
 						reported={reportingStatisticsSummary.reported}
 					/>

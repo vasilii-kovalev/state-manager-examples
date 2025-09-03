@@ -74,6 +74,7 @@ const GroupInfoCell: FC<GroupInfoCellProps> = ({
 					/>
 
 					<ReportedDurationOfNorm
+						location={`group-info-cell-${group.id}`}
 						norm={reportingStatisticsSummary.norm}
 						reported={reportingStatisticsSummary.reported}
 					/>
