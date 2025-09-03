@@ -5,13 +5,22 @@ import {
 import {
 	type Group,
 } from "@/features/group/types";
+import {
+	type RequireProperties,
+} from "@/types/require-properties";
 
-const getNewGroup = (
-	override?: Partial<Group>,
-): Group => {
+type GetNewGroupParams = RequireProperties<
+	Partial<Group>,
+	| "name"
+>;
+
+const getNewGroup = ({
+	name,
+	...override
+}: GetNewGroupParams): Group => {
 	return {
 		id: nanoid(),
-		name: "",
+		name,
 		...override,
 	};
 };
