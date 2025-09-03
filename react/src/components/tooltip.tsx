@@ -86,7 +86,7 @@ const Tooltip = <TargetElement extends HTMLElement>({
 				className={
 					getClass([
 						css.tooltip,
-						"m-0 m-block-1 b-1px b-solid p-2 max-w-64",
+						"m-0 m-block-1 max-w-64 b-1px b-solid p-2",
 					])
 				}
 				id={tooltipId}

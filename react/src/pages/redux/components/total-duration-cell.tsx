@@ -89,7 +89,7 @@ const TotalDurationCell: FC<TotalDurationCellProps> = ({
 			className={
 				getClass([
 					// Subtracting 1 padding, because the total duration container has 1 padding.
-					"p-1 bg-gray-50",
+					"bg-gray-50 p-1",
 					[
 						isWeekend(date),
 						/*

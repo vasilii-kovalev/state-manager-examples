@@ -64,7 +64,7 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
 						className={
 							getClass([
 								className,
-								"icon-button control",
+								"control icon-button",
 							])
 						}
 						disabled={hasWorklogs}

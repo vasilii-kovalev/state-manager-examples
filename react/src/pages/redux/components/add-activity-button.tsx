@@ -56,7 +56,7 @@ const AddActivityButton: FC<AddActivityButtonProps> = ({
 						className={
 							getClass([
 								className,
-								"icon-button control",
+								"control icon-button",
 							])
 						}
 						onClick={handleAddActivity}

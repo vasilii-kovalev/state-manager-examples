@@ -48,7 +48,7 @@ const Table: FC<TableProps> = ({
 			className={
 				getClass([
 					className,
-					"b-collapse w-full",
+					"w-full b-collapse",
 				])
 			}
 		>

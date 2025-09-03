@@ -65,7 +65,7 @@ const MoveWorklogsToActivityButton: FC<MoveWorklogsToActivityButtonProps> = ({
 						className={
 							getClass([
 								className,
-								"icon-button control",
+								"control icon-button",
 							])
 						}
 						onClick={handleMoveWorklogsToActivity}

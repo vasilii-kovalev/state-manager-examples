@@ -64,7 +64,7 @@ const DuplicatedActivityNameIcon: FC<DuplicatedActivityNameIconProps> = ({
 						className={
 							getClass([
 								className,
-								"p-1 w-3 h-5 flex-inline justify-center",
+								"h-5 w-3 flex-inline justify-center p-1",
 							])
 						}
 						tabIndex={

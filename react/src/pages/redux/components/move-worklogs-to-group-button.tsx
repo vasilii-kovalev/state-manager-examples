@@ -65,7 +65,7 @@ const MoveWorklogsToGroupButton: FC<MoveWorklogsToGroupButtonProps> = ({
 						className={
 							getClass([
 								className,
-								"icon-button control",
+								"control icon-button",
 							])
 						}
 						onClick={handleMoveWorklogsToGroup}
