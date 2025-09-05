@@ -7,20 +7,20 @@ import {
 import {
 	setPageDataToLocalStorage,
 } from "./set-page-data-to-local-storage";
+import {
+	sleep,
+} from "./sleep";
 
 const savePageData = async (
 	pageData: PageData,
 ): Promise<void> => {
-	await new Promise<void>((resolve) => {
-		setPageDataToLocalStorage(pageData);
-
-		setTimeout(
-			() => {
-				resolve();
-			},
-			PAGE_DATA_PROCESSING_DELAY,
-		);
-	});
+	await Promise.all([
+		() => {
+			setPageDataToLocalStorage(pageData);
+		},
+		// Adding a minimal artificial delay to display the full-page loader.
+		sleep(PAGE_DATA_PROCESSING_DELAY),
+	]);
 };
 
 export {
