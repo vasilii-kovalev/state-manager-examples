@@ -26,9 +26,10 @@ const FullPageLoader: FC = () => {
 			className={
 				getClass([
 					css.loader,
+					"pos-absolute inset-0 hidden h-screen w-screen items-center justify-center bg-black bg-opacity-10 opacity-0",
 					[
 						isVisible,
-						css.visible,
+						"flex opacity-100",
 					],
 				])
 			}
