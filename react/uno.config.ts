@@ -14,6 +14,12 @@ const config = defineConfig({
 				"border-collapse": "collapse",
 			},
 		],
+		[
+			"list-none",
+			{
+				"list-style": "none",
+			},
+		],
 	],
 	shortcuts: {
 		"bg-weekend": "bg-gray-200",

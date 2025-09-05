@@ -8,12 +8,9 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createRootRoute } from '@tanstack/react-router'
-
+import { Route as rootRouteImport } from './routes/__root'
 import { Route as ReduxRouteImport } from './routes/redux'
 import { Route as IndexRouteImport } from './routes/index'
-
-const rootRouteImport = createRootRoute()
 
 const ReduxRoute = ReduxRouteImport.update({
   id: '/redux',
