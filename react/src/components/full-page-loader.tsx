@@ -26,7 +26,8 @@ const FullPageLoader: FC = () => {
 			className={
 				getClass([
 					css.loader,
-					"pos-absolute inset-0 hidden h-screen w-screen items-center justify-center bg-black bg-opacity-10 opacity-0",
+					// eslint-disable-next-line @stylistic/max-len
+					"pos-absolute inset-0 hidden h-screen w-screen items-center justify-center bg-black bg-opacity-50 color-white opacity-0",
 					[
 						isVisible,
 						"flex opacity-100",
