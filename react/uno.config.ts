@@ -15,6 +15,12 @@ const config = defineConfig({
 			},
 		],
 		[
+			"inset-bs-0",
+			{
+				"inset-block-start": 0,
+			},
+		],
+		[
 			"list-none",
 			{
 				"list-style": "none",

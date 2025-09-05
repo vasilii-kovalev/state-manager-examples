@@ -14,17 +14,15 @@ import {
 export const Route = createRootRoute({
 	component: () => {
 		return (
-			<main
-				className="overflow-hidden"
-			>
+			<main>
 				<header
-					className="flex items-center gap-col-4 b-0 b-be-1px b-solid p-4"
+					className="flex items-center gap-col-4 b-0 b-be-1px b-solid p-4 pos-fixed inset-inline-0 bg-white inset-bs-0"
 				>
 					<Navigation/>
 				</header>
 
 				<section
-					className="overflow-auto p-4"
+					className="p-4 m-bs-13"
 				>
 					<Outlet/>
 				</section>
