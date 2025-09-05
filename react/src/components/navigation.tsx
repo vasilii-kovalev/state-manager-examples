@@ -25,7 +25,7 @@ const Navigation: FC = () => {
 	return (
 		<nav>
 			<ul
-				className="list-none m-0 flex gap-col-4 p-0"
+				className="m-0 flex gap-col-4 p-0 list-none"
 			>
 				{
 					libraryLinks.map((libraryLink) => {
