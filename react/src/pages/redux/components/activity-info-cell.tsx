@@ -81,11 +81,11 @@ const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
 				<FlexRow
 					className="gap-col-2"
 				>
-					<RemoveActivityButton
+					<MoveWorklogsToActivityButton
 						activityId={activity.id}
 					/>
 
-					<MoveWorklogsToActivityButton
+					<RemoveActivityButton
 						activityId={activity.id}
 					/>
 				</FlexRow>

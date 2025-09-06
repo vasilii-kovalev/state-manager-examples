@@ -86,15 +86,15 @@ const GroupInfoCell: FC<GroupInfoCellProps> = ({
 				<FlexRow
 					className="gap-col-2"
 				>
+					<MoveWorklogsToGroupButton
+						groupId={groupId}
+					/>
+
 					<AddActivityButton
 						groupId={groupId}
 					/>
 
 					<RemoveGroupButton
-						groupId={groupId}
-					/>
-
-					<MoveWorklogsToGroupButton
 						groupId={groupId}
 					/>
 				</FlexRow>
