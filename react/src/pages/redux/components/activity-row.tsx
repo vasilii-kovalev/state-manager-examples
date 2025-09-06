@@ -50,6 +50,7 @@ const ActivityRow: FC<ActivityRowProps> = ({
 							date={calendarDay.date}
 							groupId={activity.groupId}
 							key={calendarDay.date}
+							norm={calendarDay.norm}
 						/>
 					);
 				})

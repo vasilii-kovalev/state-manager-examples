@@ -1,7 +1,4 @@
 import {
-	isWeekend,
-} from "date-fns";
-import {
 	type FC,
 } from "react";
 import {
@@ -13,6 +10,7 @@ import {
 } from "@/features/activity/types";
 import {
 	type DateString,
+	type Duration,
 } from "@/features/dates-and-time/types";
 import {
 	type GroupId,
@@ -35,12 +33,14 @@ interface WorklogCellProps {
 	activityId: ActivityId;
 	date: DateString;
 	groupId: GroupId;
+	norm: Duration;
 }
 
 const WorklogCell: FC<WorklogCellProps> = ({
 	activityId,
 	date,
 	groupId,
+	norm,
 }) => {
 	const worklog = useSelector((state: RootState) => {
 		const worklogsByDate = selectWorklogsForActivityByDate(
@@ -50,16 +50,6 @@ const WorklogCell: FC<WorklogCellProps> = ({
 
 		return worklogsByDate[date];
 	});
-
-	const isWeekendDay = isWeekend(date);
-
-	if (isWeekendDay) {
-		return (
-			<Cell
-				className="bg-weekend"
-			/>
-		);
-	}
 
 	return (
 		<Cell
@@ -71,6 +61,7 @@ const WorklogCell: FC<WorklogCellProps> = ({
 				duration={worklog?.duration}
 				groupId={groupId}
 				id={worklog?.id}
+				isReadonly={norm === 0}
 				// To reset the internal state of the input when the duration changes outside.
 				key={worklog?.duration ?? 0}
 			/>
