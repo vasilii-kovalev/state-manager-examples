@@ -6,7 +6,7 @@ import {
 	Fragment,
 	type ReactNode,
 	type RefObject,
-	useEffect,
+	useLayoutEffect,
 	useRef,
 } from "react";
 
@@ -52,7 +52,7 @@ const Tooltip = <TargetElement extends HTMLElement>({
 
 	const tooltipId = `${targetId}-tooltip`;
 
-	useEffect(
+	useLayoutEffect(
 		() => {
 			if (!isNull(targetRef.current)) {
 				targetRef.current.setAttribute(

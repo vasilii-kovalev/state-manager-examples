@@ -3,7 +3,7 @@ import {
 } from "es-toolkit";
 import {
 	type FC,
-	useEffect,
+	useLayoutEffect,
 	useRef,
 } from "react";
 
@@ -32,7 +32,7 @@ const SelectEntityCheckbox: FC<SelectEntityCheckboxProps> = ({
 
 	const isBusy = useIsBusy();
 
-	useEffect(
+	useLayoutEffect(
 		() => {
 			if (!isNull(ref.current)) {
 				ref.current.indeterminate = selectionState === ENTITY_SELECTION_STATE.INDETERMINATE;
