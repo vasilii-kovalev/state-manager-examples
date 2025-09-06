@@ -19,22 +19,22 @@ import {
 	type Dispatch,
 } from "../store";
 import {
-	removeEntities,
+	removeGroups,
 } from "../store/page/slice";
 
-const RemoveEntitiesButton: FC = () => {
+const RemoveGroupsButton: FC = () => {
 	const dispatch = useDispatch<Dispatch>();
 
 	const isBusy = useIsBusy();
 
-	const handleRemoveEntities = (): void => {
-		dispatch(removeEntities());
+	const handleRemoveGroups = (): void => {
+		dispatch(removeGroups());
 	};
 
 	return (
 		<Tooltip<HTMLButtonElement>
 			renderBody={() => {
-				return "Remove all groups, activities and worklogs";
+				return "Remove all groups, their activities and worklogs";
 			}}
 			renderTarget={({
 				className,
@@ -48,22 +48,22 @@ const RemoveEntitiesButton: FC = () => {
 						className={
 							getClass([
 								className,
-								"control",
+								"control icon-button",
 							])
 						}
 						disabled={isBusy}
-						onClick={handleRemoveEntities}
+						onClick={handleRemoveGroups}
 						type="button"
 					>
-						Remove entities
+						-
 					</button>
 				);
 			}}
-			targetId="remove-entities-button"
+			targetId="remove-groups-button"
 		/>
 	);
 };
 
 export {
-	RemoveEntitiesButton,
+	RemoveGroupsButton,
 };

@@ -135,15 +135,7 @@ const pageSlice = createSlice({
 
 			state.hasChanges = true;
 		},
-		removeEntities: (
-			state,
-		) => {
-			return {
-				...PAGE_STATE_DEFAULT,
-				calendar: state.calendar,
-				hasChanges: true,
-			};
-		},
+
 		removeGroup: (
 			state,
 			action: PayloadAction<GroupId>,
@@ -189,6 +181,15 @@ const pageSlice = createSlice({
 			});
 
 			state.hasChanges = true;
+		},
+		removeGroups: (
+			state,
+		) => {
+			return {
+				...PAGE_STATE_DEFAULT,
+				calendar: state.calendar,
+				hasChanges: true,
+			};
 		},
 		removeWorklog: (
 			state,
@@ -331,8 +332,8 @@ const {
 	addWorklog,
 	moveWorklog,
 	removeActivity,
-	removeEntities,
 	removeGroup,
+	removeGroups,
 	removeWorklog,
 	resetState,
 	setInitialState,
@@ -351,8 +352,8 @@ export {
 	moveWorklog,
 	pageReducer,
 	removeActivity,
-	removeEntities,
 	removeGroup,
+	removeGroups,
 	removeWorklog,
 	resetState,
 	setInitialState,

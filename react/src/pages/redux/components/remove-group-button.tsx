@@ -43,7 +43,7 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
 	return (
 		<Tooltip<HTMLButtonElement>
 			renderBody={() => {
-				return "Remove group and all its activities and worklogs";
+				return "Remove group, its activities and worklogs";
 			}}
 			renderTarget={({
 				className,

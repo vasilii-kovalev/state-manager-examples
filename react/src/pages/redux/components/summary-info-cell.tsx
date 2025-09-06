@@ -22,6 +22,9 @@ import {
 	Cell,
 } from "./cell";
 import {
+	RemoveGroupsButton,
+} from "./remove-groups-button";
+import {
 	ReportedDurationOfNorm,
 } from "./reported-duration-of-norm";
 import {
@@ -57,7 +60,12 @@ const SummaryInfoCell: FC = () => {
 					/>
 				</FlexRow>
 
-				<AddGroupButton/>
+				<FlexRow
+					className="gap-col-2"
+				>
+					<AddGroupButton/>
+					<RemoveGroupsButton/>
+				</FlexRow>
 			</FlexRow>
 		</Cell>
 	);

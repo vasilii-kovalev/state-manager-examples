@@ -43,7 +43,7 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 	return (
 		<Tooltip<HTMLButtonElement>
 			renderBody={() => {
-				return "Remove activity and all its worklogs";
+				return "Remove activity and its worklogs";
 			}}
 			renderTarget={({
 				className,
