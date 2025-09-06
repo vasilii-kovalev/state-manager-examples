@@ -3,6 +3,7 @@ import {
 } from "react";
 import {
 	useDispatch,
+	useSelector,
 } from "react-redux";
 
 import {
@@ -17,13 +18,21 @@ import {
 
 import {
 	type Dispatch,
+	type RootState,
 } from "../store";
+import {
+	selectHasGroups,
+} from "../store/page/selectors";
 import {
 	removeGroups,
 } from "../store/page/slice";
 
 const RemoveGroupsButton: FC = () => {
 	const dispatch = useDispatch<Dispatch>();
+
+	const hasGroups = useSelector((state: RootState) => {
+		return selectHasGroups(state.page);
+	});
 
 	const isBusy = useIsBusy();
 
@@ -51,7 +60,10 @@ const RemoveGroupsButton: FC = () => {
 								"control icon-button",
 							])
 						}
-						disabled={isBusy}
+						disabled={
+							!hasGroups
+							|| isBusy
+						}
 						onClick={handleRemoveGroups}
 						type="button"
 					>

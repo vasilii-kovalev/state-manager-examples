@@ -264,6 +264,17 @@ const selectHasWorklogs = createSelector(
 	},
 );
 
+const selectHasGroups = createSelector(
+	[
+		selectGroups,
+	],
+	(
+		groups,
+	): boolean => {
+		return !isEmpty(groups);
+	},
+);
+
 const selectReportedDurationForDateForGroup = createSelector(
 	[
 		selectWorklogsForGroup,
@@ -512,6 +523,7 @@ export {
 	selectGroupNames,
 	selectGroups,
 	selectHasChanges,
+	selectHasGroups,
 	selectHasSelectedWorklogs,
 	selectHasWorklogs,
 	selectHasWorklogsInActivity,
