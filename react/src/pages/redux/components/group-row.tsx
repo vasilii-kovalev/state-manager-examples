@@ -2,26 +2,17 @@ import {
 	type FC,
 	Fragment,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type Group,
 } from "@/features/group/types";
 
 import {
-	type RootState,
-} from "../store";
-import {
-	selectCalendar,
-} from "../store/page/selectors";
-import {
 	ActivityRows,
 } from "./activity-rows";
 import {
-	GroupDateCell,
-} from "./group-date-cell";
+	GroupDateCells,
+} from "./group-date-cells";
 import {
 	GroupInfoCell,
 } from "./group-info-cell";
@@ -36,28 +27,17 @@ interface GroupRowProps {
 const GroupRow: FC<GroupRowProps> = ({
 	group,
 }) => {
-	const calendar = useSelector((state: RootState) => {
-		return selectCalendar(state.page);
-	});
-
 	return (
 		<Fragment>
 			<Row>
 				<GroupInfoCell
-					group={group}
+					groupId={group.id}
+					groupName={group.name}
 				/>
 
-				{
-					calendar.map((calendarDay) => {
-						return (
-							<GroupDateCell
-								date={calendarDay.date}
-								groupId={group.id}
-								key={calendarDay.date}
-							/>
-						);
-					})
-				}
+				<GroupDateCells
+					groupId={group.id}
+				/>
 			</Row>
 
 			<ActivityRows

@@ -1,20 +1,11 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type Activity,
 } from "@/features/activity/types";
 
-import {
-	type RootState,
-} from "../store";
-import {
-	selectCalendar,
-} from "../store/page/selectors";
 import {
 	ActivityInfoCell,
 } from "./activity-info-cell";
@@ -22,8 +13,8 @@ import {
 	Row,
 } from "./row";
 import {
-	WorklogCell,
-} from "./worklog-cell";
+	WorklogCells,
+} from "./worklog-cells";
 
 interface ActivityRowProps {
 	activity: Activity;
@@ -32,29 +23,16 @@ interface ActivityRowProps {
 const ActivityRow: FC<ActivityRowProps> = ({
 	activity,
 }) => {
-	const calendar = useSelector((state: RootState) => {
-		return selectCalendar(state.page);
-	});
-
 	return (
 		<Row>
 			<ActivityInfoCell
 				activity={activity}
 			/>
 
-			{
-				calendar.map((calendarDay) => {
-					return (
-						<WorklogCell
-							activityId={activity.id}
-							date={calendarDay.date}
-							groupId={activity.groupId}
-							key={calendarDay.date}
-							norm={calendarDay.norm}
-						/>
-					);
-				})
-			}
+			<WorklogCells
+				activityId={activity.id}
+				groupId={activity.groupId}
+			/>
 		</Row>
 	);
 };

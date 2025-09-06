@@ -9,7 +9,8 @@ import {
 	FlexRow,
 } from "@/components/flex-row";
 import {
-	type Group,
+	type GroupId,
+	type GroupName,
 } from "@/features/group/types";
 
 import {
@@ -41,16 +42,18 @@ import {
 } from "./select-group-checkbox";
 
 interface GroupInfoCellProps {
-	group: Group;
+	groupId: GroupId;
+	groupName: GroupName;
 }
 
 const GroupInfoCell: FC<GroupInfoCellProps> = ({
-	group,
+	groupId,
+	groupName,
 }) => {
 	const reportingStatisticsSummary = useSelector((state: RootState) => {
 		return selectReportingStatisticsSummaryForGroup(
 			state.page,
-			group.id,
+			groupId,
 		);
 	});
 
@@ -65,16 +68,16 @@ const GroupInfoCell: FC<GroupInfoCellProps> = ({
 					className="gap-col-2"
 				>
 					<SelectGroupCheckbox
-						groupId={group.id}
+						groupId={groupId}
 					/>
 
 					<GroupNameInput
-						id={group.id}
-						name={group.name}
+						id={groupId}
+						name={groupName}
 					/>
 
 					<ReportedDurationOfNorm
-						location={`group-info-cell-${group.id}`}
+						location={`group-info-cell-${groupId}`}
 						norm={reportingStatisticsSummary.norm}
 						reported={reportingStatisticsSummary.reported}
 					/>
@@ -84,15 +87,15 @@ const GroupInfoCell: FC<GroupInfoCellProps> = ({
 					className="gap-col-2"
 				>
 					<AddActivityButton
-						groupId={group.id}
+						groupId={groupId}
 					/>
 
 					<RemoveGroupButton
-						groupId={group.id}
+						groupId={groupId}
 					/>
 
 					<MoveWorklogsToGroupButton
-						groupId={group.id}
+						groupId={groupId}
 					/>
 				</FlexRow>
 			</FlexRow>
