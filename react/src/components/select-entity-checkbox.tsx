@@ -13,6 +13,9 @@ import {
 import {
 	type EntitySelectionState,
 } from "@/features/page/types";
+import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
 
 interface SelectEntityCheckboxProps {
 	isDisabled: boolean;
@@ -26,6 +29,8 @@ const SelectEntityCheckbox: FC<SelectEntityCheckboxProps> = ({
 	onSelectionChange,
 }) => {
 	const ref = useRef<HTMLInputElement | null>(null);
+
+	const isBusy = useIsBusy();
 
 	useEffect(
 		() => {
@@ -42,7 +47,10 @@ const SelectEntityCheckbox: FC<SelectEntityCheckboxProps> = ({
 		<input
 			checked={selectionState === ENTITY_SELECTION_STATE.SELECTED}
 			className="control"
-			disabled={isDisabled}
+			disabled={
+				isDisabled
+				|| isBusy
+			}
 			onChange={(event) => {
 				onSelectionChange(event.target.checked);
 			}}

@@ -13,6 +13,9 @@ import {
 	type GroupId,
 } from "@/features/group/types";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -43,6 +46,8 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
 		);
 	});
 
+	const isBusy = useIsBusy();
+
 	const handleRemoveGroup = (): void => {
 		dispatch(removeGroup(groupId));
 	};
@@ -67,7 +72,10 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
 								"control icon-button",
 							])
 						}
-						disabled={hasWorklogs}
+						disabled={
+							hasWorklogs
+							|| isBusy
+						}
 						onClick={handleRemoveGroup}
 						type="button"
 					>

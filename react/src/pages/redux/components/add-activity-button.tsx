@@ -12,6 +12,9 @@ import {
 	type GroupId,
 } from "@/features/group/types";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -30,6 +33,8 @@ const AddActivityButton: FC<AddActivityButtonProps> = ({
 	groupId,
 }) => {
 	const dispatch = useDispatch<Dispatch>();
+
+	const isBusy = useIsBusy();
 
 	const handleAddActivity = (): void => {
 		dispatch(
@@ -59,6 +64,7 @@ const AddActivityButton: FC<AddActivityButtonProps> = ({
 								"control icon-button",
 							])
 						}
+						disabled={isBusy}
 						onClick={handleAddActivity}
 						type="button"
 					>

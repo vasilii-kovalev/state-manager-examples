@@ -13,6 +13,9 @@ import {
 	type ActivityId,
 } from "@/features/activity/types";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -39,6 +42,8 @@ const MoveWorklogsToActivityButton: FC<MoveWorklogsToActivityButtonProps> = ({
 	const hasSelectedWorklogs = useSelector((state: RootState) => {
 		return selectHasSelectedWorklogs(state.page);
 	});
+
+	const isBusy = useIsBusy();
 
 	if (!hasSelectedWorklogs) {
 		return null;
@@ -68,6 +73,7 @@ const MoveWorklogsToActivityButton: FC<MoveWorklogsToActivityButtonProps> = ({
 								"control icon-button",
 							])
 						}
+						disabled={isBusy}
 						onClick={handleMoveWorklogsToActivity}
 						type="button"
 					>

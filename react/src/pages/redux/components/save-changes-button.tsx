@@ -17,6 +17,9 @@ import {
 	QUERY_KEYS,
 } from "@/constants";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -55,6 +58,8 @@ const SaveChangesButton: FC = () => {
 		},
 	});
 
+	const isBusy = useIsBusy();
+
 	return (
 		<Tooltip<HTMLButtonElement>
 			renderBody={() => {
@@ -75,7 +80,10 @@ const SaveChangesButton: FC = () => {
 								"control",
 							])
 						}
-						disabled={!hasChanges}
+						disabled={
+							!hasChanges
+							|| isBusy
+						}
 						onClick={() => {
 							handleSaveChanges();
 						}}

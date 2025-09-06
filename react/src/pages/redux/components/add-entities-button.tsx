@@ -10,6 +10,9 @@ import {
 	Tooltip,
 } from "@/components/tooltip";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -26,6 +29,8 @@ const WORKLOG_DURATION = 8;
 
 const AddEntitiesButton: FC = () => {
 	const dispatch = useDispatch<Dispatch>();
+
+	const isBusy = useIsBusy();
 
 	const handleAddEntities = (): void => {
 		dispatch(
@@ -72,6 +77,7 @@ const AddEntitiesButton: FC = () => {
 								"control",
 							])
 						}
+						disabled={isBusy}
 						onClick={handleAddEntities}
 						type="button"
 					>

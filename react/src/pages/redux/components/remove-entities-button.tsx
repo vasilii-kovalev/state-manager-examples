@@ -9,6 +9,9 @@ import {
 	Tooltip,
 } from "@/components/tooltip";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -21,6 +24,8 @@ import {
 
 const RemoveEntitiesButton: FC = () => {
 	const dispatch = useDispatch<Dispatch>();
+
+	const isBusy = useIsBusy();
 
 	const handleRemoveEntities = (): void => {
 		dispatch(removeEntities());
@@ -46,6 +51,7 @@ const RemoveEntitiesButton: FC = () => {
 								"control",
 							])
 						}
+						disabled={isBusy}
 						onClick={handleRemoveEntities}
 						type="button"
 					>

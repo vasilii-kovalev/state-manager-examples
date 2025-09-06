@@ -13,6 +13,9 @@ import {
 	type GroupId,
 } from "@/features/group/types";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -39,6 +42,8 @@ const MoveWorklogsToGroupButton: FC<MoveWorklogsToGroupButtonProps> = ({
 	const hasSelectedWorklogs = useSelector((state: RootState) => {
 		return selectHasSelectedWorklogs(state.page);
 	});
+
+	const isBusy = useIsBusy();
 
 	if (!hasSelectedWorklogs) {
 		return null;
@@ -68,6 +73,7 @@ const MoveWorklogsToGroupButton: FC<MoveWorklogsToGroupButtonProps> = ({
 								"control icon-button",
 							])
 						}
+						disabled={isBusy}
 						onClick={handleMoveWorklogsToGroup}
 						type="button"
 					>

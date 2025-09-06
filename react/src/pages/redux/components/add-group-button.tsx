@@ -9,6 +9,9 @@ import {
 	Tooltip,
 } from "@/components/tooltip";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -21,6 +24,8 @@ import {
 
 const AddGroupButton: FC = () => {
 	const dispatch = useDispatch<Dispatch>();
+
+	const isBusy = useIsBusy();
 
 	const handleAddGroup = (): void => {
 		dispatch(addGroup());
@@ -46,6 +51,7 @@ const AddGroupButton: FC = () => {
 								"control icon-button",
 							])
 						}
+						disabled={isBusy}
 						onClick={handleAddGroup}
 						type="button"
 					>

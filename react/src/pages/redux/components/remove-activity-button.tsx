@@ -13,6 +13,9 @@ import {
 	type ActivityId,
 } from "@/features/activity/types";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -43,6 +46,8 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 		);
 	});
 
+	const isBusy = useIsBusy();
+
 	const handleRemoveActivity = (): void => {
 		dispatch(removeActivity(activityId));
 	};
@@ -67,7 +72,10 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 								"control icon-button",
 							])
 						}
-						disabled={hasWorklogs}
+						disabled={
+							hasWorklogs
+							|| isBusy
+						}
 						onClick={handleRemoveActivity}
 						type="button"
 					>

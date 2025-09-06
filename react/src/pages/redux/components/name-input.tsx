@@ -11,6 +11,9 @@ import {
 } from "valibot";
 
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	type UseLocalNameResult,
 } from "@/hooks/use-local-name";
 import {
@@ -32,6 +35,8 @@ const NameInput = <Name extends string>({
 	setNameLocal,
 	validationSchema,
 }: NameInputProps<Name>): ReactNode => {
+	const isBusy = useIsBusy();
+
 	const handleNameChange: ChangeEventHandler<HTMLInputElement> = (event) => {
 		setNameLocal(event.target.value);
 	};
@@ -73,6 +78,7 @@ const NameInput = <Name extends string>({
 					className,
 				])
 			}
+			disabled={isBusy}
 			onBlur={handleBlur}
 			onChange={handleNameChange}
 			placeholder={name}

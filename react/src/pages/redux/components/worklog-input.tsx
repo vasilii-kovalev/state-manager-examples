@@ -33,6 +33,9 @@ import {
 	type WorklogId,
 } from "@/features/worklog/types";
 import {
+	useIsBusy,
+} from "@/hooks/use-is-busy";
+import {
 	WorklogInputSchema,
 } from "@/pages/schemas";
 
@@ -74,6 +77,8 @@ const WorklogInput: FC<WorklogCellProps> = ({
 	groupId,
 }) => {
 	const dispatch = useDispatch<Dispatch>();
+
+	const isBusy = useIsBusy();
 
 	const [
 		durationLocal,
@@ -144,6 +149,7 @@ const WorklogInput: FC<WorklogCellProps> = ({
 	return (
 		<input
 			className="control h-full w-full b-0 text-center"
+			disabled={isBusy}
 			inputMode="numeric"
 			onBlur={handleBlur}
 			onChange={handleDurationChange}
