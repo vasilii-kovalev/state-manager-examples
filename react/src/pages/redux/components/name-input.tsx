@@ -6,9 +6,6 @@ import {
 	type ReactNode,
 } from "react";
 import {
-	useSelector,
-} from "react-redux";
-import {
 	type GenericSchema,
 	safeParse,
 } from "valibot";
@@ -19,13 +16,6 @@ import {
 import {
 	getClass,
 } from "@/utilities/get-class";
-
-import {
-	type RootState,
-} from "../store";
-import {
-	selectHasSelectedWorklogs,
-} from "../store/page/selectors";
 
 interface NameInputProps<Name extends string> extends UseLocalNameResult {
 	name: Name;
@@ -42,10 +32,6 @@ const NameInput = <Name extends string>({
 	setNameLocal,
 	validationSchema,
 }: NameInputProps<Name>): ReactNode => {
-	const hasSelectedWorklogs = useSelector((state: RootState) => {
-		return selectHasSelectedWorklogs(state.page);
-	});
-
 	const handleNameChange: ChangeEventHandler<HTMLInputElement> = (event) => {
 		setNameLocal(event.target.value);
 	};
@@ -87,7 +73,6 @@ const NameInput = <Name extends string>({
 					className,
 				])
 			}
-			disabled={hasSelectedWorklogs}
 			onBlur={handleBlur}
 			onChange={handleNameChange}
 			placeholder={name}
