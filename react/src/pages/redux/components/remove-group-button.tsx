@@ -3,7 +3,6 @@ import {
 } from "react";
 import {
 	useDispatch,
-	useSelector,
 } from "react-redux";
 
 import {
@@ -21,11 +20,7 @@ import {
 
 import {
 	type Dispatch,
-	type RootState,
 } from "../store";
-import {
-	selectHasWorklogsInGroup,
-} from "../store/page/selectors";
 import {
 	removeGroup,
 } from "../store/page/slice";
@@ -39,13 +34,6 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
 }) => {
 	const dispatch = useDispatch<Dispatch>();
 
-	const hasWorklogs = useSelector((state: RootState) => {
-		return selectHasWorklogsInGroup(
-			state.page,
-			groupId,
-		);
-	});
-
 	const isBusy = useIsBusy();
 
 	const handleRemoveGroup = (): void => {
@@ -55,7 +43,7 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
 	return (
 		<Tooltip<HTMLButtonElement>
 			renderBody={() => {
-				return "Remove group";
+				return "Remove group and all its activities and worklogs";
 			}}
 			renderTarget={({
 				className,
@@ -72,10 +60,7 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
 								"control icon-button",
 							])
 						}
-						disabled={
-							hasWorklogs
-							|| isBusy
-						}
+						disabled={isBusy}
 						onClick={handleRemoveGroup}
 						type="button"
 					>

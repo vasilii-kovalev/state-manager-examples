@@ -27,6 +27,8 @@ import {
 
 import {
 	selectActivitiesForGroup,
+	selectWorklogsForActivity,
+	selectWorklogsForGroup,
 } from "./selectors";
 
 interface UpdateWorklogSelectionActionPayload {
@@ -115,6 +117,22 @@ const pageSlice = createSlice({
 				return activityIdCurrent !== activityId;
 			});
 
+			// Removing worklogs.
+			const worklogsForActivity = selectWorklogsForActivity(
+				state,
+				activityId,
+			);
+
+			worklogsForActivity.forEach((worklog) => {
+				delete state.worklogsById[worklog.id];
+			});
+
+			state.worklogIds = state.worklogIds.filter((worklogIdCurrent) => {
+				return !worklogsForActivity.some((worklog) => {
+					return worklog.id === worklogIdCurrent;
+				});
+			});
+
 			state.hasChanges = true;
 		},
 		removeEntities: (
@@ -138,6 +156,7 @@ const pageSlice = createSlice({
 				return groupIdCurrent !== groupId;
 			});
 
+			// Removing activities.
 			const activitiesForGroup = selectActivitiesForGroup(
 				state,
 				groupId,
@@ -150,6 +169,22 @@ const pageSlice = createSlice({
 			state.activityIds = state.activityIds.filter((activityIdCurrent) => {
 				return !activitiesForGroup.some((activity) => {
 					return activity.id === activityIdCurrent;
+				});
+			});
+
+			// Removing worklogs.
+			const worklogsForGroup = selectWorklogsForGroup(
+				state,
+				groupId,
+			);
+
+			worklogsForGroup.forEach((worklog) => {
+				delete state.worklogsById[worklog.id];
+			});
+
+			state.worklogIds = state.worklogIds.filter((worklogIdCurrent) => {
+				return !worklogsForGroup.some((worklog) => {
+					return worklog.id === worklogIdCurrent;
 				});
 			});
 

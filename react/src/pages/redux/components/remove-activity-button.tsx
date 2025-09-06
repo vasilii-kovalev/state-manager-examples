@@ -3,7 +3,6 @@ import {
 } from "react";
 import {
 	useDispatch,
-	useSelector,
 } from "react-redux";
 
 import {
@@ -21,11 +20,7 @@ import {
 
 import {
 	type Dispatch,
-	type RootState,
 } from "../store";
-import {
-	selectHasWorklogsInActivity,
-} from "../store/page/selectors";
 import {
 	removeActivity,
 } from "../store/page/slice";
@@ -39,13 +34,6 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 }) => {
 	const dispatch = useDispatch<Dispatch>();
 
-	const hasWorklogs = useSelector((state: RootState) => {
-		return selectHasWorklogsInActivity(
-			state.page,
-			activityId,
-		);
-	});
-
 	const isBusy = useIsBusy();
 
 	const handleRemoveActivity = (): void => {
@@ -55,7 +43,7 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 	return (
 		<Tooltip<HTMLButtonElement>
 			renderBody={() => {
-				return "Remove activity";
+				return "Remove activity and all its worklogs";
 			}}
 			renderTarget={({
 				className,
@@ -72,10 +60,7 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 								"control icon-button",
 							])
 						}
-						disabled={
-							hasWorklogs
-							|| isBusy
-						}
+						disabled={isBusy}
 						onClick={handleRemoveActivity}
 						type="button"
 					>

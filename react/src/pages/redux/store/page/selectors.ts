@@ -143,7 +143,7 @@ const selectGroups = createSelector(
 	},
 );
 
-const selectWorklogsForActivity = createSelector(
+const selectWorklogsForActivity = createDraftSafeSelector(
 	[
 		selectWorklogs,
 		(
@@ -163,7 +163,7 @@ const selectWorklogsForActivity = createSelector(
 	},
 );
 
-const selectWorklogsForGroup = createSelector(
+const selectWorklogsForGroup = createDraftSafeSelector(
 	[
 		selectWorklogs,
 		(
@@ -528,4 +528,5 @@ export {
 	selectSelectionStateForGroup,
 	selectWorklogsForActivity,
 	selectWorklogsForActivityByDate,
+	selectWorklogsForGroup,
 };
