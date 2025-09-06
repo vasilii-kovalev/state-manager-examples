@@ -19,6 +19,9 @@ import {
 	AddGroupButton,
 } from "./add-group-button";
 import {
+	AddGroupsButton,
+} from "./add-groups-button";
+import {
 	Cell,
 } from "./cell";
 import {
@@ -63,6 +66,7 @@ const SummaryInfoCell: FC = () => {
 				<FlexRow
 					className="gap-col-2"
 				>
+					<AddGroupsButton/>
 					<AddGroupButton/>
 					<RemoveGroupsButton/>
 				</FlexRow>

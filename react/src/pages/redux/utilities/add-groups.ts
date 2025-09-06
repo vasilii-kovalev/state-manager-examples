@@ -19,17 +19,17 @@ import {
 	performTransaction,
 } from "./perform-transaction";
 
-interface AddEntitiesParams {
+interface AddGroupsParams {
 	activitiesPerGroupCount: number;
 	groupsCount: number;
 	worklogDuration: number;
 }
 
-const addEntities = ({
+const addGroups = ({
 	activitiesPerGroupCount,
 	groupsCount,
 	worklogDuration,
-}: AddEntitiesParams): Thunk<void> => {
+}: AddGroupsParams): Thunk<void> => {
 	return (
 		dispatch,
 		getState,
@@ -73,7 +73,7 @@ const addEntities = ({
 	};
 };
 
-const addEntitiesWithTransaction: typeof addEntities = (
+const addGroupsWithTransaction: typeof addGroups = (
 	...params
 ) => {
 	return performTransaction({
@@ -88,11 +88,11 @@ const addEntitiesWithTransaction: typeof addEntities = (
 		transaction: (
 			dispatch,
 		) => {
-			dispatch(addEntities(...params));
+			dispatch(addGroups(...params));
 		},
 	});
 };
 
 export {
-	addEntitiesWithTransaction as addEntities,
+	addGroupsWithTransaction as addGroups,
 };

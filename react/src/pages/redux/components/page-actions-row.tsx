@@ -7,9 +7,6 @@ import {
 } from "@/components/flex-row";
 
 import {
-	AddEntitiesButton,
-} from "./add-entities-button";
-import {
 	SaveChangesButton,
 } from "./save-changes-button";
 
@@ -19,7 +16,6 @@ const PageActionsRow: FC = () => {
 			className="gap-col-2"
 		>
 			<SaveChangesButton/>
-			<AddEntitiesButton/>
 		</FlexRow>
 	);
 };

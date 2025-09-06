@@ -20,21 +20,21 @@ import {
 	type Dispatch,
 } from "../store";
 import {
-	addEntities,
-} from "../utilities/add-entities";
+	addGroups,
+} from "../utilities/add-groups";
 
 const GROUPS_COUNT = 2;
 const ACTIVITIES_PER_GROUP_COUNT = 2;
 const WORKLOG_DURATION = 8;
 
-const AddEntitiesButton: FC = () => {
+const AddGroupsButton: FC = () => {
 	const dispatch = useDispatch<Dispatch>();
 
 	const isBusy = useIsBusy();
 
-	const handleAddEntities = (): void => {
+	const handleAddGroups = (): void => {
 		dispatch(
-			addEntities({
+			addGroups({
 				activitiesPerGroupCount: ACTIVITIES_PER_GROUP_COUNT,
 				groupsCount: GROUPS_COUNT,
 				worklogDuration: WORKLOG_DURATION,
@@ -74,22 +74,22 @@ const AddEntitiesButton: FC = () => {
 						className={
 							getClass([
 								className,
-								"control",
+								"control icon-button",
 							])
 						}
 						disabled={isBusy}
-						onClick={handleAddEntities}
+						onClick={handleAddGroups}
 						type="button"
 					>
-						Add entities
+						++
 					</button>
 				);
 			}}
-			targetId="add-entities-button"
+			targetId="add-groups-button"
 		/>
 	);
 };
 
 export {
-	AddEntitiesButton,
+	AddGroupsButton,
 };
