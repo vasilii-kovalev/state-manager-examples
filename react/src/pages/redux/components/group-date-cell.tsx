@@ -16,7 +16,7 @@ import {
 	type RootState,
 } from "../store";
 import {
-	selectReportingStatisticsByDateForGroup,
+	selectReportedDurationForDateForGroup,
 } from "../store/page/selectors";
 import {
 	TotalDurationCell,
@@ -31,20 +31,19 @@ const GroupDateCell: FC<GroupDateCellProps> = ({
 	groupId,
 	date,
 }) => {
-	const reportingStatisticsForDate = useSelector((state: RootState) => {
-		const reportingStatisticsByDate = selectReportingStatisticsByDateForGroup(
+	const reportedDuration = useSelector((state: RootState) => {
+		return selectReportedDurationForDateForGroup(
 			state.page,
 			groupId,
+			date,
 		);
-
-		return reportingStatisticsByDate[date];
 	});
 
 	return (
 		<TotalDurationCell
 			date={date}
+			duration={reportedDuration}
 			location={`group-date-cell-${groupId}`}
-			reportingStatisticsSummary={reportingStatisticsForDate}
 		/>
 	);
 };

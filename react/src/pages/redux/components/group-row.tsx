@@ -1,15 +1,11 @@
 import {
 	type FC,
-	Fragment,
 } from "react";
 
 import {
 	type Group,
 } from "@/features/group/types";
 
-import {
-	ActivityRows,
-} from "./activity-rows";
 import {
 	GroupDateCells,
 } from "./group-date-cells";
@@ -28,22 +24,16 @@ const GroupRow: FC<GroupRowProps> = ({
 	group,
 }) => {
 	return (
-		<Fragment>
-			<Row>
-				<GroupInfoCell
-					groupId={group.id}
-					groupName={group.name}
-				/>
+		<Row>
+			<GroupInfoCell
+				groupId={group.id}
+				groupName={group.name}
+			/>
 
-				<GroupDateCells
-					groupId={group.id}
-				/>
-			</Row>
-
-			<ActivityRows
+			<GroupDateCells
 				groupId={group.id}
 			/>
-		</Fragment>
+		</Row>
 	);
 };
 

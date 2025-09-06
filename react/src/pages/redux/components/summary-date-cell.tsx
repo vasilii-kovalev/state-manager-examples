@@ -13,7 +13,7 @@ import {
 	type RootState,
 } from "../store";
 import {
-	selectReportingStatisticsByDate,
+	selectReportedDurationForDate,
 } from "../store/page/selectors";
 import {
 	TotalDurationCell,
@@ -26,17 +26,18 @@ interface SummaryDateCellProps {
 const SummaryDateCell: FC<SummaryDateCellProps> = ({
 	date,
 }) => {
-	const reportingStatisticsForDate = useSelector((state: RootState) => {
-		const reportingStatisticsByDate = selectReportingStatisticsByDate(state.page);
-
-		return reportingStatisticsByDate[date];
+	const reportedDuration = useSelector((state: RootState) => {
+		return selectReportedDurationForDate(
+			state.page,
+			date,
+		);
 	});
 
 	return (
 		<TotalDurationCell
 			date={date}
+			duration={reportedDuration}
 			location="summary-date-cell"
-			reportingStatisticsSummary={reportingStatisticsForDate}
 		/>
 	);
 };

@@ -6,7 +6,6 @@ import {
 	type ActivityId,
 } from "../activity/types";
 import {
-	type DateString,
 	type Duration,
 } from "../dates-and-time/types";
 import {
@@ -31,8 +30,6 @@ interface ReportingStatisticsSummary {
 	reported: Duration;
 	norm: Duration;
 }
-
-type ReportingStatisticsByDate = Record<DateString, ReportingStatisticsSummary>;
 
 type EntityId =
 	| WorklogId
@@ -64,6 +61,5 @@ export {
 	type NormalizedEntities,
 	type PageData,
 	type PageState,
-	type ReportingStatisticsByDate,
 	type ReportingStatisticsSummary,
 };

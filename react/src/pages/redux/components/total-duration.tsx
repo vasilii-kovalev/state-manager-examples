@@ -1,7 +1,4 @@
 import {
-	isUndefined,
-} from "es-toolkit";
-import {
 	type FC,
 } from "react";
 
@@ -14,7 +11,7 @@ import {
 
 interface TotalDurationProps {
 	className?: string;
-	duration: Duration | undefined;
+	duration: Duration;
 	shouldRenderZero?: boolean;
 }
 
@@ -24,11 +21,8 @@ const TotalDuration: FC<TotalDurationProps> = ({
 	shouldRenderZero = false,
 }) => {
 	if (
-		isUndefined(duration)
-		|| (
-			duration === 0
-			&& !shouldRenderZero
-		)
+		duration === 0
+		&& !shouldRenderZero
 	) {
 		return null;
 	}

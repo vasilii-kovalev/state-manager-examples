@@ -13,6 +13,7 @@ import {
 } from "@/features/activity/types";
 import {
 	type DateString,
+	type Duration,
 } from "@/features/dates-and-time/types";
 import {
 	type Group,
@@ -22,7 +23,6 @@ import {
 import {
 	type EntitySelectionState,
 	type PageState,
-	type ReportingStatisticsByDate,
 	type ReportingStatisticsSummary,
 } from "@/features/page/types";
 import {
@@ -32,8 +32,8 @@ import {
 	getEntitySelectionStateForGroups,
 } from "@/features/page/utilities/get-entity-selection-state-for-groups";
 import {
-	getReportingStatisticsByDate,
-} from "@/features/page/utilities/get-reporting-statistics-by-date";
+	getReportedDurationForDate,
+} from "@/features/page/utilities/get-reported-duration-for-date";
 import {
 	getReportingStatisticsSummary,
 } from "@/features/page/utilities/get-reporting-statistics-summary";
@@ -264,33 +264,44 @@ const selectHasWorklogs = createSelector(
 	},
 );
 
-const selectReportingStatisticsByDateForGroup = createSelector(
+const selectReportedDurationForDateForGroup = createSelector(
 	[
 		selectWorklogsForGroup,
-		selectCalendar,
+		(
+			state: PageState,
+			groupId: GroupId,
+			date: DateString,
+		): DateString => {
+			return date;
+		},
 	],
 	(
 		worklogs,
-		calendar,
-	): ReportingStatisticsByDate => {
-		return getReportingStatisticsByDate({
-			calendar,
+		date,
+	): Duration => {
+		return getReportedDurationForDate({
+			date,
 			worklogs,
 		});
 	},
 );
 
-const selectReportingStatisticsByDate = createSelector(
+const selectReportedDurationForDate = createSelector(
 	[
 		selectWorklogs,
-		selectCalendar,
+		(
+			state: PageState,
+			date: DateString,
+		): DateString => {
+			return date;
+		},
 	],
 	(
 		worklogs,
-		calendar,
-	): ReportingStatisticsByDate => {
-		return getReportingStatisticsByDate({
-			calendar,
+		date,
+	): Duration => {
+		return getReportedDurationForDate({
+			date,
 			worklogs,
 		});
 	},
@@ -507,8 +518,8 @@ export {
 	selectHasWorklogsInGroup,
 	selectIsActivitySelected,
 	selectIsGroupSelected,
-	selectReportingStatisticsByDate,
-	selectReportingStatisticsByDateForGroup,
+	selectReportedDurationForDate,
+	selectReportedDurationForDateForGroup,
 	selectReportingStatisticsSummary,
 	selectReportingStatisticsSummaryForActivity,
 	selectReportingStatisticsSummaryForGroup,

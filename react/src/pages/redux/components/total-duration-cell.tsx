@@ -1,7 +1,4 @@
 import {
-	isUndefined,
-} from "es-toolkit";
-import {
 	type FC,
 	type ReactNode,
 } from "react";
@@ -11,6 +8,7 @@ import {
 } from "@/components/tooltip";
 import {
 	type DateString,
+	type Duration,
 } from "@/features/dates-and-time/types";
 import {
 	formatDuration,
@@ -18,9 +16,6 @@ import {
 import {
 	getIsWeekend,
 } from "@/features/dates-and-time/utilities/get-is-weekend";
-import {
-	type ReportingStatisticsSummary,
-} from "@/features/page/types";
 import {
 	getClass,
 } from "@/utilities/get-class";
@@ -35,26 +30,23 @@ import {
 interface TotalDurationCellProps {
 	date: DateString;
 	location: string;
-	reportingStatisticsSummary: ReportingStatisticsSummary | undefined;
+	duration: Duration;
 }
 
 const TotalDurationCell: FC<TotalDurationCellProps> = ({
 	date,
 	location,
-	reportingStatisticsSummary,
+	duration,
 }) => {
 	const renderTotalDuration = (): ReactNode => {
-		if (
-			isUndefined(reportingStatisticsSummary)
-			|| reportingStatisticsSummary.reported === 0
-		) {
+		if (duration === 0) {
 			return null;
 		}
 
 		return (
 			<Tooltip<HTMLDivElement>
 				renderBody={() => {
-					return formatDuration(reportingStatisticsSummary.reported);
+					return formatDuration(duration);
 				}}
 				renderTarget={({
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -74,7 +66,7 @@ const TotalDurationCell: FC<TotalDurationCellProps> = ({
 							tabIndex={0}
 						>
 							<TotalDuration
-								duration={reportingStatisticsSummary.reported}
+								duration={duration}
 							/>
 						</div>
 					);

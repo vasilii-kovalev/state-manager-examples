@@ -13,6 +13,9 @@ import {
 	selectGroups,
 } from "../store/page/selectors";
 import {
+	ActivityRows,
+} from "./activity-rows";
+import {
 	GroupRow,
 } from "./group-row";
 
@@ -26,10 +29,17 @@ const GroupRows: FC = () => {
 			{
 				groups.map((group) => {
 					return (
-						<GroupRow
-							group={group}
+						<Fragment
 							key={group.id}
-						/>
+						>
+							<GroupRow
+								group={group}
+							/>
+
+							<ActivityRows
+								groupId={group.id}
+							/>
+						</Fragment>
 					);
 				})
 			}
