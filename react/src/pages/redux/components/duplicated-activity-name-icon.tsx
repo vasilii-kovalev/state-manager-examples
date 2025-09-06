@@ -6,18 +6,12 @@ import {
 } from "react-redux";
 
 import {
-	Tooltip,
-} from "@/components/tooltip";
-import {
 	type ActivityId,
 	type ActivityName,
 } from "@/features/activity/types";
 import {
 	type GroupId,
 } from "@/features/group/types";
-import {
-	getClass,
-} from "@/utilities/get-class";
 
 import {
 	type RootState,
@@ -25,6 +19,9 @@ import {
 import {
 	selectActivityNamesInGroup,
 } from "../store/page/selectors";
+import {
+	DuplicatedNameIcon,
+} from "./duplicated-name-icon";
 
 interface DuplicatedActivityNameIconProps {
 	activityId: ActivityId;
@@ -46,42 +43,10 @@ const DuplicatedActivityNameIcon: FC<DuplicatedActivityNameIconProps> = ({
 	});
 
 	return (
-		<Tooltip<HTMLDivElement>
-			renderBody={() => {
-				return "There are multiple activities with this name in the group";
-			}}
-			renderTarget={({
-				className,
-				tooltipId,
-				...targetProps
-			}) => {
-				const hasDuplicate = existingActivityNames.includes(name);
-
-				return (
-					<div
-						{...targetProps}
-						aria-describedby={tooltipId}
-						className={
-							getClass([
-								className,
-								"h-5 w-3 flex-inline justify-center p-1",
-							])
-						}
-						tabIndex={
-							hasDuplicate
-								? 0
-								: undefined
-						}
-					>
-						{
-							hasDuplicate
-								? "!"
-								: null
-						}
-					</div>
-				);
-			}}
-			targetId={`duplicated-activity-name-${activityId}`}
+		<DuplicatedNameIcon
+			hasDuplicate={existingActivityNames.includes(name)}
+			tooltipBodyText="There are multiple activities with this name in the group"
+			tooltipIconId={`duplicated-activity-name-${activityId}`}
 		/>
 	);
 };

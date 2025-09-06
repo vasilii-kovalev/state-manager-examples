@@ -21,10 +21,11 @@ import {
 } from "@/utilities/get-class";
 
 interface NameInputProps<Name extends string> extends UseLocalNameResult {
+	className?: string;
 	name: Name;
 	onBlur: (nameNext: Name) => void;
+	placeholder: string;
 	validationSchema: GenericSchema<string, Name>;
-	className?: string;
 }
 
 const NameInput = <Name extends string>({
@@ -32,6 +33,7 @@ const NameInput = <Name extends string>({
 	name,
 	nameLocal,
 	onBlur,
+	placeholder,
 	setNameLocal,
 	validationSchema,
 }: NameInputProps<Name>): ReactNode => {
@@ -81,7 +83,7 @@ const NameInput = <Name extends string>({
 			disabled={isBusy}
 			onBlur={handleBlur}
 			onChange={handleNameChange}
-			placeholder={name}
+			placeholder={placeholder}
 			type="text"
 			value={nameLocal}
 		/>

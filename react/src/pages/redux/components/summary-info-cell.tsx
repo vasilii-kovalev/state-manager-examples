@@ -47,7 +47,7 @@ const SummaryInfoCell: FC = () => {
 
 					{/* Placeholder for alignment among the rows. */}
 					<div
-						className="w-42"
+						className="w-48"
 					/>
 
 					<ReportedDurationOfNorm

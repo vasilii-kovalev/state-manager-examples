@@ -12,13 +12,8 @@ const HeaderInfoCell: FC = () => {
 			className="cell info-column"
 		>
 			<FlexRow>
-				{/* Placeholder for alignment among the rows. */}
 				<div
-					className="w-48"
-				/>
-
-				<div
-					className="flex-inline shrink-0"
+					className="m-is-54 flex-inline shrink-0"
 				>
 					<span
 						className="w-18 text-end"

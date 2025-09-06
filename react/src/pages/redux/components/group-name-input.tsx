@@ -1,11 +1,13 @@
 import {
 	type FC,
-	Fragment,
 } from "react";
 import {
 	useDispatch,
 } from "react-redux";
 
+import {
+	FlexRow,
+} from "@/components/flex-row";
 import {
 	GroupNameSchema,
 } from "@/features/group/schemas";
@@ -58,12 +60,15 @@ const GroupNameInput: FC<GroupNameInputProps> = ({
 	};
 
 	return (
-		<Fragment>
+		<FlexRow
+			className="gap-col-1"
+		>
 			<NameInput
 				className="w-42"
 				name={name}
 				nameLocal={nameLocal}
 				onBlur={handleBlur}
+				placeholder="Group name"
 				setNameLocal={setNameLocal}
 				validationSchema={GroupNameSchema}
 			/>
@@ -72,7 +77,7 @@ const GroupNameInput: FC<GroupNameInputProps> = ({
 				groupId={id}
 				name={nameLocal}
 			/>
-		</Fragment>
+		</FlexRow>
 	);
 };
 

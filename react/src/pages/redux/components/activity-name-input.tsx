@@ -66,21 +66,22 @@ const ActivityNameInput: FC<ActivityNameInputProps> = ({
 
 	return (
 		<FlexRow
-			className="gap-col-1"
+			className="m-is-3 gap-col-1"
 		>
+			<NameInput
+				className="w-39"
+				name={name}
+				nameLocal={nameLocal}
+				onBlur={handleBlur}
+				placeholder="Activity name"
+				setNameLocal={setNameLocal}
+				validationSchema={ActivityNameSchema}
+			/>
+
 			<DuplicatedActivityNameIcon
 				activityId={activityId}
 				groupId={groupId}
 				name={name}
-			/>
-
-			<NameInput
-				className="w-36"
-				name={name}
-				nameLocal={nameLocal}
-				onBlur={handleBlur}
-				setNameLocal={setNameLocal}
-				validationSchema={ActivityNameSchema}
 			/>
 		</FlexRow>
 	);

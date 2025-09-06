@@ -1,6 +1,5 @@
 import {
 	type FC,
-	Fragment,
 } from "react";
 import {
 	useSelector,
@@ -17,6 +16,9 @@ import {
 import {
 	selectGroupNames,
 } from "../store/page/selectors";
+import {
+	DuplicatedNameIcon,
+} from "./duplicated-name-icon";
 
 interface DuplicatedGroupNameIconProps {
 	name: GroupName;
@@ -34,15 +36,13 @@ const DuplicatedGroupNameIcon: FC<DuplicatedGroupNameIconProps> = ({
 		);
 	});
 
-	if (existingGroupNames.includes(name)) {
-		return (
-			<Fragment>
-				(!)
-			</Fragment>
-		);
-	}
-
-	return null;
+	return (
+		<DuplicatedNameIcon
+			hasDuplicate={existingGroupNames.includes(name)}
+			tooltipBodyText="There are multiple groups with this name"
+			tooltipIconId={`duplicated-group-name-${groupId}`}
+		/>
+	);
 };
 
 export {
