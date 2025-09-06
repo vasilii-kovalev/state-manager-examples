@@ -1,4 +1,7 @@
 import {
+	PAGE_DATA_DEFAULT,
+} from "../constants";
+import {
 	type PageData,
 } from "../types";
 import {
@@ -7,10 +10,8 @@ import {
 
 const getPageDataDefault = (): PageData => {
 	return {
-		activities: [],
+		...PAGE_DATA_DEFAULT,
 		calendar: getCalendarForCurrentMonth(),
-		groups: [],
-		worklogs: [],
 	};
 };
 
