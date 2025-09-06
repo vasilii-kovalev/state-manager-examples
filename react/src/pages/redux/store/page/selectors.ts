@@ -366,36 +366,6 @@ const selectReportingStatisticsSummary = createSelector(
 	},
 );
 
-const selectIsActivitySelected = createSelector(
-	[
-		selectWorklogsForActivity,
-		selectSelectedWorklogIds,
-	],
-	(
-		worklogs,
-		selectedWorklogIds,
-	): boolean => {
-		return worklogs.every((worklog) => {
-			return selectedWorklogIds.includes(worklog.id);
-		});
-	},
-);
-
-const selectIsGroupSelected = createSelector(
-	[
-		selectWorklogsForGroup,
-		selectSelectedWorklogIds,
-	],
-	(
-		worklogs,
-		selectedWorklogIds,
-	): boolean => {
-		return worklogs.every((worklog) => {
-			return selectedWorklogIds.includes(worklog.id);
-		});
-	},
-);
-
 const selectHasSelectedWorklogs = createSelector(
 	[
 		selectSelectedWorklogIds,
@@ -528,8 +498,6 @@ export {
 	selectHasWorklogs,
 	selectHasWorklogsInActivity,
 	selectHasWorklogsInGroup,
-	selectIsActivitySelected,
-	selectIsGroupSelected,
 	selectReportedDurationForDate,
 	selectReportedDurationForDateForGroup,
 	selectReportingStatisticsSummary,
