@@ -25,7 +25,13 @@ const config = defineConfig({
 			autoCodeSplitting: true,
 			target: "react",
 		}),
-		react(),
+		react({
+			babel: {
+				plugins: [
+					"babel-plugin-react-compiler",
+				],
+			},
+		}),
 		unoCSS(),
 		sonda(),
 	],

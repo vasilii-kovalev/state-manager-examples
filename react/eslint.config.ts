@@ -15,9 +15,8 @@ import importExportNewline from "eslint-plugin-import-export-newline";
 import {
 	flatConfigs as importConfigs,
 } from "eslint-plugin-import-x";
-import {
-	configs as reactHooksConfigs,
-} from "eslint-plugin-react-hooks";
+// eslint-disable-next-line import-x/no-namespace
+import * as reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from "globals";
@@ -1913,9 +1912,11 @@ const eslintConfig = disableAutofix(
 			extends: [
 				react.configs.all,
 				react.configs["disable-debug"],
-				reactHooksConfigs["recommended-latest"],
 				reactRefresh.configs.vite,
 			],
+			plugins: {
+				"react-hooks": reactHooks,
+			},
 			rules: {
 				/*
 					==================================================
