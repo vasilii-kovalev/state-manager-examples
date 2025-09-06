@@ -15,9 +15,11 @@ const savePageData = async (
 	pageData: PageData,
 ): Promise<void> => {
 	await Promise.all([
-		() => {
+		new Promise<void>((resolve) => {
 			setPageDataToLocalStorage(pageData);
-		},
+
+			resolve();
+		}),
 		// Adding a minimal artificial delay to display the full-page loader.
 		sleep(PAGE_DATA_PROCESSING_DELAY),
 	]);
