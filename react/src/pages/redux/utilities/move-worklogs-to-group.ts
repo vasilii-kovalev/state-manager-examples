@@ -32,7 +32,6 @@ const moveWorklogsToGroup = (
 		getState,
 	) => {
 		const {
-			activitiesById,
 			selectedWorklogIds,
 			worklogsById,
 		} = getState().page;
@@ -48,6 +47,11 @@ const moveWorklogsToGroup = (
 			if (worklog.groupId === groupId) {
 				return;
 			}
+
+			// The state may update in the loop, so we need to access the latest one on each iteration.
+			const {
+				activitiesById,
+			} = getState().page;
 
 			const activity = activitiesById[worklog.activityId];
 
