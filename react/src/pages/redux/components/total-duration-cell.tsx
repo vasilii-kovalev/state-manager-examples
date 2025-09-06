@@ -1,7 +1,4 @@
 import {
-	isWeekend,
-} from "date-fns";
-import {
 	isUndefined,
 } from "es-toolkit";
 import {
@@ -18,6 +15,9 @@ import {
 import {
 	formatDuration,
 } from "@/features/dates-and-time/utilities/format-duration";
+import {
+	getIsWeekend,
+} from "@/features/dates-and-time/utilities/get-is-weekend";
 import {
 	type ReportingStatisticsSummary,
 } from "@/features/page/types";
@@ -91,7 +91,7 @@ const TotalDurationCell: FC<TotalDurationCellProps> = ({
 					// Subtracting 1 padding, because the total duration container has 1 padding.
 					"bg-gray-50 p-1",
 					[
-						isWeekend(date),
+						getIsWeekend(date),
 						/*
 							`!important` is required, because shortcuts have less specificity.
 							If a higher specificity is set in the UnoCSS config in `layers`,

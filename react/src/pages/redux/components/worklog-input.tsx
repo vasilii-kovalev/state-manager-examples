@@ -1,7 +1,4 @@
 import {
-	isWeekend,
-} from "date-fns";
-import {
 	isUndefined,
 } from "es-toolkit";
 import {
@@ -26,6 +23,9 @@ import {
 	type DateString,
 	type Duration,
 } from "@/features/dates-and-time/types";
+import {
+	getIsWeekend,
+} from "@/features/dates-and-time/utilities/get-is-weekend";
 import {
 	type GroupId,
 } from "@/features/group/types";
@@ -88,7 +88,7 @@ const WorklogInput: FC<WorklogCellProps> = ({
 
 	const isBusy = useIsBusy();
 
-	const isWeekendDay = isWeekend(date);
+	const isWeekendDay = getIsWeekend(date);
 
 	const [
 		durationLocal,

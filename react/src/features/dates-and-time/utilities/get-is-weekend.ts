@@ -1,10 +1,7 @@
 import {
-	format,
+	isWeekend,
 } from "date-fns";
 
-import {
-	DATE_FORMAT,
-} from "../constants";
 import {
 	type DateString,
 } from "../types";
@@ -12,17 +9,14 @@ import {
 	parseDate,
 } from "./parse-date";
 
-const formatDayWithLeadingZero = (
+const getIsWeekend = (
 	dateString: DateString,
-): string => {
+): boolean => {
 	const date = parseDate(dateString);
 
-	return format(
-		date,
-		DATE_FORMAT.DAY_WITH_LEADING_ZERO,
-	);
+	return isWeekend(date);
 };
 
 export {
-	formatDayWithLeadingZero,
+	getIsWeekend,
 };

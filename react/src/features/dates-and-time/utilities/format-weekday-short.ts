@@ -13,9 +13,9 @@ import {
 } from "./parse-date";
 
 const formatWeekdayShort = (
-	dateOrDateString: Date | DateString,
+	dateString: DateString,
 ): string => {
-	const date = parseDate(dateOrDateString);
+	const date = parseDate(dateString);
 
 	return format(
 		date,
