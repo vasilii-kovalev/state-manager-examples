@@ -5,7 +5,6 @@ import {
 } from "react";
 import {
 	Provider,
-	useDispatch,
 } from "react-redux";
 
 import {
@@ -34,8 +33,8 @@ import {
 	Table,
 } from "./components/table";
 import {
-	type Dispatch,
 	store,
+	useApplicationDispatch,
 } from "./store";
 import {
 	resetState,
@@ -43,7 +42,7 @@ import {
 } from "./store/page/slice";
 
 const ReduxPage: FC = () => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
 	usePageData({
 		onSuccess: (pageData) => {

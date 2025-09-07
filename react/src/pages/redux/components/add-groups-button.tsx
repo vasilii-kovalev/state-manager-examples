@@ -2,9 +2,6 @@ import {
 	type FC,
 	Fragment,
 } from "react";
-import {
-	useDispatch,
-} from "react-redux";
 
 import {
 	Tooltip,
@@ -17,7 +14,7 @@ import {
 } from "@/utilities/get-class";
 
 import {
-	type Dispatch,
+	useApplicationDispatch,
 } from "../store";
 import {
 	addGroups,
@@ -28,7 +25,7 @@ const ACTIVITIES_PER_GROUP_COUNT = 2;
 const WORKLOG_DURATION = 8;
 
 const AddGroupsButton: FC = () => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();
 

@@ -1,16 +1,13 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type DateString,
 } from "@/features/dates-and-time/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectReportedDurationForDate,
@@ -26,7 +23,7 @@ interface SummaryDateCellProps {
 const SummaryDateCell: FC<SummaryDateCellProps> = ({
 	date,
 }) => {
-	const reportedDuration = useSelector((state: RootState) => {
+	const reportedDuration = useApplicationSelector((state) => {
 		return selectReportedDurationForDate(
 			state.page,
 			date,

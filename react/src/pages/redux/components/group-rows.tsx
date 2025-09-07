@@ -2,12 +2,9 @@ import {
 	type FC,
 	Fragment,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectGroups,
@@ -20,7 +17,7 @@ import {
 } from "./group-row";
 
 const GroupRows: FC = () => {
-	const groups = useSelector((state: RootState) => {
+	const groups = useApplicationSelector((state) => {
 		return selectGroups(state.page);
 	});
 

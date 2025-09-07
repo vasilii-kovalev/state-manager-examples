@@ -2,12 +2,9 @@ import {
 	type FC,
 	Fragment,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectCalendar,
@@ -17,7 +14,7 @@ import {
 } from "./summary-date-cell";
 
 const SummaryDateCells: FC = () => {
-	const calendar = useSelector((state: RootState) => {
+	const calendar = useApplicationSelector((state) => {
 		return selectCalendar(state.page);
 	});
 

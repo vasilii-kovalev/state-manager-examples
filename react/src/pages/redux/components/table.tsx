@@ -6,16 +6,13 @@ import {
 	type FC,
 	type HTMLAttributes,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	getClass,
 } from "@/utilities/get-class";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectCalendar,
@@ -35,7 +32,7 @@ type TableProps = DetailedHTMLProps<HTMLAttributes<HTMLTableElement>, HTMLTableE
 const Table: FC<TableProps> = ({
 	className,
 }) => {
-	const calendar = useSelector((state: RootState) => {
+	const calendar = useApplicationSelector((state) => {
 		return selectCalendar(state.page);
 	});
 

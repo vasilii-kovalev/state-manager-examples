@@ -1,9 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useDispatch,
-} from "react-redux";
 
 import {
 	Tooltip,
@@ -19,7 +16,7 @@ import {
 } from "@/utilities/get-class";
 
 import {
-	type Dispatch,
+	useApplicationDispatch,
 } from "../store";
 import {
 	addActivity,
@@ -32,7 +29,7 @@ interface AddActivityButtonProps {
 const AddActivityButton: FC<AddActivityButtonProps> = ({
 	groupId,
 }) => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();
 

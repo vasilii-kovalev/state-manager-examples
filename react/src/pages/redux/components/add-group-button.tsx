@@ -1,9 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useDispatch,
-} from "react-redux";
 
 import {
 	Tooltip,
@@ -16,14 +13,14 @@ import {
 } from "@/utilities/get-class";
 
 import {
-	type Dispatch,
+	useApplicationDispatch,
 } from "../store";
 import {
 	addGroup,
 } from "../utilities/add-group";
 
 const AddGroupButton: FC = () => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();
 

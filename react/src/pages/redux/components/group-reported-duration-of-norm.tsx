@@ -1,16 +1,13 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type GroupId,
 } from "@/features/group/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectReportingStatisticsSummaryForGroup,
@@ -26,7 +23,7 @@ interface GroupReportedDurationOfNormProps {
 const GroupReportedDurationOfNorm: FC<GroupReportedDurationOfNormProps> = ({
 	groupId,
 }) => {
-	const reportingStatisticsSummary = useSelector((state: RootState) => {
+	const reportingStatisticsSummary = useApplicationSelector((state) => {
 		return selectReportingStatisticsSummaryForGroup(
 			state.page,
 			groupId,

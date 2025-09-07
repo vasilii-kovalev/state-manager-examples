@@ -1,9 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useDispatch,
-} from "react-redux";
 
 import {
 	FlexRow,
@@ -20,7 +17,7 @@ import {
 } from "@/hooks/use-local-name";
 
 import {
-	type Dispatch,
+	useApplicationDispatch,
 } from "../store";
 import {
 	updateGroupName,
@@ -41,7 +38,7 @@ const GroupNameInput: FC<GroupNameInputProps> = ({
 	id,
 	name,
 }) => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
 	const {
 		nameLocal,

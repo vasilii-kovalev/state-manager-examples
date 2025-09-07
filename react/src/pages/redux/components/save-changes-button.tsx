@@ -5,10 +5,6 @@ import {
 import {
 	type FC,
 } from "react";
-import {
-	useDispatch,
-	useSelector,
-} from "react-redux";
 
 import {
 	Tooltip,
@@ -24,8 +20,8 @@ import {
 } from "@/utilities/get-class";
 
 import {
-	type Dispatch,
-	type RootState,
+	useApplicationDispatch,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectHasChanges,
@@ -35,9 +31,9 @@ import {
 } from "../utilities/save-page-state";
 
 const SaveChangesButton: FC = () => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
-	const hasChanges = useSelector((state: RootState) => {
+	const hasChanges = useApplicationSelector((state) => {
 		return selectHasChanges(state.page);
 	});
 

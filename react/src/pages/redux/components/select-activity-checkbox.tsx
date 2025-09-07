@@ -1,10 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useDispatch,
-	useSelector,
-} from "react-redux";
 
 import {
 	SelectEntityCheckbox,
@@ -14,8 +10,8 @@ import {
 } from "@/features/activity/types";
 
 import {
-	type Dispatch,
-	type RootState,
+	useApplicationDispatch,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectHasWorklogsInActivity,
@@ -32,15 +28,15 @@ interface SelectActivityCheckboxProps {
 const SelectActivityCheckbox: FC<SelectActivityCheckboxProps> = ({
 	activityId,
 }) => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
-	const selectionState = useSelector((state: RootState) => {
+	const selectionState = useApplicationSelector((state) => {
 		return selectSelectionStateForActivity(
 			state.page,
 			activityId,
 		);
 	});
-	const hasWorklogs = useSelector((state: RootState) => {
+	const hasWorklogs = useApplicationSelector((state) => {
 		return selectHasWorklogsInActivity(
 			state.page,
 			activityId,

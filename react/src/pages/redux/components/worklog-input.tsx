@@ -7,9 +7,6 @@ import {
 	useState,
 } from "react";
 import {
-	useDispatch,
-} from "react-redux";
-import {
 	safeParse,
 } from "valibot";
 
@@ -40,7 +37,7 @@ import {
 } from "@/hooks/use-is-busy";
 
 import {
-	type Dispatch,
+	useApplicationDispatch,
 } from "../store";
 import {
 	addWorklog,
@@ -76,7 +73,7 @@ const WorklogInput: FC<WorklogCellProps> = ({
 	id,
 	groupId,
 }) => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();
 

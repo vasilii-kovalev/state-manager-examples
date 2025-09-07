@@ -1,10 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useDispatch,
-	useSelector,
-} from "react-redux";
 
 import {
 	Tooltip,
@@ -17,8 +13,8 @@ import {
 } from "@/utilities/get-class";
 
 import {
-	type Dispatch,
-	type RootState,
+	useApplicationDispatch,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectHasGroups,
@@ -28,9 +24,9 @@ import {
 } from "../store/page/slice";
 
 const RemoveGroupsButton: FC = () => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
-	const hasGroups = useSelector((state: RootState) => {
+	const hasGroups = useApplicationSelector((state) => {
 		return selectHasGroups(state.page);
 	});
 

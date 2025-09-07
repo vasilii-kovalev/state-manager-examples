@@ -1,9 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type ActivityId,
@@ -14,7 +11,7 @@ import {
 } from "@/features/group/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectActivityNamesInGroup,
@@ -34,7 +31,7 @@ const DuplicatedActivityNameIcon: FC<DuplicatedActivityNameIconProps> = ({
 	name,
 	groupId,
 }) => {
-	const existingActivityNames = useSelector((state: RootState) => {
+	const existingActivityNames = useApplicationSelector((state) => {
 		return selectActivityNamesInGroup(
 			state.page,
 			groupId,

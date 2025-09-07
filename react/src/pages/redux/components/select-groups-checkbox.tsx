@@ -1,18 +1,14 @@
 import {
 	type FC,
 } from "react";
-import {
-	useDispatch,
-	useSelector,
-} from "react-redux";
 
 import {
 	SelectEntityCheckbox,
 } from "@/components/select-entity-checkbox";
 
 import {
-	type Dispatch,
-	type RootState,
+	useApplicationDispatch,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectHasWorklogs,
@@ -23,12 +19,12 @@ import {
 } from "../utilities/update-all-worklogs-selection";
 
 const SelectGroupsCheckbox: FC = () => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
-	const selectionState = useSelector((state: RootState) => {
+	const selectionState = useApplicationSelector((state) => {
 		return selectSelectionState(state.page);
 	});
-	const hasWorklogs = useSelector((state: RootState) => {
+	const hasWorklogs = useApplicationSelector((state) => {
 		return selectHasWorklogs(state.page);
 	});
 

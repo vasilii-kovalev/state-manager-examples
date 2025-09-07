@@ -1,9 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type GroupId,
@@ -11,7 +8,7 @@ import {
 } from "@/features/group/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectGroupNames,
@@ -29,7 +26,7 @@ const DuplicatedGroupNameIcon: FC<DuplicatedGroupNameIconProps> = ({
 	name,
 	groupId,
 }) => {
-	const existingGroupNames = useSelector((state: RootState) => {
+	const existingGroupNames = useApplicationSelector((state) => {
 		return selectGroupNames(
 			state.page,
 			groupId,

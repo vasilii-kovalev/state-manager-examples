@@ -1,16 +1,13 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type ActivityId,
 } from "@/features/activity/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectReportingStatisticsSummaryForActivity,
@@ -26,7 +23,7 @@ interface ActivityReportedDurationOfNormProps {
 const ActivityReportedDurationOfNorm: FC<ActivityReportedDurationOfNormProps> = ({
 	activityId,
 }) => {
-	const reportingStatisticsSummary = useSelector((state: RootState) => {
+	const reportingStatisticsSummary = useApplicationSelector((state) => {
 		return selectReportingStatisticsSummaryForActivity(
 			state.page,
 			activityId,

@@ -1,9 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type DateString,
@@ -13,7 +10,7 @@ import {
 } from "@/features/group/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectReportedDurationForGroupForDate,
@@ -31,7 +28,7 @@ const GroupDateCell: FC<GroupDateCellProps> = ({
 	groupId,
 	date,
 }) => {
-	const reportedDuration = useSelector((state: RootState) => {
+	const reportedDuration = useApplicationSelector((state) => {
 		return selectReportedDurationForGroupForDate(
 			state.page,
 			groupId,

@@ -2,16 +2,13 @@ import {
 	type FC,
 	Fragment,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type GroupId,
 } from "@/features/group/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectCalendar,
@@ -27,7 +24,7 @@ interface GroupDateCellsProps {
 const GroupDateCells: FC<GroupDateCellsProps> = ({
 	groupId,
 }) => {
-	const calendar = useSelector((state: RootState) => {
+	const calendar = useApplicationSelector((state) => {
 		return selectCalendar(state.page);
 	});
 

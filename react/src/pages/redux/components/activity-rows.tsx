@@ -2,16 +2,13 @@ import {
 	type FC,
 	Fragment,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type GroupId,
 } from "@/features/group/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectActivitiesForGroup,
@@ -27,7 +24,7 @@ interface ActivityRowsProps {
 const ActivityRows: FC<ActivityRowsProps> = ({
 	groupId,
 }) => {
-	const activities = useSelector((state: RootState) => {
+	const activities = useApplicationSelector((state) => {
 		return selectActivitiesForGroup(
 			state.page,
 			groupId,

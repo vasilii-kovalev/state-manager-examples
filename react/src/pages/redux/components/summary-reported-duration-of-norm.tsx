@@ -1,12 +1,9 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectReportingStatisticsSummary,
@@ -16,7 +13,7 @@ import {
 } from "./reported-duration-of-norm";
 
 const SummaryReportedDurationOfNorm: FC = () => {
-	const reportingStatisticsSummary = useSelector((state: RootState) => {
+	const reportingStatisticsSummary = useApplicationSelector((state) => {
 		return selectReportingStatisticsSummary(state.page);
 	});
 

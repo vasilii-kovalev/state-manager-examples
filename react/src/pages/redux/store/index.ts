@@ -4,6 +4,11 @@ import {
 	configureStore,
 	type ThunkAction,
 } from "@reduxjs/toolkit";
+import {
+	useDispatch,
+	type UseSelector,
+	useSelector,
+} from "react-redux";
 
 import {
 	pageReducer,
@@ -28,10 +33,15 @@ type Thunk<ReturnType> = ThunkAction<
 	Action
 >;
 
+const useApplicationDispatch = useDispatch<Dispatch>;
+const useApplicationSelector = useSelector as UseSelector<RootState>;
+
 export {
 	type Dispatch,
 	rootReducer,
 	type RootState,
 	store,
 	type Thunk,
+	useApplicationDispatch,
+	useApplicationSelector,
 };

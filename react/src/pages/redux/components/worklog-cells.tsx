@@ -2,9 +2,6 @@ import {
 	type FC,
 	Fragment,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type ActivityId,
@@ -14,7 +11,7 @@ import {
 } from "@/features/group/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectCalendar,
@@ -32,7 +29,7 @@ const WorklogCells: FC<WorklogCellsProps> = ({
 	activityId,
 	groupId,
 }) => {
-	const calendar = useSelector((state: RootState) => {
+	const calendar = useApplicationSelector((state) => {
 		return selectCalendar(state.page);
 	});
 

@@ -1,10 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useDispatch,
-	useSelector,
-} from "react-redux";
 
 import {
 	Tooltip,
@@ -20,8 +16,8 @@ import {
 } from "@/utilities/get-class";
 
 import {
-	type Dispatch,
-	type RootState,
+	useApplicationDispatch,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectHasSelectedWorklogs,
@@ -37,9 +33,9 @@ interface MoveWorklogsToActivityButtonProps {
 const MoveWorklogsToActivityButton: FC<MoveWorklogsToActivityButtonProps> = ({
 	activityId,
 }) => {
-	const dispatch = useDispatch<Dispatch>();
+	const dispatch = useApplicationDispatch();
 
-	const hasSelectedWorklogs = useSelector((state: RootState) => {
+	const hasSelectedWorklogs = useApplicationSelector((state) => {
 		return selectHasSelectedWorklogs(state.page);
 	});
 

@@ -1,9 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	type ActivityId,
@@ -17,7 +14,7 @@ import {
 } from "@/features/group/types";
 
 import {
-	type RootState,
+	useApplicationSelector,
 } from "../store";
 import {
 	selectWorklogsForActivityForDate,
@@ -45,7 +42,7 @@ const WorklogCell: FC<WorklogCellProps> = ({
 	groupId,
 	norm,
 }) => {
-	const worklog = useSelector((state: RootState) => {
+	const worklog = useApplicationSelector((state) => {
 		return selectWorklogsForActivityForDate(
 			state.page,
 			activityId,
