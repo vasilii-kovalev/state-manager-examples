@@ -26,8 +26,7 @@ const GroupRow: FC<GroupRowProps> = ({
 	return (
 		<Row>
 			<GroupInfoCell
-				groupId={group.id}
-				groupName={group.name}
+				group={group}
 			/>
 
 			<GroupDateCells

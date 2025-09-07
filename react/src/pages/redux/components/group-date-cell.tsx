@@ -16,7 +16,7 @@ import {
 	type RootState,
 } from "../store";
 import {
-	selectReportedDurationForDateForGroup,
+	selectReportedDurationForGroupForDate,
 } from "../store/page/selectors";
 import {
 	TotalDurationCell,
@@ -32,7 +32,7 @@ const GroupDateCell: FC<GroupDateCellProps> = ({
 	date,
 }) => {
 	const reportedDuration = useSelector((state: RootState) => {
-		return selectReportedDurationForDateForGroup(
+		return selectReportedDurationForGroupForDate(
 			state.page,
 			groupId,
 			date,

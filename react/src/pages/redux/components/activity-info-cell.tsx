@@ -1,9 +1,6 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	FlexRow,
@@ -13,14 +10,11 @@ import {
 } from "@/features/activity/types";
 
 import {
-	type RootState,
-} from "../store";
-import {
-	selectReportingStatisticsSummaryForActivity,
-} from "../store/page/selectors";
-import {
 	ActivityNameInput,
 } from "./activity-name-input";
+import {
+	ActivityReportedDurationOfNorm,
+} from "./activity-reported-duration-of-norm";
 import {
 	Cell,
 } from "./cell";
@@ -30,9 +24,6 @@ import {
 import {
 	RemoveActivityButton,
 } from "./remove-activity-button";
-import {
-	ReportedDurationOfNorm,
-} from "./reported-duration-of-norm";
 import {
 	SelectActivityCheckbox,
 } from "./select-activity-checkbox";
@@ -44,13 +35,6 @@ interface ActivityInfoCellProps {
 const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
 	activity,
 }) => {
-	const reportingStatisticsSummary = useSelector((state: RootState) => {
-		return selectReportingStatisticsSummaryForActivity(
-			state.page,
-			activity.id,
-		);
-	});
-
 	return (
 		<Cell
 			className="info-column"
@@ -71,10 +55,8 @@ const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
 						name={activity.name}
 					/>
 
-					<ReportedDurationOfNorm
-						location={`activity-info-cell-${activity.id}`}
-						norm={reportingStatisticsSummary.norm}
-						reported={reportingStatisticsSummary.reported}
+					<ActivityReportedDurationOfNorm
+						activityId={activity.id}
 					/>
 				</FlexRow>
 

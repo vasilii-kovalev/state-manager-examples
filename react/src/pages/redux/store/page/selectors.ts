@@ -203,31 +203,24 @@ const selectActivitiesForGroup = createDraftSafeSelector(
 	},
 );
 
-type WorklogsByDate = Record<DateString, Worklog>;
-
-const selectWorklogsForActivityByDate = createSelector(
+const selectWorklogsForActivityForDate = createSelector(
 	[
 		selectWorklogsForActivity,
+		(
+			state: PageState,
+			activityId: ActivityId,
+			date: DateString,
+		): DateString => {
+			return date;
+		},
 	],
 	(
 		worklogs,
-	): WorklogsByDate => {
-		return worklogs.reduce<WorklogsByDate>(
-			(
-				worklogsByDateCurrent,
-				worklog,
-			) => {
-				const {
-					date,
-				} = worklog;
-
-				// eslint-disable-next-line no-param-reassign
-				worklogsByDateCurrent[date] = worklog;
-
-				return worklogsByDateCurrent;
-			},
-			{},
-		);
+		date,
+	): Worklog | undefined => {
+		return worklogs.find((worklog) => {
+			return worklog.date === date;
+		});
 	},
 );
 
@@ -275,7 +268,7 @@ const selectHasGroups = createSelector(
 	},
 );
 
-const selectReportedDurationForDateForGroup = createSelector(
+const selectReportedDurationForGroupForDate = createSelector(
 	[
 		selectWorklogsForGroup,
 		(
@@ -499,7 +492,7 @@ export {
 	selectHasWorklogsInActivity,
 	selectHasWorklogsInGroup,
 	selectReportedDurationForDate,
-	selectReportedDurationForDateForGroup,
+	selectReportedDurationForGroupForDate,
 	selectReportingStatisticsSummary,
 	selectReportingStatisticsSummaryForActivity,
 	selectReportingStatisticsSummaryForGroup,
@@ -507,6 +500,6 @@ export {
 	selectSelectionStateForActivity,
 	selectSelectionStateForGroup,
 	selectWorklogsForActivity,
-	selectWorklogsForActivityByDate,
+	selectWorklogsForActivityForDate,
 	selectWorklogsForGroup,
 };

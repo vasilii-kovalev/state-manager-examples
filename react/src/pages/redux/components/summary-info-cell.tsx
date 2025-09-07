@@ -1,20 +1,11 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	FlexRow,
 } from "@/components/flex-row";
 
-import {
-	type RootState,
-} from "../store";
-import {
-	selectReportingStatisticsSummary,
-} from "../store/page/selectors";
 import {
 	AddGroupButton,
 } from "./add-group-button";
@@ -28,17 +19,13 @@ import {
 	RemoveGroupsButton,
 } from "./remove-groups-button";
 import {
-	ReportedDurationOfNorm,
-} from "./reported-duration-of-norm";
-import {
 	SelectGroupsCheckbox,
 } from "./select-groups-checkbox";
+import {
+	SummaryReportedDurationOfNorm,
+} from "./summary-reported-duration-of-norm";
 
 const SummaryInfoCell: FC = () => {
-	const reportingStatisticsSummary = useSelector((state: RootState) => {
-		return selectReportingStatisticsSummary(state.page);
-	});
-
 	return (
 		<Cell
 			className="info-column"
@@ -56,11 +43,7 @@ const SummaryInfoCell: FC = () => {
 						className="w-48"
 					/>
 
-					<ReportedDurationOfNorm
-						location="summary-info-cell"
-						norm={reportingStatisticsSummary.norm}
-						reported={reportingStatisticsSummary.reported}
-					/>
+					<SummaryReportedDurationOfNorm/>
 				</FlexRow>
 
 				<FlexRow

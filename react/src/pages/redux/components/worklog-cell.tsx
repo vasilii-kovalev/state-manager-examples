@@ -20,7 +20,7 @@ import {
 	type RootState,
 } from "../store";
 import {
-	selectWorklogsForActivityByDate,
+	selectWorklogsForActivityForDate,
 } from "../store/page/selectors";
 import {
 	Cell,
@@ -46,12 +46,11 @@ const WorklogCell: FC<WorklogCellProps> = ({
 	norm,
 }) => {
 	const worklog = useSelector((state: RootState) => {
-		const worklogsByDate = selectWorklogsForActivityByDate(
+		return selectWorklogsForActivityForDate(
 			state.page,
 			activityId,
+			date,
 		);
-
-		return worklogsByDate[date];
 	});
 
 	if (norm === 0) {

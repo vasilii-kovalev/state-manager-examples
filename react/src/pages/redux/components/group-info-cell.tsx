@@ -1,24 +1,14 @@
 import {
 	type FC,
 } from "react";
-import {
-	useSelector,
-} from "react-redux";
 
 import {
 	FlexRow,
 } from "@/components/flex-row";
 import {
-	type GroupId,
-	type GroupName,
+	type Group,
 } from "@/features/group/types";
 
-import {
-	type RootState,
-} from "../store";
-import {
-	selectReportingStatisticsSummaryForGroup,
-} from "../store/page/selectors";
 import {
 	AddActivityButton,
 } from "./add-activity-button";
@@ -29,34 +19,25 @@ import {
 	GroupNameInput,
 } from "./group-name-input";
 import {
+	GroupReportedDurationOfNorm,
+} from "./group-reported-duration-of-norm";
+import {
 	MoveWorklogsToGroupButton,
 } from "./move-worklogs-to-group-button";
 import {
 	RemoveGroupButton,
 } from "./remove-group-button";
 import {
-	ReportedDurationOfNorm,
-} from "./reported-duration-of-norm";
-import {
 	SelectGroupCheckbox,
 } from "./select-group-checkbox";
 
 interface GroupInfoCellProps {
-	groupId: GroupId;
-	groupName: GroupName;
+	group: Group;
 }
 
 const GroupInfoCell: FC<GroupInfoCellProps> = ({
-	groupId,
-	groupName,
+	group,
 }) => {
-	const reportingStatisticsSummary = useSelector((state: RootState) => {
-		return selectReportingStatisticsSummaryForGroup(
-			state.page,
-			groupId,
-		);
-	});
-
 	return (
 		<Cell
 			className="info-column"
@@ -68,18 +49,16 @@ const GroupInfoCell: FC<GroupInfoCellProps> = ({
 					className="gap-col-2"
 				>
 					<SelectGroupCheckbox
-						groupId={groupId}
+						groupId={group.id}
 					/>
 
 					<GroupNameInput
-						id={groupId}
-						name={groupName}
+						id={group.id}
+						name={group.name}
 					/>
 
-					<ReportedDurationOfNorm
-						location={`group-info-cell-${groupId}`}
-						norm={reportingStatisticsSummary.norm}
-						reported={reportingStatisticsSummary.reported}
+					<GroupReportedDurationOfNorm
+						groupId={group.id}
 					/>
 				</FlexRow>
 
@@ -87,15 +66,15 @@ const GroupInfoCell: FC<GroupInfoCellProps> = ({
 					className="gap-col-2"
 				>
 					<MoveWorklogsToGroupButton
-						groupId={groupId}
+						groupId={group.id}
 					/>
 
 					<AddActivityButton
-						groupId={groupId}
+						groupId={group.id}
 					/>
 
 					<RemoveGroupButton
-						groupId={groupId}
+						groupId={group.id}
 					/>
 				</FlexRow>
 			</FlexRow>
