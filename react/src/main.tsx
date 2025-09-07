@@ -3,18 +3,21 @@ import "@unocss/reset/normalize.css";
 import "virtual:uno.css";
 
 import {
+	TanStackDevtools,
+} from "@tanstack/react-devtools";
+import {
 	QueryClient,
 	QueryClientProvider,
 } from "@tanstack/react-query";
 import {
-	ReactQueryDevtools,
+	ReactQueryDevtoolsPanel,
 } from "@tanstack/react-query-devtools";
 import {
 	createRouter,
 	RouterProvider,
 } from "@tanstack/react-router";
 import {
-	TanStackRouterDevtools,
+	TanStackRouterDevtoolsPanel,
 } from "@tanstack/react-router-devtools";
 import {
 	isNull,
@@ -63,13 +66,32 @@ if (!isNull(rootElement)) {
 				/>
 			</QueryClientProvider>
 
-			<TanStackRouterDevtools
-				router={router}
-			/>
-
-			<ReactQueryDevtools
-				client={queryClient}
-			/>
+			{
+				import.meta.env.DEV
+					? (
+						<TanStackDevtools
+							plugins={[
+								{
+									name: "TanStack Query",
+									render: (
+										<ReactQueryDevtoolsPanel
+											client={queryClient}
+										/>
+									),
+								},
+								{
+									name: "TanStack Router",
+									render: (
+										<TanStackRouterDevtoolsPanel
+											router={router}
+										/>
+									),
+								},
+							]}
+						/>
+					)
+					: null
+			}
 		</StrictMode>,
 	);
 }

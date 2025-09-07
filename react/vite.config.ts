@@ -1,4 +1,7 @@
 import {
+	devtools,
+} from "@tanstack/devtools-vite";
+import {
 	tanstackRouter,
 } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
@@ -16,6 +19,7 @@ const config = defineConfig({
 		sourcemap: true,
 	},
 	plugins: [
+		devtools(),
 		tsconfigPaths({
 			configNames: [
 				"tsconfig.app.json",
