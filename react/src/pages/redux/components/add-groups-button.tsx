@@ -20,7 +20,7 @@ import {
 	addGroups,
 } from "../utilities/add-groups";
 
-const GROUPS_COUNT = 2;
+const GROUPS_COUNT = 10;
 const ACTIVITIES_PER_GROUP_COUNT = 2;
 const WORKLOG_DURATION = 8;
 

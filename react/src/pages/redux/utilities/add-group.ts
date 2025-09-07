@@ -1,4 +1,7 @@
 import {
+	isUndefined,
+} from "es-toolkit";
+import {
 	parse,
 } from "valibot";
 
@@ -7,6 +10,7 @@ import {
 } from "@/features/group/schemas";
 import {
 	type GroupId,
+	type GroupName,
 } from "@/features/group/types";
 import {
 	getNewGroup,
@@ -25,16 +29,28 @@ import {
 	getGroupNames,
 } from "./get-group-names";
 
-const addGroup = (): Thunk<GroupId> => {
+interface AddGroupParams {
+	name?: GroupName;
+}
+
+const addGroup = ({
+	name,
+}: AddGroupParams = {}): Thunk<GroupId> => {
 	return (
 		dispatch,
 	) => {
-		const existingNames = dispatch(getGroupNames());
-		const name = getNewGroupName(existingNames);
+		let groupName = name;
+
+		if (isUndefined(groupName)) {
+			const existingNames = dispatch(getGroupNames());
+
+			groupName = getNewGroupName(existingNames);
+		}
+
 		const group = parse(
 			GroupSchema,
 			getNewGroup({
-				name,
+				name: groupName,
 			}),
 		);
 

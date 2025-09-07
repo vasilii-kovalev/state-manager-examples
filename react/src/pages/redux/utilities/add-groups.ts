@@ -43,7 +43,11 @@ const addGroups = ({
 			groupIndex < groupsCount;
 			groupIndex += 1
 		) {
-			const groupId = dispatch(addGroup());
+			const groupId = dispatch(
+				addGroup({
+					name: `Group ${groupIndex + 1}`,
+				}),
+			);
 
 			for (
 				let activityIndex = 0;
@@ -53,6 +57,7 @@ const addGroups = ({
 				const activityId = dispatch(
 					addActivity({
 						groupId,
+						name: `Activity ${groupIndex + 1}.${activityIndex + 1}`,
 					}),
 				);
 
