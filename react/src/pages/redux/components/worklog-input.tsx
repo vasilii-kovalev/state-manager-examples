@@ -27,6 +27,9 @@ import {
 	type GroupId,
 } from "@/features/group/types";
 import {
+	WorklogInputSchema,
+} from "@/features/page/schemas";
+import {
 	getNewWorklog,
 } from "@/features/page/utilities/get-new-worklog";
 import {
@@ -35,9 +38,6 @@ import {
 import {
 	useIsBusy,
 } from "@/hooks/use-is-busy";
-import {
-	WorklogInputSchema,
-} from "@/pages/schemas";
 
 import {
 	type Dispatch,
