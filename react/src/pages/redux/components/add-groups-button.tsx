@@ -74,14 +74,19 @@ const AddGroupsButton: FC = () => {
 						className={
 							getClass([
 								className,
-								"control icon-button",
+								"control icon-button p-1",
 							])
 						}
 						disabled={isBusy}
 						onClick={handleAddGroups}
 						type="button"
 					>
-						++
+						+
+						{}
+
+						<sup>
+							+
+						</sup>
 					</button>
 				);
 			}}

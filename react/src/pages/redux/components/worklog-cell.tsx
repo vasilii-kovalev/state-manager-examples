@@ -26,6 +26,9 @@ import {
 	Cell,
 } from "./cell";
 import {
+	TotalDurationCell,
+} from "./total-duration-cell";
+import {
 	WorklogInput,
 } from "./worklog-input";
 
@@ -51,6 +54,16 @@ const WorklogCell: FC<WorklogCellProps> = ({
 		return worklogsByDate[date];
 	});
 
+	if (norm === 0) {
+		return (
+			<TotalDurationCell
+				date={date}
+				duration={worklog?.duration}
+				location={`worklog-cell-${activityId}`}
+			/>
+		);
+	}
+
 	return (
 		<Cell
 			className="p-0"
@@ -61,7 +74,6 @@ const WorklogCell: FC<WorklogCellProps> = ({
 				duration={worklog?.duration}
 				groupId={groupId}
 				id={worklog?.id}
-				isReadonly={norm === 0}
 				// To reset the internal state of the input when the duration changes outside.
 				key={worklog?.duration ?? 0}
 			/>

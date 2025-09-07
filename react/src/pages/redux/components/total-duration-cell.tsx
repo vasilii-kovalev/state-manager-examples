@@ -14,9 +14,6 @@ import {
 	formatDuration,
 } from "@/features/dates-and-time/utilities/format-duration";
 import {
-	getIsWeekend,
-} from "@/features/dates-and-time/utilities/get-is-weekend";
-import {
 	getClass,
 } from "@/utilities/get-class";
 
@@ -30,13 +27,13 @@ import {
 interface TotalDurationCellProps {
 	date: DateString;
 	location: string;
-	duration: Duration;
+	duration: Duration | undefined;
 }
 
 const TotalDurationCell: FC<TotalDurationCellProps> = ({
 	date,
 	location,
-	duration,
+	duration = 0,
 }) => {
 	const renderTotalDuration = (): ReactNode => {
 		if (duration === 0) {
@@ -78,22 +75,9 @@ const TotalDurationCell: FC<TotalDurationCellProps> = ({
 
 	return (
 		<Cell
-			className={
-				getClass([
-					// Subtracting 1 padding, because the total duration container has 1 padding.
-					"bg-gray-50 p-1",
-					[
-						getIsWeekend(date),
-						/*
-							`!important` is required, because shortcuts have less specificity.
-							If a higher specificity is set in the UnoCSS config in `layers`,
-							the default classes won't be able to override shortcuts in other places.
-							So this is a lesser evil.
-						*/
-						"!bg-weekend",
-					],
-				])
-			}
+			// Subtracting 1 padding, because the total duration container has 1 padding.
+			className="p-1"
+			date={date}
 		>
 			{renderTotalDuration()}
 		</Cell>

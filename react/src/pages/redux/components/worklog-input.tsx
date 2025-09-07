@@ -24,9 +24,6 @@ import {
 	type Duration,
 } from "@/features/dates-and-time/types";
 import {
-	getIsWeekend,
-} from "@/features/dates-and-time/utilities/get-is-weekend";
-import {
 	type GroupId,
 } from "@/features/group/types";
 import {
@@ -41,9 +38,6 @@ import {
 import {
 	WorklogInputSchema,
 } from "@/pages/schemas";
-import {
-	getClass,
-} from "@/utilities/get-class";
 
 import {
 	type Dispatch,
@@ -72,7 +66,6 @@ interface WorklogCellProps {
 	date: DateString;
 	duration: Duration | undefined;
 	id: WorklogId | undefined;
-	isReadonly: boolean;
 	groupId: GroupId;
 }
 
@@ -81,14 +74,11 @@ const WorklogInput: FC<WorklogCellProps> = ({
 	date,
 	duration,
 	id,
-	isReadonly,
 	groupId,
 }) => {
 	const dispatch = useDispatch<Dispatch>();
 
 	const isBusy = useIsBusy();
-
-	const isWeekendDay = getIsWeekend(date);
 
 	const [
 		durationLocal,
@@ -158,20 +148,11 @@ const WorklogInput: FC<WorklogCellProps> = ({
 
 	return (
 		<input
-			className={
-				getClass([
-					"control h-full w-full b-0 text-center",
-					[
-						isWeekendDay,
-						"bg-weekend",
-					],
-				])
-			}
+			className="control h-full w-full b-0 text-center"
 			disabled={isBusy}
 			inputMode="numeric"
 			onBlur={handleBlur}
 			onChange={handleDurationChange}
-			readOnly={isReadonly}
 			type="text"
 			value={durationLocal}
 		/>
