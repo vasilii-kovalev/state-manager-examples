@@ -6,7 +6,6 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc --build && vite build",
-		"lint": "eslint .",
 		"preview": "vite preview",
 		"check:types": "tsc --build",
 		"check:eslint": "bun --bun eslint . --quiet"
