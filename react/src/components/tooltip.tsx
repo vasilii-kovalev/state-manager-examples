@@ -25,6 +25,7 @@ interface RenderTargetProps<TargetElement extends HTMLElement> {
 	onMouseLeave: () => void;
 	popoverTarget: string;
 	ref: RefObject<TargetElement | null>;
+	tabIndex: number;
 	tooltipId: string;
 }
 
@@ -78,6 +79,7 @@ const Tooltip = <TargetElement extends HTMLElement>({
 					onMouseLeave: hideTooltip,
 					popoverTarget: tooltipId,
 					ref: targetRef,
+					tabIndex: 0,
 					tooltipId,
 				})
 			}

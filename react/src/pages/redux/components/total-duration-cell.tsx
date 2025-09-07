@@ -60,7 +60,6 @@ const TotalDurationCell: FC<TotalDurationCellProps> = ({
 									"max-w-12 truncate p-1",
 								])
 							}
-							tabIndex={0}
 						>
 							<TotalDuration
 								duration={duration}

@@ -65,7 +65,6 @@ const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = ({
 								"flex-inline shrink-0 p-block-1",
 							])
 						}
-						tabIndex={0}
 					>
 						<TotalDuration
 							className="w-14 truncate text-end"

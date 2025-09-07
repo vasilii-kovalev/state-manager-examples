@@ -55,7 +55,6 @@ const DuplicatedNameIcon: FC<DuplicatedNameIconProps> = ({
 								"h-5 w-3 flex-inline justify-center p-1",
 							])
 						}
-						tabIndex={0}
 					>
 						!
 					</div>
