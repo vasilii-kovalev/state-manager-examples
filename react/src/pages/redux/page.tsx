@@ -13,10 +13,10 @@ import {
 } from "@/components/full-page-loader";
 import {
 	PAGE_STATE_DEFAULT,
-} from "@/features/page/constants";
+} from "@/features/pages/constants";
 import {
 	convertPageDataToPageState,
-} from "@/features/page/utilities/convert-page-data-to-page-state";
+} from "@/features/pages/utilities/convert-page-data-to-page-state";
 import {
 	usePageData,
 } from "@/hooks/use-page-data";

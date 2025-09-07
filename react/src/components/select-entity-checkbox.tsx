@@ -9,10 +9,10 @@ import {
 
 import {
 	ENTITY_SELECTION_STATE,
-} from "@/features/page/constants";
+} from "@/features/pages/constants";
 import {
 	type EntitySelectionState,
-} from "@/features/page/types";
+} from "@/features/pages/types";
 import {
 	useIsBusy,
 } from "@/hooks/use-is-busy";

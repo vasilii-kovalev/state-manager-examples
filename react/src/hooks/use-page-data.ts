@@ -14,10 +14,10 @@ import {
 } from "@/constants";
 import {
 	type PageData,
-} from "@/features/page/types";
+} from "@/features/pages/types";
 import {
 	getPageData,
-} from "@/features/page/utilities/get-page-data";
+} from "@/features/pages/utilities/get-page-data";
 
 interface UsePageDataParams {
 	onSuccess: (pageData: PageData) => void;

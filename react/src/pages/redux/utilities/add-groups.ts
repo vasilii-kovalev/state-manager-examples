@@ -1,6 +1,6 @@
 import {
 	getNewWorklog,
-} from "@/features/page/utilities/get-new-worklog";
+} from "@/features/pages/utilities/get-new-worklog";
 
 import {
 	type Thunk,

@@ -16,10 +16,10 @@ import {
 } from "@/features/group/types";
 import {
 	PAGE_STATE_DEFAULT,
-} from "@/features/page/constants";
+} from "@/features/pages/constants";
 import {
 	type PageState,
-} from "@/features/page/types";
+} from "@/features/pages/types";
 import {
 	type Worklog,
 	type WorklogId,
