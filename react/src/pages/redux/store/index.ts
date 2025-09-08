@@ -19,6 +19,7 @@ const rootReducer = combineReducers({
 });
 
 const store = configureStore({
+	devTools: import.meta.env.DEV,
 	reducer: rootReducer,
 });
 
