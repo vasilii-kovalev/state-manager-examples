@@ -2,9 +2,8 @@ import {
 	isUndefined,
 } from "es-toolkit";
 import {
-	type DetailedHTMLProps,
+	type ComponentProps,
 	type FC,
-	type HTMLAttributes,
 } from "react";
 
 import {
@@ -17,7 +16,7 @@ import {
 	getClass,
 } from "@/utilities/get-class";
 
-interface CellProps extends DetailedHTMLProps<HTMLAttributes<HTMLTableCellElement>, HTMLTableCellElement> {
+interface CellProps extends ComponentProps<"td"> {
 	date?: DateString;
 }
 

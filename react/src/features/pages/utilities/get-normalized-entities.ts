@@ -5,13 +5,14 @@ import {
 } from "../types";
 
 const getNormalizedEntities = <
+	// The ID is not inferred correctly otherwise.
 	// eslint-disable-next-line @typescript-eslint/no-use-before-define
 	Entity extends EntityWithId<Id>,
 	Id extends EntityId = Entity["id"],
 >(
 	entities: Array<Entity>,
-): NormalizedEntities<Entity, Id> => {
-	type NormalizedEntitiesType = NormalizedEntities<Entity, Id>;
+): NormalizedEntities<Id, Entity> => {
+	type NormalizedEntitiesType = NormalizedEntities<Id, Entity>;
 
 	return entities.reduce<NormalizedEntitiesType>(
 		(

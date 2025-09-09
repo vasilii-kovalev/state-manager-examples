@@ -2,9 +2,8 @@ import {
 	isEmpty,
 } from "es-toolkit/compat";
 import {
-	type DetailedHTMLProps,
+	type ComponentProps,
 	type FC,
-	type HTMLAttributes,
 } from "react";
 
 import {
@@ -27,7 +26,7 @@ import {
 	SummaryRow,
 } from "./summary-row";
 
-type TableProps = DetailedHTMLProps<HTMLAttributes<HTMLTableElement>, HTMLTableElement>;
+type TableProps = ComponentProps<"table">;
 
 const Table: FC<TableProps> = ({
 	className,

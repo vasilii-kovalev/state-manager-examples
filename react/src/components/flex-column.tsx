@@ -1,14 +1,13 @@
 import {
-	type DetailedHTMLProps,
+	type ComponentProps,
 	type FC,
-	type HTMLAttributes,
 } from "react";
 
 import {
 	getClass,
 } from "@/utilities/get-class";
 
-type FlexColumnProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
+type FlexColumnProps = ComponentProps<"div">;
 
 const FlexColumn: FC<FlexColumnProps> = (props) => {
 	const {

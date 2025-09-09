@@ -1,4 +1,8 @@
 import {
+	sleep,
+} from "@/utilities/sleep";
+
+import {
 	PAGE_DATA_PROCESSING_DELAY,
 } from "../constants";
 import {
@@ -7,9 +11,6 @@ import {
 import {
 	setPageDataToLocalStorage,
 } from "./set-page-data-to-local-storage";
-import {
-	sleep,
-} from "./sleep";
 
 const savePageData = async (
 	pageData: PageData,

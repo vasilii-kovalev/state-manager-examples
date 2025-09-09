@@ -46,6 +46,7 @@ const TotalDurationCell: FC<TotalDurationCellProps> = ({
 					return formatDuration(duration);
 				}}
 				renderTarget={({
+					// Excluding this property from `targetProps`.
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					tooltipId,
 					className,

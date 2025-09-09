@@ -35,10 +35,8 @@ interface EntityWithId<
 }
 
 interface NormalizedEntities<
-	// Putting `Id` after `Entity` is more convenient for usage.
-	// eslint-disable-next-line @typescript-eslint/no-use-before-define
-	Entity extends EntityWithId<Id>,
 	Id extends EntityId = EntityId,
+	Entity extends EntityWithId<Id> = EntityWithId<Id>,
 > {
 	byId: Record<Id, Entity>;
 	ids: Array<Id>;

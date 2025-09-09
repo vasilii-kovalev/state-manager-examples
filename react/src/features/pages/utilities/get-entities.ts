@@ -6,21 +6,28 @@ import {
 } from "es-toolkit/compat";
 
 import {
+	type EntityId,
 	type EntityWithId,
 	type NormalizedEntities,
 } from "../types";
 
 const FILTER_DEFAULT = constant(true);
 
-interface GetEntitiesParams<Entity extends EntityWithId> extends NormalizedEntities<Entity> {
+interface GetEntitiesParams<
+	Id extends EntityId,
+	Entity extends EntityWithId<Id>,
+> extends NormalizedEntities<Id, Entity> {
 	filter?: (entity: Entity) => boolean;
 }
 
-const getEntities = <Entity extends EntityWithId>({
+const getEntities = <
+	Id extends EntityId,
+	Entity extends EntityWithId<Id>,
+>({
 	byId,
 	ids,
 	filter = FILTER_DEFAULT,
-}: GetEntitiesParams<Entity>): Array<Entity> => {
+}: GetEntitiesParams<Id, Entity>): Array<Entity> => {
 	return ids.reduce<Array<Entity>>(
 		(
 			entitiesCurrent,

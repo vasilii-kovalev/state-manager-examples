@@ -44,6 +44,12 @@ import {
 	type Worklog,
 } from "@/features/worklog/types";
 
+import {
+	ACTIVITIES_FALLBACK,
+	DURATION_FALLBACK,
+	WORKLOGS_FALLBACK,
+} from "./constants";
+
 const selectWorklogsById = (
 	state: PageState,
 ): PageState["worklogsById"] => {
@@ -162,8 +168,6 @@ const selectWorklogsByActivityId = createDraftSafeSelector(
 	},
 );
 
-const WORKLOGS_FALLBACK: Array<Worklog> = [];
-
 const selectWorklogsForActivity = createDraftSafeSelector(
 	[
 		selectWorklogsByActivityId,
@@ -243,8 +247,6 @@ const selectActivitiesByGroupId = createDraftSafeSelector(
 		);
 	},
 );
-
-const ACTIVITIES_FALLBACK: Array<Activity> = [];
 
 const selectActivitiesForGroup = createDraftSafeSelector(
 	[
@@ -345,8 +347,6 @@ const selectReportedDurationForGroupByDate = createSelector(
 		return getReportedDurationByDate(worklogsForGroup);
 	},
 );
-
-const DURATION_FALLBACK: Duration = 0;
 
 const selectReportedDurationForGroupForDate = createSelector(
 	[

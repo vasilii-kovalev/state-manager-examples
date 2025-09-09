@@ -1,4 +1,8 @@
 import {
+	sleep,
+} from "@/utilities/sleep";
+
+import {
 	PAGE_DATA_PROCESSING_DELAY,
 } from "../constants";
 import {
@@ -7,9 +11,6 @@ import {
 import {
 	getPageDataFromLocalStorage,
 } from "./get-page-data-from-local-storage";
-import {
-	sleep,
-} from "./sleep";
 
 const getPageData = async (): Promise<PageData> => {
 	const [

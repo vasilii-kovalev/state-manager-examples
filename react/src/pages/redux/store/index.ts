@@ -35,6 +35,7 @@ type Thunk<ReturnType> = ThunkAction<
 >;
 
 const useApplicationDispatch = useDispatch<Dispatch>;
+
 const useApplicationSelector = useSelector as UseSelector<RootState>;
 
 export {

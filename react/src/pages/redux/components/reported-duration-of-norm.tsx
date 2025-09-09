@@ -62,6 +62,7 @@ const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = ({
 			}}
 			renderTarget={({
 				className,
+				// Excluding this property from `targetProps`.
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				tooltipId,
 				...targetProps
