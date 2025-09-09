@@ -20,10 +20,13 @@ const FullPageLoader: FC = () => {
 				getClass([
 					css.loader,
 					// eslint-disable-next-line @stylistic/max-len
-					"pos-absolute inset-0 hidden h-screen w-screen items-center justify-center bg-black bg-opacity-50 color-white opacity-0",
+					"pos-absolute inset-0 hidden h-screen w-screen items-center justify-center bg-black bg-opacity-50 color-white opacity-0 pos-fixed",
 					[
 						isBusy,
-						"flex opacity-100",
+						getClass([
+							css.busy,
+							"flex opacity-100",
+						]),
 					],
 				])
 			}

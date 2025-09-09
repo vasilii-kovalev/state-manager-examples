@@ -7,3 +7,7 @@
 		opacity: 0;
 	}
 }
+
+body:has(.loader.busy) {
+	overflow: hidden;
+}
