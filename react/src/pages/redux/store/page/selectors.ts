@@ -3,6 +3,7 @@ import {
 	createSelector,
 } from "@reduxjs/toolkit";
 import {
+	isUndefined,
 	sumBy,
 } from "es-toolkit";
 import {
@@ -37,8 +38,8 @@ import {
 	getReportedDuration,
 } from "@/features/pages/utilities/get-reported-duration";
 import {
-	getReportedDurationForDate,
-} from "@/features/pages/utilities/get-reported-duration-for-date";
+	getReportedDurationByDate,
+} from "@/features/pages/utilities/get-reported-duration-by-date";
 import {
 	type Worklog,
 } from "@/features/worklog/types";
@@ -145,9 +146,27 @@ const selectGroups = createSelector(
 	},
 );
 
-const selectWorklogsForActivity = createDraftSafeSelector(
+const selectWorklogsByActivityId = createDraftSafeSelector(
 	[
 		selectWorklogs,
+	],
+	(
+		worklogs,
+	): Record<ActivityId, Array<Worklog> | undefined> => {
+		return Object.groupBy(
+			worklogs,
+			(worklog) => {
+				return worklog.activityId;
+			},
+		);
+	},
+);
+
+const WORKLOGS_FALLBACK: Array<Worklog> = [];
+
+const selectWorklogsForActivity = createDraftSafeSelector(
+	[
+		selectWorklogsByActivityId,
 		(
 			state: PageState,
 			activityId: ActivityId,
@@ -156,18 +175,38 @@ const selectWorklogsForActivity = createDraftSafeSelector(
 		},
 	],
 	(
-		worklogs,
+		worklogsByActivityId,
 		activityId,
 	): Array<Worklog> => {
-		return worklogs.filter((worklog) => {
-			return worklog.activityId === activityId;
-		});
+		const worklogsForActivity = worklogsByActivityId[activityId];
+
+		if (!isUndefined(worklogsForActivity)) {
+			return worklogsForActivity;
+		}
+
+		return WORKLOGS_FALLBACK;
+	},
+);
+
+const selectWorklogsByGroupId = createDraftSafeSelector(
+	[
+		selectWorklogs,
+	],
+	(
+		worklogs,
+	): Record<GroupId, Array<Worklog> | undefined> => {
+		return Object.groupBy(
+			worklogs,
+			(worklog) => {
+				return worklog.groupId;
+			},
+		);
 	},
 );
 
 const selectWorklogsForGroup = createDraftSafeSelector(
 	[
-		selectWorklogs,
+		selectWorklogsByGroupId,
 		(
 			state: PageState,
 			groupId: GroupId,
@@ -176,18 +215,40 @@ const selectWorklogsForGroup = createDraftSafeSelector(
 		},
 	],
 	(
-		worklogs,
+		worklogsByGroupId,
 		groupId,
 	): Array<Worklog> => {
-		return worklogs.filter((worklog) => {
-			return worklog.groupId === groupId;
-		});
+		const worklogsForGroup = worklogsByGroupId[groupId];
+
+		if (!isUndefined(worklogsForGroup)) {
+			return worklogsForGroup;
+		}
+
+		return WORKLOGS_FALLBACK;
 	},
 );
 
-const selectActivitiesForGroup = createDraftSafeSelector(
+const selectActivitiesByGroupId = createDraftSafeSelector(
 	[
 		selectActivities,
+	],
+	(
+		activities,
+	): Record<GroupId, Array<Activity> | undefined> => {
+		return Object.groupBy(
+			activities,
+			(activity) => {
+				return activity.groupId;
+			},
+		);
+	},
+);
+
+const ACTIVITIES_FALLBACK: Array<Activity> = [];
+
+const selectActivitiesForGroup = createDraftSafeSelector(
+	[
+		selectActivitiesByGroupId,
 		(
 			state: PageState,
 			groupId: GroupId,
@@ -196,12 +257,16 @@ const selectActivitiesForGroup = createDraftSafeSelector(
 		},
 	],
 	(
-		activities,
+		activitiesByGroupId,
 		groupId,
 	): Array<Activity> => {
-		return activities.filter((activity) => {
-			return activity.groupId === groupId;
-		});
+		const activitiesForGroup = activitiesByGroupId[groupId];
+
+		if (!isUndefined(activitiesForGroup)) {
+			return activitiesForGroup;
+		}
+
+		return ACTIVITIES_FALLBACK;
 	},
 );
 
@@ -270,9 +335,22 @@ const selectHasGroups = createSelector(
 	},
 );
 
-const selectReportedDurationForGroupForDate = createSelector(
+const selectReportedDurationForGroupByDate = createSelector(
 	[
 		selectWorklogsForGroup,
+	],
+	(
+		worklogsForGroup,
+	) => {
+		return getReportedDurationByDate(worklogsForGroup);
+	},
+);
+
+const DURATION_FALLBACK: Duration = 0;
+
+const selectReportedDurationForGroupForDate = createSelector(
+	[
+		selectReportedDurationForGroupByDate,
 		(
 			state: PageState,
 			groupId: GroupId,
@@ -282,19 +360,33 @@ const selectReportedDurationForGroupForDate = createSelector(
 		},
 	],
 	(
-		worklogs,
+		reportedDurationForGroupByDate,
 		date,
 	): Duration => {
-		return getReportedDurationForDate({
-			date,
-			worklogs,
-		});
+		const duration = reportedDurationForGroupByDate[date];
+
+		if (!isUndefined(duration)) {
+			return duration;
+		}
+
+		return DURATION_FALLBACK;
+	},
+);
+
+const selectReportedDurationByDate = createSelector(
+	[
+		selectWorklogs,
+	],
+	(
+		worklogs,
+	) => {
+		return getReportedDurationByDate(worklogs);
 	},
 );
 
 const selectReportedDurationForDate = createSelector(
 	[
-		selectWorklogs,
+		selectReportedDurationByDate,
 		(
 			state: PageState,
 			date: DateString,
@@ -303,13 +395,16 @@ const selectReportedDurationForDate = createSelector(
 		},
 	],
 	(
-		worklogs,
+		reportedDurationByDate,
 		date,
 	): Duration => {
-		return getReportedDurationForDate({
-			date,
-			worklogs,
-		});
+		const duration = reportedDurationByDate[date];
+
+		if (!isUndefined(duration)) {
+			return duration;
+		}
+
+		return DURATION_FALLBACK;
 	},
 );
 
