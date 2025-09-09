@@ -3,6 +3,9 @@ import {
 	createSelector,
 } from "@reduxjs/toolkit";
 import {
+	sumBy,
+} from "es-toolkit";
+import {
 	isEmpty,
 } from "es-toolkit/compat";
 
@@ -23,7 +26,6 @@ import {
 import {
 	type EntitySelectionState,
 	type PageState,
-	type ReportingStatisticsSummary,
 } from "@/features/pages/types";
 import {
 	getEntities,
@@ -32,11 +34,11 @@ import {
 	getEntitySelectionStateForGroups,
 } from "@/features/pages/utilities/get-entity-selection-state-for-groups";
 import {
+	getReportedDuration,
+} from "@/features/pages/utilities/get-reported-duration";
+import {
 	getReportedDurationForDate,
 } from "@/features/pages/utilities/get-reported-duration-for-date";
-import {
-	getReportingStatisticsSummary,
-} from "@/features/pages/utilities/get-reporting-statistics-summary";
 import {
 	type Worklog,
 } from "@/features/worklog/types";
@@ -311,51 +313,52 @@ const selectReportedDurationForDate = createSelector(
 	},
 );
 
-const selectReportingStatisticsSummaryForActivity = createSelector(
+const selectNormTotal = createSelector(
+	[
+		selectCalendar,
+	],
+	(
+		calendar,
+	): Duration => {
+		return sumBy(
+			calendar,
+			(calendarDay): Duration => {
+				return calendarDay.norm;
+			},
+		);
+	},
+);
+
+const selectReportedDurationForActivity = createSelector(
 	[
 		selectWorklogsForActivity,
-		selectCalendar,
 	],
 	(
 		worklogs,
-		calendar,
-	): ReportingStatisticsSummary => {
-		return getReportingStatisticsSummary({
-			calendar,
-			worklogs,
-		});
+	): Duration => {
+		return getReportedDuration(worklogs);
 	},
 );
 
-const selectReportingStatisticsSummaryForGroup = createSelector(
+const selectReportedDurationForGroup = createSelector(
 	[
 		selectWorklogsForGroup,
-		selectCalendar,
 	],
 	(
 		worklogs,
-		calendar,
-	): ReportingStatisticsSummary => {
-		return getReportingStatisticsSummary({
-			calendar,
-			worklogs,
-		});
+	): Duration => {
+		return getReportedDuration(worklogs);
 	},
 );
 
-const selectReportingStatisticsSummary = createSelector(
+const selectReportedDuration = createSelector(
 	[
 		selectWorklogs,
-		selectCalendar,
 	],
 	(
 		worklogs,
-		calendar,
-	): ReportingStatisticsSummary => {
-		return getReportingStatisticsSummary({
-			calendar,
-			worklogs,
-		});
+	): Duration => {
+		return getReportedDuration(worklogs);
 	},
 );
 
@@ -491,11 +494,12 @@ export {
 	selectHasWorklogs,
 	selectHasWorklogsInActivity,
 	selectHasWorklogsInGroup,
+	selectNormTotal,
+	selectReportedDuration,
+	selectReportedDurationForActivity,
 	selectReportedDurationForDate,
+	selectReportedDurationForGroup,
 	selectReportedDurationForGroupForDate,
-	selectReportingStatisticsSummary,
-	selectReportingStatisticsSummaryForActivity,
-	selectReportingStatisticsSummaryForGroup,
 	selectSelectionState,
 	selectSelectionStateForActivity,
 	selectSelectionStateForGroup,

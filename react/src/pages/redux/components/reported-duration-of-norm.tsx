@@ -17,32 +17,42 @@ import {
 } from "@/utilities/get-class";
 
 import {
+	useApplicationSelector,
+} from "../store";
+import {
+	selectNormTotal,
+} from "../store/page/selectors";
+import {
 	TotalDuration,
 } from "./total-duration";
 
 interface ReportedDurationOfNormProps {
 	location: string;
-	norm: Duration;
 	reported: Duration;
 }
 
 const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = ({
 	location,
-	norm,
 	reported,
 }) => {
+	const normTotal = useApplicationSelector((state) => {
+		return selectNormTotal(
+			state.page,
+		);
+	});
+
 	return (
 		<Tooltip<HTMLDivElement>
 			renderBody={() => {
-				const percent = norm === 0
+				const percent = normTotal === 0
 					? 0
-					: (reported / norm) * 100;
+					: (reported / normTotal) * 100;
 
 				return (
 					<Fragment>
 						{formatDuration(reported)}
 						/
-						{formatDuration(norm)}
+						{formatDuration(normTotal)}
 						{" "}
 						(
 						{formatDuration(percent)}
@@ -76,7 +86,7 @@ const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = ({
 
 						<TotalDuration
 							className="w-14 truncate text-start"
-							duration={norm}
+							duration={normTotal}
 							shouldRenderZero={true}
 						/>
 					</div>

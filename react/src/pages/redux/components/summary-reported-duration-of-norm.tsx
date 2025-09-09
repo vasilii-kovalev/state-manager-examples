@@ -6,22 +6,21 @@ import {
 	useApplicationSelector,
 } from "../store";
 import {
-	selectReportingStatisticsSummary,
+	selectReportedDuration,
 } from "../store/page/selectors";
 import {
 	ReportedDurationOfNorm,
 } from "./reported-duration-of-norm";
 
 const SummaryReportedDurationOfNorm: FC = () => {
-	const reportingStatisticsSummary = useApplicationSelector((state) => {
-		return selectReportingStatisticsSummary(state.page);
+	const reportedDuration = useApplicationSelector((state) => {
+		return selectReportedDuration(state.page);
 	});
 
 	return (
 		<ReportedDurationOfNorm
 			location="summary-info-cell"
-			norm={reportingStatisticsSummary.norm}
-			reported={reportingStatisticsSummary.reported}
+			reported={reportedDuration}
 		/>
 	);
 };

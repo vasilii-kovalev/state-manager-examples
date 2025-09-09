@@ -10,7 +10,7 @@ import {
 	useApplicationSelector,
 } from "../store";
 import {
-	selectReportingStatisticsSummaryForActivity,
+	selectReportedDurationForActivity,
 } from "../store/page/selectors";
 import {
 	ReportedDurationOfNorm,
@@ -23,8 +23,8 @@ interface ActivityReportedDurationOfNormProps {
 const ActivityReportedDurationOfNorm: FC<ActivityReportedDurationOfNormProps> = ({
 	activityId,
 }) => {
-	const reportingStatisticsSummary = useApplicationSelector((state) => {
-		return selectReportingStatisticsSummaryForActivity(
+	const reportedDurationForActivity = useApplicationSelector((state) => {
+		return selectReportedDurationForActivity(
 			state.page,
 			activityId,
 		);
@@ -33,8 +33,7 @@ const ActivityReportedDurationOfNorm: FC<ActivityReportedDurationOfNormProps> = 
 	return (
 		<ReportedDurationOfNorm
 			location={`activity-info-cell-${activityId}`}
-			norm={reportingStatisticsSummary.norm}
-			reported={reportingStatisticsSummary.reported}
+			reported={reportedDurationForActivity}
 		/>
 	);
 };

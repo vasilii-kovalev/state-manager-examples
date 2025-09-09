@@ -6,9 +6,6 @@ import {
 	type ActivityId,
 } from "../activity/types";
 import {
-	type Duration,
-} from "../dates-and-time/types";
-import {
 	type GroupId,
 } from "../group/types";
 import {
@@ -25,11 +22,6 @@ import {
 type PageData = InferOutput<typeof PageDataSchema>;
 
 type PageState = InferOutput<typeof PageStateSchema>;
-
-interface ReportingStatisticsSummary {
-	reported: Duration;
-	norm: Duration;
-}
 
 type EntityId =
 	| WorklogId
@@ -61,5 +53,4 @@ export {
 	type NormalizedEntities,
 	type PageData,
 	type PageState,
-	type ReportingStatisticsSummary,
 };
