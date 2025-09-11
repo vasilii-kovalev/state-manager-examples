@@ -27,19 +27,19 @@ import {
 import {
 	type EntitySelectionState,
 	type PageState,
-} from "@/features/pages/types";
+} from "@/features/page/types";
 import {
 	getEntities,
-} from "@/features/pages/utilities/get-entities";
+} from "@/features/page/utilities/get-entities";
 import {
 	getEntitySelectionStateForGroups,
-} from "@/features/pages/utilities/get-entity-selection-state-for-groups";
+} from "@/features/page/utilities/get-entity-selection-state-for-groups";
 import {
 	getReportedDuration,
-} from "@/features/pages/utilities/get-reported-duration";
+} from "@/features/page/utilities/get-reported-duration";
 import {
 	getReportedDurationByDate,
-} from "@/features/pages/utilities/get-reported-duration-by-date";
+} from "@/features/page/utilities/get-reported-duration-by-date";
 import {
 	type Worklog,
 } from "@/features/worklog/types";

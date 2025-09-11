@@ -1,9 +1,9 @@
 import {
 	convertPageStateToPageData,
-} from "@/features/pages/utilities/convert-page-state-to-page-data";
+} from "@/features/page/utilities/convert-page-state-to-page-data";
 import {
 	savePageData,
-} from "@/features/pages/utilities/save-page-data";
+} from "@/features/page/utilities/save-page-data";
 
 import {
 	type Thunk,

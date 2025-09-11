@@ -7,7 +7,7 @@ import {
 } from "@/features/group/types";
 import {
 	getEntities,
-} from "@/features/pages/utilities/get-entities";
+} from "@/features/page/utilities/get-entities";
 
 import {
 	type Thunk,

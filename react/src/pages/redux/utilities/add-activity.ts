@@ -17,10 +17,10 @@ import {
 } from "@/features/group/types";
 import {
 	getNewActivity,
-} from "@/features/pages/utilities/get-new-activity";
+} from "@/features/page/utilities/get-new-activity";
 import {
 	getNewActivityName,
-} from "@/features/pages/utilities/get-new-activity-name";
+} from "@/features/page/utilities/get-new-activity-name";
 
 import {
 	type Thunk,

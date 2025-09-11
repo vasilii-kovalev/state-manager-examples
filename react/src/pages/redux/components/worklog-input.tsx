@@ -25,10 +25,10 @@ import {
 } from "@/features/group/types";
 import {
 	WorklogInputSchema,
-} from "@/features/pages/schemas";
+} from "@/features/page/schemas";
 import {
 	getNewWorklog,
-} from "@/features/pages/utilities/get-new-worklog";
+} from "@/features/page/utilities/get-new-worklog";
 import {
 	type WorklogId,
 } from "@/features/worklog/types";

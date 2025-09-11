@@ -14,16 +14,16 @@ import {
 
 /* import {
 	PAGE_STATE_DEFAULT,
-} from "@/features/pages/constants";
+} from "@/features/page/constants";
 import {
 	getEntities,
-} from "@/features/pages/utilities/get-entities";
+} from "@/features/page/utilities/get-entities";
 import {
 	getNewActivity,
-} from "@/features/pages/utilities/get-new-activity";
+} from "@/features/page/utilities/get-new-activity";
 import {
 	getNewActivityName,
-} from "@/features/pages/utilities/get-new-activity-name";
+} from "@/features/page/utilities/get-new-activity-name";
 import {
 	type Worklog,
 	type WorklogId,

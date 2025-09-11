@@ -14,10 +14,10 @@ import {
 } from "@/features/group/types";
 import {
 	getNewGroup,
-} from "@/features/pages/utilities/get-new-group";
+} from "@/features/page/utilities/get-new-group";
 import {
 	getNewGroupName,
-} from "@/features/pages/utilities/get-new-group-name";
+} from "@/features/page/utilities/get-new-group-name";
 
 import {
 	type Thunk,
