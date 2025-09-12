@@ -5,13 +5,13 @@ import {
 	type PageData,
 } from "../types";
 import {
-	getCalendarForCurrentMonth,
-} from "./get-calendar-for-current-month";
+	getCalendarForMonth,
+} from "./get-calendar-for-month";
 
 const getPageDataDefault = (): PageData => {
 	return {
 		...PAGE_DATA_DEFAULT,
-		calendar: getCalendarForCurrentMonth(),
+		calendar: getCalendarForMonth(new Date()),
 	};
 };
 

@@ -18,20 +18,21 @@ import {
 	formatDateString,
 } from "@/features/dates-and-time/utilities/format-date-string";
 
-const getCalendarForCurrentMonth = (): Array<CalendarDay> => {
-	const today = new Date();
+const getCalendarForMonth = (
+	date: Date,
+): Array<CalendarDay> => {
 	const days = eachDayOfInterval({
-		end: endOfMonth(today),
-		start: startOfMonth(today),
+		end: endOfMonth(date),
+		start: startOfMonth(date),
 	});
 
 	try {
-		return days.map<CalendarDay>((date) => {
+		return days.map<CalendarDay>((dateCurrent) => {
 			return parse(
 				CalendarDaySchema,
 				{
-					date: formatDateString(date),
-					norm: isWeekend(date)
+					date: formatDateString(dateCurrent),
+					norm: isWeekend(dateCurrent)
 						? 0
 						: 8,
 				} satisfies CalendarDay,
@@ -45,5 +46,5 @@ const getCalendarForCurrentMonth = (): Array<CalendarDay> => {
 };
 
 export {
-	getCalendarForCurrentMonth,
+	getCalendarForMonth,
 };
