@@ -52,6 +52,8 @@ User can:
 Additional features:
 
 - When there are several groups with the same name (or several activities within a group), a duplicate name indicator ("!") appears near such groups'/activities' name inputs
+- Groups and activities always have non-empty names. If the value in the group's/activity's input is cleated and the input loses focus, the last saved name is set to the input
+- When groups and activities are added, their names follow a pattern "Group/Activity {index}". If `index` is 0, it is not added to the name. If there already is a group/activity with the same name, the index is increased until a unique name is found
 - When data is loaded from Local Storage, or saved to it, a full-page loader is displayed, and all the controls are disabled. These operations have an artificial delay to demonstrate this functionality (controlled by `PAGE_DATA_PROCESSING_DELAY` constant)
 - All buttons, the duplicate name indicator and reporting statistics text have a tooltip, that appears when hovering over them or focusing on them via keyboard. They explain what they do, mean or to display information if text on the page is too long that it becomes truncated. The tooltip for reported hours' duration vs. norm statistics also contains a reported-to-norm percentage, which is not displayed in the table (to save space)
 - If there are unsaved changes, and a page is about to be closed or reloaded, a prompt with question "Are you sure you want to leave? The unsaved changes will be lost." appears to prevent accidental lose of the changes
