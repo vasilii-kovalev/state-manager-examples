@@ -17,3 +17,6 @@ export {
 /* export {
 	moveWorklogsToGroupSpread as moveWorklogsToGroup,
 } from "./move-worklogs-to-group-spread"; */
+/* export {
+	moveWorklogsToGroupStructuredClone as moveWorklogsToGroup,
+} from "./move-worklogs-to-group-structured-clone"; */
