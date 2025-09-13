@@ -11,14 +11,14 @@ import {
 	initialPageStateWithSameActivityNames,
 	targetGroupId,
 } from "@/features/page/fixtures";
-
 import {
 	type Dispatch,
 	type RootState,
-} from "../../store";
+} from "@/pages/redux/store";
 import {
 	type updateStateFromTransaction,
-} from "../../store/page/slice";
+} from "@/pages/redux/store/page/slice";
+
 import {
 	moveWorklogsToGroupCloneDeepWithObjectMaps,
 } from "../move-worklogs-to-group-clone-deep-with-object-maps";

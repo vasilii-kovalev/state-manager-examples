@@ -7,12 +7,12 @@ import {
 	targetGroupId,
 } from "@/features/page/fixtures";
 import {
+	type RootState,
+} from "@/pages/redux/store";
+import {
 	noop,
 } from "@/utilities/noop";
 
-import {
-	type RootState,
-} from "../../store";
 import {
 	moveWorklogsToGroupActions,
 } from "../move-worklogs-to-group-actions";
