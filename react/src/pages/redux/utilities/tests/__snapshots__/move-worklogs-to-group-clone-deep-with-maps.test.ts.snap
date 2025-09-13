@@ -1,0 +1,1573 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`moves worklogs from activities with different names among all groups > expected 1`] = `
+{
+  "hasChanges": true,
+  "selectedWorklogIds": [],
+  "tree": [
+    {
+      "activities": [
+        {
+          "name": "Activity 1.1",
+          "worklogs": [],
+        },
+        {
+          "name": "Activity 1.2",
+          "worklogs": [],
+        },
+      ],
+      "name": "Group 1",
+    },
+    {
+      "activities": [
+        {
+          "name": "Activity 1.2",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+        {
+          "name": "Activity 1.1",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+        {
+          "name": "Activity 2.1",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+        {
+          "name": "Activity 2.2",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+      ],
+      "name": "Group 2",
+    },
+  ],
+}
+`;
+
+exports[`moves worklogs from activities with different names among all groups > initial 1`] = `
+{
+  "hasChanges": false,
+  "selectedWorklogIds": [
+    "worklog-2025-09-01-activity-1-group-1",
+    "worklog-2025-09-02-activity-1-group-1",
+    "worklog-2025-09-03-activity-1-group-1",
+    "worklog-2025-09-04-activity-1-group-1",
+    "worklog-2025-09-05-activity-1-group-1",
+    "worklog-2025-09-08-activity-1-group-1",
+    "worklog-2025-09-09-activity-1-group-1",
+    "worklog-2025-09-10-activity-1-group-1",
+    "worklog-2025-09-11-activity-1-group-1",
+    "worklog-2025-09-12-activity-1-group-1",
+    "worklog-2025-09-15-activity-1-group-1",
+    "worklog-2025-09-16-activity-1-group-1",
+    "worklog-2025-09-17-activity-1-group-1",
+    "worklog-2025-09-18-activity-1-group-1",
+    "worklog-2025-09-19-activity-1-group-1",
+    "worklog-2025-09-22-activity-1-group-1",
+    "worklog-2025-09-23-activity-1-group-1",
+    "worklog-2025-09-24-activity-1-group-1",
+    "worklog-2025-09-25-activity-1-group-1",
+    "worklog-2025-09-26-activity-1-group-1",
+    "worklog-2025-09-29-activity-1-group-1",
+    "worklog-2025-09-30-activity-1-group-1",
+    "worklog-2025-09-01-activity-2-group-1",
+    "worklog-2025-09-02-activity-2-group-1",
+    "worklog-2025-09-03-activity-2-group-1",
+    "worklog-2025-09-04-activity-2-group-1",
+    "worklog-2025-09-05-activity-2-group-1",
+    "worklog-2025-09-08-activity-2-group-1",
+    "worklog-2025-09-09-activity-2-group-1",
+    "worklog-2025-09-10-activity-2-group-1",
+    "worklog-2025-09-11-activity-2-group-1",
+    "worklog-2025-09-12-activity-2-group-1",
+    "worklog-2025-09-15-activity-2-group-1",
+    "worklog-2025-09-16-activity-2-group-1",
+    "worklog-2025-09-17-activity-2-group-1",
+    "worklog-2025-09-18-activity-2-group-1",
+    "worklog-2025-09-19-activity-2-group-1",
+    "worklog-2025-09-22-activity-2-group-1",
+    "worklog-2025-09-23-activity-2-group-1",
+    "worklog-2025-09-24-activity-2-group-1",
+    "worklog-2025-09-25-activity-2-group-1",
+    "worklog-2025-09-26-activity-2-group-1",
+    "worklog-2025-09-29-activity-2-group-1",
+    "worklog-2025-09-30-activity-2-group-1",
+    "worklog-2025-09-01-activity-1-group-2",
+    "worklog-2025-09-02-activity-1-group-2",
+    "worklog-2025-09-03-activity-1-group-2",
+    "worklog-2025-09-04-activity-1-group-2",
+    "worklog-2025-09-05-activity-1-group-2",
+    "worklog-2025-09-08-activity-1-group-2",
+    "worklog-2025-09-09-activity-1-group-2",
+    "worklog-2025-09-10-activity-1-group-2",
+    "worklog-2025-09-11-activity-1-group-2",
+    "worklog-2025-09-12-activity-1-group-2",
+    "worklog-2025-09-15-activity-1-group-2",
+    "worklog-2025-09-16-activity-1-group-2",
+    "worklog-2025-09-17-activity-1-group-2",
+    "worklog-2025-09-18-activity-1-group-2",
+    "worklog-2025-09-19-activity-1-group-2",
+    "worklog-2025-09-22-activity-1-group-2",
+    "worklog-2025-09-23-activity-1-group-2",
+    "worklog-2025-09-24-activity-1-group-2",
+    "worklog-2025-09-25-activity-1-group-2",
+    "worklog-2025-09-26-activity-1-group-2",
+    "worklog-2025-09-29-activity-1-group-2",
+    "worklog-2025-09-30-activity-1-group-2",
+    "worklog-2025-09-01-activity-2-group-2",
+    "worklog-2025-09-02-activity-2-group-2",
+    "worklog-2025-09-03-activity-2-group-2",
+    "worklog-2025-09-04-activity-2-group-2",
+    "worklog-2025-09-05-activity-2-group-2",
+    "worklog-2025-09-08-activity-2-group-2",
+    "worklog-2025-09-09-activity-2-group-2",
+    "worklog-2025-09-10-activity-2-group-2",
+    "worklog-2025-09-11-activity-2-group-2",
+    "worklog-2025-09-12-activity-2-group-2",
+    "worklog-2025-09-15-activity-2-group-2",
+    "worklog-2025-09-16-activity-2-group-2",
+    "worklog-2025-09-17-activity-2-group-2",
+    "worklog-2025-09-18-activity-2-group-2",
+    "worklog-2025-09-19-activity-2-group-2",
+    "worklog-2025-09-22-activity-2-group-2",
+    "worklog-2025-09-23-activity-2-group-2",
+    "worklog-2025-09-24-activity-2-group-2",
+    "worklog-2025-09-25-activity-2-group-2",
+    "worklog-2025-09-26-activity-2-group-2",
+    "worklog-2025-09-29-activity-2-group-2",
+    "worklog-2025-09-30-activity-2-group-2",
+  ],
+  "tree": [
+    {
+      "activities": [
+        {
+          "name": "Activity 1.1",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+        {
+          "name": "Activity 1.2",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+      ],
+      "name": "Group 1",
+    },
+    {
+      "activities": [
+        {
+          "name": "Activity 2.1",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+        {
+          "name": "Activity 2.2",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+      ],
+      "name": "Group 2",
+    },
+  ],
+}
+`;
+
+exports[`moves worklogs from activities with different names within groups > expected 1`] = `
+{
+  "hasChanges": true,
+  "selectedWorklogIds": [],
+  "tree": [
+    {
+      "activities": [
+        {
+          "name": "Activity 1",
+          "worklogs": [],
+        },
+        {
+          "name": "Activity 2",
+          "worklogs": [],
+        },
+      ],
+      "name": "Group 1",
+    },
+    {
+      "activities": [
+        {
+          "name": "Activity 1",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 16,
+            },
+          ],
+        },
+        {
+          "name": "Activity 2",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 16,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 16,
+            },
+          ],
+        },
+      ],
+      "name": "Group 2",
+    },
+  ],
+}
+`;
+
+exports[`moves worklogs from activities with different names within groups > initial 1`] = `
+{
+  "hasChanges": false,
+  "selectedWorklogIds": [
+    "worklog-2025-09-01-activity-1-group-1",
+    "worklog-2025-09-02-activity-1-group-1",
+    "worklog-2025-09-03-activity-1-group-1",
+    "worklog-2025-09-04-activity-1-group-1",
+    "worklog-2025-09-05-activity-1-group-1",
+    "worklog-2025-09-08-activity-1-group-1",
+    "worklog-2025-09-09-activity-1-group-1",
+    "worklog-2025-09-10-activity-1-group-1",
+    "worklog-2025-09-11-activity-1-group-1",
+    "worklog-2025-09-12-activity-1-group-1",
+    "worklog-2025-09-15-activity-1-group-1",
+    "worklog-2025-09-16-activity-1-group-1",
+    "worklog-2025-09-17-activity-1-group-1",
+    "worklog-2025-09-18-activity-1-group-1",
+    "worklog-2025-09-19-activity-1-group-1",
+    "worklog-2025-09-22-activity-1-group-1",
+    "worklog-2025-09-23-activity-1-group-1",
+    "worklog-2025-09-24-activity-1-group-1",
+    "worklog-2025-09-25-activity-1-group-1",
+    "worklog-2025-09-26-activity-1-group-1",
+    "worklog-2025-09-29-activity-1-group-1",
+    "worklog-2025-09-30-activity-1-group-1",
+    "worklog-2025-09-01-activity-2-group-1",
+    "worklog-2025-09-02-activity-2-group-1",
+    "worklog-2025-09-03-activity-2-group-1",
+    "worklog-2025-09-04-activity-2-group-1",
+    "worklog-2025-09-05-activity-2-group-1",
+    "worklog-2025-09-08-activity-2-group-1",
+    "worklog-2025-09-09-activity-2-group-1",
+    "worklog-2025-09-10-activity-2-group-1",
+    "worklog-2025-09-11-activity-2-group-1",
+    "worklog-2025-09-12-activity-2-group-1",
+    "worklog-2025-09-15-activity-2-group-1",
+    "worklog-2025-09-16-activity-2-group-1",
+    "worklog-2025-09-17-activity-2-group-1",
+    "worklog-2025-09-18-activity-2-group-1",
+    "worklog-2025-09-19-activity-2-group-1",
+    "worklog-2025-09-22-activity-2-group-1",
+    "worklog-2025-09-23-activity-2-group-1",
+    "worklog-2025-09-24-activity-2-group-1",
+    "worklog-2025-09-25-activity-2-group-1",
+    "worklog-2025-09-26-activity-2-group-1",
+    "worklog-2025-09-29-activity-2-group-1",
+    "worklog-2025-09-30-activity-2-group-1",
+    "worklog-2025-09-01-activity-1-group-2",
+    "worklog-2025-09-02-activity-1-group-2",
+    "worklog-2025-09-03-activity-1-group-2",
+    "worklog-2025-09-04-activity-1-group-2",
+    "worklog-2025-09-05-activity-1-group-2",
+    "worklog-2025-09-08-activity-1-group-2",
+    "worklog-2025-09-09-activity-1-group-2",
+    "worklog-2025-09-10-activity-1-group-2",
+    "worklog-2025-09-11-activity-1-group-2",
+    "worklog-2025-09-12-activity-1-group-2",
+    "worklog-2025-09-15-activity-1-group-2",
+    "worklog-2025-09-16-activity-1-group-2",
+    "worklog-2025-09-17-activity-1-group-2",
+    "worklog-2025-09-18-activity-1-group-2",
+    "worklog-2025-09-19-activity-1-group-2",
+    "worklog-2025-09-22-activity-1-group-2",
+    "worklog-2025-09-23-activity-1-group-2",
+    "worklog-2025-09-24-activity-1-group-2",
+    "worklog-2025-09-25-activity-1-group-2",
+    "worklog-2025-09-26-activity-1-group-2",
+    "worklog-2025-09-29-activity-1-group-2",
+    "worklog-2025-09-30-activity-1-group-2",
+    "worklog-2025-09-01-activity-2-group-2",
+    "worklog-2025-09-02-activity-2-group-2",
+    "worklog-2025-09-03-activity-2-group-2",
+    "worklog-2025-09-04-activity-2-group-2",
+    "worklog-2025-09-05-activity-2-group-2",
+    "worklog-2025-09-08-activity-2-group-2",
+    "worklog-2025-09-09-activity-2-group-2",
+    "worklog-2025-09-10-activity-2-group-2",
+    "worklog-2025-09-11-activity-2-group-2",
+    "worklog-2025-09-12-activity-2-group-2",
+    "worklog-2025-09-15-activity-2-group-2",
+    "worklog-2025-09-16-activity-2-group-2",
+    "worklog-2025-09-17-activity-2-group-2",
+    "worklog-2025-09-18-activity-2-group-2",
+    "worklog-2025-09-19-activity-2-group-2",
+    "worklog-2025-09-22-activity-2-group-2",
+    "worklog-2025-09-23-activity-2-group-2",
+    "worklog-2025-09-24-activity-2-group-2",
+    "worklog-2025-09-25-activity-2-group-2",
+    "worklog-2025-09-26-activity-2-group-2",
+    "worklog-2025-09-29-activity-2-group-2",
+    "worklog-2025-09-30-activity-2-group-2",
+  ],
+  "tree": [
+    {
+      "activities": [
+        {
+          "name": "Activity 1",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+        {
+          "name": "Activity 2",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+      ],
+      "name": "Group 1",
+    },
+    {
+      "activities": [
+        {
+          "name": "Activity 1",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+        {
+          "name": "Activity 2",
+          "worklogs": [
+            {
+              "date": "2025-09-01",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-02",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-03",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-04",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-05",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-08",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-09",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-10",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-11",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-12",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-15",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-16",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-17",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-18",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-19",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-22",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-23",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-24",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-25",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-26",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-29",
+              "duration": 8,
+            },
+            {
+              "date": "2025-09-30",
+              "duration": 8,
+            },
+          ],
+        },
+      ],
+      "name": "Group 2",
+    },
+  ],
+}
+`;

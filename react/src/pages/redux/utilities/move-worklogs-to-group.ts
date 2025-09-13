@@ -6,6 +6,9 @@ export {
 	moveWorklogsToGroupCloneDeep as moveWorklogsToGroup,
 } from "./move-worklogs-to-group-clone-deep"; */
 /* export {
+	moveWorklogsToGroupCloneDeepWithMaps as moveWorklogsToGroup,
+} from "./move-worklogs-to-group-clone-deep-with-maps"; */
+/* export {
 	moveWorklogsToGroupImmer as moveWorklogsToGroup,
 } from "./move-worklogs-to-group-immer"; */
 /* export {
