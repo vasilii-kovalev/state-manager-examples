@@ -2,7 +2,7 @@
 
 ## Repository description
 
-This repository contains variations of the same SPA (single-page application) build with different state managers to demonstrate their capabilities.
+This repository contains variations of the same SPA (single-page application) built with different state managers to demonstrate their capabilities.
 
 ## Application description
 
