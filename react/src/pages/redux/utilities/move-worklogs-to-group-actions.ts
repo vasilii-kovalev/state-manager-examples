@@ -119,5 +119,5 @@ const moveWorklogsToGroupWithTransaction: typeof moveWorklogsToGroup = (
 };
 
 export {
-	moveWorklogsToGroupWithTransaction as moveWorklogsToGroupBatch,
+	moveWorklogsToGroupWithTransaction as moveWorklogsToGroupActions,
 };

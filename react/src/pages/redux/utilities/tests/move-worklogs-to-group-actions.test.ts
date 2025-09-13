@@ -12,8 +12,8 @@ import {
 	type updateStateFromTransaction,
 } from "../../store/page/slice";
 import {
-	moveWorklogsToGroupSimple,
-} from "../move-worklogs-to-group-simple";
+	moveWorklogsToGroupActions,
+} from "../move-worklogs-to-group-actions";
 import {
 	getExpectedPageState,
 	initialPageStateWithDifferentActivityNames,
@@ -35,7 +35,7 @@ test(
 			};
 		};
 
-		moveWorklogsToGroupSimple(targetGroupId)(
+		moveWorklogsToGroupActions(targetGroupId)(
 			dispatch as unknown as Dispatch,
 			getState,
 			undefined,
@@ -67,7 +67,7 @@ test(
 			};
 		};
 
-		moveWorklogsToGroupSimple(targetGroupId)(
+		moveWorklogsToGroupActions(targetGroupId)(
 			dispatch as unknown as Dispatch,
 			getState,
 			undefined,

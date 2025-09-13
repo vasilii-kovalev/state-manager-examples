@@ -38,7 +38,7 @@ import {
 	updateStateFromTransaction,
 } from "../store/page/slice";
 
-const moveWorklogsToGroupImmer = (
+const moveWorklogsToGroup = (
 	groupId: GroupId,
 ): Thunk<void> => {
 	return (
@@ -260,5 +260,5 @@ const moveWorklogsToGroupImmer = (
 };
 
 export {
-	moveWorklogsToGroupImmer,
+	moveWorklogsToGroup as moveWorklogsToGroupImmer,
 };
