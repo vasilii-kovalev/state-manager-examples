@@ -6,10 +6,7 @@ This repository contains variations of the same SPA (single-page application) bu
 
 ## Application description
 
-<figure>
-  ![Preview of the application](./preview.png)
-  <figcaption>Preview of the application (React version, Redux page)</figcaption>
-</figure>
+![Preview of the application (React + Redux page)](./preview.png)
 
 The application is a working hours timesheet (a table). It has the following relationship structure:
 

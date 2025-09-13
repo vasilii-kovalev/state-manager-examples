@@ -3,7 +3,6 @@
 		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 	},
 	"cSpell.words": [
-		"figcaption",
 		"timesheet",
 		"unocss",
 		"valibot",
@@ -18,13 +17,5 @@
 		More info: https://github.com/microsoft/vscode-eslint/issues/1917#issuecomment-3059655482
 	*/
 	"eslint.runtime": "bun",
-	"markdownlint.config": {
-		"no-inline-html": {
-			"allowed_elements": [
-				"figcaption",
-				"figure"
-			]
-		}
-	},
 	"typescript.tsdk": "node_modules\\typescript\\lib"
 }
