@@ -11,9 +11,9 @@ import {
 } from "./parse-date";
 
 const getIsWeekend = (
-	dateString: Date | DateString,
+	dateOrDateString: Date | DateString,
 ): boolean => {
-	const date = parseDate(dateString);
+	const date = parseDate(dateOrDateString);
 
 	return isWeekend(date);
 };
