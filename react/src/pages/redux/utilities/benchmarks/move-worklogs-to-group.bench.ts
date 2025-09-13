@@ -45,22 +45,22 @@ import {
 
 	RUN  v3.2.4
 
-	   name                                                                   hz     min     max    mean     p75     p99    p995    p999     rme  samples
-	 · moveWorklogsToGroup (actions) [RTK: 2.8.2, Immer: 10.1.1]          1.0508  928.27  980.92  951.65  964.75  980.92  980.92  980.92  ±1.20%       10
-	 · moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.39.9]               6.2381  149.61  183.14  160.31  164.82  183.14  183.14  183.14  ±4.70%       10
-	 · moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.39.9]  6.5966  138.79  173.68  151.59  152.59  173.68  173.68  173.68  ±4.50%       10
-	 · moveWorklogsToGroup (Immer) [Immer: 10.1.1]                        1.0887  899.40  962.19  918.57  942.00  962.19  962.19  962.19  ±1.74%       10
-	 · moveWorklogsToGroup (Mutative) [Mutative: 1.2.0]                   1.3202  733.98  791.31  757.44  772.14  791.31  791.31  791.31  ±1.74%       10
-	 · moveWorklogsToGroup (spread)                                       2.5266  374.65  434.56  395.79  400.28  434.56  434.56  434.56  ±3.20%       10
+	   name                                                                   hz     min       max    mean     p75       p99      p995      p999     rme  samples
+	 · moveWorklogsToGroup (actions) [RTK: 2.8.2, Immer: 10.1.1]          1.0329  938.05  1,008.31  968.17  983.30  1,008.31  1,008.31  1,008.31  ±1.49%       10
+	 · moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.39.9]               6.2492  149.59    168.70  160.02  163.09    168.70    168.70    168.70  ±2.55%       10
+	 · moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.39.9]  654.19  1.3848    2.8473  1.5286  1.5370    2.3258    2.8355    2.8473  ±1.31%      328
+	 · moveWorklogsToGroup (Immer) [Immer: 10.1.1]                        1.1237  867.77    919.47  889.89  905.82    919.47    919.47    919.47  ±1.34%       10
+	 · moveWorklogsToGroup (Mutative) [Mutative: 1.2.0]                   1.3572  711.25    775.99  736.79  744.30    775.99    775.99    775.99  ±1.68%       10
+	 · moveWorklogsToGroup (spread)                                       2.5083  379.47    429.59  398.67  405.50    429.59    429.59    429.59  ±2.88%       10
 
 	BENCH  Summary
 
 	moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.39.9]
-	  1.06x faster than moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.39.9]
-	  2.61x faster than moveWorklogsToGroup (spread)
-	  5.00x faster than moveWorklogsToGroup (Mutative) [Mutative: 1.2.0]
-	  6.06x faster than moveWorklogsToGroup (Immer) [Immer: 10.1.1]
-	  6.28x faster than moveWorklogsToGroup (actions) [RTK: 2.8.2, Immer: 10.1.1]
+	  104.68x faster than moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.39.9]
+	  260.81x faster than moveWorklogsToGroup (spread)
+	  482.00x faster than moveWorklogsToGroup (Mutative) [Mutative: 1.2.0]
+	  582.16x faster than moveWorklogsToGroup (Immer) [Immer: 10.1.1]
+	  633.37x faster than moveWorklogsToGroup (actions) [RTK: 2.8.2, Immer: 10.1.1]
 */
 bench(
 	"moveWorklogsToGroup (actions) [RTK: 2.8.2, Immer: 10.1.1]",

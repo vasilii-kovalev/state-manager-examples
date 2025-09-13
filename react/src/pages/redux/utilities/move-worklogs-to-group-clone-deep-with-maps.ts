@@ -243,13 +243,9 @@ const moveWorklogsToGroup = (
 				return;
 			}
 
-			const worklogs = Object.values(stateNextDraft.worklogsById);
-			const existingWorklog = worklogs.find((worklogCurrent) => {
-				return (
-					worklogCurrent.activityId === activityId
-					&& worklogCurrent.date === worklog.date
-				);
-			});
+			const existingWorklog = worklogsMap.get(
+				`${activityId}-${worklog.date}`,
+			);
 
 			if (isUndefined(existingWorklog)) {
 				moveWorklog({
