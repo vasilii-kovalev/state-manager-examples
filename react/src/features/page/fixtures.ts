@@ -7,39 +7,39 @@ import {
 import {
 	type Activity,
 	type ActivityName,
-} from "@/features/activity/types";
+} from "../activity/types";
 import {
 	type Duration,
-} from "@/features/dates-and-time/types";
+} from "../dates-and-time/types";
 import {
 	parseDate,
-} from "@/features/dates-and-time/utilities/parse-date";
+} from "../dates-and-time/utilities/parse-date";
 import {
 	type Group,
 	type GroupId,
 	type GroupName,
-} from "@/features/group/types";
-import {
-	PAGE_STATE_DEFAULT,
-} from "@/features/page/constants";
-import {
-	type PageState,
-} from "@/features/page/types";
-import {
-	getCalendarForMonth,
-} from "@/features/page/utilities/get-calendar-for-month";
-import {
-	getNewActivity,
-} from "@/features/page/utilities/get-new-activity";
-import {
-	getNewGroup,
-} from "@/features/page/utilities/get-new-group";
-import {
-	getNewWorklog,
-} from "@/features/page/utilities/get-new-worklog";
+} from "../group/types";
 import {
 	type Worklog,
-} from "@/features/worklog/types";
+} from "../worklog/types";
+import {
+	PAGE_STATE_DEFAULT,
+} from "./constants";
+import {
+	type PageState,
+} from "./types";
+import {
+	getCalendarForMonth,
+} from "./utilities/get-calendar-for-month";
+import {
+	getNewActivity,
+} from "./utilities/get-new-activity";
+import {
+	getNewGroup,
+} from "./utilities/get-new-group";
+import {
+	getNewWorklog,
+} from "./utilities/get-new-worklog";
 
 const calendarDate = parseDate("2025-09-01");
 
@@ -54,16 +54,16 @@ interface GetPageStateParams {
 	activitiesPerGroupCount: number;
 	getActivityName: (params: GetActivityNameParams) => ActivityName;
 	getGroupName: (groupIndex: number) => GroupName;
-	getWorklogDuration: (groupId: GroupId) => Duration | undefined;
 	groupsCount: number;
+	worklogDuration: Duration;
 }
 
 const getPageState = ({
 	activitiesPerGroupCount,
 	getActivityName,
 	getGroupName,
-	getWorklogDuration,
 	groupsCount,
+	worklogDuration,
 }: GetPageStateParams): PageState => {
 	const pageState = cloneDeep(PAGE_STATE_DEFAULT);
 
@@ -90,7 +90,7 @@ const getPageState = ({
 			activityIndex < activitiesPerGroupCount;
 			activityIndex += 1
 		) {
-			const activityId = `activity-${groupIndex + 1}-${activityIndex + 1}`;
+			const activityId = `activity-${activityIndex + 1}-${groupId}`;
 			const activityName = getActivityName({
 				activityIndex,
 				groupIndex,
@@ -107,10 +107,8 @@ const getPageState = ({
 
 			calendar.forEach((calendarDay) => {
 				if (calendarDay.norm > 0) {
-					const worklogDuration = getWorklogDuration(groupId);
-
 					if (!isUndefined(worklogDuration)) {
-						const worklogId = `worklog-${activityId}-${calendarDay.date}`;
+						const worklogId = `worklog-${calendarDay.date}-${activityId}`;
 						const worklog = getNewWorklog({
 							activityId,
 							date: calendarDay.date,
@@ -146,7 +144,10 @@ interface TreeActivity extends Omit<
 	worklogs: Array<TreeWorklog>;
 }
 
-interface TreeGroup extends Group {
+interface TreeGroup extends Omit<
+	Group,
+	| "id"
+> {
 	activities: Array<TreeActivity>;
 }
 
@@ -245,7 +246,12 @@ const getExpectedPageState = (
 			);
 
 			groupsCurrent.push({
-				...group,
+				...omit(
+					group,
+					[
+						"id",
+					],
+				),
 				activities,
 			});
 
@@ -263,26 +269,55 @@ const getExpectedPageState = (
 
 const targetGroupId: GroupId = "group-2";
 
-const initialPageStateWithDifferentActivityNames = getPageState({
+type GetPageStateWithDifferentActivityNamesParams = Pick<
+	GetPageStateParams,
+	| "activitiesPerGroupCount"
+	| "groupsCount"
+	| "worklogDuration"
+>;
+
+const getPageStateWithDifferentActivityNames = ({
+	activitiesPerGroupCount,
+	groupsCount,
+	worklogDuration,
+}: GetPageStateWithDifferentActivityNamesParams): PageState => {
+	const pageState = getPageState({
+		activitiesPerGroupCount,
+		getActivityName: ({
+			groupIndex,
+			activityIndex,
+		}) => {
+			return `Activity ${groupIndex + 1}.${activityIndex + 1}`;
+		},
+		getGroupName: (
+			groupIndex,
+		) => {
+			return `Group ${groupIndex + 1}`;
+		},
+		groupsCount,
+		worklogDuration,
+	});
+
+	pageState.selectedWorklogIds = pageState.worklogIds;
+
+	return pageState;
+};
+
+const initialPageStateWithDifferentActivityNames = getPageStateWithDifferentActivityNames({
 	activitiesPerGroupCount: 2,
-	getActivityName: ({
-		groupIndex,
-		activityIndex,
-	}) => {
-		return `Activity ${groupIndex + 1}.${activityIndex + 1}`;
-	},
-	getGroupName: (
-		groupIndex,
-	) => {
-		return `Group ${groupIndex + 1}`;
-	},
-	getWorklogDuration: () => {
-		return 8;
-	},
 	groupsCount: 2,
+	worklogDuration: 8,
 });
 
-initialPageStateWithDifferentActivityNames.selectedWorklogIds = initialPageStateWithDifferentActivityNames.worklogIds;
+const pageStateWithDifferentActivityNamesForPerformance = getPageStateWithDifferentActivityNames({
+	activitiesPerGroupCount: 2,
+	groupsCount: 30,
+	worklogDuration: 8,
+});
+
+const expectedPageStateWithDifferentActivityNames = getExpectedPageState(
+	initialPageStateWithDifferentActivityNames,
+);
 
 const initialPageStateWithSameActivityNames = getPageState({
 	activitiesPerGroupCount: 2,
@@ -296,17 +331,17 @@ const initialPageStateWithSameActivityNames = getPageState({
 	) => {
 		return `Group ${groupIndex + 1}`;
 	},
-	getWorklogDuration: () => {
-		return 8;
-	},
 	groupsCount: 2,
+	worklogDuration: 8,
 });
 
 initialPageStateWithSameActivityNames.selectedWorklogIds = initialPageStateWithSameActivityNames.worklogIds;
 
 export {
+	expectedPageStateWithDifferentActivityNames,
 	getExpectedPageState,
 	initialPageStateWithDifferentActivityNames,
 	initialPageStateWithSameActivityNames,
+	pageStateWithDifferentActivityNamesForPerformance,
 	targetGroupId,
 };

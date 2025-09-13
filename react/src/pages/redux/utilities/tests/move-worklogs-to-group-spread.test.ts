@@ -5,6 +5,14 @@ import {
 } from "vitest";
 
 import {
+	expectedPageStateWithDifferentActivityNames,
+	getExpectedPageState,
+	initialPageStateWithDifferentActivityNames,
+	initialPageStateWithSameActivityNames,
+	targetGroupId,
+} from "@/features/page/fixtures";
+
+import {
 	type Dispatch,
 	type RootState,
 } from "../../store";
@@ -14,12 +22,6 @@ import {
 import {
 	moveWorklogsToGroupSpread,
 } from "../move-worklogs-to-group-spread";
-import {
-	getExpectedPageState,
-	initialPageStateWithDifferentActivityNames,
-	initialPageStateWithSameActivityNames,
-	targetGroupId,
-} from "./fixtures";
 
 type ActionType = ReturnType<typeof updateStateFromTransaction>;
 
@@ -49,9 +51,9 @@ test(
 		// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 		const expectedPageState = getExpectedPageState(action!.payload);
 
-		expect(getExpectedPageState(initialState)).toMatchSnapshot("initial");
-
 		expect(expectedPageState).toMatchSnapshot("expected");
+
+		expect(expectedPageStateWithDifferentActivityNames).toMatchSnapshot("initial");
 	},
 );
 
