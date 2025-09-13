@@ -1,7 +1,4 @@
 import {
-	isUndefined,
-} from "es-toolkit";
-import {
 	create,
 } from "mutative";
 
@@ -28,6 +25,9 @@ import {
 	type Worklog,
 	type WorklogId,
 } from "@/features/worklog/types";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import {
 	type Thunk,

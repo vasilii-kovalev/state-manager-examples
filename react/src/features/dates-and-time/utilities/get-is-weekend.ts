@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import {
 	isWeekend,
 } from "date-fns";
@@ -10,7 +11,7 @@ import {
 } from "./parse-date";
 
 const getIsWeekend = (
-	dateString: DateString,
+	dateString: Date | DateString,
 ): boolean => {
 	const date = parseDate(dateString);
 

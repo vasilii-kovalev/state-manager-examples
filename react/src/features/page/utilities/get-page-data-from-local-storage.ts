@@ -1,9 +1,10 @@
 import {
-	isNull,
-} from "es-toolkit";
-import {
 	parse,
 } from "valibot";
+
+import {
+	isNull,
+} from "@/utilities/is-null";
 
 import {
 	PAGE_DATA_LOCAL_STORAGE_KEY,

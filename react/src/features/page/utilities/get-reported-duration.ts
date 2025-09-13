@@ -1,13 +1,12 @@
 import {
-	sumBy,
-} from "es-toolkit";
-
-import {
 	type Duration,
 } from "@/features/dates-and-time/types";
 import {
 	type Worklog,
 } from "@/features/worklog/types";
+import {
+	sumBy,
+} from "@/utilities/sum-by";
 
 const getReportedDuration = (
 	worklogs: Array<Worklog>,

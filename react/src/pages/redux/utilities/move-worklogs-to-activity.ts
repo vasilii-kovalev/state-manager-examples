@@ -1,10 +1,9 @@
 import {
-	isUndefined,
-} from "es-toolkit";
-
-import {
 	type ActivityId,
 } from "@/features/activity/types";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import {
 	type Thunk,

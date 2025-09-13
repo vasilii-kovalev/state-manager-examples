@@ -1,13 +1,12 @@
 import {
-	nanoid,
-} from "nanoid";
-
-import {
 	type Worklog,
 } from "@/features/worklog/types";
 import {
 	type RequireProperties,
 } from "@/types/require-properties";
+import {
+	generateId,
+} from "@/utilities/generate-id";
 
 type GetNewWorklogParams = RequireProperties<
 	Partial<Worklog>,
@@ -22,15 +21,14 @@ const getNewWorklog = ({
 	date,
 	duration,
 	groupId,
-	...override
+	id = generateId(),
 }: GetNewWorklogParams): Worklog => {
 	return {
 		activityId,
 		date,
 		duration,
 		groupId,
-		id: nanoid(),
-		...override,
+		id,
 	};
 };
 

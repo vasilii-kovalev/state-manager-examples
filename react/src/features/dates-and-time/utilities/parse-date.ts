@@ -1,13 +1,13 @@
 import {
-	parseISO,
-} from "date-fns";
-import {
 	isDate,
-} from "es-toolkit";
+} from "@/utilities/is-date";
 
 import {
 	type DateString,
 } from "../types";
+import {
+	parseISO,
+} from "./parse-iso";
 
 const parseDate = (
 	dateOrDateString: Date | DateString,

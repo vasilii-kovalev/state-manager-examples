@@ -1,7 +1,4 @@
 import {
-	isUndefined,
-} from "es-toolkit";
-import {
 	parse,
 } from "valibot";
 
@@ -18,6 +15,9 @@ import {
 import {
 	getNewGroupName,
 } from "@/features/page/utilities/get-new-group-name";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import {
 	type Thunk,

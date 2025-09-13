@@ -1,11 +1,10 @@
 import {
-	isEmpty,
-} from "es-toolkit/compat";
-
-import {
 	type Worklog,
 	type WorklogId,
 } from "@/features/worklog/types";
+import {
+	isEmpty,
+} from "@/utilities/is-empty";
 
 import {
 	ENTITY_SELECTION_STATE,

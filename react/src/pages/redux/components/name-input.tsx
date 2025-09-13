@@ -1,7 +1,4 @@
 import {
-	isEmpty,
-} from "es-toolkit/compat";
-import {
 	type ChangeEventHandler,
 	type ReactNode,
 } from "react";
@@ -19,6 +16,9 @@ import {
 import {
 	getClass,
 } from "@/utilities/get-class";
+import {
+	isEmpty,
+} from "@/utilities/is-empty";
 
 interface NameInputProps<Name extends string> extends UseLocalNameResult {
 	className?: string;

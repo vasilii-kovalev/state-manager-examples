@@ -1,7 +1,4 @@
 import {
-	isNull,
-} from "es-toolkit";
-import {
 	type CSSProperties,
 	Fragment,
 	type ReactNode,
@@ -13,6 +10,9 @@ import {
 import {
 	getClass,
 } from "@/utilities/get-class";
+import {
+	isNull,
+} from "@/utilities/is-null";
 
 import css from "./tooltip.module.css";
 

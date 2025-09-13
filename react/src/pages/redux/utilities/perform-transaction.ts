@@ -1,9 +1,10 @@
 import {
 	isAction,
 } from "@reduxjs/toolkit";
+
 import {
 	isFunction,
-} from "es-toolkit";
+} from "@/utilities/is-function";
 
 import {
 	type Dispatch,

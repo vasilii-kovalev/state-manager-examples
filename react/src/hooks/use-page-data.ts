@@ -3,9 +3,6 @@ import {
 	useQueryClient,
 } from "@tanstack/react-query";
 import {
-	isUndefined,
-} from "es-toolkit";
-import {
 	useEffect,
 } from "react";
 
@@ -18,6 +15,9 @@ import {
 import {
 	getPageData,
 } from "@/features/page/utilities/get-page-data";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 interface UsePageDataParams {
 	onSuccess: (pageData: PageData) => void;

@@ -1,9 +1,9 @@
 import {
-	isUndefined,
-} from "es-toolkit";
-import {
 	constant,
-} from "es-toolkit/compat";
+} from "@/utilities/constant";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import {
 	type EntityId,

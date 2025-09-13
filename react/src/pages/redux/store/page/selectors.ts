@@ -2,13 +2,6 @@ import {
 	createDraftSafeSelector,
 	createSelector,
 } from "@reduxjs/toolkit";
-import {
-	isUndefined,
-	sumBy,
-} from "es-toolkit";
-import {
-	isEmpty,
-} from "es-toolkit/compat";
 
 import {
 	type Activity,
@@ -43,6 +36,15 @@ import {
 import {
 	type Worklog,
 } from "@/features/worklog/types";
+import {
+	isEmpty,
+} from "@/utilities/is-empty";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
+import {
+	sumBy,
+} from "@/utilities/sum-by";
 
 import {
 	ACTIVITIES_FALLBACK,

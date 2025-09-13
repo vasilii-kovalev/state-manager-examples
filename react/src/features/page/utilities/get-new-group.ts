@@ -1,13 +1,12 @@
 import {
-	nanoid,
-} from "nanoid";
-
-import {
 	type Group,
 } from "@/features/group/types";
 import {
 	type RequireProperties,
 } from "@/types/require-properties";
+import {
+	generateId,
+} from "@/utilities/generate-id";
 
 type GetNewGroupParams = RequireProperties<
 	Partial<Group>,
@@ -15,13 +14,12 @@ type GetNewGroupParams = RequireProperties<
 >;
 
 const getNewGroup = ({
+	id = generateId(),
 	name,
-	...override
 }: GetNewGroupParams): Group => {
 	return {
-		id: nanoid(),
+		id,
 		name,
-		...override,
 	};
 };
 

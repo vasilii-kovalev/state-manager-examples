@@ -1,7 +1,4 @@
 import {
-	isUndefined,
-} from "es-toolkit";
-import {
 	type ComponentProps,
 	type FC,
 } from "react";
@@ -15,6 +12,9 @@ import {
 import {
 	getClass,
 } from "@/utilities/get-class";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 interface CellProps extends ComponentProps<"td"> {
 	date?: DateString;

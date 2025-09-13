@@ -1,6 +1,6 @@
 import {
 	isUndefined,
-} from "es-toolkit";
+} from "./is-undefined";
 
 type OptionalClass = string | undefined;
 

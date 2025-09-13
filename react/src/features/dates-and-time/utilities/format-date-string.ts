@@ -1,10 +1,9 @@
 import {
-	formatISO,
-} from "date-fns";
-
-import {
 	type DateString,
 } from "../types";
+import {
+	formatISO,
+} from "./format-iso";
 
 const formatDateString = (
 	date: Date,

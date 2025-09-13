@@ -1,13 +1,12 @@
 import {
-	nanoid,
-} from "nanoid";
-
-import {
 	type Activity,
 } from "@/features/activity/types";
 import {
 	type RequireProperties,
 } from "@/types/require-properties";
+import {
+	generateId,
+} from "@/utilities/generate-id";
 
 type GetNewActivityParams = RequireProperties<
 	Partial<Activity>,
@@ -17,14 +16,13 @@ type GetNewActivityParams = RequireProperties<
 
 const getNewActivity = ({
 	groupId,
+	id = generateId(),
 	name,
-	...override
 }: GetNewActivityParams): Activity => {
 	return {
 		groupId,
-		id: nanoid(),
+		id,
 		name,
-		...override,
 	};
 };
 

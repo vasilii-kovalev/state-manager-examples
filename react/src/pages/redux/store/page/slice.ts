@@ -2,9 +2,6 @@ import {
 	createSlice,
 	type PayloadAction,
 } from "@reduxjs/toolkit";
-import {
-	isUndefined,
-} from "es-toolkit";
 
 import {
 	type Activity,
@@ -24,6 +21,9 @@ import {
 	type Worklog,
 	type WorklogId,
 } from "@/features/worklog/types";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import {
 	selectActivitiesForGroup,

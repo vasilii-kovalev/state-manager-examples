@@ -1,7 +1,4 @@
 import {
-	isNull,
-} from "es-toolkit";
-import {
 	type FC,
 	useLayoutEffect,
 	useRef,
@@ -16,6 +13,9 @@ import {
 import {
 	useIsBusy,
 } from "@/hooks/use-is-busy";
+import {
+	isNull,
+} from "@/utilities/is-null";
 
 interface SelectEntityCheckboxProps {
 	isDisabled: boolean;

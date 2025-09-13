@@ -1,7 +1,4 @@
 import {
-	isUndefined,
-} from "es-toolkit";
-import {
 	parse,
 } from "valibot";
 
@@ -21,6 +18,9 @@ import {
 import {
 	getNewActivityName,
 } from "@/features/page/utilities/get-new-activity-name";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import {
 	type Thunk,

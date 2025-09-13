@@ -587,7 +587,27 @@ const eslintConfig = disableAutofix(
 				*/
 				"no-restricted-globals": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-restricted-imports
-				"no-restricted-imports": ERROR,
+				// TODO: move to TypeScript rule.
+				"no-restricted-imports": [
+					ERROR,
+					{
+						patterns: [
+							{
+								group: [
+									"es-toolkit",
+									"nanoid",
+								],
+								message: "Import utility functions from `@/utilities` folder instead.",
+							},
+							{
+								group: [
+									"date-fns",
+								],
+								message: "Import utility functions from `@/features/dates-and-time/utilities` folder instead.",
+							},
+						],
+					},
+				],
 				// https://eslint.org/docs/latest/rules/no-restricted-properties
 				// This rule is disabled because all object properties are allowed.
 				"no-restricted-properties": DISABLED,

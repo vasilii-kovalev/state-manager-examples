@@ -1,10 +1,9 @@
 import {
-	isUndefined,
-} from "es-toolkit";
-
-import {
 	type Worklog,
 } from "@/features/worklog/types";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import {
 	type Thunk,

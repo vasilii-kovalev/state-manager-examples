@@ -1,7 +1,4 @@
 import {
-	noop,
-} from "es-toolkit";
-import {
 	bench,
 } from "vitest";
 
@@ -9,6 +6,9 @@ import {
 	pageStateWithDifferentActivityNamesForPerformance,
 	targetGroupId,
 } from "@/features/page/fixtures";
+import {
+	noop,
+} from "@/utilities/noop";
 
 import {
 	type RootState,

@@ -1,6 +1,3 @@
-import {
-	isUndefined,
-} from "es-toolkit";
 // We need to use the Redux Toolkit's version whatever it is.
 // eslint-disable-next-line import-x/no-extraneous-dependencies
 import {
@@ -30,6 +27,9 @@ import {
 	type Worklog,
 	type WorklogId,
 } from "@/features/worklog/types";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import {
 	type Thunk,

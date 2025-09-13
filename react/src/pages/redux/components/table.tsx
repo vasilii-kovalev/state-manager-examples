@@ -1,7 +1,4 @@
 import {
-	isEmpty,
-} from "es-toolkit/compat";
-import {
 	type ComponentProps,
 	type FC,
 } from "react";
@@ -9,6 +6,9 @@ import {
 import {
 	getClass,
 } from "@/utilities/get-class";
+import {
+	isEmpty,
+} from "@/utilities/is-empty";
 
 import {
 	useApplicationSelector,

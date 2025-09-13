@@ -21,14 +21,15 @@ import {
 	TanStackRouterDevtoolsPanel,
 } from "@tanstack/react-router-devtools";
 import {
-	isNull,
-} from "es-toolkit";
-import {
 	StrictMode,
 } from "react";
 import {
 	createRoot,
 } from "react-dom/client";
+
+import {
+	isNull,
+} from "@/utilities/is-null";
 
 import {
 	routeTree,

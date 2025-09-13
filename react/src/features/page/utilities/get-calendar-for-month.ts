@@ -1,10 +1,4 @@
 import {
-	eachDayOfInterval,
-	endOfMonth,
-	isWeekend,
-	startOfMonth,
-} from "date-fns";
-import {
 	parse,
 } from "valibot";
 
@@ -17,13 +11,25 @@ import {
 import {
 	formatDateString,
 } from "@/features/dates-and-time/utilities/format-date-string";
+import {
+	getEachDayOfInterval,
+} from "@/features/dates-and-time/utilities/get-each-day-of-interval";
+import {
+	getEndOfMonth,
+} from "@/features/dates-and-time/utilities/get-end-of-month";
+import {
+	getIsWeekend,
+} from "@/features/dates-and-time/utilities/get-is-weekend";
+import {
+	getStartOfMonth,
+} from "@/features/dates-and-time/utilities/get-start-of-month";
 
 const getCalendarForMonth = (
 	date: Date,
 ): Array<CalendarDay> => {
-	const days = eachDayOfInterval({
-		end: endOfMonth(date),
-		start: startOfMonth(date),
+	const days = getEachDayOfInterval({
+		end: getEndOfMonth(date),
+		start: getStartOfMonth(date),
 	});
 
 	try {
@@ -32,7 +38,7 @@ const getCalendarForMonth = (
 				CalendarDaySchema,
 				{
 					date: formatDateString(dateCurrent),
-					norm: isWeekend(dateCurrent)
+					norm: getIsWeekend(dateCurrent)
 						? 0
 						: 8,
 				} satisfies CalendarDay,

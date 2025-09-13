@@ -1,9 +1,4 @@
 import {
-	cloneDeep,
-	isUndefined,
-} from "es-toolkit";
-
-import {
 	type Activity,
 	type ActivityId,
 	type ActivityName,
@@ -30,6 +25,12 @@ import {
 	type Worklog,
 	type WorklogId,
 } from "@/features/worklog/types";
+import {
+	cloneDeep,
+} from "@/utilities/clone-deep";
+import {
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import {
 	type Thunk,
