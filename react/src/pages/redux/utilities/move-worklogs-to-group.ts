@@ -9,6 +9,9 @@ export {
 	moveWorklogsToGroupCloneDeepWithMaps as moveWorklogsToGroup,
 } from "./move-worklogs-to-group-clone-deep-with-maps"; */
 /* export {
+	moveWorklogsToGroupCloneDeepWithObjectMaps as moveWorklogsToGroup,
+} from "./move-worklogs-to-group-clone-deep-with-object-maps"; */
+/* export {
 	moveWorklogsToGroupImmer as moveWorklogsToGroup,
 } from "./move-worklogs-to-group-immer"; */
 /* export {

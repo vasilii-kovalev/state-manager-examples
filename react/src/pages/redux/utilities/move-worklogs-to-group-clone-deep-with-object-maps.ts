@@ -42,7 +42,7 @@ import {
 /**
  * Does not reuse existing actions and thunks.
 
- * The same as `moveWorklogsToGroupCloneDeep`, but uses `Map`-s instead of arrays
+ * The same as `moveWorklogsToGroupCloneDeep`, but uses plain object maps instead of arrays
  * to optimize lookups of existing activities and worklogs on each iteration.
  */
 const moveWorklogsToGroup = (
@@ -56,7 +56,7 @@ const moveWorklogsToGroup = (
 
 		type ActivitiesMapValue = `${GroupId}-${ActivityName}`;
 
-		const activitiesMap = stateNextDraft.activityIds.reduce<Map<ActivitiesMapValue, Activity>>(
+		const activitiesMap = stateNextDraft.activityIds.reduce<Record<ActivitiesMapValue, Activity>>(
 			(
 				activitiesMapCurrent,
 				activityId,
@@ -64,20 +64,18 @@ const moveWorklogsToGroup = (
 				const activity = stateNextDraft.activitiesById[activityId];
 
 				if (!isUndefined(activity)) {
-					activitiesMapCurrent.set(
-						`${activity.groupId}-${activity.name}`,
-						activity,
-					);
+					// eslint-disable-next-line no-param-reassign
+					activitiesMapCurrent[`${activity.groupId}-${activity.name}`] = activity;
 				}
 
 				return activitiesMapCurrent;
 			},
-			new Map<ActivitiesMapValue, Activity>(),
+			{},
 		);
 
 		type WorklogsMapValue = `${ActivityId}-${DateString}`;
 
-		const worklogsMap = stateNextDraft.worklogIds.reduce<Map<WorklogsMapValue, Worklog>>(
+		const worklogsMap = stateNextDraft.worklogIds.reduce<Record<WorklogsMapValue, Worklog>>(
 			(
 				worklogsMapCurrent,
 				worklogId,
@@ -85,15 +83,13 @@ const moveWorklogsToGroup = (
 				const worklog = stateNextDraft.worklogsById[worklogId];
 
 				if (!isUndefined(worklog)) {
-					worklogsMapCurrent.set(
-						`${worklog.activityId}-${worklog.date}`,
-						worklog,
-					);
+					// eslint-disable-next-line no-param-reassign
+					worklogsMapCurrent[`${worklog.activityId}-${worklog.date}`] = worklog;
 				}
 
 				return worklogsMapCurrent;
 			},
-			new Map<WorklogsMapValue, Worklog>(),
+			{},
 		);
 
 		interface GetGroupNamesParams {
@@ -145,10 +141,7 @@ const moveWorklogsToGroup = (
 
 			stateNextDraft.hasChanges = true;
 
-			activitiesMap.set(
-				`${groupId}-${activity.name}`,
-				activity,
-			);
+			activitiesMap[`${groupId}-${activity.name}`] = activity;
 
 			return activity.id;
 		};
@@ -169,18 +162,14 @@ const moveWorklogsToGroup = (
 				return;
 			}
 
-			worklogsMap.delete(
-				`${worklog.activityId}-${worklog.date}`,
-			);
+			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+			delete worklogsMap[`${worklog.activityId}-${worklog.date}`];
 
 			worklog.activityId = activityId;
 
 			worklog.groupId = groupId;
 
-			worklogsMap.set(
-				`${activityId}-${worklog.date}`,
-				worklog,
-			);
+			worklogsMap[`${activityId}-${worklog.date}`] = worklog;
 
 			stateNextDraft.hasChanges = true;
 		};
@@ -203,10 +192,7 @@ const moveWorklogsToGroup = (
 
 			worklog.duration = duration;
 
-			worklogsMap.set(
-				`${worklog.activityId}-${worklog.date}`,
-				worklog,
-			);
+			worklogsMap[`${worklog.activityId}-${worklog.date}`] = worklog;
 
 			stateNextDraft.hasChanges = true;
 		};
@@ -220,9 +206,8 @@ const moveWorklogsToGroup = (
 				return;
 			}
 
-			worklogsMap.delete(
-				`${worklog.activityId}-${worklog.date}`,
-			);
+			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+			delete worklogsMap[`${worklog.activityId}-${worklog.date}`];
 
 			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 			delete stateNextDraft.worklogsById[worklogId];
@@ -250,9 +235,7 @@ const moveWorklogsToGroup = (
 				return;
 			}
 
-			const existingWorklog = worklogsMap.get(
-				`${activityId}-${worklog.date}`,
-			);
+			const existingWorklog = worklogsMap[`${activityId}-${worklog.date}`];
 
 			if (isUndefined(existingWorklog)) {
 				moveWorklog({
@@ -291,9 +274,7 @@ const moveWorklogsToGroup = (
 				return;
 			}
 
-			const existingActivity = activitiesMap.get(
-				`${groupId}-${activity.name}`,
-			);
+			const existingActivity = activitiesMap[`${groupId}-${activity.name}`];
 
 			if (isUndefined(existingActivity)) {
 				const activityId = addActivity({
@@ -319,5 +300,5 @@ const moveWorklogsToGroup = (
 };
 
 export {
-	moveWorklogsToGroup as moveWorklogsToGroupCloneDeepWithMaps,
+	moveWorklogsToGroup as moveWorklogsToGroupCloneDeepWithObjectMaps,
 };
