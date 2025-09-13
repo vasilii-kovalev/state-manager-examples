@@ -39,6 +39,12 @@ import {
 	updateStateFromTransaction,
 } from "../store/page/slice";
 
+/**
+ * Does not reuse existing actions and thunks.
+
+ * The same as `moveWorklogsToGroupCloneDeep`, but uses `Map`-s instead of arrays
+ * to optimize lookups of existing activities and worklogs on each iteration.
+ */
 const moveWorklogsToGroup = (
 	groupId: GroupId,
 ): Thunk<void> => {

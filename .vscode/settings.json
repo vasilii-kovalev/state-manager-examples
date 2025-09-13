@@ -1,0 +1,14 @@
+{
+	"cSpell.words": [
+		"figcaption",
+		"timesheet"
+	],
+	"markdownlint.config": {
+		"no-inline-html": {
+			"allowed_elements": [
+				"figcaption",
+				"figure"
+			]
+		}
+	}
+}

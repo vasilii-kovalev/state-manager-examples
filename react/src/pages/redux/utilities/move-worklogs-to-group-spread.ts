@@ -32,6 +32,14 @@ import {
 	updateStateFromTransaction,
 } from "../store/page/slice";
 
+/**
+ * Does not reuse existing actions and thunks. Instead, it copies their functionality.
+
+ * Does not use any immutability library, so the draft state is updated by copying structures
+ * using JavaScript spread operator.
+
+ * Once the work is finished, `updateStateFromTransaction` action is dispatched with the updated state.
+ */
 const moveWorklogsToGroup = (
 	groupId: GroupId,
 ): Thunk<void> => {

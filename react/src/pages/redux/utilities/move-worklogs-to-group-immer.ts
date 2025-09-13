@@ -38,6 +38,14 @@ import {
 	updateStateFromTransaction,
 } from "../store/page/slice";
 
+/**
+ * Does not reuse existing actions and thunks. Instead, it copies their functionality.
+
+ * Uses Immer library (the same version Redux Toolkit uses) to create a draft state from the existing one,
+ * which allows mutating it directly.
+
+ * Once the work is finished, `updateStateFromTransaction` action is dispatched with the updated state.
+ */
 const moveWorklogsToGroup = (
 	groupId: GroupId,
 ): Thunk<void> => {
