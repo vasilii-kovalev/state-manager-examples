@@ -8,6 +8,10 @@ import unocss from "@unocss/eslint-config/flat";
 import {
 	type Linter,
 } from "eslint";
+import {
+	defineConfig,
+	globalIgnores,
+} from "eslint/config";
 // eslint-disable-next-line import-x/no-namespace
 import * as tsResolver from "eslint-import-resolver-typescript";
 // @ts-expect-error The plugin doesn't provide types.
@@ -21,7 +25,6 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from "globals";
 import {
-	config,
 	configs as typeScriptConfigs,
 } from "typescript-eslint";
 
@@ -56,12 +59,10 @@ const DISABLED: Linter.RuleSeverity = "off";
 */
 
 const eslintConfig = disableAutofix(
-	config(
-		{
-			ignores: [
-				"dist",
-			],
-		},
+	defineConfig(
+		globalIgnores([
+			"dist",
+		]),
 		{
 			files: [
 				"**/*.{ts,tsx}",
@@ -74,6 +75,7 @@ const eslintConfig = disableAutofix(
 				importConfigs.typescript,
 				stylistic.configs.all,
 				typeScriptConfigs.all,
+				// @ts-expect-error Incorrect plugin types.
 				unocss,
 			],
 			settings: {
@@ -785,6 +787,13 @@ const eslintConfig = disableAutofix(
 				"prefer-spread": ERROR,
 				// https://eslint.org/docs/latest/rules/prefer-template
 				"prefer-template": ERROR,
+				// https://eslint.org/docs/latest/rules/preserve-caught-error
+				"preserve-caught-error": [
+					ERROR,
+					{
+						requireCatchParameter: true,
+					},
+				],
 				// https://eslint.org/docs/latest/rules/radix
 				radix: ERROR,
 				// https://eslint.org/docs/latest/rules/require-await
@@ -1001,6 +1010,8 @@ const eslintConfig = disableAutofix(
 				// https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/prefer-default-export.md
 				// This rule is disabled because the default exports are used for code-splitting only.
 				"import-x/prefer-default-export": DISABLED,
+				// https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/prefer-namespace-import.md
+				"import-x/prefer-namespace-import": ERROR,
 
 				// https://github.com/lydell/eslint-plugin-simple-import-sort/?tab=readme-ov-file#usage
 				"simple-import-sort/imports": ERROR,
@@ -1235,6 +1246,11 @@ const eslintConfig = disableAutofix(
 						swap/add/remove lines without necessity to adjust the lines above the changed ones.
 					*/
 					"before",
+					{
+						overrides: {
+							"=": "after",
+						},
+					},
 				],
 				// https://eslint.style/rules/default/padded-blocks
 				"@stylistic/padded-blocks": [
@@ -1533,7 +1549,8 @@ const eslintConfig = disableAutofix(
 					},
 					{
 						selector: [
-							"enum",
+							// TODO: check if still necessary.
+							// "enum",
 							"interface",
 							"typeAlias",
 							"typeParameter",
@@ -2158,7 +2175,9 @@ const eslintConfig = disableAutofix(
 				// https://eslint-react.xyz/docs/rules/naming-convention-filename
 				"@eslint-react/naming-convention/filename": [
 					ERROR,
-					"kebab-case",
+					{
+						rule: "kebab-case",
+					},
 				],
 				// https://eslint-react.xyz/docs/rules/naming-convention-filename-extension
 				"@eslint-react/naming-convention/filename-extension": ERROR,
@@ -2246,8 +2265,6 @@ const eslintConfig = disableAutofix(
 				"@stylistic/jsx-one-expression-per-line": ERROR,
 				// https://eslint.style/rules/default/jsx-pascal-case
 				"@stylistic/jsx-pascal-case": ERROR,
-				// https://eslint.style/rules/default/jsx-props-no-multi-spaces
-				"@stylistic/jsx-props-no-multi-spaces": ERROR,
 				// https://eslint.style/rules/default/jsx-quotes
 				"@stylistic/jsx-quotes": ERROR,
 				// https://eslint.style/rules/default/jsx-self-closing-comp
@@ -2292,7 +2309,14 @@ const eslintConfig = disableAutofix(
 				*/
 
 				// https://unocss.dev/integrations/eslint#unocss-order
-				"unocss/order": ERROR,
+				"unocss/order": [
+					ERROR,
+					{
+						unoFunctions: [
+							"getClass",
+						],
+					},
+				],
 				"unocss/order-attributify": ERROR,
 				// https://unocss.dev/integrations/eslint#unocss-blocklist
 				"unocss/blocklist": ERROR,
