@@ -33,7 +33,9 @@ const getCalendarForMonth = (
 	});
 
 	try {
-		return days.map<CalendarDay>((dateCurrent) => {
+		return days.map<CalendarDay>((
+			dateCurrent,
+		) => {
 			return parse(
 				CalendarDaySchema,
 				{

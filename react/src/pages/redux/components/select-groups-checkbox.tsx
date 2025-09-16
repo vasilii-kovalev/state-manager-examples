@@ -21,10 +21,14 @@ import {
 const SelectGroupsCheckbox: FC = () => {
 	const dispatch = useApplicationDispatch();
 
-	const selectionState = useApplicationSelector((state) => {
+	const selectionState = useApplicationSelector((
+		state,
+	) => {
 		return selectSelectionState(state.page);
 	});
-	const hasWorklogs = useApplicationSelector((state) => {
+	const hasWorklogs = useApplicationSelector((
+		state,
+	) => {
 		return selectHasWorklogs(state.page);
 	});
 

@@ -14,14 +14,18 @@ import {
 } from "./header-date-cell";
 
 const HeaderDateCells: FC = () => {
-	const calendar = useApplicationSelector((state) => {
+	const calendar = useApplicationSelector((
+		state,
+	) => {
 		return selectCalendar(state.page);
 	});
 
 	return (
 		<Fragment>
 			{
-				calendar.map((calendarDay) => {
+				calendar.map((
+					calendarDay,
+				) => {
 					return (
 						<HeaderDateCell
 							date={calendarDay.date}

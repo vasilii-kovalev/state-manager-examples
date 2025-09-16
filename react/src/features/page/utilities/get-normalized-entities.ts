@@ -11,8 +11,14 @@ const getNormalizedEntities = <
 	Id extends EntityId = Entity["id"],
 >(
 	entities: Array<Entity>,
-): NormalizedEntities<Id, Entity> => {
-	type NormalizedEntitiesType = NormalizedEntities<Id, Entity>;
+): NormalizedEntities<
+	Id,
+	Entity
+> => {
+	type NormalizedEntitiesType = NormalizedEntities<
+		Id,
+		Entity
+	>;
 
 	return entities.reduce<NormalizedEntitiesType>(
 		(

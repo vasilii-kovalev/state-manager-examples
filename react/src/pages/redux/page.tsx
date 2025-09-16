@@ -45,7 +45,9 @@ const ReduxPage: FC = () => {
 	const dispatch = useApplicationDispatch();
 
 	usePageData({
-		onSuccess: (pageData) => {
+		onSuccess: (
+			pageData,
+		) => {
 			try {
 				const pageState = convertPageDataToPageState(pageData);
 

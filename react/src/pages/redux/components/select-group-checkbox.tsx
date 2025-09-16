@@ -25,18 +25,26 @@ interface SelectGroupCheckboxProps {
 	groupId: GroupId;
 }
 
-const SelectGroupCheckbox: FC<SelectGroupCheckboxProps> = ({
-	groupId,
-}) => {
+const SelectGroupCheckbox: FC<SelectGroupCheckboxProps> = (
+	props,
+) => {
+	const {
+		groupId,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
-	const selectionState = useApplicationSelector((state) => {
+	const selectionState = useApplicationSelector((
+		state,
+	) => {
 		return selectSelectionStateForGroup(
 			state.page,
 			groupId,
 		);
 	});
-	const hasWorklogs = useApplicationSelector((state) => {
+	const hasWorklogs = useApplicationSelector((
+		state,
+	) => {
 		return selectHasWorklogsInGroup(
 			state.page,
 			groupId,

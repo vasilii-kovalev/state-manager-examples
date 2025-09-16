@@ -33,7 +33,9 @@ import {
 const SaveChangesButton: FC = () => {
 	const dispatch = useApplicationDispatch();
 
-	const hasChanges = useApplicationSelector((state) => {
+	const hasChanges = useApplicationSelector((
+		state,
+	) => {
 		return selectHasChanges(state.page);
 	});
 
@@ -61,14 +63,18 @@ const SaveChangesButton: FC = () => {
 			renderBody={() => {
 				return "Save changes to Local Storage";
 			}}
-			renderTarget={({
-				className,
-				tooltipId,
-				...targetProps
-			}) => {
+			renderTarget={(
+				targetProps,
+			) => {
+				const {
+					className,
+					tooltipId,
+					...otherTargetProps
+				} = targetProps;
+
 				return (
 					<button
-						{...targetProps}
+						{...otherTargetProps}
 						aria-describedby={tooltipId}
 						className={
 							getClass([

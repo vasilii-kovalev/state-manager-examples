@@ -26,12 +26,18 @@ interface DuplicatedActivityNameIconProps {
 	groupId: GroupId;
 }
 
-const DuplicatedActivityNameIcon: FC<DuplicatedActivityNameIconProps> = ({
-	activityId,
-	name,
-	groupId,
-}) => {
-	const existingActivityNames = useApplicationSelector((state) => {
+const DuplicatedActivityNameIcon: FC<DuplicatedActivityNameIconProps> = (
+	props,
+) => {
+	const {
+		activityId,
+		name,
+		groupId,
+	} = props;
+
+	const existingActivityNames = useApplicationSelector((
+		state,
+	) => {
 		return selectActivityNamesInGroup(
 			state.page,
 			groupId,

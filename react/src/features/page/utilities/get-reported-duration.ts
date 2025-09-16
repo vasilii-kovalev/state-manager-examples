@@ -13,7 +13,9 @@ const getReportedDuration = (
 ): Duration => {
 	return sumBy(
 		worklogs,
-		(worklog): Duration => {
+		(
+			worklog,
+		): Duration => {
 			return worklog.duration;
 		},
 	);

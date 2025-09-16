@@ -20,9 +20,13 @@ interface ActivityRowProps {
 	activity: Activity;
 }
 
-const ActivityRow: FC<ActivityRowProps> = ({
-	activity,
-}) => {
+const ActivityRow: FC<ActivityRowProps> = (
+	props,
+) => {
+	const {
+		activity,
+	} = props;
+
 	return (
 		<Row>
 			<ActivityInfoCell

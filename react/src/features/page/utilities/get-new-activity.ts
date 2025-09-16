@@ -14,11 +14,15 @@ type GetNewActivityParams = RequireProperties<
 	| "name"
 >;
 
-const getNewActivity = ({
-	groupId,
-	id = generateId(),
-	name,
-}: GetNewActivityParams): Activity => {
+const getNewActivity = (
+	params: GetNewActivityParams,
+): Activity => {
+	const {
+		groupId,
+		id = generateId(),
+		name,
+	} = params;
+
 	return {
 		groupId,
 		id,

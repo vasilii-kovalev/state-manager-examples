@@ -16,8 +16,13 @@ const FILTER_DEFAULT = constant(true);
 interface GetEntitiesParams<
 	Id extends EntityId,
 	Entity extends EntityWithId<Id>,
-> extends NormalizedEntities<Id, Entity> {
-	filter?: (entity: Entity) => boolean;
+> extends NormalizedEntities<
+		Id,
+		Entity
+	> {
+	filter?: (
+		entity: Entity,
+	) => boolean;
 }
 
 const getEntities = <
@@ -27,7 +32,10 @@ const getEntities = <
 	byId,
 	ids,
 	filter = FILTER_DEFAULT,
-}: GetEntitiesParams<Id, Entity>): Array<Entity> => {
+}: GetEntitiesParams<
+	Id,
+	Entity
+>): Array<Entity> => {
 	return ids.reduce<Array<Entity>>(
 		(
 			entitiesCurrent,

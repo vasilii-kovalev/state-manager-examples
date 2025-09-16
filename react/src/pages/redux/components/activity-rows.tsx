@@ -21,10 +21,16 @@ interface ActivityRowsProps {
 	groupId: GroupId;
 }
 
-const ActivityRows: FC<ActivityRowsProps> = ({
-	groupId,
-}) => {
-	const activities = useApplicationSelector((state) => {
+const ActivityRows: FC<ActivityRowsProps> = (
+	props,
+) => {
+	const {
+		groupId,
+	} = props;
+
+	const activities = useApplicationSelector((
+		state,
+	) => {
 		return selectActivitiesForGroup(
 			state.page,
 			groupId,
@@ -34,7 +40,9 @@ const ActivityRows: FC<ActivityRowsProps> = ({
 	return (
 		<Fragment>
 			{
-				activities.map((activity) => {
+				activities.map((
+					activity,
+				) => {
 					return (
 						<ActivityRow
 							activity={activity}

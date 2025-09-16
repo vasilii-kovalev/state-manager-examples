@@ -21,17 +21,25 @@ interface GroupDateCellsProps {
 	groupId: GroupId;
 }
 
-const GroupDateCells: FC<GroupDateCellsProps> = ({
-	groupId,
-}) => {
-	const calendar = useApplicationSelector((state) => {
+const GroupDateCells: FC<GroupDateCellsProps> = (
+	props,
+) => {
+	const {
+		groupId,
+	} = props;
+
+	const calendar = useApplicationSelector((
+		state,
+	) => {
 		return selectCalendar(state.page);
 	});
 
 	return (
 		<Fragment>
 			{
-				calendar.map((calendarDay) => {
+				calendar.map((
+					calendarDay,
+				) => {
 					return (
 						<GroupDateCell
 							date={calendarDay.date}

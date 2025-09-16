@@ -14,7 +14,9 @@ import {
 } from "../store/page/selectors";
 
 const PageLeaveBlocker: FC = () => {
-	const hasChanges = useApplicationSelector((state) => {
+	const hasChanges = useApplicationSelector((
+		state,
+	) => {
 		return selectHasChanges(state.page);
 	});
 

@@ -30,11 +30,15 @@ interface TotalDurationCellProps {
 	duration: Duration | undefined;
 }
 
-const TotalDurationCell: FC<TotalDurationCellProps> = ({
-	date,
-	location,
-	duration = 0,
-}) => {
+const TotalDurationCell: FC<TotalDurationCellProps> = (
+	props,
+) => {
+	const {
+		date,
+		location,
+		duration = 0,
+	} = props;
+
 	const renderTotalDuration = (): ReactNode => {
 		if (duration === 0) {
 			return null;
@@ -45,16 +49,20 @@ const TotalDurationCell: FC<TotalDurationCellProps> = ({
 				renderBody={() => {
 					return formatDuration(duration);
 				}}
-				renderTarget={({
-					// Excluding this property from `targetProps`.
-					// eslint-disable-next-line @typescript-eslint/no-unused-vars
-					tooltipId,
-					className,
-					...targetProps
-				}) => {
+				renderTarget={(
+					targetProps,
+				) => {
+					const {
+						// Excluding this property from `targetProps`.
+						// eslint-disable-next-line @typescript-eslint/no-unused-vars
+						tooltipId,
+						className,
+						...otherTargetProps
+					} = targetProps;
+
 					return (
 						<div
-							{...targetProps}
+							{...otherTargetProps}
 							className={
 								getClass([
 									className,

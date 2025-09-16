@@ -16,7 +16,9 @@ const getPageData = async (): Promise<PageData> => {
 	const [
 		pageData,
 	] = await Promise.all([
-		new Promise<PageData>((resolve) => {
+		new Promise<PageData>((
+			resolve,
+		) => {
 			const pageDataFromLocalStorage = getPageDataFromLocalStorage();
 
 			resolve(pageDataFromLocalStorage);

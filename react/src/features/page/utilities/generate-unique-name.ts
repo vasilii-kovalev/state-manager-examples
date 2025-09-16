@@ -3,10 +3,14 @@ interface GenerateUniqueNameParams {
 	namePrefix: string;
 }
 
-const generateUniqueName = ({
-	existingNames,
-	namePrefix,
-}: GenerateUniqueNameParams): string => {
+const generateUniqueName = (
+	params: GenerateUniqueNameParams,
+): string => {
+	const {
+		existingNames,
+		namePrefix,
+	} = params;
+
 	const existingNamesSet = new Set<string>(existingNames);
 
 	for (

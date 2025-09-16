@@ -16,13 +16,17 @@ type GetNewWorklogParams = RequireProperties<
 	| "groupId"
 >;
 
-const getNewWorklog = ({
-	activityId,
-	date,
-	duration,
-	groupId,
-	id = generateId(),
-}: GetNewWorklogParams): Worklog => {
+const getNewWorklog = (
+	params: GetNewWorklogParams,
+): Worklog => {
+	const {
+		activityId,
+		date,
+		duration,
+		groupId,
+		id = generateId(),
+	} = params;
+
 	return {
 		activityId,
 		date,

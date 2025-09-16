@@ -31,14 +31,18 @@ interface ReportedDurationOfNormProps {
 	reported: Duration;
 }
 
-const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = ({
-	location,
-	reported,
-}) => {
-	const normTotal = useApplicationSelector((state) => {
-		return selectNormTotal(
-			state.page,
-		);
+const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = (
+	props,
+) => {
+	const {
+		location,
+		reported,
+	} = props;
+
+	const normTotal = useApplicationSelector((
+		state,
+	) => {
+		return selectNormTotal(state.page);
 	});
 
 	return (
@@ -60,16 +64,20 @@ const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = ({
 					</Fragment>
 				);
 			}}
-			renderTarget={({
-				className,
-				// Excluding this property from `targetProps`.
-				// eslint-disable-next-line @typescript-eslint/no-unused-vars
-				tooltipId,
-				...targetProps
-			}) => {
+			renderTarget={(
+				targetProps,
+			) => {
+				const {
+					className,
+					// Excluding this property from `targetProps`.
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					tooltipId,
+					...otherTargetProps
+				} = targetProps;
+
 				return (
 					<div
-						{...targetProps}
+						{...otherTargetProps}
 						className={
 							getClass([
 								className,

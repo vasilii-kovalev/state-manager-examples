@@ -26,9 +26,13 @@ interface AddActivityButtonProps {
 	groupId: GroupId;
 }
 
-const AddActivityButton: FC<AddActivityButtonProps> = ({
-	groupId,
-}) => {
+const AddActivityButton: FC<AddActivityButtonProps> = (
+	props,
+) => {
+	const {
+		groupId,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();
@@ -46,14 +50,18 @@ const AddActivityButton: FC<AddActivityButtonProps> = ({
 			renderBody={() => {
 				return "Add activity";
 			}}
-			renderTarget={({
-				className,
-				tooltipId,
-				...targetProps
-			}) => {
+			renderTarget={(
+				targetProps,
+			) => {
+				const {
+					className,
+					tooltipId,
+					...otherTargetProps
+				} = targetProps;
+
 				return (
 					<button
-						{...targetProps}
+						{...otherTargetProps}
 						aria-describedby={tooltipId}
 						className={
 							getClass([

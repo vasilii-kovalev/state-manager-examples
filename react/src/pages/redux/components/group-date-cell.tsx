@@ -24,11 +24,17 @@ interface GroupDateCellProps {
 	date: DateString;
 }
 
-const GroupDateCell: FC<GroupDateCellProps> = ({
-	groupId,
-	date,
-}) => {
-	const reportedDuration = useApplicationSelector((state) => {
+const GroupDateCell: FC<GroupDateCellProps> = (
+	props,
+) => {
+	const {
+		groupId,
+		date,
+	} = props;
+
+	const reportedDuration = useApplicationSelector((
+		state,
+	) => {
 		return selectReportedDurationForGroupForDate(
 			state.page,
 			groupId,

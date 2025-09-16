@@ -20,10 +20,16 @@ interface GroupReportedDurationOfNormProps {
 	groupId: GroupId;
 }
 
-const GroupReportedDurationOfNorm: FC<GroupReportedDurationOfNormProps> = ({
-	groupId,
-}) => {
-	const reportedDurationForGroup = useApplicationSelector((state) => {
+const GroupReportedDurationOfNorm: FC<GroupReportedDurationOfNormProps> = (
+	props,
+) => {
+	const {
+		groupId,
+	} = props;
+
+	const reportedDurationForGroup = useApplicationSelector((
+		state,
+	) => {
 		return selectReportedDurationForGroup(
 			state.page,
 			groupId,

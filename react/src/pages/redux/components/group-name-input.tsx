@@ -34,10 +34,14 @@ interface GroupNameInputProps {
 	name: GroupName;
 }
 
-const GroupNameInput: FC<GroupNameInputProps> = ({
-	id,
-	name,
-}) => {
+const GroupNameInput: FC<GroupNameInputProps> = (
+	props,
+) => {
+	const {
+		id,
+		name,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
 	const {

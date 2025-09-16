@@ -3,9 +3,13 @@ import {
 	type PropsWithChildren,
 } from "react";
 
-const Row: FC<PropsWithChildren> = ({
-	children,
-}) => {
+const Row: FC<PropsWithChildren> = (
+	props,
+) => {
+	const {
+		children,
+	} = props;
+
 	return (
 		<tr>
 			{children}

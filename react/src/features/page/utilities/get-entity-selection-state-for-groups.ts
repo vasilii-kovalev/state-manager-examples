@@ -18,11 +18,17 @@ interface GetEntitySelectionStateForGroupsParams {
 	worklogs: Array<Worklog>;
 }
 
-const getEntitySelectionStateForGroups = ({
-	selectedWorklogIds,
-	worklogs,
-}: GetEntitySelectionStateForGroupsParams): EntitySelectionState => {
-	const selectedWorklogs = worklogs.filter((worklog) => {
+const getEntitySelectionStateForGroups = (
+	params: GetEntitySelectionStateForGroupsParams,
+): EntitySelectionState => {
+	const {
+		selectedWorklogIds,
+		worklogs,
+	} = params;
+
+	const selectedWorklogs = worklogs.filter((
+		worklog,
+	) => {
 		return selectedWorklogIds.includes(worklog.id);
 	});
 

@@ -20,10 +20,16 @@ interface ActivityReportedDurationOfNormProps {
 	activityId: ActivityId;
 }
 
-const ActivityReportedDurationOfNorm: FC<ActivityReportedDurationOfNormProps> = ({
-	activityId,
-}) => {
-	const reportedDurationForActivity = useApplicationSelector((state) => {
+const ActivityReportedDurationOfNorm: FC<ActivityReportedDurationOfNormProps> = (
+	props,
+) => {
+	const {
+		activityId,
+	} = props;
+
+	const reportedDurationForActivity = useApplicationSelector((
+		state,
+	) => {
 		return selectReportedDurationForActivity(
 			state.page,
 			activityId,

@@ -38,11 +38,15 @@ interface ActivityNameInputProps {
 	name: ActivityName;
 }
 
-const ActivityNameInput: FC<ActivityNameInputProps> = ({
-	activityId,
-	groupId,
-	name,
-}) => {
+const ActivityNameInput: FC<ActivityNameInputProps> = (
+	props,
+) => {
+	const {
+		activityId,
+		groupId,
+		name,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
 	const {

@@ -26,9 +26,13 @@ interface RemoveGroupButtonProps {
 	groupId: GroupId;
 }
 
-const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
-	groupId,
-}) => {
+const RemoveGroupButton: FC<RemoveGroupButtonProps> = (
+	props,
+) => {
+	const {
+		groupId,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();
@@ -42,14 +46,18 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = ({
 			renderBody={() => {
 				return "Remove group, its activities and worklogs";
 			}}
-			renderTarget={({
-				className,
-				tooltipId,
-				...targetProps
-			}) => {
+			renderTarget={(
+				targetProps,
+			) => {
+				const {
+					className,
+					tooltipId,
+					...otherTargetProps
+				} = targetProps;
+
 				return (
 					<button
-						{...targetProps}
+						{...otherTargetProps}
 						aria-describedby={tooltipId}
 						className={
 							getClass([

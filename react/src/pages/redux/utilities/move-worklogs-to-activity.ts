@@ -32,7 +32,9 @@ const moveWorklogsToActivity = (
 			worklogsById,
 		} = getState().page;
 
-		selectedWorklogIds.forEach((worklogId) => {
+		selectedWorklogIds.forEach((
+			worklogId,
+		) => {
 			const worklog = worklogsById[worklogId];
 
 			if (isUndefined(worklog)) {

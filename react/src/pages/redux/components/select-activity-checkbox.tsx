@@ -25,18 +25,26 @@ interface SelectActivityCheckboxProps {
 	activityId: ActivityId;
 }
 
-const SelectActivityCheckbox: FC<SelectActivityCheckboxProps> = ({
-	activityId,
-}) => {
+const SelectActivityCheckbox: FC<SelectActivityCheckboxProps> = (
+	props,
+) => {
+	const {
+		activityId,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
-	const selectionState = useApplicationSelector((state) => {
+	const selectionState = useApplicationSelector((
+		state,
+	) => {
 		return selectSelectionStateForActivity(
 			state.page,
 			activityId,
 		);
 	});
-	const hasWorklogs = useApplicationSelector((state) => {
+	const hasWorklogs = useApplicationSelector((
+		state,
+	) => {
 		return selectHasWorklogsInActivity(
 			state.page,
 			activityId,

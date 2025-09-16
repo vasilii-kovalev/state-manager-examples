@@ -11,9 +11,13 @@ interface PageLeaveBlockerProps {
 	hasChanges: boolean;
 }
 
-const PageLeaveBlocker: FC<PageLeaveBlockerProps> = ({
-	hasChanges,
-}) => {
+const PageLeaveBlocker: FC<PageLeaveBlockerProps> = (
+	props,
+) => {
+	const {
+		hasChanges,
+	} = props;
+
 	return (
 		<Block
 			enableBeforeUnload={hasChanges}

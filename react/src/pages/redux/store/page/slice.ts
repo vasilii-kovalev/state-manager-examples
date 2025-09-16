@@ -113,7 +113,9 @@ const pageSlice = createSlice({
 
 			delete state.activitiesById[activityId];
 
-			state.activityIds = state.activityIds.filter((activityIdCurrent) => {
+			state.activityIds = state.activityIds.filter((
+				activityIdCurrent,
+			) => {
 				return activityIdCurrent !== activityId;
 			});
 
@@ -123,12 +125,18 @@ const pageSlice = createSlice({
 				activityId,
 			);
 
-			worklogsForActivity.forEach((worklog) => {
+			worklogsForActivity.forEach((
+				worklog,
+			) => {
 				delete state.worklogsById[worklog.id];
 			});
 
-			state.worklogIds = state.worklogIds.filter((worklogIdCurrent) => {
-				return !worklogsForActivity.some((worklog) => {
+			state.worklogIds = state.worklogIds.filter((
+				worklogIdCurrent,
+			) => {
+				return !worklogsForActivity.some((
+					worklog,
+				) => {
 					return worklog.id === worklogIdCurrent;
 				});
 			});
@@ -144,7 +152,9 @@ const pageSlice = createSlice({
 
 			delete state.groupsById[groupId];
 
-			state.groupIds = state.groupIds.filter((groupIdCurrent) => {
+			state.groupIds = state.groupIds.filter((
+				groupIdCurrent,
+			) => {
 				return groupIdCurrent !== groupId;
 			});
 
@@ -154,12 +164,18 @@ const pageSlice = createSlice({
 				groupId,
 			);
 
-			activitiesForGroup.forEach((activity) => {
+			activitiesForGroup.forEach((
+				activity,
+			) => {
 				delete state.activitiesById[activity.id];
 			});
 
-			state.activityIds = state.activityIds.filter((activityIdCurrent) => {
-				return !activitiesForGroup.some((activity) => {
+			state.activityIds = state.activityIds.filter((
+				activityIdCurrent,
+			) => {
+				return !activitiesForGroup.some((
+					activity,
+				) => {
 					return activity.id === activityIdCurrent;
 				});
 			});
@@ -170,12 +186,18 @@ const pageSlice = createSlice({
 				groupId,
 			);
 
-			worklogsForGroup.forEach((worklog) => {
+			worklogsForGroup.forEach((
+				worklog,
+			) => {
 				delete state.worklogsById[worklog.id];
 			});
 
-			state.worklogIds = state.worklogIds.filter((worklogIdCurrent) => {
-				return !worklogsForGroup.some((worklog) => {
+			state.worklogIds = state.worklogIds.filter((
+				worklogIdCurrent,
+			) => {
+				return !worklogsForGroup.some((
+					worklog,
+				) => {
 					return worklog.id === worklogIdCurrent;
 				});
 			});
@@ -199,7 +221,9 @@ const pageSlice = createSlice({
 
 			delete state.worklogsById[worklogId];
 
-			state.worklogIds = state.worklogIds.filter((worklogIdCurrent) => {
+			state.worklogIds = state.worklogIds.filter((
+				worklogIdCurrent,
+			) => {
 				return worklogIdCurrent !== worklogId;
 			});
 
@@ -312,13 +336,17 @@ const pageSlice = createSlice({
 				worklogs,
 			} = action.payload;
 
-			const worklogIds = worklogs.map((worklog) => {
+			const worklogIds = worklogs.map<WorklogId>((
+				worklog,
+			) => {
 				return worklog.id;
 			});
 
 			state.selectedWorklogIds = isSelected
 				? state.selectedWorklogIds.concat(worklogIds)
-				: state.selectedWorklogIds.filter((worklogId) => {
+				: state.selectedWorklogIds.filter((
+					worklogId,
+				) => {
 					return !worklogIds.includes(worklogId);
 				});
 		},

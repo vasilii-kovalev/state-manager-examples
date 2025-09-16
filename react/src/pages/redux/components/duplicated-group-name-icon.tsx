@@ -22,11 +22,17 @@ interface DuplicatedGroupNameIconProps {
 	groupId: GroupId;
 }
 
-const DuplicatedGroupNameIcon: FC<DuplicatedGroupNameIconProps> = ({
-	name,
-	groupId,
-}) => {
-	const existingGroupNames = useApplicationSelector((state) => {
+const DuplicatedGroupNameIcon: FC<DuplicatedGroupNameIconProps> = (
+	props,
+) => {
+	const {
+		name,
+		groupId,
+	} = props;
+
+	const existingGroupNames = useApplicationSelector((
+		state,
+	) => {
 		return selectGroupNames(
 			state.page,
 			groupId,

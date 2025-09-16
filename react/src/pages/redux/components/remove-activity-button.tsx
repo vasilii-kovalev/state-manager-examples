@@ -26,9 +26,13 @@ interface RemoveActivityButtonProps {
 	activityId: ActivityId;
 }
 
-const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
-	activityId,
-}) => {
+const RemoveActivityButton: FC<RemoveActivityButtonProps> = (
+	props,
+) => {
+	const {
+		activityId,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();
@@ -42,14 +46,18 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = ({
 			renderBody={() => {
 				return "Remove activity and its worklogs";
 			}}
-			renderTarget={({
-				className,
-				tooltipId,
-				...targetProps
-			}) => {
+			renderTarget={(
+				targetProps,
+			) => {
+				const {
+					className,
+					tooltipId,
+					...otherTargetProps
+				} = targetProps;
+
 				return (
 					<button
-						{...targetProps}
+						{...otherTargetProps}
 						aria-describedby={tooltipId}
 						className={
 							getClass([

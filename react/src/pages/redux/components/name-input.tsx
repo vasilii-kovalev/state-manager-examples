@@ -23,7 +23,9 @@ import {
 interface NameInputProps<Name extends string> extends UseLocalNameResult {
 	className?: string;
 	name: Name;
-	onBlur: (nameNext: Name) => void;
+	onBlur: (
+		nameNext: Name,
+	) => void;
 	placeholder: string;
 	validationSchema: GenericSchema<string, Name>;
 }
@@ -39,7 +41,9 @@ const NameInput = <Name extends string>({
 }: NameInputProps<Name>): ReactNode => {
 	const isBusy = useIsBusy();
 
-	const handleNameChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+	const handleNameChange: ChangeEventHandler<HTMLInputElement> = (
+		event,
+	) => {
 		setNameLocal(event.target.value);
 	};
 

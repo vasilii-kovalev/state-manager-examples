@@ -15,11 +15,15 @@ interface TotalDurationProps {
 	shouldRenderZero?: boolean;
 }
 
-const TotalDuration: FC<TotalDurationProps> = ({
-	className,
-	duration,
-	shouldRenderZero = false,
-}) => {
+const TotalDuration: FC<TotalDurationProps> = (
+	props,
+) => {
+	const {
+		className,
+		duration,
+		shouldRenderZero = false,
+	} = props;
+
 	if (
 		duration === 0
 		&& !shouldRenderZero

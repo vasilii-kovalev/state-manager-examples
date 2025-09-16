@@ -12,19 +12,23 @@ import {
 	updateWorklogsSelection,
 } from "../store/page/slice";
 
-interface UpdateWorklogsSelectionForActivity {
+interface UpdateWorklogsSelectionForActivityParams {
 	activityId: ActivityId;
 	isSelected: boolean;
 }
 
-const updateWorklogsSelectionForActivity = ({
-	activityId,
-	isSelected,
-}: UpdateWorklogsSelectionForActivity): Thunk<void> => {
+const updateWorklogsSelectionForActivity = (
+	params: UpdateWorklogsSelectionForActivityParams,
+): Thunk<void> => {
 	return (
 		dispatch,
 		getState,
 	) => {
+		const {
+			activityId,
+			isSelected,
+		} = params;
+
 		const {
 			worklogIds,
 			worklogsById,
@@ -32,7 +36,9 @@ const updateWorklogsSelectionForActivity = ({
 
 		const activityWorklogs = getEntities({
 			byId: worklogsById,
-			filter: (worklog) => {
+			filter: (
+				worklog,
+			) => {
 				return worklog.activityId === activityId;
 			},
 			ids: worklogIds,

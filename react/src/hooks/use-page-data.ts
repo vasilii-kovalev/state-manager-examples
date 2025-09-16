@@ -20,12 +20,18 @@ import {
 } from "@/utilities/is-undefined";
 
 interface UsePageDataParams {
-	onSuccess: (pageData: PageData) => void;
+	onSuccess: (
+		pageData: PageData,
+	) => void;
 }
 
-const usePageData = ({
-	onSuccess,
-}: UsePageDataParams): void => {
+const usePageData = (
+	params: UsePageDataParams,
+): void => {
+	const {
+		onSuccess,
+	} = params;
+
 	const queryClient = useQueryClient();
 
 	const {

@@ -9,7 +9,9 @@ import {
 
 type FlexColumnProps = ComponentProps<"div">;
 
-const FlexColumn: FC<FlexColumnProps> = (props) => {
+const FlexColumn: FC<FlexColumnProps> = (
+	props,
+) => {
 	const {
 		className,
 	} = props;

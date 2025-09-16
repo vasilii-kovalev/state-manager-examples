@@ -25,18 +25,26 @@ interface WorklogCellsProps {
 	groupId: GroupId;
 }
 
-const WorklogCells: FC<WorklogCellsProps> = ({
-	activityId,
-	groupId,
-}) => {
-	const calendar = useApplicationSelector((state) => {
+const WorklogCells: FC<WorklogCellsProps> = (
+	props,
+) => {
+	const {
+		activityId,
+		groupId,
+	} = props;
+
+	const calendar = useApplicationSelector((
+		state,
+	) => {
 		return selectCalendar(state.page);
 	});
 
 	return (
 		<Fragment>
 			{
-				calendar.map((calendarDay) => {
+				calendar.map((
+					calendarDay,
+				) => {
 					return (
 						<WorklogCell
 							activityId={activityId}

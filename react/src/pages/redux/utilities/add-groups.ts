@@ -25,15 +25,19 @@ interface AddGroupsParams {
 	worklogDuration: number;
 }
 
-const addGroups = ({
-	activitiesPerGroupCount,
-	groupsCount,
-	worklogDuration,
-}: AddGroupsParams): Thunk<void> => {
+const addGroups = (
+	params: AddGroupsParams,
+): Thunk<void> => {
 	return (
 		dispatch,
 		getState,
 	) => {
+		const {
+			activitiesPerGroupCount,
+			groupsCount,
+			worklogDuration,
+		} = params;
+
 		const {
 			calendar,
 		} = getState().page;
@@ -61,7 +65,9 @@ const addGroups = ({
 					}),
 				);
 
-				calendar.forEach((calendarDay) => {
+				calendar.forEach((
+					calendarDay,
+				) => {
 					if (calendarDay.norm > 0) {
 						const worklog = getNewWorklog({
 							activityId,

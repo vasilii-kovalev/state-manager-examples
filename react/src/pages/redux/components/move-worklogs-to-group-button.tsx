@@ -30,12 +30,18 @@ interface MoveWorklogsToGroupButtonProps {
 	groupId: GroupId;
 }
 
-const MoveWorklogsToGroupButton: FC<MoveWorklogsToGroupButtonProps> = ({
-	groupId,
-}) => {
+const MoveWorklogsToGroupButton: FC<MoveWorklogsToGroupButtonProps> = (
+	props,
+) => {
+	const {
+		groupId,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
-	const hasSelectedWorklogs = useApplicationSelector((state) => {
+	const hasSelectedWorklogs = useApplicationSelector((
+		state,
+	) => {
 		return selectHasSelectedWorklogs(state.page);
 	});
 
@@ -54,14 +60,18 @@ const MoveWorklogsToGroupButton: FC<MoveWorklogsToGroupButtonProps> = ({
 			renderBody={() => {
 				return "Move worklogs to group";
 			}}
-			renderTarget={({
-				className,
-				tooltipId,
-				...targetProps
-			}) => {
+			renderTarget={(
+				targetProps,
+			) => {
+				const {
+					className,
+					tooltipId,
+					...otherTargetProps
+				} = targetProps;
+
 				return (
 					<button
-						{...targetProps}
+						{...otherTargetProps}
 						aria-describedby={tooltipId}
 						className={
 							getClass([

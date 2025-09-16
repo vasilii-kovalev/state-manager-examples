@@ -31,7 +31,9 @@ interface RenderTargetProps<TargetElement extends HTMLElement> {
 
 interface TooltipProps<TargetElement extends HTMLElement> {
 	renderBody: () => ReactNode;
-	renderTarget: (props: RenderTargetProps<TargetElement>) => ReactNode;
+	renderTarget: (
+		props: RenderTargetProps<TargetElement>,
+	) => ReactNode;
 	targetId: string;
 }
 

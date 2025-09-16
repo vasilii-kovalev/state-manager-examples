@@ -21,15 +21,19 @@ type MoveWorklogToActivityParams = Pick<
 	| "id"
 >;
 
-const moveWorklogToActivity = ({
-	activityId,
-	groupId,
-	id,
-}: MoveWorklogToActivityParams): Thunk<void> => {
+const moveWorklogToActivity = (
+	params: MoveWorklogToActivityParams,
+): Thunk<void> => {
 	return (
 		dispatch,
 		getState,
 	) => {
+		const {
+			activityId,
+			groupId,
+			id,
+		} = params;
+
 		const {
 			worklogsById,
 		} = getState().page;
@@ -41,7 +45,9 @@ const moveWorklogToActivity = ({
 		}
 
 		const worklogs = Object.values(worklogsById);
-		const existingWorklog = worklogs.find((worklogCurrent) => {
+		const existingWorklog = worklogs.find((
+			worklogCurrent,
+		) => {
 			return (
 				worklogCurrent.activityId === activityId
 				&& worklogCurrent.date === worklog.date

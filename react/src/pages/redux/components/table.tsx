@@ -28,10 +28,16 @@ import {
 
 type TableProps = ComponentProps<"table">;
 
-const Table: FC<TableProps> = ({
-	className,
-}) => {
-	const calendar = useApplicationSelector((state) => {
+const Table: FC<TableProps> = (
+	props,
+) => {
+	const {
+		className,
+	} = props;
+
+	const calendar = useApplicationSelector((
+		state,
+	) => {
 		return selectCalendar(state.page);
 	});
 

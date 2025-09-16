@@ -22,14 +22,18 @@ interface GetGroupNamesParams {
 	Can't use `selectActivityNamesInGroup` selector, because the result will be memoized,
 	which is undesirable in this case.
 */
-const getActivityNamesInGroup = ({
-	groupId,
-	activityIdToExclude,
-}: GetGroupNamesParams): Thunk<Array<ActivityName>> => {
+const getActivityNamesInGroup = (
+	params: GetGroupNamesParams,
+): Thunk<Array<ActivityName>> => {
 	return (
 		dispatch,
 		getState,
 	) => {
+		const {
+			groupId,
+			activityIdToExclude,
+		} = params;
+
 		const {
 			activityIds,
 			activitiesById,
@@ -37,7 +41,9 @@ const getActivityNamesInGroup = ({
 
 		const activities = getEntities({
 			byId: activitiesById,
-			filter: (activity) => {
+			filter: (
+				activity,
+			) => {
 				return (
 					activity.groupId === groupId
 					&& activity.id !== activityIdToExclude
@@ -46,7 +52,9 @@ const getActivityNamesInGroup = ({
 			ids: activityIds,
 		});
 
-		return activities.map<ActivityName>((activity) => {
+		return activities.map<ActivityName>((
+			activity,
+		) => {
 			return activity.name;
 		});
 	};

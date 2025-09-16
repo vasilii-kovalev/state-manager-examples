@@ -26,7 +26,9 @@ import {
 const RemoveGroupsButton: FC = () => {
 	const dispatch = useApplicationDispatch();
 
-	const hasGroups = useApplicationSelector((state) => {
+	const hasGroups = useApplicationSelector((
+		state,
+	) => {
 		return selectHasGroups(state.page);
 	});
 
@@ -41,14 +43,18 @@ const RemoveGroupsButton: FC = () => {
 			renderBody={() => {
 				return "Remove all groups, their activities and worklogs";
 			}}
-			renderTarget={({
-				className,
-				tooltipId,
-				...targetProps
-			}) => {
+			renderTarget={(
+				targetProps,
+			) => {
+				const {
+					className,
+					tooltipId,
+					...otherTargetProps
+				} = targetProps;
+
 				return (
 					<button
-						{...targetProps}
+						{...otherTargetProps}
 						aria-describedby={tooltipId}
 						className={
 							getClass([

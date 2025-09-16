@@ -20,9 +20,13 @@ interface GroupRowProps {
 	group: Group;
 }
 
-const GroupRow: FC<GroupRowProps> = ({
-	group,
-}) => {
+const GroupRow: FC<GroupRowProps> = (
+	props,
+) => {
+	const {
+		group,
+	} = props;
+
 	return (
 		<Row>
 			<GroupInfoCell

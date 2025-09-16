@@ -37,13 +37,17 @@ interface AddActivityParams {
 	name?: ActivityName;
 }
 
-const addActivity = ({
-	groupId,
-	name,
-}: AddActivityParams): Thunk<ActivityId> => {
+const addActivity = (
+	params: AddActivityParams,
+): Thunk<ActivityId> => {
 	return (
 		dispatch,
 	) => {
+		const {
+			groupId,
+			name,
+		} = params;
+
 		let activityName = name;
 
 		if (isUndefined(activityName)) {

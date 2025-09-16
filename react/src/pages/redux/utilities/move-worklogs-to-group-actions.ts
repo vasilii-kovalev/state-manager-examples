@@ -35,7 +35,9 @@ const moveWorklogsToGroup = (
 			worklogsById,
 		} = getState().page;
 
-		selectedWorklogIds.forEach((worklogId) => {
+		selectedWorklogIds.forEach((
+			worklogId,
+		) => {
 			const worklog = worklogsById[worklogId];
 
 			if (isUndefined(worklog)) {
@@ -60,7 +62,9 @@ const moveWorklogsToGroup = (
 
 			const activities = Object.values(activitiesById);
 
-			const existingActivity = activities.find((activityCurrent) => {
+			const existingActivity = activities.find((
+				activityCurrent,
+			) => {
 				return (
 					activityCurrent.groupId === groupId
 					&& activityCurrent.name === activity.name

@@ -13,10 +13,14 @@ type GetNewGroupParams = RequireProperties<
 	| "name"
 >;
 
-const getNewGroup = ({
-	id = generateId(),
-	name,
-}: GetNewGroupParams): Group => {
+const getNewGroup = (
+	params: GetNewGroupParams,
+): Group => {
+	const {
+		id = generateId(),
+		name,
+	} = params;
+
 	return {
 		id,
 		name,

@@ -12,19 +12,23 @@ import {
 	updateWorklogsSelection,
 } from "../store/page/slice";
 
-interface UpdateWorklogsSelectionForGroup {
+interface UpdateWorklogsSelectionForGroupParams {
 	groupId: GroupId;
 	isSelected: boolean;
 }
 
-const updateWorklogsSelectionForGroup = ({
-	groupId,
-	isSelected,
-}: UpdateWorklogsSelectionForGroup): Thunk<void> => {
+const updateWorklogsSelectionForGroup = (
+	params: UpdateWorklogsSelectionForGroupParams,
+): Thunk<void> => {
 	return (
 		dispatch,
 		getState,
 	) => {
+		const {
+			groupId,
+			isSelected,
+		} = params;
+
 		const {
 			worklogIds,
 			worklogsById,
@@ -32,7 +36,9 @@ const updateWorklogsSelectionForGroup = ({
 
 		const activityWorklogs = getEntities({
 			byId: worklogsById,
-			filter: (worklog) => {
+			filter: (
+				worklog,
+			) => {
 				return worklog.groupId === groupId;
 			},
 			ids: worklogIds,

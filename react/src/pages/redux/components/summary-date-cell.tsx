@@ -20,10 +20,16 @@ interface SummaryDateCellProps {
 	date: DateString;
 }
 
-const SummaryDateCell: FC<SummaryDateCellProps> = ({
-	date,
-}) => {
-	const reportedDuration = useApplicationSelector((state) => {
+const SummaryDateCell: FC<SummaryDateCellProps> = (
+	props,
+) => {
+	const {
+		date,
+	} = props;
+
+	const reportedDuration = useApplicationSelector((
+		state,
+	) => {
 		return selectReportedDurationForDate(
 			state.page,
 			date,

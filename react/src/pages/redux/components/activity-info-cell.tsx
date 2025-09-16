@@ -32,9 +32,13 @@ interface ActivityInfoCellProps {
 	activity: Activity;
 }
 
-const ActivityInfoCell: FC<ActivityInfoCellProps> = ({
-	activity,
-}) => {
+const ActivityInfoCell: FC<ActivityInfoCellProps> = (
+	props,
+) => {
+	const {
+		activity,
+	} = props;
+
 	return (
 		<Cell
 			className="info-column"

@@ -36,13 +36,19 @@ interface WorklogCellProps {
 	norm: Duration;
 }
 
-const WorklogCell: FC<WorklogCellProps> = ({
-	activityId,
-	date,
-	groupId,
-	norm,
-}) => {
-	const worklog = useApplicationSelector((state) => {
+const WorklogCell: FC<WorklogCellProps> = (
+	props,
+) => {
+	const {
+		activityId,
+		date,
+		groupId,
+		norm,
+	} = props;
+
+	const worklog = useApplicationSelector((
+		state,
+	) => {
 		return selectWorklogsForActivityForDate(
 			state.page,
 			activityId,

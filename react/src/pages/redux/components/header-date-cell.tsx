@@ -19,9 +19,13 @@ interface HeaderDateCellProps {
 	date: DateString;
 }
 
-const HeaderDateCell: FC<HeaderDateCellProps> = ({
-	date,
-}) => {
+const HeaderDateCell: FC<HeaderDateCellProps> = (
+	props,
+) => {
+	const {
+		date,
+	} = props;
+
 	return (
 		<th
 			className="cell"

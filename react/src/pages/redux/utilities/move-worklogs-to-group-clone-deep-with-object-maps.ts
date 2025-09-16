@@ -56,7 +56,12 @@ const moveWorklogsToGroup = (
 
 		type ActivitiesMapValue = `${GroupId}-${ActivityName}`;
 
-		const activitiesMap = stateNextDraft.activityIds.reduce<Record<ActivitiesMapValue, Activity>>(
+		const activitiesMap = stateNextDraft.activityIds.reduce<
+			Record<
+				ActivitiesMapValue,
+				Activity
+			>
+		>(
 			(
 				activitiesMapCurrent,
 				activityId,
@@ -75,7 +80,12 @@ const moveWorklogsToGroup = (
 
 		type WorklogsMapValue = `${ActivityId}-${DateString}`;
 
-		const worklogsMap = stateNextDraft.worklogIds.reduce<Record<WorklogsMapValue, Worklog>>(
+		const worklogsMap = stateNextDraft.worklogIds.reduce<
+			Record<
+				WorklogsMapValue,
+				Worklog
+			>
+		>(
 			(
 				worklogsMapCurrent,
 				worklogId,
@@ -96,12 +106,18 @@ const moveWorklogsToGroup = (
 			activityIdToExclude?: ActivityId;
 		}
 
-		const getActivityNamesInGroup = ({
-			activityIdToExclude,
-		}: GetGroupNamesParams = {}): Array<ActivityName> => {
+		const getActivityNamesInGroup = (
+			params: GetGroupNamesParams = {},
+		): Array<ActivityName> => {
+			const {
+				activityIdToExclude,
+			} = params;
+
 			const activities = getEntities({
 				byId: stateNextDraft.activitiesById,
-				filter: (activity) => {
+				filter: (
+					activity,
+				) => {
 					return (
 						activity.groupId === groupId
 						&& activity.id !== activityIdToExclude
@@ -110,7 +126,9 @@ const moveWorklogsToGroup = (
 				ids: stateNextDraft.activityIds,
 			});
 
-			return activities.map<ActivityName>((activity) => {
+			return activities.map<ActivityName>((
+				activity,
+			) => {
 				return activity.name;
 			});
 		};
@@ -119,9 +137,13 @@ const moveWorklogsToGroup = (
 			name?: ActivityName;
 		}
 
-		const addActivity = ({
-			name,
-		}: AddActivityParams = {}): ActivityId => {
+		const addActivity = (
+			params: AddActivityParams = {},
+		): ActivityId => {
+			const {
+				name,
+			} = params;
+
 			let activityName = name;
 
 			if (isUndefined(activityName)) {
@@ -152,10 +174,14 @@ const moveWorklogsToGroup = (
 			| "id"
 		>;
 
-		const moveWorklog = ({
-			activityId,
-			id,
-		}: MoveWorklogParams): void => {
+		const moveWorklog = (
+			params: MoveWorklogParams,
+		): void => {
+			const {
+				activityId,
+				id,
+			} = params;
+
 			const worklog = stateNextDraft.worklogsById[id];
 
 			if (isUndefined(worklog)) {
@@ -180,10 +206,14 @@ const moveWorklogsToGroup = (
 			| "id"
 		>;
 
-		const updateWorklogDuration = ({
-			duration,
-			id,
-		}: UpdateWorklogDurationParams): void => {
+		const updateWorklogDuration = (
+			params: UpdateWorklogDurationParams,
+		): void => {
+			const {
+				duration,
+				id,
+			} = params;
+
 			const worklog = stateNextDraft.worklogsById[id];
 
 			if (isUndefined(worklog)) {
@@ -212,7 +242,9 @@ const moveWorklogsToGroup = (
 			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 			delete stateNextDraft.worklogsById[worklogId];
 
-			stateNextDraft.worklogIds = stateNextDraft.worklogIds.filter((worklogIdCurrent) => {
+			stateNextDraft.worklogIds = stateNextDraft.worklogIds.filter((
+				worklogIdCurrent,
+			) => {
 				return worklogIdCurrent !== worklogId;
 			});
 
@@ -225,10 +257,14 @@ const moveWorklogsToGroup = (
 			| "id"
 		>;
 
-		const moveWorklogToActivity = ({
-			activityId,
-			id,
-		}: MoveWorklogToActivityParams): void => {
+		const moveWorklogToActivity = (
+			params: MoveWorklogToActivityParams,
+		): void => {
+			const {
+				activityId,
+				id,
+			} = params;
+
 			const worklog = stateNextDraft.worklogsById[id];
 
 			if (isUndefined(worklog)) {
@@ -256,7 +292,9 @@ const moveWorklogsToGroup = (
 			stateNextDraft.selectedWorklogIds = PAGE_STATE_DEFAULT.selectedWorklogIds;
 		};
 
-		stateNextDraft.selectedWorklogIds.forEach((worklogId) => {
+		stateNextDraft.selectedWorklogIds.forEach((
+			worklogId,
+		) => {
 			const worklog = stateNextDraft.worklogsById[worklogId];
 
 			if (isUndefined(worklog)) {

@@ -56,19 +56,27 @@ interface GetActivityNameParams {
 
 interface GetPageStateParams {
 	activitiesPerGroupCount: number;
-	getActivityName: (params: GetActivityNameParams) => ActivityName;
-	getGroupName: (groupIndex: number) => GroupName;
+	getActivityName: (
+		params: GetActivityNameParams,
+	) => ActivityName;
+	getGroupName: (
+		groupIndex: number,
+	) => GroupName;
 	groupsCount: number;
 	worklogDuration: Duration;
 }
 
-const getPageState = ({
-	activitiesPerGroupCount,
-	getActivityName,
-	getGroupName,
-	groupsCount,
-	worklogDuration,
-}: GetPageStateParams): PageState => {
+const getPageState = (
+	params: GetPageStateParams,
+): PageState => {
+	const {
+		activitiesPerGroupCount,
+		getActivityName,
+		getGroupName,
+		groupsCount,
+		worklogDuration,
+	} = params;
+
 	const pageState = cloneDeep(PAGE_STATE_DEFAULT);
 
 	pageState.calendar = calendar;
@@ -109,7 +117,9 @@ const getPageState = ({
 
 			pageState.activityIds.push(activityId);
 
-			calendar.forEach((calendarDay) => {
+			calendar.forEach((
+				calendarDay,
+			) => {
 				if (calendarDay.norm > 0) {
 					if (!isUndefined(worklogDuration)) {
 						const worklogId = `worklog-${calendarDay.date}-${activityId}`;
@@ -280,11 +290,15 @@ type GetPageStateWithDifferentActivityNamesParams = Pick<
 	| "worklogDuration"
 >;
 
-const getPageStateWithDifferentActivityNames = ({
-	activitiesPerGroupCount,
-	groupsCount,
-	worklogDuration,
-}: GetPageStateWithDifferentActivityNamesParams): PageState => {
+const getPageStateWithDifferentActivityNames = (
+	params: GetPageStateWithDifferentActivityNamesParams,
+): PageState => {
+	const {
+		activitiesPerGroupCount,
+		groupsCount,
+		worklogDuration,
+	} = params;
+
 	const pageState = getPageState({
 		activitiesPerGroupCount,
 		getActivityName: ({

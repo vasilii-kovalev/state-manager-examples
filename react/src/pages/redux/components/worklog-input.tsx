@@ -66,13 +66,17 @@ interface WorklogCellProps {
 	groupId: GroupId;
 }
 
-const WorklogInput: FC<WorklogCellProps> = ({
-	activityId,
-	date,
-	duration,
-	id,
-	groupId,
-}) => {
+const WorklogInput: FC<WorklogCellProps> = (
+	props,
+) => {
+	const {
+		activityId,
+		date,
+		duration,
+		id,
+		groupId,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();
@@ -84,14 +88,12 @@ const WorklogInput: FC<WorklogCellProps> = ({
 		return getInitialDurationLocalValue(duration);
 	});
 
-	const handleDurationChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-		const {
-			value,
-		} = event.target;
-
+	const handleDurationChange: ChangeEventHandler<HTMLInputElement> = (
+		event,
+	) => {
 		const parsedInput = safeParse(
 			WorklogInputSchema,
-			value,
+			event.target.value,
 		);
 
 		if (!parsedInput.success) {

@@ -35,9 +35,13 @@ interface GroupInfoCellProps {
 	group: Group;
 }
 
-const GroupInfoCell: FC<GroupInfoCellProps> = ({
-	group,
-}) => {
+const GroupInfoCell: FC<GroupInfoCellProps> = (
+	props,
+) => {
+	const {
+		group,
+	} = props;
+
 	return (
 		<Cell
 			className="info-column"

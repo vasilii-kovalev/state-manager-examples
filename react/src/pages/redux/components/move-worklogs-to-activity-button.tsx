@@ -30,12 +30,18 @@ interface MoveWorklogsToActivityButtonProps {
 	activityId: ActivityId;
 }
 
-const MoveWorklogsToActivityButton: FC<MoveWorklogsToActivityButtonProps> = ({
-	activityId,
-}) => {
+const MoveWorklogsToActivityButton: FC<MoveWorklogsToActivityButtonProps> = (
+	props,
+) => {
+	const {
+		activityId,
+	} = props;
+
 	const dispatch = useApplicationDispatch();
 
-	const hasSelectedWorklogs = useApplicationSelector((state) => {
+	const hasSelectedWorklogs = useApplicationSelector((
+		state,
+	) => {
 		return selectHasSelectedWorklogs(state.page);
 	});
 
@@ -54,14 +60,18 @@ const MoveWorklogsToActivityButton: FC<MoveWorklogsToActivityButtonProps> = ({
 			renderBody={() => {
 				return "Move worklogs to activity";
 			}}
-			renderTarget={({
-				className,
-				tooltipId,
-				...targetProps
-			}) => {
+			renderTarget={(
+				targetProps,
+			) => {
+				const {
+					className,
+					tooltipId,
+					...otherTargetProps
+				} = targetProps;
+
 				return (
 					<button
-						{...targetProps}
+						{...otherTargetProps}
 						aria-describedby={tooltipId}
 						className={
 							getClass([

@@ -17,14 +17,18 @@ import {
 } from "./group-row";
 
 const GroupRows: FC = () => {
-	const groups = useApplicationSelector((state) => {
+	const groups = useApplicationSelector((
+		state,
+	) => {
 		return selectGroups(state.page);
 	});
 
 	return (
 		<Fragment>
 			{
-				groups.map((group) => {
+				groups.map((
+					group,
+				) => {
 					return (
 						<Fragment
 							key={group.id}

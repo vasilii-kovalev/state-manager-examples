@@ -9,7 +9,9 @@ import {
 
 type FlexRowProps = ComponentProps<"div">;
 
-const FlexRow: FC<FlexRowProps> = (props) => {
+const FlexRow: FC<FlexRowProps> = (
+	props,
+) => {
 	const {
 		className,
 	} = props;

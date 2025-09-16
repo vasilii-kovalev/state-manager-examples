@@ -28,7 +28,9 @@ const getReportedDurationByDate = (
 
 	return mapValues(
 		worklogsByDate,
-		(worklogsForDate): Duration => {
+		(
+			worklogsForDate,
+		): Duration => {
 			if (isUndefined(worklogsForDate)) {
 				return 0;
 			}

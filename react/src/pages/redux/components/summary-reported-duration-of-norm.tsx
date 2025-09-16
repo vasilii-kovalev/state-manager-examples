@@ -13,7 +13,9 @@ import {
 } from "./reported-duration-of-norm";
 
 const SummaryReportedDurationOfNorm: FC = () => {
-	const reportedDuration = useApplicationSelector((state) => {
+	const reportedDuration = useApplicationSelector((
+		state,
+	) => {
 		return selectReportedDuration(state.page);
 	});
 

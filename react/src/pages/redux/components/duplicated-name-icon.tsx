@@ -17,11 +17,15 @@ interface DuplicatedNameIconProps {
 	tooltipIconId: string;
 }
 
-const DuplicatedNameIcon: FC<DuplicatedNameIconProps> = ({
-	hasDuplicate,
-	tooltipBodyText,
-	tooltipIconId,
-}) => {
+const DuplicatedNameIcon: FC<DuplicatedNameIconProps> = (
+	props,
+) => {
+	const {
+		hasDuplicate,
+		tooltipBodyText,
+		tooltipIconId,
+	} = props;
+
 	if (!hasDuplicate) {
 		// A placeholder to avoid layout shift.
 		return (
@@ -40,14 +44,18 @@ const DuplicatedNameIcon: FC<DuplicatedNameIconProps> = ({
 					</Fragment>
 				);
 			}}
-			renderTarget={({
-				className,
-				tooltipId,
-				...targetProps
-			}) => {
+			renderTarget={(
+				targetProps,
+			) => {
+				const {
+					className,
+					tooltipId,
+					...otherTargetProps
+				} = targetProps;
+
 				return (
 					<div
-						{...targetProps}
+						{...otherTargetProps}
 						aria-describedby={tooltipId}
 						className={
 							getClass([

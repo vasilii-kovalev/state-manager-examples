@@ -16,7 +16,9 @@ const savePageData = async (
 	pageData: PageData,
 ): Promise<void> => {
 	await Promise.all([
-		new Promise<void>((resolve) => {
+		new Promise<void>((
+			resolve,
+		) => {
 			setPageDataToLocalStorage(pageData);
 
 			resolve();

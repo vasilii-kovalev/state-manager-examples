@@ -289,7 +289,9 @@ const selectWorklogsForActivityForDate = createSelector(
 		worklogs,
 		date,
 	): Worklog | undefined => {
-		return worklogs.find((worklog) => {
+		return worklogs.find((
+			worklog,
+		) => {
 			return worklog.date === date;
 		});
 	},
@@ -419,7 +421,9 @@ const selectNormTotal = createSelector(
 	): Duration => {
 		return sumBy(
 			calendar,
-			(calendarDay): Duration => {
+			(
+				calendarDay,
+			): Duration => {
 				return calendarDay.norm;
 			},
 		);

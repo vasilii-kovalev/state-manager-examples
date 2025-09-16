@@ -1,4 +1,5 @@
 import {
+	type ChangeEventHandler,
 	type FC,
 	useLayoutEffect,
 	useRef,
@@ -19,18 +20,30 @@ import {
 
 interface SelectEntityCheckboxProps {
 	isDisabled: boolean;
-	onSelectionChange: (isSelectedNext: boolean) => void;
+	onSelectionChange: (
+		isSelectedNext: boolean,
+	) => void;
 	selectionState: EntitySelectionState;
 }
 
-const SelectEntityCheckbox: FC<SelectEntityCheckboxProps> = ({
-	isDisabled,
-	selectionState,
-	onSelectionChange,
-}) => {
+const SelectEntityCheckbox: FC<SelectEntityCheckboxProps> = (
+	props,
+) => {
+	const {
+		isDisabled,
+		selectionState,
+		onSelectionChange,
+	} = props;
+
 	const ref = useRef<HTMLInputElement | null>(null);
 
 	const isBusy = useIsBusy();
+
+	const handleSelectionChange: ChangeEventHandler<HTMLInputElement> = (
+		event,
+	) => {
+		onSelectionChange(event.target.checked);
+	};
 
 	useLayoutEffect(
 		() => {
@@ -51,9 +64,7 @@ const SelectEntityCheckbox: FC<SelectEntityCheckboxProps> = ({
 				isDisabled
 				|| isBusy
 			}
-			onChange={(event) => {
-				onSelectionChange(event.target.checked);
-			}}
+			onChange={handleSelectionChange}
 			ref={ref}
 			type="checkbox"
 		/>

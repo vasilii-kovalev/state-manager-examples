@@ -9,17 +9,21 @@ import {
 	updateWorklogsSelection,
 } from "../store/page/slice";
 
-interface UpdateWorklogsSelection {
+interface UpdateWorklogsSelectionParams {
 	isSelected: boolean;
 }
 
-const updateAllWorklogsSelection = ({
-	isSelected,
-}: UpdateWorklogsSelection): Thunk<void> => {
+const updateAllWorklogsSelection = (
+	params: UpdateWorklogsSelectionParams,
+): Thunk<void> => {
 	return (
 		dispatch,
 		getState,
 	) => {
+		const {
+			isSelected,
+		} = params;
+
 		const {
 			worklogIds,
 			worklogsById,

@@ -33,12 +33,16 @@ interface AddGroupParams {
 	name?: GroupName;
 }
 
-const addGroup = ({
-	name,
-}: AddGroupParams = {}): Thunk<GroupId> => {
+const addGroup = (
+	params: AddGroupParams = {},
+): Thunk<GroupId> => {
 	return (
 		dispatch,
 	) => {
+		const {
+			name,
+		} = params;
+
 		let groupName = name;
 
 		if (isUndefined(groupName)) {
