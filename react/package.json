@@ -10,7 +10,8 @@
 		"test:watch": "vitest",
 		"test:bench:run": "vitest bench --run",
 		"check:types": "tsc --build",
-		"check:eslint": "bun --bun eslint . --quiet"
+		"check:eslint": "bun --bun eslint . --quiet",
+		"fix:eslint": "bun --bun eslint . --quiet --fix"
 	},
 	"dependencies": {
 		"@reduxjs/toolkit": "2.8.2",
