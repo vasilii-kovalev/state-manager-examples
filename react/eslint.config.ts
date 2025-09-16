@@ -589,27 +589,8 @@ const eslintConfig = disableAutofix(
 				*/
 				"no-restricted-globals": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-restricted-imports
-				// TODO: move to TypeScript rule.
-				"no-restricted-imports": [
-					ERROR,
-					{
-						patterns: [
-							{
-								group: [
-									"es-toolkit",
-									"nanoid",
-								],
-								message: "Import utility functions from `@/utilities` folder instead.",
-							},
-							{
-								group: [
-									"date-fns",
-								],
-								message: "Import utility functions from `@/features/dates-and-time/utilities` folder instead.",
-							},
-						],
-					},
-				],
+				// The "@typescript-eslint/no-restricted-imports" rule takes care of it.
+				"no-restricted-imports": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-restricted-properties
 				// This rule is disabled because all object properties are allowed.
 				"no-restricted-properties": DISABLED,
@@ -1549,8 +1530,7 @@ const eslintConfig = disableAutofix(
 					},
 					{
 						selector: [
-							// TODO: check if still necessary.
-							// "enum",
+							"enum",
 							"interface",
 							"typeAlias",
 							"typeParameter",
@@ -1751,7 +1731,26 @@ const eslintConfig = disableAutofix(
 				// The "import-x/no-commonjs" rule takes care of it.
 				"@typescript-eslint/no-require-imports": DISABLED,
 				// https://typescript-eslint.io/rules/no-restricted-imports
-				"@typescript-eslint/no-restricted-imports": ERROR,
+				"@typescript-eslint/no-restricted-imports": [
+					ERROR,
+					{
+						patterns: [
+							{
+								group: [
+									"es-toolkit",
+									"nanoid",
+								],
+								message: "Import utility functions from `@/utilities` folder instead.",
+							},
+							{
+								group: [
+									"date-fns",
+								],
+								message: "Import utility functions from `@/features/dates-and-time/utilities` folder instead.",
+							},
+						],
+					},
+				],
 				// https://typescript-eslint.io/rules/no-restricted-types
 				"@typescript-eslint/no-restricted-types": ERROR,
 				// https://typescript-eslint.io/rules/no-shadow
