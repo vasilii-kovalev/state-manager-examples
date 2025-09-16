@@ -16,7 +16,11 @@ const getPageData = async (): Promise<PageData> => {
 	const [
 		pageData,
 	] = await Promise.all([
-		Promise.resolve<PageData>(getPageDataFromLocalStorage()),
+		new Promise<PageData>((resolve) => {
+			const pageDataFromLocalStorage = getPageDataFromLocalStorage();
+
+			resolve(pageDataFromLocalStorage);
+		}),
 		// Adding a minimal artificial delay to display the full-page loader.
 		sleep(PAGE_DATA_PROCESSING_DELAY),
 	]);
