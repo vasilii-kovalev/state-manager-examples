@@ -1,4 +1,3 @@
-import js from "@eslint/js";
 import react from "@eslint-react/eslint-plugin";
 import {
 	disableAutofix,
@@ -68,7 +67,6 @@ const eslintConfig = disableAutofix(
 				"**/*.{ts,tsx}",
 			],
 			extends: [
-				js.configs.all,
 				// @ts-expect-error Incorrect plugin types.
 				importConfigs.react,
 				// @ts-expect-error Incorrect plugin types.
