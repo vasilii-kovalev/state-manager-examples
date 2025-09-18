@@ -15,7 +15,7 @@
 	},
 	"dependencies": {
 		"@tanstack/solid-query": "5.89.0",
-		"@tanstack/solid-router": "1.131.44",
+		"@tanstack/solid-router": "1.131.47",
 		"@unocss/reset": "66.5.1",
 		"date-fns": "4.1.0",
 		"es-toolkit": "1.39.10",
@@ -26,11 +26,11 @@
 	"devDependencies": {
 		"@morev/eslint-disable-autofix": "1.0.2",
 		"@stylistic/eslint-plugin": "5.3.1",
-		"@tanstack/devtools-vite": "0.3.0",
-		"@tanstack/router-plugin": "1.131.44",
+		"@tanstack/devtools-vite": "0.3.1",
+		"@tanstack/router-plugin": "1.131.47",
 		"@tanstack/solid-devtools": "0.6.9",
 		"@tanstack/solid-query-devtools": "5.89.0",
-		"@tanstack/solid-router-devtools": "1.131.44",
+		"@tanstack/solid-router-devtools": "1.131.47",
 		"@types/bun": "1.2.22",
 		"@unocss/eslint-config": "66.5.1",
 		"eslint": "9.35.0",

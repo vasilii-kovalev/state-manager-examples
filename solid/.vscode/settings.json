@@ -17,6 +17,7 @@
 		More info: https://github.com/microsoft/vscode-eslint/issues/1917#issuecomment-3059655482
 	*/
 	"eslint.runtime": "bun",
+	"npm.packageManager": "yarn",
 	"npm.scriptRunner": "bun",
 	"typescript.tsdk": "node_modules\\typescript\\lib"
 }
