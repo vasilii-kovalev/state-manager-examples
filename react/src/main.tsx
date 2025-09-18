@@ -66,34 +66,24 @@ if (!isNull(rootElement)) {
 				<RouterProvider
 					router={router}
 				/>
-			</QueryClientProvider>
 
-			{
-				import.meta.env.DEV
-					? (
-						<TanStackDevtools
-							plugins={[
-								{
-									name: "TanStack Query",
-									render: (
-										<ReactQueryDevtoolsPanel
-											client={queryClient}
-										/>
-									),
-								},
-								{
-									name: "TanStack Router",
-									render: (
-										<TanStackRouterDevtoolsPanel
-											router={router}
-										/>
-									),
-								},
-							]}
-						/>
-					)
-					: null
-			}
+				<TanStackDevtools
+					plugins={[
+						{
+							name: "TanStack Query",
+							render: <ReactQueryDevtoolsPanel/>,
+						},
+						{
+							name: "TanStack Router",
+							render: (
+								<TanStackRouterDevtoolsPanel
+									router={router}
+								/>
+							),
+						},
+					]}
+				/>
+			</QueryClientProvider>
 		</StrictMode>,
 	);
 }

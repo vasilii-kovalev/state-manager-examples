@@ -144,6 +144,8 @@ interface PageState {
 
 - [React](./react)
   - [Redux](./react/src/pages/redux)
+- [Solid](./solid)
+  - [Signals](./solid/src/pages/signals)
 
 ## License
 
