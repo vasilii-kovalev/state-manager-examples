@@ -54,53 +54,31 @@ const moveWorklogsToGroup = (
 	) => {
 		const stateNextDraft = cloneDeep(getState().page);
 
-		type ActivitiesMapValue = `${GroupId}-${ActivityName}`;
+		const activitiesMap: Record<
+			`${GroupId}-${ActivityName}`,
+			Activity
+		> = {};
 
-		const activitiesMap = stateNextDraft.activityIds.reduce<
-			Record<
-				ActivitiesMapValue,
-				Activity
-			>
-		>(
-			(
-				activitiesMapCurrent,
-				activityId,
-			) => {
-				const activity = stateNextDraft.activitiesById[activityId];
+		for (const activityId of stateNextDraft.activityIds) {
+			const activity = stateNextDraft.activitiesById[activityId];
 
-				if (!isUndefined(activity)) {
-					// eslint-disable-next-line no-param-reassign
-					activitiesMapCurrent[`${activity.groupId}-${activity.name}`] = activity;
-				}
+			if (!isUndefined(activity)) {
+				activitiesMap[`${activity.groupId}-${activity.name}`] = activity;
+			}
+		}
 
-				return activitiesMapCurrent;
-			},
-			{},
-		);
+		const worklogsMap: Record<
+			`${ActivityId}-${DateString}`,
+			Worklog
+		> = {};
 
-		type WorklogsMapValue = `${ActivityId}-${DateString}`;
+		for (const worklogId of stateNextDraft.worklogIds) {
+			const worklog = stateNextDraft.worklogsById[worklogId];
 
-		const worklogsMap = stateNextDraft.worklogIds.reduce<
-			Record<
-				WorklogsMapValue,
-				Worklog
-			>
-		>(
-			(
-				worklogsMapCurrent,
-				worklogId,
-			) => {
-				const worklog = stateNextDraft.worklogsById[worklogId];
-
-				if (!isUndefined(worklog)) {
-					// eslint-disable-next-line no-param-reassign
-					worklogsMapCurrent[`${worklog.activityId}-${worklog.date}`] = worklog;
-				}
-
-				return worklogsMapCurrent;
-			},
-			{},
-		);
+			if (!isUndefined(worklog)) {
+				worklogsMap[`${worklog.activityId}-${worklog.date}`] = worklog;
+			}
+		}
 
 		interface GetGroupNamesParams {
 			activityIdToExclude?: ActivityId;
@@ -292,24 +270,22 @@ const moveWorklogsToGroup = (
 			stateNextDraft.selectedWorklogIds = PAGE_STATE_DEFAULT.selectedWorklogIds;
 		};
 
-		stateNextDraft.selectedWorklogIds.forEach((
-			worklogId,
-		) => {
+		for (const worklogId of stateNextDraft.selectedWorklogIds) {
 			const worklog = stateNextDraft.worklogsById[worklogId];
 
 			if (isUndefined(worklog)) {
-				return;
+				continue;
 			}
 
 			// No need to move if worklog is already in the target group.
 			if (worklog.groupId === groupId) {
-				return;
+				continue;
 			}
 
 			const activity = stateNextDraft.activitiesById[worklog.activityId];
 
 			if (isUndefined(activity)) {
-				return;
+				continue;
 			}
 
 			const existingActivity = activitiesMap[`${groupId}-${activity.name}`];
@@ -329,7 +305,7 @@ const moveWorklogsToGroup = (
 					id: worklog.id,
 				});
 			}
-		});
+		}
 
 		unselectWorklogs();
 

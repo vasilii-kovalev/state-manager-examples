@@ -128,14 +128,14 @@ const WorklogInput: FC<WorklogCellProps> = (
 				);
 			}
 		} else if (durationNext > 0) {
-			const newWorklog = getNewWorklog({
+			const worklogNew = getNewWorklog({
 				activityId,
 				date,
 				duration: durationNext,
 				groupId,
 			});
 
-			dispatch(addWorklog(newWorklog));
+			dispatch(addWorklog(worklogNew));
 		}
 
 		/*

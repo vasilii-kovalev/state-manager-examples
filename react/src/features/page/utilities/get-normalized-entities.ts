@@ -20,23 +20,18 @@ const getNormalizedEntities = <
 		Entity
 	>;
 
-	return entities.reduce<NormalizedEntitiesType>(
-		(
-			normalizedEntitiesCurrent,
-			entity,
-		) => {
-			// eslint-disable-next-line no-param-reassign
-			normalizedEntitiesCurrent.byId[entity.id] = entity;
+	const normalizedEntities: NormalizedEntitiesType = {
+		byId: ({} as NormalizedEntitiesType["byId"]),
+		ids: [],
+	};
 
-			normalizedEntitiesCurrent.ids.push(entity.id);
+	for (const entity of entities) {
+		normalizedEntities.byId[entity.id] = entity;
 
-			return normalizedEntitiesCurrent;
-		},
-		{
-			byId: ({} as NormalizedEntitiesType["byId"]),
-			ids: [],
-		},
-	);
+		normalizedEntities.ids.push(entity.id);
+	}
+
+	return normalizedEntities;
 };
 
 export {

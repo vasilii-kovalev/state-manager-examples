@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+const cloneDeep = structuredClone;
+
 export {
 	cloneDeep,
-} from "es-toolkit";
+};

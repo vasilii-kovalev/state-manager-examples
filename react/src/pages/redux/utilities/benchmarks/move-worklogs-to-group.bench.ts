@@ -38,6 +38,12 @@ import {
 	moveWorklogsToGroupStructuredClone,
 } from "../move-worklogs-to-group-structured-clone";
 
+const getState = (): RootState => {
+	return {
+		page: pageStateWithDifferentActivityNamesForPerformance,
+	};
+};
+
 /*
 	Setup:
 	* 30 groups
@@ -75,16 +81,9 @@ import {
 bench(
 	"moveWorklogsToGroup (actions) [RTK: 2.8.2, Immer: 10.1.1]",
 	() => {
-		const getState = (): RootState => {
-			return {
-				page: pageStateWithDifferentActivityNamesForPerformance,
-			};
-		};
-
 		moveWorklogsToGroupActions(targetGroupId)(
 			noop,
 			getState,
-			undefined,
 		);
 	},
 );
@@ -92,16 +91,9 @@ bench(
 bench(
 	"moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.39.9]",
 	() => {
-		const getState = (): RootState => {
-			return {
-				page: pageStateWithDifferentActivityNamesForPerformance,
-			};
-		};
-
 		moveWorklogsToGroupCloneDeep(targetGroupId)(
 			noop,
 			getState,
-			undefined,
 		);
 	},
 );
@@ -109,16 +101,9 @@ bench(
 bench(
 	"moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.39.9]",
 	() => {
-		const getState = (): RootState => {
-			return {
-				page: pageStateWithDifferentActivityNamesForPerformance,
-			};
-		};
-
 		moveWorklogsToGroupCloneDeepWithMaps(targetGroupId)(
 			noop,
 			getState,
-			undefined,
 		);
 	},
 );
@@ -126,16 +111,9 @@ bench(
 bench(
 	"moveWorklogsToGroup (cloneDeep with object maps) [es-toolkit: 1.39.9]",
 	() => {
-		const getState = (): RootState => {
-			return {
-				page: pageStateWithDifferentActivityNamesForPerformance,
-			};
-		};
-
 		moveWorklogsToGroupCloneDeepWithObjectMaps(targetGroupId)(
 			noop,
 			getState,
-			undefined,
 		);
 	},
 );
@@ -143,16 +121,9 @@ bench(
 bench(
 	"moveWorklogsToGroup (Immer) [Immer: 10.1.1]",
 	() => {
-		const getState = (): RootState => {
-			return {
-				page: pageStateWithDifferentActivityNamesForPerformance,
-			};
-		};
-
 		moveWorklogsToGroupImmer(targetGroupId)(
 			noop,
 			getState,
-			undefined,
 		);
 	},
 );
@@ -160,16 +131,9 @@ bench(
 bench(
 	"moveWorklogsToGroup (Mutative) [Mutative: 1.2.0]",
 	() => {
-		const getState = (): RootState => {
-			return {
-				page: pageStateWithDifferentActivityNamesForPerformance,
-			};
-		};
-
 		moveWorklogsToGroupMutative(targetGroupId)(
 			noop,
 			getState,
-			undefined,
 		);
 	},
 );
@@ -177,16 +141,9 @@ bench(
 bench(
 	"moveWorklogsToGroup (spread)",
 	() => {
-		const getState = (): RootState => {
-			return {
-				page: pageStateWithDifferentActivityNamesForPerformance,
-			};
-		};
-
 		moveWorklogsToGroupSpread(targetGroupId)(
 			noop,
 			getState,
-			undefined,
 		);
 	},
 );
@@ -194,16 +151,9 @@ bench(
 bench(
 	"moveWorklogsToGroup (structuredClone)",
 	() => {
-		const getState = (): RootState => {
-			return {
-				page: pageStateWithDifferentActivityNamesForPerformance,
-			};
-		};
-
 		moveWorklogsToGroupStructuredClone(targetGroupId)(
 			noop,
 			getState,
-			undefined,
 		);
 	},
 );

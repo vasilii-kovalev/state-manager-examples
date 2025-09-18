@@ -65,9 +65,7 @@ const addGroups = (
 					}),
 				);
 
-				calendar.forEach((
-					calendarDay,
-				) => {
+				for (const calendarDay of calendar) {
 					if (calendarDay.norm > 0) {
 						const worklog = getNewWorklog({
 							activityId,
@@ -78,7 +76,7 @@ const addGroups = (
 
 						dispatch(addWorklog(worklog));
 					}
-				});
+				}
 			}
 		}
 	};

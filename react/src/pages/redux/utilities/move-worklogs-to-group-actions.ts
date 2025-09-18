@@ -35,18 +35,16 @@ const moveWorklogsToGroup = (
 			worklogsById,
 		} = getState().page;
 
-		selectedWorklogIds.forEach((
-			worklogId,
-		) => {
+		for (const worklogId of selectedWorklogIds) {
 			const worklog = worklogsById[worklogId];
 
 			if (isUndefined(worklog)) {
-				return;
+				continue;
 			}
 
 			// No need to move if worklog is already in the target group.
 			if (worklog.groupId === groupId) {
-				return;
+				continue;
 			}
 
 			// The state may update in the loop, so we need to access the latest one on each iteration.
@@ -57,7 +55,7 @@ const moveWorklogsToGroup = (
 			const activity = activitiesById[worklog.activityId];
 
 			if (isUndefined(activity)) {
-				return;
+				continue;
 			}
 
 			const activities = Object.values(activitiesById);
@@ -95,7 +93,7 @@ const moveWorklogsToGroup = (
 					}),
 				);
 			}
-		});
+		}
 
 		dispatch(unselectWorklogs());
 	};

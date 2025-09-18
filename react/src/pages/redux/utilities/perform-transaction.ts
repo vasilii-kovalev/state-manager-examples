@@ -40,7 +40,6 @@ const performTransaction = <ReturnType>({
 				return (action as Thunk<unknown>)(
 					dispatch,
 					getState,
-					undefined,
 				);
 			}
 
@@ -61,13 +60,11 @@ const performTransaction = <ReturnType>({
 		const result = transaction(
 			dispatch,
 			getState,
-			undefined,
 		);
 
 		onFinish(
 			dispatchOriginal,
 			getState,
-			undefined,
 		);
 
 		return result;

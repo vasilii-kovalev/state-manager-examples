@@ -240,24 +240,22 @@ const moveWorklogsToGroup = (
 					stateNextDraft.selectedWorklogIds = PAGE_STATE_DEFAULT.selectedWorklogIds;
 				};
 
-				stateNextDraft.selectedWorklogIds.forEach((
-					worklogId,
-				) => {
+				for (const worklogId of stateNextDraft.selectedWorklogIds) {
 					const worklog = stateNextDraft.worklogsById[worklogId];
 
 					if (isUndefined(worklog)) {
-						return;
+						continue;
 					}
 
 					// No need to move if worklog is already in the target group.
 					if (worklog.groupId === groupId) {
-						return;
+						continue;
 					}
 
 					const activity = stateNextDraft.activitiesById[worklog.activityId];
 
 					if (isUndefined(activity)) {
-						return;
+						continue;
 					}
 
 					const activities = Object.values(stateNextDraft.activitiesById);
@@ -286,7 +284,7 @@ const moveWorklogsToGroup = (
 							id: worklog.id,
 						});
 					}
-				});
+				}
 
 				unselectWorklogs();
 			},

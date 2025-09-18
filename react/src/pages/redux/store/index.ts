@@ -19,6 +19,7 @@ const rootReducer = combineReducers({
 });
 
 const store = configureStore({
+	// eslint-disable-next-line unicorn/prevent-abbreviations
 	devTools: import.meta.env.DEV,
 	reducer: rootReducer,
 });
@@ -30,7 +31,7 @@ type Dispatch = typeof store.dispatch;
 type Thunk<ReturnType> = ThunkAction<
 	ReturnType,
 	RootState,
-	unknown,
+	void,
 	Action
 >;
 

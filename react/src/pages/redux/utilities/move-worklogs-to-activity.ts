@@ -32,24 +32,22 @@ const moveWorklogsToActivity = (
 			worklogsById,
 		} = getState().page;
 
-		selectedWorklogIds.forEach((
-			worklogId,
-		) => {
+		for (const worklogId of selectedWorklogIds) {
 			const worklog = worklogsById[worklogId];
 
 			if (isUndefined(worklog)) {
-				return;
+				continue;
 			}
 
 			// No need to move if worklog is already in the target activity.
 			if (worklog.activityId === activityId) {
-				return;
+				continue;
 			}
 
 			const activity = activitiesById[activityId];
 
 			if (isUndefined(activity)) {
-				return;
+				continue;
 			}
 
 			dispatch(
@@ -59,7 +57,7 @@ const moveWorklogsToActivity = (
 					id: worklog.id,
 				}),
 			);
-		});
+		}
 
 		dispatch(unselectWorklogs());
 	};

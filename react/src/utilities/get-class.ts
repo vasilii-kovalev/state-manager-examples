@@ -4,42 +4,40 @@ import {
 
 type OptionalClass = string | undefined;
 
-type OptionalClassWithCondition = [boolean, OptionalClass, OptionalClass?];
+type OptionalClassWithCondition = [
+	boolean,
+	OptionalClass,
+	OptionalClass?,
+];
 
 const getClass = (
 	items: Array<OptionalClass | OptionalClassWithCondition>,
 ): string => {
-	const classes = items.reduce<Array<string>>(
-		(
-			classesCurrent,
-			item,
-		) => {
-			let classToAdd: OptionalClass;
+	const classes: Array<string> = [];
 
-			if (Array.isArray(item)) {
-				const [
-					shouldAdd,
-					classForTrue,
-					classForFalse,
-				] = item;
+	for (const item of items) {
+		let classToAdd: OptionalClass;
 
-				classToAdd = shouldAdd
-					? classForTrue
-					: classForFalse;
-			} else {
-				classToAdd = item;
-			}
+		if (Array.isArray(item)) {
+			const [
+				shouldAdd,
+				classForTrue,
+				classForFalse,
+			] = item;
 
-			if (!isUndefined(classToAdd)) {
-				const classToAddTrimmed = classToAdd.trim();
+			classToAdd = shouldAdd
+				? classForTrue
+				: classForFalse;
+		} else {
+			classToAdd = item;
+		}
 
-				classesCurrent.push(classToAddTrimmed);
-			}
+		if (!isUndefined(classToAdd)) {
+			const classToAddTrimmed = classToAdd.trim();
 
-			return classesCurrent;
-		},
-		[],
-	);
+			classes.push(classToAddTrimmed);
+		}
+	}
 
 	return classes.join(" ");
 };

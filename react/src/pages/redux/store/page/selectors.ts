@@ -489,19 +489,15 @@ const selectActivityNamesInGroup = createSelector(
 		activities,
 		activityIdToExclude,
 	): Array<ActivityName> => {
-		return activities.reduce<Array<ActivityName>>(
-			(
-				activityNamesCurrent,
-				activity,
-			) => {
-				if (activity.id !== activityIdToExclude) {
-					activityNamesCurrent.push(activity.name);
-				}
+		const activityNames: Array<ActivityName> = [];
 
-				return activityNamesCurrent;
-			},
-			[],
-		);
+		for (const activity of activities) {
+			if (activity.id !== activityIdToExclude) {
+				activityNames.push(activity.name);
+			}
+		}
+
+		return activityNames;
 	},
 );
 
@@ -519,19 +515,15 @@ const selectGroupNames = createSelector(
 		groups,
 		groupIdToExclude,
 	): Array<GroupName> => {
-		return groups.reduce<Array<GroupName>>(
-			(
-				groupNamesCurrent,
-				group,
-			) => {
-				if (group.id !== groupIdToExclude) {
-					groupNamesCurrent.push(group.name);
-				}
+		const groupNames: Array<GroupName> = [];
 
-				return groupNamesCurrent;
-			},
-			[],
-		);
+		for (const group of groups) {
+			if (group.id !== groupIdToExclude) {
+				groupNames.push(group.name);
+			}
+		}
+
+		return groupNames;
 	},
 );
 

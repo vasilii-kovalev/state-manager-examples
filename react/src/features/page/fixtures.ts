@@ -117,26 +117,22 @@ const getPageState = (
 
 			pageState.activityIds.push(activityId);
 
-			calendar.forEach((
-				calendarDay,
-			) => {
+			for (const calendarDay of calendar) {
 				if (calendarDay.norm > 0) {
-					if (!isUndefined(worklogDuration)) {
-						const worklogId = `worklog-${calendarDay.date}-${activityId}`;
-						const worklog = getNewWorklog({
-							activityId,
-							date: calendarDay.date,
-							duration: worklogDuration,
-							groupId,
-							id: worklogId,
-						});
+					const worklogId = `worklog-${calendarDay.date}-${activityId}`;
+					const worklog = getNewWorklog({
+						activityId,
+						date: calendarDay.date,
+						duration: worklogDuration,
+						groupId,
+						id: worklogId,
+					});
 
-						pageState.worklogsById[worklogId] = worklog;
+					pageState.worklogsById[worklogId] = worklog;
 
-						pageState.worklogIds.push(worklogId);
-					}
+					pageState.worklogIds.push(worklogId);
 				}
-			});
+			}
 		}
 	}
 
@@ -188,96 +184,78 @@ const getExpectedPageState = (
 		worklogsById,
 	} = pageState;
 
-	const tree: Array<TreeGroup> = groupIds.reduce<Array<TreeGroup>>(
-		(
-			groupsCurrent,
-			groupId,
-		) => {
-			const group = groupsById[groupId];
+	const groups: Array<TreeGroup> = [];
 
-			if (isUndefined(group)) {
-				return groupsCurrent;
+	for (const groupId of groupIds) {
+		const group = groupsById[groupId];
+
+		if (isUndefined(group)) {
+			continue;
+		}
+
+		const activities: Array<TreeActivity> = [];
+
+		for (const activityId of activityIds) {
+			const activity = activitiesById[activityId];
+
+			if (
+				isUndefined(activity)
+				|| activity.groupId !== groupId
+			) {
+				continue;
 			}
 
-			const activities = activityIds.reduce<Array<TreeActivity>>(
-				(
-					activitiesCurrent,
-					activityId,
-				) => {
-					const activity = activitiesById[activityId];
+			const worklogs: Array<TreeWorklog> = [];
 
-					if (
-						isUndefined(activity)
-						|| activity.groupId !== groupId
-					) {
-						return activitiesCurrent;
-					}
+			for (const worklogId of worklogIds) {
+				const worklog = worklogsById[worklogId];
 
-					const worklogs = worklogIds.reduce<Array<TreeWorklog>>(
-						(
-							worklogsCurrent,
-							worklogId,
-						) => {
-							const worklog = worklogsById[worklogId];
+				if (
+					isUndefined(worklog)
+					|| worklog.activityId !== activityId
+				) {
+					continue;
+				}
 
-							if (
-								isUndefined(worklog)
-								|| worklog.activityId !== activityId
-							) {
-								return worklogsCurrent;
-							}
+				worklogs.push(
+					omit(
+						worklog,
+						[
+							"activityId",
+							"groupId",
+							"id",
+						],
+					),
+				);
+			}
 
-							worklogsCurrent.push(
-								omit(
-									worklog,
-									[
-										"activityId",
-										"groupId",
-										"id",
-									],
-								),
-							);
-
-							return worklogsCurrent;
-						},
-						[],
-					);
-
-					activitiesCurrent.push({
-						...omit(
-							activity,
-							[
-								"groupId",
-								"id",
-							],
-						),
-						worklogs,
-					});
-
-					return activitiesCurrent;
-				},
-				[],
-			);
-
-			groupsCurrent.push({
+			activities.push({
 				...omit(
-					group,
+					activity,
 					[
+						"groupId",
 						"id",
 					],
 				),
-				activities,
+				worklogs,
 			});
+		}
 
-			return groupsCurrent;
-		},
-		[],
-	);
+		groups.push({
+			...omit(
+				group,
+				[
+					"id",
+				],
+			),
+			activities,
+		});
+	}
 
 	return {
 		hasChanges,
 		selectedWorklogIds,
-		tree,
+		tree: groups,
 	};
 };
 

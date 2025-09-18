@@ -36,25 +36,23 @@ const getEntities = <
 	Id,
 	Entity
 >): Array<Entity> => {
-	return ids.reduce<Array<Entity>>(
-		(
-			entitiesCurrent,
-			id,
-		) => {
-			const entity = byId[id];
+	const entities: Array<Entity> = [];
 
-			if (!isUndefined(entity)) {
-				const shouldIncludeEntity = filter(entity);
+	for (const id of ids) {
+		const entity = byId[id];
 
-				if (shouldIncludeEntity) {
-					entitiesCurrent.push(entity);
-				}
-			}
+		if (isUndefined(entity)) {
+			continue;
+		}
 
-			return entitiesCurrent;
-		},
-		[],
-	);
+		const shouldIncludeEntity = filter(entity);
+
+		if (shouldIncludeEntity) {
+			entities.push(entity);
+		}
+	}
+
+	return entities;
 };
 
 export {

@@ -40,7 +40,6 @@ test(
 		moveWorklogsToGroupMutative(targetGroupId)(
 			dispatch as unknown as Dispatch,
 			getState,
-			undefined,
 		);
 
 		const action = dispatch.mock.lastCall?.at(0);
@@ -72,7 +71,6 @@ test(
 		moveWorklogsToGroupMutative(targetGroupId)(
 			dispatch as unknown as Dispatch,
 			getState,
-			undefined,
 		);
 
 		const action = dispatch.mock.lastCall?.at(0);
