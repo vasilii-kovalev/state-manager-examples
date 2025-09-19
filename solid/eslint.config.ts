@@ -18,6 +18,7 @@ import {
 	flatConfigs as importConfigs,
 } from "eslint-plugin-import-x";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import solid from "eslint-plugin-solid/configs/typescript";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import globals from "globals";
 import {
@@ -2292,9 +2293,63 @@ const eslintConfig = disableAutofix(
 			files: [
 				"**/*.tsx",
 			],
-			extends: [],
-			plugins: {},
+			extends: [
+				solid,
+			],
 			rules: {
+				/*
+					==================================================
+					Solid plugin
+					==================================================
+				*/
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/components-return-once.md
+				"solid/components-return-once": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/event-handlers.md
+				"solid/event-handlers": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/imports.md
+				"solid/imports": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/jsx-no-duplicate-props.md
+				"solid/jsx-no-duplicate-props": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/jsx-no-script-url.md
+				"solid/jsx-no-script-url": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/jsx-no-undef.md
+				"solid/jsx-no-undef": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/jsx-uses-vars.md
+				"solid/jsx-uses-vars": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/no-array-handlers.md
+				"solid/no-array-handlers": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/no-destructure.md
+				"solid/no-destructure": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/no-innerhtml.md
+				"solid/no-innerhtml": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/no-proxy-apis.md
+				"solid/no-proxy-apis": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/no-react-deps.md
+				"solid/no-react-deps": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/no-react-specific-props.md
+				"solid/no-react-specific-props": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/no-unknown-namespaces.md
+				"solid/no-unknown-namespaces": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/prefer-classlist.md
+				"solid/prefer-classlist": [
+					ERROR,
+					{
+						classnames: [
+							"getClass",
+						],
+					},
+				],
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/prefer-for.md
+				"solid/prefer-for": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/prefer-show.md
+				"solid/prefer-show": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/reactivity.md
+				"solid/reactivity": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/self-closing-comp.md
+				"solid/self-closing-comp": ERROR,
+				// https://github.com/solidjs-community/eslint-plugin-solid/blob/main/packages/eslint-plugin-solid/docs/style-prop.md
+				"solid/style-prop": ERROR,
+
 				/*
 					==================================================
 					Stylistic plugin
@@ -2426,20 +2481,6 @@ const eslintConfig = disableAutofix(
 				"unicorn/no-null": DISABLED,
 				"unicorn/prevent-abbreviations": DISABLED,
 				"@typescript-eslint/naming-convention": DISABLED,
-			},
-		},
-		{
-			files: [
-				"src/pages/redux/**/slice.ts",
-			],
-			rules: {
-				"no-param-reassign": [
-					ERROR,
-					{
-						props: false,
-					},
-				],
-				"@typescript-eslint/no-dynamic-delete": DISABLED,
 			},
 		},
 		{
