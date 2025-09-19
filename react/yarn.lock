@@ -951,10 +951,10 @@
     goober "^2.1.16"
     solid-js "^1.9.7"
 
-"@tanstack/devtools-vite@0.3.2":
-  version "0.3.2"
-  resolved "https://registry.npmjs.org/@tanstack/devtools-vite/-/devtools-vite-0.3.2.tgz#a9d3a43609b46bf5299246c2f6225494bab0668a"
-  integrity sha512-sasJbV84k42AhjjbzwDABKjwcYSNzcYfj0hzJdEchPSltAejf+pMb6YMi4sqoHH+ZOTbcmejSFm2w/agmruLlQ==
+"@tanstack/devtools-vite@0.3.3":
+  version "0.3.3"
+  resolved "https://registry.npmjs.org/@tanstack/devtools-vite/-/devtools-vite-0.3.3.tgz#117d08f86ab059084724357bcb8d25d401c5a16a"
+  integrity sha512-ghr+dsgrJz5pH0NxD5l6TZFBhlTAc3DdRqFqmLcUniEHpv/t4lzX6vHcAqEkrqZbiCW6+AHYzNyH+z4wrdUjtQ==
   dependencies:
     "@babel/core" "^7.28.3"
     "@babel/generator" "^7.28.3"
@@ -992,10 +992,10 @@
   resolved "https://registry.npmjs.org/@tanstack/query-devtools/-/query-devtools-5.87.3.tgz#0cfff30823f837d6b9ead08f8d1b16459203fdb2"
   integrity sha512-LkzxzSr2HS1ALHTgDmJH5eGAVsSQiuwz//VhFW5OqNk0OQ+Fsqba0Tsf+NzWRtXYvpgUqwQr4b2zdFZwxHcGvg==
 
-"@tanstack/react-devtools@0.6.10":
-  version "0.6.10"
-  resolved "https://registry.npmjs.org/@tanstack/react-devtools/-/react-devtools-0.6.10.tgz#ed946dfb48680314f89deac64a1c023927d9a6d1"
-  integrity sha512-0p6+o/PJV7vKrOR4F+FP0Kr+0GQTtXuYhK8h72mD15iTX0jb05sipnMOVvtfL745DXLUm80fFUonJg82ESyHUA==
+"@tanstack/react-devtools@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.npmjs.org/@tanstack/react-devtools/-/react-devtools-0.7.0.tgz#4d48886624b1e60fd49367110a78d2f97dfb6842"
+  integrity sha512-HJH+oNBYQotgsKWAQqvkY8KnfQbbZptHbrkPGVaIwj393vVFGT1BuXMYy+rlmOYxczyerb90ltRFgsQyUtJTuw==
   dependencies:
     "@tanstack/devtools" "0.6.14"
 
