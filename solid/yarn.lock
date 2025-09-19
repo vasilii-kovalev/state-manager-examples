@@ -929,10 +929,10 @@
     goober "^2.1.16"
     solid-js "^1.9.7"
 
-"@tanstack/devtools-vite@0.3.1":
-  version "0.3.1"
-  resolved "https://registry.npmjs.org/@tanstack/devtools-vite/-/devtools-vite-0.3.1.tgz#fa7f718f010ea6bf2c74438f0b5850e615de347e"
-  integrity sha512-oTq+jTiePjS0D5OoQvqjJD02O1lEEKmjH5aOkB6nEwNp2u9g8UlaNZYE3Sd8OIVQcXYLdzaUNnX3LDumWzZzMw==
+"@tanstack/devtools-vite@0.3.2":
+  version "0.3.2"
+  resolved "https://registry.npmjs.org/@tanstack/devtools-vite/-/devtools-vite-0.3.2.tgz#a9d3a43609b46bf5299246c2f6225494bab0668a"
+  integrity sha512-sasJbV84k42AhjjbzwDABKjwcYSNzcYfj0hzJdEchPSltAejf+pMb6YMi4sqoHH+ZOTbcmejSFm2w/agmruLlQ==
   dependencies:
     "@babel/core" "^7.28.3"
     "@babel/generator" "^7.28.3"
@@ -943,10 +943,10 @@
     chalk "^5.6.0"
     launch-editor "^2.11.1"
 
-"@tanstack/devtools@0.6.13":
-  version "0.6.13"
-  resolved "https://registry.npmjs.org/@tanstack/devtools/-/devtools-0.6.13.tgz#6d0f22fb46c7c7bd69f99e50643394658d597967"
-  integrity sha512-EHSqMwo3lhVxeFV+6u7aNoWeqNpSLDzvft7i/JeUt8ZbfjopyOtugNFY1cGEaqy7qzudqQP4pk7dUKWACQ0gCQ==
+"@tanstack/devtools@0.6.14":
+  version "0.6.14"
+  resolved "https://registry.npmjs.org/@tanstack/devtools/-/devtools-0.6.14.tgz#2dcf27ae5d7df42d2eb4680568edf6c8f7718928"
+  integrity sha512-dOtHoeLjjcHeNscu+ZEf89EFboQsy0ggb6pf8Sha59qBUeQbjUsaAvwP8Ogwg89oJxFQbTP7DKYNBNw5CxlNEA==
   dependencies:
     "@solid-primitives/keyboard" "^1.2.8"
     "@tanstack/devtools-event-bus" "0.3.2"
@@ -970,10 +970,10 @@
   resolved "https://registry.npmjs.org/@tanstack/query-devtools/-/query-devtools-5.87.3.tgz#0cfff30823f837d6b9ead08f8d1b16459203fdb2"
   integrity sha512-LkzxzSr2HS1ALHTgDmJH5eGAVsSQiuwz//VhFW5OqNk0OQ+Fsqba0Tsf+NzWRtXYvpgUqwQr4b2zdFZwxHcGvg==
 
-"@tanstack/router-core@1.131.47":
-  version "1.131.47"
-  resolved "https://registry.npmjs.org/@tanstack/router-core/-/router-core-1.131.47.tgz#42a2355a1602fb15826b4e461a1d60ee0d1f4b35"
-  integrity sha512-ixwowt//SLvnuMoInSxSNCJ41J3S53FLgw8tu5MyXftZ9d7cVOnHoAuSOhKNJNyBDTC2JODC3w/4EH3KDMj6ew==
+"@tanstack/router-core@1.131.48":
+  version "1.131.48"
+  resolved "https://registry.npmjs.org/@tanstack/router-core/-/router-core-1.131.48.tgz#f40c3629843da1eac5811e2d756fa20122371502"
+  integrity sha512-Zw024eJECTLn57bR8oncR4YUTvQ8P41pDnVEXevWPuR6wdKRsIUmhfJowzgf4ppF9Lgl5DUWEhOcj4Awr4tTOQ==
   dependencies:
     "@tanstack/history" "1.131.2"
     "@tanstack/store" "^0.7.0"
@@ -983,21 +983,21 @@
     tiny-invariant "^1.3.3"
     tiny-warning "^1.0.3"
 
-"@tanstack/router-devtools-core@1.131.47":
-  version "1.131.47"
-  resolved "https://registry.npmjs.org/@tanstack/router-devtools-core/-/router-devtools-core-1.131.47.tgz#f7e45adda972eae902c1ca6be13096b0ec83a6eb"
-  integrity sha512-XKeTfZcy5RmlPUUYkidIeK/KIfjSWo1cFp0P9L+LleclbVa6pkIfjocSHqUiHM5wGlxkbC5EzZfLBqs2xTinuA==
+"@tanstack/router-devtools-core@1.131.48":
+  version "1.131.48"
+  resolved "https://registry.npmjs.org/@tanstack/router-devtools-core/-/router-devtools-core-1.131.48.tgz#2461570261fb179e2b800a79b366305febad44ec"
+  integrity sha512-QHX8ta3PEBoU7674N9jF7k/HlnOHZ/SHerT4zb9c9McZM4ZydPGyBt9wjMxONgSrceYvhFgNBRhrkMp2X4+iiw==
   dependencies:
     clsx "^2.1.1"
     goober "^2.1.16"
     solid-js "^1.9.5"
 
-"@tanstack/router-generator@1.131.47":
-  version "1.131.47"
-  resolved "https://registry.npmjs.org/@tanstack/router-generator/-/router-generator-1.131.47.tgz#d601b737880b2d0c42d44fbc23ccbeac615df4f2"
-  integrity sha512-h0CAwc7s9MuU1awM8hAo/Iqfy33TtMCHuq40Ipq8bWUlElnp2qym0EkWEcQ6geDha1d/rgnu4pexlxEgwmKxbA==
+"@tanstack/router-generator@1.131.48":
+  version "1.131.48"
+  resolved "https://registry.npmjs.org/@tanstack/router-generator/-/router-generator-1.131.48.tgz#046e1533a13da98e5c19765180e94dcbdf834718"
+  integrity sha512-spLqLJ1pD6y8wTxdKSRUS7fMINbuqsTEk1Ot0wxdrD1lKwJT8F7yKovSfl+h2WcifFN84B1gc5F3ZRmcp7fTeA==
   dependencies:
-    "@tanstack/router-core" "1.131.47"
+    "@tanstack/router-core" "1.131.48"
     "@tanstack/router-utils" "1.131.2"
     "@tanstack/virtual-file-routes" "1.131.2"
     prettier "^3.5.0"
@@ -1006,10 +1006,10 @@
     tsx "^4.19.2"
     zod "^3.24.2"
 
-"@tanstack/router-plugin@1.131.47":
-  version "1.131.47"
-  resolved "https://registry.npmjs.org/@tanstack/router-plugin/-/router-plugin-1.131.47.tgz#691e2f23b1a75e7dc9e0d01512dfa9e8b95a88ab"
-  integrity sha512-YWdVzwikSJG6BaqOHPUzBCn5ePOBF8fBmR+hBvYp5GKvVRay99vyAIy5ANYWXbWFcIyR8WFUQrbGBk/ysdEmFA==
+"@tanstack/router-plugin@1.131.48":
+  version "1.131.48"
+  resolved "https://registry.npmjs.org/@tanstack/router-plugin/-/router-plugin-1.131.48.tgz#4da1e6c45cc5e6588ca721f09a5acf34d358c38e"
+  integrity sha512-5Bt7M3rP6bYNIwFYhLj5AjPdfBqWmrjIliq06rV1iCQ8GJvXPVSuZHwT+jDzxEsyRzHUjk5kuK3ytimXmexpSQ==
   dependencies:
     "@babel/core" "^7.27.7"
     "@babel/plugin-syntax-jsx" "^7.27.1"
@@ -1017,8 +1017,8 @@
     "@babel/template" "^7.27.2"
     "@babel/traverse" "^7.27.7"
     "@babel/types" "^7.27.7"
-    "@tanstack/router-core" "1.131.47"
-    "@tanstack/router-generator" "1.131.47"
+    "@tanstack/router-core" "1.131.48"
+    "@tanstack/router-generator" "1.131.48"
     "@tanstack/router-utils" "1.131.2"
     "@tanstack/virtual-file-routes" "1.131.2"
     babel-dead-code-elimination "^1.0.10"
@@ -1038,12 +1038,12 @@
     ansis "^4.1.0"
     diff "^8.0.2"
 
-"@tanstack/solid-devtools@0.6.9":
-  version "0.6.9"
-  resolved "https://registry.npmjs.org/@tanstack/solid-devtools/-/solid-devtools-0.6.9.tgz#1843101948ba41e2bdb90930845464031f92bd5d"
-  integrity sha512-Fm1k3cCwMwTDyG8Z2ykGVV2rRW4zr8n7d9EGTULhOHuCQhKWpGSMP7Tl/bguVlNhVfet1fPzOWCeJxpWO86z7w==
+"@tanstack/solid-devtools@0.6.10":
+  version "0.6.10"
+  resolved "https://registry.npmjs.org/@tanstack/solid-devtools/-/solid-devtools-0.6.10.tgz#1a2c496781c31f4cd4625689d94a5e2444819d69"
+  integrity sha512-3epwiE3HlbMvw4082NYlh6SUAqMSuMZDiGgtptSydU7gY9Yd8ZscnjqMDlq9RatjgRmJPSyUcD1N8FbPcSI1eA==
   dependencies:
-    "@tanstack/devtools" "0.6.13"
+    "@tanstack/devtools" "0.6.14"
 
 "@tanstack/solid-query-devtools@5.89.0":
   version "5.89.0"
@@ -1059,23 +1059,23 @@
   dependencies:
     "@tanstack/query-core" "5.89.0"
 
-"@tanstack/solid-router-devtools@1.131.47":
-  version "1.131.47"
-  resolved "https://registry.npmjs.org/@tanstack/solid-router-devtools/-/solid-router-devtools-1.131.47.tgz#8b2adee5f61b50b8d96ebd6573f5af986294f830"
-  integrity sha512-pfc7kBMvz4FFnEptd0m7X66UImDz364V29O3HjIjYRPNVUCc3DRAYRlzmnl4FQ+b7zZLyCGr+8/ZJe2PKAdrWg==
+"@tanstack/solid-router-devtools@1.131.48":
+  version "1.131.48"
+  resolved "https://registry.npmjs.org/@tanstack/solid-router-devtools/-/solid-router-devtools-1.131.48.tgz#5e4f9eaa9086dc834afd35b24796a1adc0442e05"
+  integrity sha512-bmfvv+nmQKOsjE1mqmJx+rKZExAgi/Wa1fVgPHPdJbszvmUZQRyLJLKEVxR0gJbb3UG3kKSS28c3rfupuSbuOA==
   dependencies:
-    "@tanstack/router-devtools-core" "1.131.47"
+    "@tanstack/router-devtools-core" "1.131.48"
 
-"@tanstack/solid-router@1.131.47":
-  version "1.131.47"
-  resolved "https://registry.npmjs.org/@tanstack/solid-router/-/solid-router-1.131.47.tgz#bf4139b681f79b09b9f7c6baf2bef29e4377892c"
-  integrity sha512-UjxDG0sK9XByT44z6mRIg8ywPbysDKa+/4eI7/QKyHsSV/lbPwszUVCUJ4wKj8MZQk2QS1TeC9+h/6r2U4x2nA==
+"@tanstack/solid-router@1.131.48":
+  version "1.131.48"
+  resolved "https://registry.npmjs.org/@tanstack/solid-router/-/solid-router-1.131.48.tgz#2b7dd2ccf56f61966080cf21b9a519d85d8a8099"
+  integrity sha512-CHOLVmkgZa/ldV4bKHDwZLxi5fwJ4HsHGdIXJ0mmXirlL1jViSX7y9vUQaI9wWGF7Upbo59X9DWTy2RXVyilSA==
   dependencies:
     "@solid-devtools/logger" "^0.9.4"
     "@solid-primitives/refs" "^1.0.8"
     "@solidjs/meta" "^0.29.4"
     "@tanstack/history" "1.131.2"
-    "@tanstack/router-core" "1.131.47"
+    "@tanstack/router-core" "1.131.48"
     "@tanstack/solid-store" "0.7.0"
     isbot "^5.1.22"
     tiny-invariant "^1.3.3"
