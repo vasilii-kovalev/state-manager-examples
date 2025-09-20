@@ -1,6 +1,8 @@
 import {
 	type ChangeEventHandler,
+	type Dispatch,
 	type ReactNode,
+	type SetStateAction,
 } from "react";
 import {
 	type GenericSchema,
@@ -11,22 +13,21 @@ import {
 	useIsBusy,
 } from "@/hooks/use-is-busy";
 import {
-	type UseLocalNameResult,
-} from "@/hooks/use-local-name";
-import {
 	getClass,
 } from "@/utilities/get-class";
 import {
 	isEmpty,
 } from "@/utilities/is-empty";
 
-interface NameInputProps<Name extends string> extends UseLocalNameResult {
+interface NameInputProps<Name extends string> {
 	className?: string;
 	name: Name;
+	nameLocal: string;
 	onBlur: (
 		nameNext: Name,
 	) => void;
 	placeholder: string;
+	setNameLocal: Dispatch<SetStateAction<string>>;
 	validationSchema: GenericSchema<string, Name>;
 }
 

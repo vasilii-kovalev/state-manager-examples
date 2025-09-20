@@ -1,5 +1,6 @@
 import {
 	type FC,
+	useState,
 } from "react";
 
 import {
@@ -15,9 +16,6 @@ import {
 import {
 	type GroupId,
 } from "@/features/group/types";
-import {
-	useLocalName,
-} from "@/hooks/use-local-name";
 
 import {
 	useApplicationDispatch,
@@ -49,10 +47,10 @@ const ActivityNameInput: FC<ActivityNameInputProps> = (
 
 	const dispatch = useApplicationDispatch();
 
-	const {
+	const [
 		nameLocal,
 		setNameLocal,
-	} = useLocalName(name);
+	] = useState<string>(name);
 
 	const handleBlur = (
 		nameNext: ActivityName,
