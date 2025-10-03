@@ -51,14 +51,13 @@ const RemoveActivityButton: FC<RemoveActivityButtonProps> = (
 			) => {
 				const {
 					className,
-					tooltipId,
 					...otherTargetProps
 				} = targetProps;
 
 				return (
 					<button
 						{...otherTargetProps}
-						aria-describedby={tooltipId}
+						aria-describedby={otherTargetProps.popoverTarget}
 						className={
 							getClass([
 								className,

@@ -51,14 +51,13 @@ const RemoveGroupButton: FC<RemoveGroupButtonProps> = (
 			) => {
 				const {
 					className,
-					tooltipId,
 					...otherTargetProps
 				} = targetProps;
 
 				return (
 					<button
 						{...otherTargetProps}
-						aria-describedby={tooltipId}
+						aria-describedby={otherTargetProps.popoverTarget}
 						className={
 							getClass([
 								className,

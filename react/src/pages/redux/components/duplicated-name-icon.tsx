@@ -49,14 +49,13 @@ const DuplicatedNameIcon: FC<DuplicatedNameIconProps> = (
 			) => {
 				const {
 					className,
-					tooltipId,
 					...otherTargetProps
 				} = targetProps;
 
 				return (
 					<div
 						{...otherTargetProps}
-						aria-describedby={tooltipId}
+						aria-describedby={otherTargetProps.popoverTarget}
 						className={
 							getClass([
 								className,

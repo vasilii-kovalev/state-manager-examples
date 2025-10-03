@@ -25,7 +25,6 @@ interface RenderTargetProps<TargetElement extends HTMLElement> {
 	popoverTarget: string;
 	ref: Setter<TargetElement | null>;
 	tabIndex: number;
-	tooltipId: string;
 }
 
 interface TooltipProps<TargetElement extends HTMLElement> {
@@ -84,7 +83,6 @@ const Tooltip = <TargetElement extends HTMLElement>(
 					popoverTarget: tooltipId(),
 					ref: setTargetRef,
 					tabIndex: 0,
-					tooltipId: tooltipId(),
 				})
 			}
 

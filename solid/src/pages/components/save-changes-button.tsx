@@ -4,7 +4,6 @@ import {
 } from "@tanstack/solid-query";
 import {
 	type Component,
-	splitProps,
 } from "solid-js";
 
 import {
@@ -55,24 +54,13 @@ const SaveChangesButton: Component = () => {
 			renderTarget={(
 				targetProps,
 			) => {
-				const [
-					props,
-					otherTargetProps,
-				] = splitProps(
-					targetProps,
-					[
-						"class",
-						"tooltipId",
-					],
-				);
-
 				return (
 					<button
-						{...otherTargetProps}
-						aria-describedby={props.tooltipId}
+						{...targetProps}
+						aria-describedby={targetProps.popoverTarget}
 						class={
 							getClass([
-								props.class,
+								targetProps.class,
 								"control",
 							])
 						}
