@@ -1,0 +1,13 @@
+.loader {
+	transition: opacity 0.5s ease-in-out, display 0.5s ease-in-out allow-discrete;
+}
+
+@starting-style {
+	.loader {
+		opacity: 0;
+	}
+}
+
+body:has(.loader.busy) {
+	overflow: hidden;
+}

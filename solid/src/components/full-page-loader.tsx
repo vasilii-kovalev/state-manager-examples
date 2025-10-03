@@ -1,6 +1,6 @@
 import {
-	type FC,
-} from "react";
+	type Component,
+} from "solid-js";
 
 import {
 	useIsBusy,
@@ -11,18 +11,18 @@ import {
 
 import css from "./full-page-loader.module.css";
 
-const FullPageLoader: FC = () => {
+const FullPageLoader: Component = () => {
 	const isBusy = useIsBusy();
 
 	return (
 		<div
-			className={
+			class={
 				getClass([
 					css.loader,
 					// eslint-disable-next-line @stylistic/max-len
 					"pos-fixed inset-0 hidden h-screen w-screen items-center justify-center bg-black bg-opacity-50 color-white opacity-0",
 					[
-						isBusy,
+						isBusy(),
 						getClass([
 							css.busy,
 							"flex opacity-100",
