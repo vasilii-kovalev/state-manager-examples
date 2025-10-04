@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 } from "solid-js";
 
@@ -24,7 +23,7 @@ interface ActivityReportedDurationOfNormProps {
 const ActivityReportedDurationOfNorm: Component<ActivityReportedDurationOfNormProps> = (
 	props,
 ) => {
-	const reportedDurationForActivity: Accessor<Duration> = () => {
+	const reportedDurationForActivity = (): Duration => {
 		return selectReportedDurationForActivity(props.activityId);
 	};
 

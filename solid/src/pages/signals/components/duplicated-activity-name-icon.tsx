@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 } from "solid-js";
 
@@ -27,7 +26,7 @@ interface DuplicatedActivityNameIconProps {
 const DuplicatedActivityNameIcon: Component<DuplicatedActivityNameIconProps> = (
 	props,
 ) => {
-	const hasDuplicate: Accessor<boolean> = () => {
+	const hasDuplicate = (): boolean => {
 		const existingActivityNames = selectActivityNamesInGroup(
 			props.groupId,
 			props.activityId,

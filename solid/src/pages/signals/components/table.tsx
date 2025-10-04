@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 	type ComponentProps,
 	Show,
@@ -25,7 +24,7 @@ import {
 	SummaryRow,
 } from "./summary-row";
 
-const isCalendarEmpty: Accessor<boolean> = () => {
+const isCalendarEmpty = (): boolean => {
 	return isEmpty(selectCalendar());
 };
 

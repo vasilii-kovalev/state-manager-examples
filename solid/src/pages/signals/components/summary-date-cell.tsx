@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 } from "solid-js";
 
@@ -22,7 +21,7 @@ interface SummaryDateCellProps {
 const SummaryDateCell: Component<SummaryDateCellProps> = (
 	props,
 ) => {
-	const reportedDuration: Accessor<Duration> = () => {
+	const reportedDuration = (): Duration => {
 		return selectReportedDurationForDate(props.date);
 	};
 

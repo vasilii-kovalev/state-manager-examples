@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 } from "solid-js";
 
@@ -28,11 +27,11 @@ interface SelectGroupCheckboxProps {
 const SelectGroupCheckbox: Component<SelectGroupCheckboxProps> = (
 	props,
 ) => {
-	const selectionState: Accessor<EntitySelectionState> = () => {
+	const selectionState = (): EntitySelectionState => {
 		return selectSelectionStateForGroup(props.groupId);
 	};
 
-	const hasWorklogs: Accessor<boolean> = () => {
+	const hasWorklogs = (): boolean => {
 		return selectHasWorklogsInGroup(props.groupId);
 	};
 

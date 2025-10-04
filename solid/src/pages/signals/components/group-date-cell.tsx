@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 } from "solid-js";
 
@@ -26,7 +25,7 @@ interface GroupDateCellProps {
 const GroupDateCell: Component<GroupDateCellProps> = (
 	props,
 ) => {
-	const reportedDuration: Accessor<Duration> = () => {
+	const reportedDuration = (): Duration => {
 		return selectReportedDurationForGroupForDate(
 			props.groupId,
 			props.date,

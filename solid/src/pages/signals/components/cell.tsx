@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 	type ComponentProps,
 } from "solid-js";
@@ -24,7 +23,7 @@ interface CellProps extends ComponentProps<"td"> {
 const Cell: Component<CellProps> = (
 	props,
 ) => {
-	const isDateCell: Accessor<boolean> = () => {
+	const isDateCell = (): boolean => {
 		return !isUndefined(props.date);
 	};
 

@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 	For,
 } from "solid-js";
@@ -25,7 +24,7 @@ interface ActivityRowsProps {
 const ActivityRows: Component<ActivityRowsProps> = (
 	props,
 ) => {
-	const activities: Accessor<Array<Activity>> = () => {
+	const activities = (): Array<Activity> => {
 		return selectActivitiesForGroup(props.groupId);
 	};
 

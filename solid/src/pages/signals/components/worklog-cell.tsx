@@ -1,6 +1,6 @@
 import {
-	type Accessor,
 	type Component,
+	createMemo,
 	Show,
 } from "solid-js";
 
@@ -14,9 +14,6 @@ import {
 import {
 	type GroupId,
 } from "@/features/group/types";
-import {
-	type Worklog,
-} from "@/features/worklog/types";
 
 import {
 	selectWorklogsForActivityForDate,
@@ -41,12 +38,12 @@ interface WorklogCellProps {
 const WorklogCell: Component<WorklogCellProps> = (
 	props,
 ) => {
-	const worklog: Accessor<Worklog | undefined> = () => {
+	const worklog = createMemo(() => {
 		return selectWorklogsForActivityForDate(
 			props.activityId,
 			props.date,
 		);
-	};
+	});
 
 	return (
 		<Show

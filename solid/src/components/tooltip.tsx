@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	createEffect,
 	createSignal,
 	type JSX,
@@ -55,7 +54,7 @@ const Tooltip = <TargetElement extends HTMLElement>(
 		tooltipRef()?.hidePopover();
 	};
 
-	const tooltipId: Accessor<string> = () => {
+	const tooltipId = (): string => {
 		return `${props.targetId}-tooltip`;
 	};
 

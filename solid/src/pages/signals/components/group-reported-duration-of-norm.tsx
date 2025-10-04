@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 } from "solid-js";
 
@@ -24,7 +23,7 @@ interface GroupReportedDurationOfNormProps {
 const GroupReportedDurationOfNorm: Component<GroupReportedDurationOfNormProps> = (
 	props,
 ) => {
-	const reportedDurationForGroup: Accessor<Duration> = () => {
+	const reportedDurationForGroup = (): Duration => {
 		return selectReportedDurationForGroup(props.groupId);
 	};
 

@@ -1,5 +1,6 @@
 import {
 	type Component,
+	createMemo,
 } from "solid-js";
 
 import {
@@ -30,20 +31,22 @@ interface ReportedDurationOfNormProps {
 const ReportedDurationOfNorm: Component<ReportedDurationOfNormProps> = (
 	props,
 ) => {
+	const normTotal = createMemo(() => {
+		return selectNormTotal();
+	});
+
 	return (
 		<Tooltip<HTMLDivElement>
 			renderBody={() => {
-				const normTotal = selectNormTotal();
-
-				const percent = normTotal === 0
+				const percent = normTotal() === 0
 					? 0
-					: (props.reported / normTotal) * 100;
+					: (props.reported / normTotal()) * 100;
 
 				return (
 					<>
 						{formatDuration(props.reported)}
 						/
-						{formatDuration(normTotal)}
+						{formatDuration(normTotal())}
 						{" "}
 						(
 						{formatDuration(percent)}
@@ -74,7 +77,7 @@ const ReportedDurationOfNorm: Component<ReportedDurationOfNormProps> = (
 
 						<TotalDuration
 							class="w-14 truncate text-start"
-							duration={selectNormTotal()}
+							duration={normTotal()}
 							shouldRenderZero={true}
 						/>
 					</div>

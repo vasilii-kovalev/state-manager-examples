@@ -1,5 +1,4 @@
 import {
-	type Accessor,
 	type Component,
 } from "solid-js";
 
@@ -23,7 +22,7 @@ interface DuplicatedGroupNameIconProps {
 const DuplicatedGroupNameIcon: Component<DuplicatedGroupNameIconProps> = (
 	props,
 ) => {
-	const hasDuplicate: Accessor<boolean> = () => {
+	const hasDuplicate = (): boolean => {
 		const existingGroupNames = selectGroupNames(props.groupId);
 
 		return existingGroupNames.includes(props.name);
