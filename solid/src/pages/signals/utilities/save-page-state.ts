@@ -7,7 +7,7 @@ import {
 
 import {
 	pageState,
-} from "../signals/signals/page/base";
+} from "../signals/page/base";
 
 const savePageState = async (): Promise<void> => {
 	try {

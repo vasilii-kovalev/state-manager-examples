@@ -25,8 +25,8 @@ import {
 	getEntities,
 } from "@/features/page/utilities/get-entities";
 import {
-	getEntitySelectionStateForGroups,
-} from "@/features/page/utilities/get-entity-selection-state-for-groups";
+	getEntitySelectionState,
+} from "@/features/page/utilities/get-entity-selection-state";
 import {
 	getReportedDuration,
 } from "@/features/page/utilities/get-reported-duration";
@@ -160,10 +160,15 @@ const selectWorklogsByActivityId = createDraftSafeSelector(
 	],
 	(
 		worklogs,
-	): Record<ActivityId, Array<Worklog> | undefined> => {
+	): Record<
+		ActivityId,
+		Array<Worklog> | undefined
+	> => {
 		return Object.groupBy(
 			worklogs,
-			(worklog) => {
+			(
+				worklog,
+			) => {
 				return worklog.activityId;
 			},
 		);
@@ -200,10 +205,15 @@ const selectWorklogsByGroupId = createDraftSafeSelector(
 	],
 	(
 		worklogs,
-	): Record<GroupId, Array<Worklog> | undefined> => {
+	): Record<
+		GroupId,
+		Array<Worklog> | undefined
+	> => {
 		return Object.groupBy(
 			worklogs,
-			(worklog) => {
+			(
+				worklog,
+			) => {
 				return worklog.groupId;
 			},
 		);
@@ -240,10 +250,15 @@ const selectActivitiesByGroupId = createDraftSafeSelector(
 	],
 	(
 		activities,
-	): Record<GroupId, Array<Activity> | undefined> => {
+	): Record<
+		GroupId,
+		Array<Activity> | undefined
+	> => {
 		return Object.groupBy(
 			activities,
-			(activity) => {
+			(
+				activity,
+			) => {
 				return activity.groupId;
 			},
 		);
@@ -286,10 +301,10 @@ const selectWorklogsForActivityForDate = createSelector(
 		},
 	],
 	(
-		worklogs,
+		worklogsForActivity,
 		date,
 	): Worklog | undefined => {
-		return worklogs.find((
+		return worklogsForActivity.find((
 			worklog,
 		) => {
 			return worklog.date === date;
@@ -302,9 +317,9 @@ const selectHasWorklogsInActivity = createSelector(
 		selectWorklogsForActivity,
 	],
 	(
-		worklogs,
+		worklogsForActivity,
 	): boolean => {
-		return !isEmpty(worklogs);
+		return !isEmpty(worklogsForActivity);
 	},
 );
 
@@ -313,9 +328,9 @@ const selectHasWorklogsInGroup = createSelector(
 		selectWorklogsForGroup,
 	],
 	(
-		worklogs,
+		worklogsForGroup,
 	): boolean => {
-		return !isEmpty(worklogs);
+		return !isEmpty(worklogsForGroup);
 	},
 );
 
@@ -347,7 +362,12 @@ const selectReportedDurationForGroupByDate = createSelector(
 	],
 	(
 		worklogsForGroup,
-	) => {
+	): Partial<
+		Record<
+			DateString,
+			Duration
+		>
+	> => {
 		return getReportedDurationByDate(worklogsForGroup);
 	},
 );
@@ -383,7 +403,12 @@ const selectReportedDurationByDate = createSelector(
 	],
 	(
 		worklogs,
-	) => {
+	): Partial<
+		Record<
+			DateString,
+			Duration
+		>
+	> => {
 		return getReportedDurationByDate(worklogs);
 	},
 );
@@ -486,12 +511,12 @@ const selectActivityNamesInGroup = createSelector(
 		},
 	],
 	(
-		activities,
+		activitiesForGroup,
 		activityIdToExclude,
 	): Array<ActivityName> => {
 		const activityNames: Array<ActivityName> = [];
 
-		for (const activity of activities) {
+		for (const activity of activitiesForGroup) {
 			if (activity.id !== activityIdToExclude) {
 				activityNames.push(activity.name);
 			}
@@ -533,12 +558,12 @@ const selectSelectionStateForActivity = createSelector(
 		selectSelectedWorklogIds,
 	],
 	(
-		worklogs,
+		worklogsForActivity,
 		selectedWorklogIds,
 	): EntitySelectionState => {
-		return getEntitySelectionStateForGroups({
+		return getEntitySelectionState({
 			selectedWorklogIds,
-			worklogs,
+			worklogs: worklogsForActivity,
 		});
 	},
 );
@@ -549,17 +574,17 @@ const selectSelectionStateForGroup = createSelector(
 		selectSelectedWorklogIds,
 	],
 	(
-		worklogs,
+		worklogsForGroup,
 		selectedWorklogIds,
 	): EntitySelectionState => {
-		return getEntitySelectionStateForGroups({
+		return getEntitySelectionState({
 			selectedWorklogIds,
-			worklogs,
+			worklogs: worklogsForGroup,
 		});
 	},
 );
 
-const selectSelectionState = createSelector(
+const selectSelectionStateForGroups = createSelector(
 	[
 		selectWorklogs,
 		selectSelectedWorklogIds,
@@ -568,7 +593,7 @@ const selectSelectionState = createSelector(
 		worklogs,
 		selectedWorklogIds,
 	): EntitySelectionState => {
-		return getEntitySelectionStateForGroups({
+		return getEntitySelectionState({
 			selectedWorklogIds,
 			worklogs,
 		});
@@ -593,9 +618,9 @@ export {
 	selectReportedDurationForDate,
 	selectReportedDurationForGroup,
 	selectReportedDurationForGroupForDate,
-	selectSelectionState,
 	selectSelectionStateForActivity,
 	selectSelectionStateForGroup,
+	selectSelectionStateForGroups,
 	selectWorklogsForActivity,
 	selectWorklogsForActivityForDate,
 	selectWorklogsForGroup,

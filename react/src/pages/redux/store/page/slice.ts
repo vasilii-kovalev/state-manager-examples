@@ -141,7 +141,6 @@ const pageSlice = createSlice({
 
 			state.hasChanges = true;
 		},
-
 		removeGroup: (
 			state,
 			action: PayloadAction<GroupId>,

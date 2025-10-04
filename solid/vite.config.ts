@@ -4,6 +4,7 @@ import {
 import {
 	tanstackRouter,
 } from "@tanstack/router-plugin/vite";
+import solidDevtools from "solid-devtools/vite";
 import sonda from "sonda/vite";
 import unoCSS from "unocss/vite";
 import {
@@ -20,6 +21,7 @@ const config = defineConfig({
 	},
 	plugins: [
 		devtools(),
+		solidDevtools(),
 		tsconfigPaths({
 			configNames: [
 				"tsconfig.app.json",

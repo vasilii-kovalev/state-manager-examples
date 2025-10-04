@@ -12,7 +12,7 @@ import {
 } from "../store";
 import {
 	selectHasWorklogs,
-	selectSelectionState,
+	selectSelectionStateForGroups,
 } from "../store/page/selectors";
 import {
 	updateAllWorklogsSelection,
@@ -24,7 +24,7 @@ const SelectGroupsCheckbox: FC = () => {
 	const selectionState = useApplicationSelector((
 		state,
 	) => {
-		return selectSelectionState(state.page);
+		return selectSelectionStateForGroups(state.page);
 	});
 	const hasWorklogs = useApplicationSelector((
 		state,

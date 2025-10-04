@@ -4,7 +4,7 @@ import {
 
 import {
 	setPageState,
-} from "../signals/signals/page/base";
+} from "../signals/page/base";
 
 const setInitialState = (
 	pageStateInitial: PageState,

@@ -13,13 +13,13 @@ import {
 	type EntitySelectionState,
 } from "../types";
 
-interface GetEntitySelectionStateForGroupsParams {
+interface GetEntitySelectionStateParams {
 	selectedWorklogIds: Array<WorklogId>;
 	worklogs: Array<Worklog>;
 }
 
-const getEntitySelectionStateForGroups = (
-	params: GetEntitySelectionStateForGroupsParams,
+const getEntitySelectionState = (
+	params: GetEntitySelectionStateParams,
 ): EntitySelectionState => {
 	const {
 		selectedWorklogIds,
@@ -44,5 +44,5 @@ const getEntitySelectionStateForGroups = (
 };
 
 export {
-	getEntitySelectionStateForGroups,
+	getEntitySelectionState,
 };

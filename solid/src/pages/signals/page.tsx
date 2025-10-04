@@ -15,19 +15,25 @@ import {
 import {
 	usePageData,
 } from "@/hooks/use-page-data";
+import {
+	cloneDeep,
+} from "@/utilities/clone-deep";
 
 import {
 	PageActionsRow,
-} from "../components/page-actions-row";
+} from "./components/page-actions-row";
 import {
 	PageTitle,
-} from "../components/page-title";
+} from "./components/page-title";
+import {
+	Table,
+} from "./components/table";
 import {
 	resetState,
-} from "../utilities/reset-state";
+} from "./utilities/reset-state";
 import {
 	setInitialState,
-} from "../utilities/set-initial-state";
+} from "./utilities/set-initial-state";
 
 const SignalsPage: Component = () => {
 	usePageData({
@@ -41,7 +47,7 @@ const SignalsPage: Component = () => {
 			} catch (error) {
 				console.error(error);
 
-				setInitialState(PAGE_STATE_DEFAULT);
+				setInitialState(cloneDeep(PAGE_STATE_DEFAULT));
 			}
 		},
 	});
@@ -54,9 +60,13 @@ const SignalsPage: Component = () => {
 		<>
 			<PageTitle/>
 			<PageActionsRow/>
-			Table
+
+			<Table
+				class="m-bs-4"
+			/>
+
 			<FullPageLoader/>
-			PageLeaveBlocker
+			{/* PageLeaveBlocker */}
 		</>
 	);
 };

@@ -20,8 +20,8 @@ import {
 } from "@/utilities/get-class";
 
 import {
-	hasChanges,
-} from "../signals/signals/page/derived";
+	selectHasChanges,
+} from "../signals/page/derived";
 import {
 	savePageState,
 } from "../utilities/save-page-state";
@@ -65,7 +65,7 @@ const SaveChangesButton: Component = () => {
 							])
 						}
 						disabled={
-							!hasChanges()
+							!selectHasChanges()
 							|| isBusy()
 						}
 						onClick={() => {

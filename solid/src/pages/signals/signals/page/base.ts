@@ -8,11 +8,14 @@ import {
 import {
 	type PageState,
 } from "@/features/page/types";
+import {
+	cloneDeep,
+} from "@/utilities/clone-deep";
 
 const [
 	pageState,
 	setPageState,
-] = createStore<PageState>(PAGE_STATE_DEFAULT);
+] = createStore<PageState>(cloneDeep(PAGE_STATE_DEFAULT));
 
 export {
 	pageState,

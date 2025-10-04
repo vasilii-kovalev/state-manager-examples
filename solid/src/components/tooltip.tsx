@@ -10,8 +10,8 @@ import {
 	getClass,
 } from "@/utilities/get-class";
 import {
-	isNull,
-} from "@/utilities/is-null";
+	isUndefined,
+} from "@/utilities/is-undefined";
 
 import css from "./tooltip.module.css";
 
@@ -23,7 +23,7 @@ interface RenderTargetProps<TargetElement extends HTMLElement> {
 	onMouseEnter: () => void;
 	onMouseLeave: () => void;
 	popoverTarget: string;
-	ref: Setter<TargetElement | null>;
+	ref: Setter<TargetElement | undefined>;
 	tabIndex: number;
 }
 
@@ -41,11 +41,11 @@ const Tooltip = <TargetElement extends HTMLElement>(
 	const [
 		targetRef,
 		setTargetRef,
-	] = createSignal<TargetElement | null>(null);
+	] = createSignal<TargetElement | undefined>();
 	const [
 		tooltipRef,
 		setTooltipRef,
-	] = createSignal<HTMLDivElement | null>(null);
+	] = createSignal<HTMLDivElement | undefined>();
 
 	const showTooltip = (): void => {
 		tooltipRef()?.showPopover();
@@ -62,7 +62,7 @@ const Tooltip = <TargetElement extends HTMLElement>(
 	createEffect(() => {
 		const target = targetRef();
 
-		if (!isNull(target)) {
+		if (!isUndefined(target)) {
 			target.setAttribute(
 				"style",
 				`--anchor-name: --${props.targetId}`,
