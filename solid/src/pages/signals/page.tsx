@@ -23,6 +23,9 @@ import {
 	PageActionsRow,
 } from "./components/page-actions-row";
 import {
+	PageLeaveBlocker,
+} from "./components/page-leave-blocker";
+import {
 	PageTitle,
 } from "./components/page-title";
 import {
@@ -66,7 +69,7 @@ const SignalsPage: Component = () => {
 			/>
 
 			<FullPageLoader/>
-			{/* PageLeaveBlocker */}
+			<PageLeaveBlocker/>
 		</>
 	);
 };
