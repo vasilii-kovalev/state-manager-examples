@@ -26,10 +26,6 @@ const DuplicatedNameIcon: Component<DuplicatedNameIconProps> = (
 				// A placeholder to avoid layout shift.
 				<div
 					class="w-5"
-					// TODO: check why UnoCSS doesn't generate this class.
-					style={{
-						width: "1.25rem",
-					}}
 				/>
 			)}
 			when={props.hasDuplicate}

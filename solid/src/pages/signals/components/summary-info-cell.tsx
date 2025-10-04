@@ -41,10 +41,6 @@ const SummaryInfoCell: Component = () => {
 					{/* Placeholder for alignment among the rows. */}
 					<div
 						class="w-48"
-						// TODO: check why UnoCSS doesn't generate this class.
-						style={{
-							width: "12rem",
-						}}
 					/>
 
 					<SummaryReportedDurationOfNorm/>

@@ -31,8 +31,8 @@ const config = defineConfig({
 			autoCodeSplitting: true,
 			target: "solid",
 		}),
-		solid(),
 		unoCSS(),
+		solid(),
 		sonda(),
 	],
 });
