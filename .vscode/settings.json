@@ -10,7 +10,8 @@
 		"worklogs"
 	],
 	"editor.codeActionsOnSave": {
-		"source.fixAll.eslint": "explicit"
+		"source.fixAll.eslint": "explicit",
+		"source.fixAll.markdownlint": "explicit"
 	},
 	/*
 		Necessary to support ESLint TypeScript config file.
