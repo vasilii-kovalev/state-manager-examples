@@ -38,7 +38,10 @@ interface NormalizedEntities<
 	Id extends EntityId = EntityId,
 	Entity extends EntityWithId<Id> = EntityWithId<Id>,
 > {
-	byId: Record<Id, Entity>;
+	byId: Record<
+		Id,
+		Entity
+	>;
 	ids: Array<Id>;
 }
 

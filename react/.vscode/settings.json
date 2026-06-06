@@ -1,5 +1,5 @@
 {
-	"[javascript][javascriptreact][typescript][typescriptreact]": {
+	"[typescript][typescriptreact]": {
 		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
 	},
 	"cSpell.words": [
@@ -14,11 +14,9 @@
 		"source.fixAll.markdownlint": "explicit"
 	},
 	/*
-		Necessary to support ESLint TypeScript config file.
-		More info: https://github.com/microsoft/vscode-eslint/issues/1917#issuecomment-3059655482
+		Use system Node instead of VS Code's bundled runtime.
+		Matches `npm run` behavior and satisfies @eslint-react's Node >= 22 requirement.
 	*/
-	"eslint.runtime": "bun",
-	"npm.packageManager": "yarn",
-	"npm.scriptRunner": "bun",
+	"eslint.runtime": "node",
 	"typescript.tsdk": "node_modules\\typescript\\lib"
 }

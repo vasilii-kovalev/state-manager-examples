@@ -106,15 +106,13 @@ const moveWorklogsToGroup = (
 
 			const activitiesByIdNext: typeof stateNextDraft.activitiesById = {
 				...stateNextDraft.activitiesById,
+				[activity.id]: activity,
 			};
 
-			activitiesByIdNext[activity.id] = activity;
-
 			const activityIdsNext: typeof stateNextDraft.activityIds = [
+				activity.id,
 				...stateNextDraft.activityIds,
 			];
-
-			activityIdsNext.unshift(activity.id);
 
 			stateNextDraft = {
 				...stateNextDraft,
@@ -148,17 +146,14 @@ const moveWorklogsToGroup = (
 
 			const worklogNext: Worklog = {
 				...worklog,
+				activityId,
+				groupId,
 			};
-
-			worklogNext.activityId = activityId;
-
-			worklogNext.groupId = groupId;
 
 			const worklogsByIdNext: typeof stateNextDraft.worklogsById = {
 				...stateNextDraft.worklogsById,
+				[id]: worklogNext,
 			};
-
-			worklogsByIdNext[id] = worklogNext;
 
 			stateNextDraft = {
 				...stateNextDraft,
@@ -189,15 +184,13 @@ const moveWorklogsToGroup = (
 
 			const worklogNext: Worklog = {
 				...worklog,
+				duration,
 			};
-
-			worklogNext.duration = duration;
 
 			const worklogsByIdNext: typeof stateNextDraft.worklogsById = {
 				...stateNextDraft.worklogsById,
+				[id]: worklogNext,
 			};
-
-			worklogsByIdNext[id] = worklogNext;
 
 			stateNextDraft = {
 				...stateNextDraft,

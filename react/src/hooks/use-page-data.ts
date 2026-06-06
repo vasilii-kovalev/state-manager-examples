@@ -4,6 +4,7 @@ import {
 } from "@tanstack/react-query";
 import {
 	useEffect,
+	useEffectEvent,
 } from "react";
 
 import {
@@ -45,15 +46,16 @@ const usePageData = (
 		],
 	});
 
+	const onSuccessEvent = useEffectEvent(onSuccess);
+
 	useEffect(
 		() => {
 			if (!isUndefined(pageData)) {
-				onSuccess(pageData);
+				onSuccessEvent(pageData);
 			}
 		},
 		[
 			pageData,
-			onSuccess,
 		],
 	);
 

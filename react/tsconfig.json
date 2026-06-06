@@ -1,4 +1,15 @@
 {
+	"compilerOptions": {
+		// Duplicates tsconfig.app.json until Vite resolves paths from referenced configs
+		// for TanStack Router virtual modules.
+		// Track: https://github.com/vitejs/vite/issues/21889
+		// Fix: https://github.com/oxc-project/oxc-resolver/pull/1147
+		"paths": {
+			"@/*": [
+				"./src/*"
+			]
+		}
+	},
 	"files": [],
 	"references": [
 		{

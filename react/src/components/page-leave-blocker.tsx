@@ -1,7 +1,7 @@
+// The deprecation of `useBlocker` is set incorrectly.
+/* eslint-disable import-x/no-deprecated */
 import {
-	// The deprecation is set incorrectly. Also, it is unclear from the documentation, what is a correct approach.
-	// eslint-disable-next-line import-x/no-deprecated
-	Block,
+	useBlocker,
 } from "@tanstack/react-router";
 import {
 	type FC,
@@ -18,22 +18,22 @@ const PageLeaveBlocker: FC<PageLeaveBlockerProps> = (
 		hasChanges,
 	} = props;
 
-	return (
-		<Block
-			enableBeforeUnload={hasChanges}
-			shouldBlockFn={() => {
-				if (!hasChanges) {
-					return false;
-				}
+	useBlocker({
+		enableBeforeUnload: hasChanges,
+		shouldBlockFn: () => {
+			if (!hasChanges) {
+				return false;
+			}
 
-				// In this case a simple approach is used.
-				// eslint-disable-next-line no-alert
-				const shouldLeave = confirm("Are you sure you want to leave? The unsaved changes will be lost.");
+			// In this case a simple approach is used.
+			// eslint-disable-next-line no-alert
+			const shouldLeave = confirm("Are you sure you want to leave? The unsaved changes will be lost.");
 
-				return !shouldLeave;
-			}}
-		/>
-	);
+			return !shouldLeave;
+		},
+	});
+
+	return null;
 };
 
 export {

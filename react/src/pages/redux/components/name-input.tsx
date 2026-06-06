@@ -28,7 +28,10 @@ interface NameInputProps<Name extends string> {
 	) => void;
 	placeholder: string;
 	setNameLocal: Dispatch<SetStateAction<string>>;
-	validationSchema: GenericSchema<string, Name>;
+	validationSchema: GenericSchema<
+		string,
+		Name
+	>;
 }
 
 const NameInput = <Name extends string>({

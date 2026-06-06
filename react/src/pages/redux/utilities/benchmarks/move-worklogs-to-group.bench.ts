@@ -55,31 +55,31 @@ const getState = (): RootState => {
 	Scenario:
 	Move all worklogs to one of the groups.
 
-	RUN  v3.2.4
+	RUN  v4.1.0
 
 	   name                                                                       hz     min     max    mean     p75     p99    p995    p999     rme  samples
-	 · moveWorklogsToGroup (actions) [RTK: 2.8.2, Immer: 10.1.1]              1.0522  923.91  994.00  950.37  962.13  994.00  994.00  994.00  ±1.78%       10
-	 · moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.39.9]                   6.4286  147.65  172.38  155.56  156.06  172.38  172.38  172.38  ±3.15%       10
-	 · moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.39.9]      604.20  1.4299  3.5165  1.6551  1.6921  3.0993  3.3246  3.5165  ±2.04%      303
-	 · moveWorklogsToGroup (cloneDeep with object maps) [es-toolkit: 1.39.9]  550.46  1.4114  9.5162  1.8167  1.9033  3.9412  6.8361  9.5162  ±4.46%      276
-	 · moveWorklogsToGroup (Immer) [Immer: 10.1.1]                            1.0978  871.47  943.87  910.91  922.00  943.87  943.87  943.87  ±1.77%       10
-	 · moveWorklogsToGroup (Mutative) [Mutative: 1.2.0]                       1.3552  714.95  775.26  737.88  743.57  775.26  775.26  775.26  ±1.55%       10
-	 · moveWorklogsToGroup (spread)                                           2.5958  374.38  403.02  385.23  390.21  403.02  403.02  403.02  ±1.70%       10
-	 · moveWorklogsToGroup (structuredClone)                                  6.3988  146.63  192.16  156.28  155.44  192.16  192.16  192.16  ±5.91%       10
+   · moveWorklogsToGroup (actions) [RTK: 2.12.0, Immer: 11.1.4]             2.0536  479.78  496.88  486.94  489.00  496.88  496.88  496.88  ±0.74%       10
+   · moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.47.0]                   6.7826  143.55  159.37  147.44  148.77  159.37  159.37  159.37  ±2.40%       10
+   · moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.47.0]      459.56  2.0095  5.6456  2.1760  2.1763  3.0445  3.2149  5.6456  ±1.76%      230
+   · moveWorklogsToGroup (cloneDeep with object maps) [es-toolkit: 1.47.0]  435.18  2.0221  7.3201  2.2979  2.2918  4.7754  5.0761  7.3201  ±2.99%      218
+   · moveWorklogsToGroup (Immer) [Immer: 11.1.4]                            1.1032  897.75  916.47  906.49  911.28  916.47  916.47  916.47  ±0.51%       10
+   · moveWorklogsToGroup (Mutative) [Mutative: 1.3.0]                       1.4644  673.51  708.22  682.87  683.74  708.22  708.22  708.22  ±1.00%       10
+   · moveWorklogsToGroup (spread)                                           2.7228  357.93  371.50  367.27  370.35  371.50  371.50  371.50  ±0.80%       10
+   · moveWorklogsToGroup (structuredClone)                                  6.8568  143.52  149.46  145.84  146.62  149.46  149.46  149.46  ±0.91%       10
 
 	BENCH  Summary
 
-	moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.39.9]
-	  1.10x faster than moveWorklogsToGroup (cloneDeep with object maps) [es-toolkit: 1.39.9]
-	  93.99x faster than moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.39.9]
-	  94.42x faster than moveWorklogsToGroup (structuredClone)
-	  232.76x faster than moveWorklogsToGroup (spread)
-	  445.83x faster than moveWorklogsToGroup (Mutative) [Mutative: 1.2.0]
-	  550.37x faster than moveWorklogsToGroup (Immer) [Immer: 10.1.1]
-	  574.21x faster than moveWorklogsToGroup (actions) [RTK: 2.8.2, Immer: 10.1.1]
+	moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.47.0]
+    1.06x faster than moveWorklogsToGroup (cloneDeep with object maps) [es-toolkit: 1.47.0]
+    67.02x faster than moveWorklogsToGroup (structuredClone)
+    67.76x faster than moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.47.0]
+    168.79x faster than moveWorklogsToGroup (spread)
+    223.78x faster than moveWorklogsToGroup (actions) [RTK: 2.12.0, Immer: 11.1.4]
+    313.82x faster than moveWorklogsToGroup (Mutative) [Mutative: 1.3.0]
+    416.59x faster than moveWorklogsToGroup (Immer) [Immer: 11.1.4]
 */
 bench(
-	"moveWorklogsToGroup (actions) [RTK: 2.8.2, Immer: 10.1.1]",
+	"moveWorklogsToGroup (actions) [RTK: 2.12.0, Immer: 11.1.4]",
 	() => {
 		moveWorklogsToGroupActions(targetGroupId)(
 			noop,
@@ -89,7 +89,7 @@ bench(
 );
 
 bench(
-	"moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.39.9]",
+	"moveWorklogsToGroup (cloneDeep) [es-toolkit: 1.47.0]",
 	() => {
 		moveWorklogsToGroupCloneDeep(targetGroupId)(
 			noop,
@@ -99,7 +99,7 @@ bench(
 );
 
 bench(
-	"moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.39.9]",
+	"moveWorklogsToGroup (cloneDeep with `Map`-s) [es-toolkit: 1.47.0]",
 	() => {
 		moveWorklogsToGroupCloneDeepWithMaps(targetGroupId)(
 			noop,
@@ -109,7 +109,7 @@ bench(
 );
 
 bench(
-	"moveWorklogsToGroup (cloneDeep with object maps) [es-toolkit: 1.39.9]",
+	"moveWorklogsToGroup (cloneDeep with object maps) [es-toolkit: 1.47.0]",
 	() => {
 		moveWorklogsToGroupCloneDeepWithObjectMaps(targetGroupId)(
 			noop,
@@ -119,7 +119,7 @@ bench(
 );
 
 bench(
-	"moveWorklogsToGroup (Immer) [Immer: 10.1.1]",
+	"moveWorklogsToGroup (Immer) [Immer: 11.1.4]",
 	() => {
 		moveWorklogsToGroupImmer(targetGroupId)(
 			noop,
@@ -129,7 +129,7 @@ bench(
 );
 
 bench(
-	"moveWorklogsToGroup (Mutative) [Mutative: 1.2.0]",
+	"moveWorklogsToGroup (Mutative) [Mutative: 1.3.0]",
 	() => {
 		moveWorklogsToGroupMutative(targetGroupId)(
 			noop,

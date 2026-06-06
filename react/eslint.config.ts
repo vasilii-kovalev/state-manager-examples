@@ -11,15 +11,14 @@ import {
 	defineConfig,
 	globalIgnores,
 } from "eslint/config";
-// eslint-disable-next-line import-x/no-namespace
-import * as tsResolver from "eslint-import-resolver-typescript";
-// @ts-expect-error The plugin doesn't provide types.
-import importExportNewline from "eslint-plugin-import-export-newline";
+import {
+	createTypeScriptImportResolver,
+} from "eslint-import-resolver-typescript";
 import {
 	flatConfigs as importConfigs,
 } from "eslint-plugin-import-x";
-// eslint-disable-next-line import-x/no-namespace
-import * as reactHooks from "eslint-plugin-react-hooks";
+import reactHooks from "eslint-plugin-react-hooks";
+// eslint-disable-next-line import-x/no-named-as-default
 import reactRefresh from "eslint-plugin-react-refresh";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
@@ -71,19 +70,15 @@ const eslintConfig = disableAutofix(
 			extends: [
 				typeScriptConfigs.all,
 				eslintPluginUnicorn.configs.all,
-				// @ts-expect-error Incorrect plugin types.
 				importConfigs.react,
-				// @ts-expect-error Incorrect plugin types.
 				importConfigs.typescript,
 				stylistic.configs.all,
-				// @ts-expect-error Incorrect plugin types.
 				unocss,
 			],
 			settings: {
-				"import-x/resolver": {
-					name: "tsResolver",
-					resolver: tsResolver,
-				},
+				"import-x/resolver-next": [
+					createTypeScriptImportResolver(),
+				],
 			},
 			languageOptions: {
 				globals: globals.browser,
@@ -96,9 +91,6 @@ const eslintConfig = disableAutofix(
 			},
 			plugins: {
 				"simple-import-sort": simpleImportSort,
-				// The package doesn't have types.
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-				"import-export-newline": importExportNewline,
 			},
 			rules: {
 				/*
@@ -215,6 +207,8 @@ const eslintConfig = disableAutofix(
 				"no-template-curly-in-string": ERROR,
 				// https://eslint.org/docs/latest/rules/no-this-before-super
 				"no-this-before-super": ERROR,
+				// https://eslint.org/docs/latest/rules/no-unassigned-vars
+				"no-unassigned-vars": ERROR,
 				// https://eslint.org/docs/latest/rules/no-undef
 				"no-undef": ERROR,
 				// https://eslint.org/docs/latest/rules/no-unexpected-multiline
@@ -237,7 +231,8 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				// https://eslint.org/docs/latest/rules/no-unused-private-class-members
-				"no-unused-private-class-members": ERROR,
+				// The "@typescript-eslint/no-unused-private-class-members" rule takes care of it.
+				"no-unused-private-class-members": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-unused-vars
 				// The "@typescript-eslint/no-unused-vars" rule takes care of it.
 				"no-unused-vars": DISABLED,
@@ -602,15 +597,8 @@ const eslintConfig = disableAutofix(
 				// The "no-restricted-syntax" rule takes care of it.
 				"no-sequences": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-shadow
-				/*
-					This rule encourages assigning more meaningful names to the variables/constant, taking current context
-					into account in each case.
-
-					Usually, names can be the same for accumulator inside `reduce` callback and the result, assigned to
-					a variable/constant. In this case, the accumulator can be postfixed with "current" word (because it is actually
-					a current value in each iteration, not the final one).
-				*/
-				"no-shadow": ERROR,
+				// The "@typescript-eslint/no-shadow" rule takes care of it.
+				"no-shadow": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-shadow-restricted-names
 				"no-shadow-restricted-names": ERROR,
 				// https://eslint.org/docs/latest/rules/no-ternary
@@ -815,6 +803,8 @@ const eslintConfig = disableAutofix(
 				"unicorn/consistent-existence-index-check": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-function-scoping.md
 				"unicorn/consistent-function-scoping": ERROR,
+				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/consistent-template-literal-escape.md
+				"unicorn/consistent-template-literal-escape": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/custom-error-definition.md
 				"unicorn/custom-error-definition": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/empty-brace-spaces.md
@@ -839,6 +829,8 @@ const eslintConfig = disableAutofix(
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/import-style.md
 				// This rule is disabled because "import" plugin and TypeScript handle import styles.
 				"unicorn/import-style": DISABLED,
+				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/isolated-functions.md
+				"unicorn/isolated-functions": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/new-for-builtins.md
 				"unicorn/new-for-builtins": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-abusive-eslint-disable.md
@@ -888,6 +880,8 @@ const eslintConfig = disableAutofix(
 				"unicorn/no-for-loop": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-hex-escape.md
 				"unicorn/no-hex-escape": ERROR,
+				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-immediate-mutation.md
+				"unicorn/no-immediate-mutation": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-instanceof-builtins.md
 				"unicorn/no-instanceof-builtins": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-invalid-fetch-options.md
@@ -961,10 +955,14 @@ const eslintConfig = disableAutofix(
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-unused-properties.md
 				// This rule is disabled because of its limited scope.
 				"unicorn/no-unused-properties": DISABLED,
+				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-collection-argument.md
+				"unicorn/no-useless-collection-argument": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-error-capture-stack-trace.md
 				"unicorn/no-useless-error-capture-stack-trace": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-fallback-in-spread.md
 				"unicorn/no-useless-fallback-in-spread": ERROR,
+				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-iterator-to-array.md
+				"unicorn/no-useless-iterator-to-array": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-useless-length-check.md
 				// This rule is disabled because arrays' emptiness is checked via `isEmpty` utility.
 				"unicorn/no-useless-length-check": DISABLED,
@@ -1090,10 +1088,14 @@ const eslintConfig = disableAutofix(
 				"unicorn/prefer-reflect-apply": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-regexp-test.md
 				"unicorn/prefer-regexp-test": ERROR,
+				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-response-static-json.md
+				"unicorn/prefer-response-static-json": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-set-has.md
 				"unicorn/prefer-set-has": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-set-size.md
 				"unicorn/prefer-set-size": ERROR,
+				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-simple-condition-first.md
+				"unicorn/prefer-simple-condition-first": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-single-call.md
 				"unicorn/prefer-single-call": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-spread.md
@@ -1131,6 +1133,8 @@ const eslintConfig = disableAutofix(
 							queryFn: true,
 							ref: true,
 							Ref: true,
+							// From TanStack Router .
+							shouldBlockFn: true,
 						},
 						checkDefaultAndNamespaceImports: true,
 						checkShorthandImports: true,
@@ -1154,6 +1158,8 @@ const eslintConfig = disableAutofix(
 				"unicorn/string-content": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/switch-case-braces.md
 				"unicorn/switch-case-braces": ERROR,
+				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/switch-case-break-position.md
+				"unicorn/switch-case-break-position": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/template-indent.md
 				"unicorn/template-indent": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/text-encoding-identifier-case.md
@@ -1351,11 +1357,6 @@ const eslintConfig = disableAutofix(
 				// https://github.com/lydell/eslint-plugin-simple-import-sort/?tab=readme-ov-file#usage
 				"simple-import-sort/exports": ERROR,
 
-				// https://github.com/yay/eslint-plugin-import-export-newline?tab=readme-ov-file#usage
-				"import-export-newline/import-declaration-newline": ERROR,
-				// https://github.com/yay/eslint-plugin-import-export-newline?tab=readme-ov-file#usage
-				"import-export-newline/export-declaration-newline": ERROR,
-
 				/*
 					==================================================
 					Stylistic plugin
@@ -1363,16 +1364,14 @@ const eslintConfig = disableAutofix(
 				*/
 
 				// https://eslint.style/rules/default/array-bracket-newline
-				"@stylistic/array-bracket-newline": [
-					ERROR,
-					{
-						minItems: 1,
-					},
-				],
+				// The "@stylistic/exp-list-style" rule takes care of it.
+				"@stylistic/array-bracket-newline": DISABLED,
 				// https://eslint.style/rules/default/array-bracket-spacing
-				"@stylistic/array-bracket-spacing": ERROR,
+				// The "@stylistic/exp-list-style" rule takes care of it.
+				"@stylistic/array-bracket-spacing": DISABLED,
 				// https://eslint.style/rules/default/array-element-newline
-				"@stylistic/array-element-newline": ERROR,
+				// The "@stylistic/exp-list-style" rule takes care of it.
+				"@stylistic/array-element-newline": DISABLED,
 				// https://eslint.style/rules/default/arrow-parens
 				"@stylistic/arrow-parens": [
 					ERROR,
@@ -1472,6 +1471,24 @@ const eslintConfig = disableAutofix(
 				],
 				// https://eslint.style/rules/default/lines-between-class-members
 				"@stylistic/lines-between-class-members": ERROR,
+				// https://eslint.style/rules/list-style
+				/*
+					1. Empty and single-member lists stay on one line (`[]`, `[1]`, `{a: 1}`, `foo(a)`, `import {foo} from "bar"`)
+					2. Two or more members go multiline, one per line, with brackets on separate lines
+					3. No spaces inside brackets
+				*/
+				"@stylistic/exp-list-style": [
+					ERROR,
+					{
+						singleLine: {
+							spacing: "never",
+							maxItems: 1,
+						},
+						multiLine: {
+							minItems: 0,
+						},
+					},
+				],
 				// https://eslint.style/rules/default/max-len
 				"@stylistic/max-len": [
 					ERROR,
@@ -1550,24 +1567,14 @@ const eslintConfig = disableAutofix(
 				*/
 				"@stylistic/nonblock-statement-body-position": DISABLED,
 				// https://eslint.style/rules/default/object-curly-newline
-				"@stylistic/object-curly-newline": [
-					ERROR,
-					// This rule is configured to add new lines to non-empty objects to make it easier to read and modify them.
-					{
-						ObjectExpression: {
-							multiline: true,
-							minProperties: 1,
-							consistent: true,
-						},
-						ObjectPattern: "always",
-						ImportDeclaration: "always",
-						ExportDeclaration: "always",
-					},
-				],
+				// The "@stylistic/exp-list-style" rule takes care of it.
+				"@stylistic/object-curly-newline": DISABLED,
 				// https://eslint.style/rules/default/object-curly-spacing
-				"@stylistic/object-curly-spacing": ERROR,
+				// The "@stylistic/exp-list-style" rule takes care of it.
+				"@stylistic/object-curly-spacing": DISABLED,
 				// https://eslint.style/rules/default/object-property-newline
-				"@stylistic/object-property-newline": ERROR,
+				// The "@stylistic/exp-list-style" rule takes care of it.
+				"@stylistic/object-property-newline": DISABLED,
 				// https://eslint.style/rules/default/one-var-declaration-per-line
 				// The "one-var" rule takes care of it.
 				"@stylistic/one-var-declaration-per-line": DISABLED,
@@ -1699,10 +1706,6 @@ const eslintConfig = disableAutofix(
 						overrides: {
 							colon: {
 								before: false,
-								after: true,
-							},
-							arrow: {
-								before: true,
 								after: true,
 							},
 						},
@@ -2106,6 +2109,14 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/no-restricted-types
 				"@typescript-eslint/no-restricted-types": ERROR,
 				// https://typescript-eslint.io/rules/no-shadow
+				/*
+					This rule encourages assigning more meaningful names to variables/constants, taking the current context
+					into account in each case. It extends the base "no-shadow" rule with TypeScript-aware shadowing checks.
+
+					Usually, names can be the same for an accumulator inside a `reduce` callback and the result assigned to
+					a variable/constant. In that case, the accumulator can be postfixed with "current" (it is the value in
+					each iteration, not the final one).
+				*/
 				"@typescript-eslint/no-shadow": [
 					ERROR,
 					{
@@ -2168,6 +2179,8 @@ const eslintConfig = disableAutofix(
 						enforceForJSX: true,
 					},
 				],
+				// https://typescript-eslint.io/rules/no-unused-private-class-members
+				"@typescript-eslint/no-unused-private-class-members": ERROR,
 				// https://typescript-eslint.io/rules/no-unused-vars
 				"@typescript-eslint/no-unused-vars": ERROR,
 				// https://typescript-eslint.io/rules/no-use-before-define
@@ -2179,6 +2192,8 @@ const eslintConfig = disableAutofix(
 				],
 				// https://typescript-eslint.io/rules/no-useless-constructor
 				"@typescript-eslint/no-useless-constructor": ERROR,
+				// https://typescript-eslint.io/rules/no-useless-default-assignment
+				"@typescript-eslint/no-useless-default-assignment": ERROR,
 				// https://typescript-eslint.io/rules/no-useless-empty-export
 				"@typescript-eslint/no-useless-empty-export": ERROR,
 				// https://typescript-eslint.io/rules/no-wrapper-object-types
@@ -2276,6 +2291,8 @@ const eslintConfig = disableAutofix(
 						allowNullableObject: false,
 					},
 				],
+				// https://typescript-eslint.io/rules/strict-void-return
+				"@typescript-eslint/strict-void-return": ERROR,
 				// https://typescript-eslint.io/rules/switch-exhaustiveness-check
 				"@typescript-eslint/switch-exhaustiveness-check": ERROR,
 				// https://typescript-eslint.io/rules/triple-slash-reference
@@ -2298,12 +2315,9 @@ const eslintConfig = disableAutofix(
 			],
 			extends: [
 				react.configs.all,
-				react.configs["disable-debug"],
+				reactHooks.configs.flat.recommended,
 				reactRefresh.configs.vite,
 			],
-			plugins: {
-				"react-hooks": reactHooks,
-			},
 			rules: {
 				/*
 					==================================================
@@ -2312,25 +2326,18 @@ const eslintConfig = disableAutofix(
 				*/
 
 				// Core rules.
-
-				// https://eslint-react.xyz/docs/rules/avoid-shorthand-boolean
-				/*
-					Always defining the boolean value solves the following problems:
-					1. Keeps the code consistent (since non-boolean props require the value to be explicitly passed)
-					2. Allows us to change the value without adding/removing the second part all the time
-				*/
-				"@eslint-react/avoid-shorthand-boolean": ERROR,
-				// https://eslint-react.xyz/docs/rules/avoid-shorthand-fragment
-				// The "@eslint-react/prefer-shorthand-fragment" rule takes care of it.
-				"@eslint-react/avoid-shorthand-fragment": ERROR,
-				// https://eslint-react.xyz/docs/rules/jsx-key-before-spread
-				"@eslint-react/jsx-key-before-spread": ERROR,
-				// https://eslint-react.xyz/docs/rules/jsx-no-iife
-				"@eslint-react/jsx-no-iife": ERROR,
-				// https://eslint-react.xyz/docs/rules/jsx-no-undef
-				"@eslint-react/jsx-no-undef": ERROR,
-				// https://eslint-react.xyz/docs/rules/jsx-uses-react
-				"@eslint-react/jsx-uses-react": ERROR,
+				// https://eslint-react.xyz/docs/rules/error-boundaries
+				// The "react-hooks/error-boundaries" rule takes care of it.
+				"@eslint-react/error-boundaries": DISABLED,
+				// https://eslint-react.xyz/docs/rules/exhaustive-deps
+				// The "react-hooks/exhaustive-deps" rule takes care of it.
+				"@eslint-react/exhaustive-deps": DISABLED,
+				// https://eslint-react.xyz/docs/rules/globals
+				// The "react-hooks/globals" rule takes care of it.
+				"@eslint-react/globals": DISABLED,
+				// https://eslint-react.xyz/docs/rules/immutability
+				// The "react-hooks/immutability" rule takes care of it.
+				"@eslint-react/immutability": DISABLED,
 				// https://eslint-react.xyz/docs/rules/no-access-state-in-setstate
 				"@eslint-react/no-access-state-in-setstate": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-array-index-key
@@ -2343,18 +2350,12 @@ const eslintConfig = disableAutofix(
 				"@eslint-react/no-children-map": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-children-only
 				"@eslint-react/no-children-only": ERROR,
-				// https://eslint-react.xyz/docs/rules/no-children-prop
-				"@eslint-react/no-children-prop": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-children-to-array
 				"@eslint-react/no-children-to-array": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-class-component
 				"@eslint-react/no-class-component": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-clone-element
 				"@eslint-react/no-clone-element": ERROR,
-				// https://eslint-react.xyz/docs/rules/no-comment-textnodes
-				"@eslint-react/no-comment-textnodes": ERROR,
-				// https://eslint-react.xyz/docs/rules/no-complex-conditional-rendering
-				"@eslint-react/no-complex-conditional-rendering": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-component-will-mount
 				// The "@eslint-react/no-class-component" rule disallows class components.
 				"@eslint-react/no-component-will-mount": DISABLED,
@@ -2368,12 +2369,8 @@ const eslintConfig = disableAutofix(
 				"@eslint-react/no-context-provider": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-create-ref
 				"@eslint-react/no-create-ref": ERROR,
-				// https://eslint-react.xyz/docs/rules/no-default-props
-				"@eslint-react/no-default-props": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-direct-mutation-state
 				"@eslint-react/no-direct-mutation-state": ERROR,
-				// https://eslint-react.xyz/docs/rules/no-duplicate-jsx-props
-				"@eslint-react/no-duplicate-jsx-props": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-duplicate-key
 				"@eslint-react/no-duplicate-key": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-forward-ref
@@ -2395,11 +2392,6 @@ const eslintConfig = disableAutofix(
 				"@eslint-react/no-nested-component-definitions": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-nested-lazy-component-declarations
 				"@eslint-react/no-nested-lazy-component-declarations": ERROR,
-				// https://eslint-react.xyz/docs/rules/no-prop-types
-				"@eslint-react/no-prop-types": ERROR,
-				// https://eslint-react.xyz/docs/rules/no-redundant-should-component-update
-				// The "@eslint-react/no-class-component" rule disallows class components.
-				"@eslint-react/no-redundant-should-component-update": DISABLED,
 				// https://eslint-react.xyz/docs/rules/no-set-state-in-component-did-mount
 				// The "@eslint-react/no-class-component" rule disallows class components.
 				"@eslint-react/no-set-state-in-component-did-mount": DISABLED,
@@ -2409,8 +2401,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint-react.xyz/docs/rules/no-set-state-in-component-will-update
 				// The "@eslint-react/no-class-component" rule disallows class components.
 				"@eslint-react/no-set-state-in-component-will-update": DISABLED,
-				// https://eslint-react.xyz/docs/rules/no-string-refs
-				"@eslint-react/no-string-refs": ERROR,
+				// https://eslint-react.xyz/docs/rules/no-unnecessary-use-prefix
+				"@eslint-react/no-unnecessary-use-prefix": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-unsafe-component-will-mount
 				// The "@eslint-react/no-class-component" rule disallows class components.
 				"@eslint-react/no-unsafe-component-will-mount": DISABLED,
@@ -2431,105 +2423,119 @@ const eslintConfig = disableAutofix(
 				"@eslint-react/no-unused-state": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-use-context
 				"@eslint-react/no-use-context": ERROR,
-				// https://eslint-react.xyz/docs/rules/no-useless-forward-ref
-				"@eslint-react/no-useless-forward-ref": ERROR,
-				// https://eslint-react.xyz/docs/rules/no-useless-fragment
-				"@eslint-react/no-useless-fragment": ERROR,
-				// https://eslint-react.xyz/docs/rules/prefer-destructuring-assignment
-				"@eslint-react/prefer-destructuring-assignment": ERROR,
-				// https://eslint-react.xyz/docs/rules/prefer-react-namespace-import
-				"@eslint-react/prefer-react-namespace-import": ERROR,
-				// https://eslint-react.xyz/docs/rules/prefer-read-only-props
-				// This rule is disabled because the implementation is too naive and hinders more than helps.
-				"@eslint-react/prefer-read-only-props": DISABLED,
-				// https://eslint-react.xyz/docs/rules/prefer-shorthand-boolean
-				// The "@eslint-react/avoid-shorthand-boolean" rule takes care of it.
-				"@eslint-react/prefer-shorthand-boolean": DISABLED,
-				// https://eslint-react.xyz/docs/rules/prefer-shorthand-fragment
-				// The "@eslint-react/avoid-shorthand-fragment" rule takes care of it.
-				"@eslint-react/prefer-shorthand-fragment": DISABLED,
-				// https://eslint-react.xyz/docs/rules/use-jsx-vars
-				"@eslint-react/use-jsx-vars": ERROR,
+				// https://eslint-react.xyz/docs/rules/purity
+				// The "react-hooks/purity" rule takes care of it.
+				"@eslint-react/purity": DISABLED,
+				// https://eslint-react.xyz/docs/rules/refs
+				// The "react-hooks/refs" rule takes care of it.
+				"@eslint-react/refs": DISABLED,
+				// https://eslint-react.xyz/docs/rules/rules-of-hooks
+				// The "react-hooks/rules-of-hooks" rule takes care of it.
+				"@eslint-react/rules-of-hooks": DISABLED,
+				// https://eslint-react.xyz/docs/rules/set-state-in-effect
+				// The "react-hooks/set-state-in-effect" rule takes care of it.
+				"@eslint-react/set-state-in-effect": DISABLED,
+				// https://eslint-react.xyz/docs/rules/set-state-in-render
+				// The "react-hooks/set-state-in-render" rule takes care of it.
+				"@eslint-react/set-state-in-render": DISABLED,
+				// https://eslint-react.xyz/docs/rules/static-components
+				// The "react-hooks/static-components" rule takes care of it.
+				"@eslint-react/static-components": DISABLED,
+				// https://eslint-react.xyz/docs/rules/unsupported-syntax
+				// The "react-hooks/unsupported-syntax" rule takes care of it.
+				"@eslint-react/unsupported-syntax": DISABLED,
+				// https://eslint-react.xyz/docs/rules/use-memo
+				// The "react-hooks/use-memo" rule takes care of it.
+				"@eslint-react/use-memo": DISABLED,
+				// https://eslint-react.xyz/docs/rules/use-state
+				"@eslint-react/use-state": ERROR,
+
+				// JSX rules.
+
+				// https://eslint-react.xyz/docs/rules/jsx-no-children-prop
+				"@eslint-react/jsx-no-children-prop": ERROR,
+				// https://eslint-react.xyz/docs/rules/jsx-no-children-prop-with-children
+				"@eslint-react/jsx-no-children-prop-with-children": ERROR,
+				// https://eslint-react.xyz/docs/rules/jsx-no-comment-textnodes
+				"@eslint-react/jsx-no-comment-textnodes": ERROR,
+				// https://eslint-react.xyz/docs/rules/jsx-no-key-after-spread
+				"@eslint-react/jsx-no-key-after-spread": ERROR,
+				// https://eslint-react.xyz/docs/rules/jsx-no-leaked-dollar
+				"@eslint-react/jsx-no-leaked-dollar": ERROR,
+				// https://eslint-react.xyz/docs/rules/jsx-no-leaked-semicolon
+				"@eslint-react/jsx-no-leaked-semicolon": ERROR,
+				// https://eslint-react.xyz/docs/rules/jsx-no-namespace
+				"@eslint-react/jsx-no-namespace": ERROR,
+				// https://eslint-react.xyz/docs/rules/jsx-no-useless-fragment
+				"@eslint-react/jsx-no-useless-fragment": ERROR,
+
+				// RSC rules.
+
+				// https://eslint-react.xyz/docs/rules/rsc-function-definition
+				// This rule is disabled because React Server Components are not used.
+				"@eslint-react/rsc-function-definition": DISABLED,
 
 				// DOM rules.
 
 				// https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml
-				"@eslint-react/dom/no-dangerously-set-innerhtml": ERROR,
+				"@eslint-react/dom-no-dangerously-set-innerhtml": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-dangerously-set-innerhtml-with-children
-				"@eslint-react/dom/no-dangerously-set-innerhtml-with-children": ERROR,
+				"@eslint-react/dom-no-dangerously-set-innerhtml-with-children": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-find-dom-node
-				"@eslint-react/dom/no-find-dom-node": ERROR,
+				"@eslint-react/dom-no-find-dom-node": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-flush-sync
-				"@eslint-react/dom/no-flush-sync": ERROR,
+				"@eslint-react/dom-no-flush-sync": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-hydrate
-				"@eslint-react/dom/no-hydrate": ERROR,
+				"@eslint-react/dom-no-hydrate": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-missing-button-type
-				"@eslint-react/dom/no-missing-button-type": ERROR,
+				"@eslint-react/dom-no-missing-button-type": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-missing-iframe-sandbox
-				"@eslint-react/dom/no-missing-iframe-sandbox": ERROR,
-				// https://eslint-react.xyz/docs/rules/dom-no-namespace
-				"@eslint-react/dom/no-namespace": ERROR,
+				"@eslint-react/dom-no-missing-iframe-sandbox": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-render
-				"@eslint-react/dom/no-render": ERROR,
+				"@eslint-react/dom-no-render": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-render-return-value
-				"@eslint-react/dom/no-render-return-value": ERROR,
+				"@eslint-react/dom-no-render-return-value": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-script-url
-				"@eslint-react/dom/no-script-url": ERROR,
+				"@eslint-react/dom-no-script-url": ERROR,
+				// https://eslint-react.xyz/docs/rules/dom-no-string-style-prop
+				"@eslint-react/dom-no-string-style-prop": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-unknown-property
-				"@eslint-react/dom/no-unknown-property": [
+				"@eslint-react/dom-no-unknown-property": [
 					ERROR,
 					{
 						requireDataLowercase: true,
 					},
 				],
 				// https://eslint-react.xyz/docs/rules/dom-no-unsafe-iframe-sandbox
-				"@eslint-react/dom/no-unsafe-iframe-sandbox": ERROR,
+				"@eslint-react/dom-no-unsafe-iframe-sandbox": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-unsafe-target-blank
-				"@eslint-react/dom/no-unsafe-target-blank": ERROR,
+				"@eslint-react/dom-no-unsafe-target-blank": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-use-form-state
-				"@eslint-react/dom/no-use-form-state": ERROR,
+				"@eslint-react/dom-no-use-form-state": ERROR,
 				// https://eslint-react.xyz/docs/rules/dom-no-void-elements-with-children
-				"@eslint-react/dom/no-void-elements-with-children": ERROR,
+				"@eslint-react/dom-no-void-elements-with-children": ERROR,
 
 				// Web API rules.
 
 				// https://eslint-react.xyz/docs/rules/web-api-no-leaked-event-listener
-				"@eslint-react/web-api/no-leaked-event-listener": ERROR,
+				"@eslint-react/web-api-no-leaked-event-listener": ERROR,
+				// https://eslint-react.xyz/docs/rules/web-api-no-leaked-fetch
+				"@eslint-react/web-api-no-leaked-fetch": ERROR,
 				// https://eslint-react.xyz/docs/rules/web-api-no-leaked-interval
-				"@eslint-react/web-api/no-leaked-interval": ERROR,
+				"@eslint-react/web-api-no-leaked-interval": ERROR,
 				// https://eslint-react.xyz/docs/rules/web-api-no-leaked-resize-observer
-				"@eslint-react/web-api/no-leaked-resize-observer": ERROR,
+				"@eslint-react/web-api-no-leaked-resize-observer": ERROR,
 				// https://eslint-react.xyz/docs/rules/web-api-no-leaked-timeout
-				"@eslint-react/web-api/no-leaked-timeout": ERROR,
-
-				// Hooks extra rules.
-
-				// https://eslint-react.xyz/docs/rules/hooks-extra-no-direct-set-state-in-use-effect
-				"@eslint-react/hooks-extra/no-direct-set-state-in-use-effect": WARNING,
-				// https://eslint-react.xyz/docs/rules/hooks-extra-no-direct-set-state-in-use-layout-effect
-				"@eslint-react/hooks-extra/no-direct-set-state-in-use-layout-effect": WARNING,
-				// https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-callback
-				"@eslint-react/hooks-extra/no-unnecessary-use-callback": ERROR,
-				// https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-memo
-				"@eslint-react/hooks-extra/no-unnecessary-use-memo": ERROR,
-				// https://eslint-react.xyz/docs/rules/hooks-extra-no-unnecessary-use-prefix
-				"@eslint-react/hooks-extra/no-unnecessary-use-prefix": ERROR,
-				// https://eslint-react.xyz/docs/rules/hooks-extra-prefer-use-state-lazy-initialization
-				"@eslint-react/hooks-extra/prefer-use-state-lazy-initialization": ERROR,
+				"@eslint-react/web-api-no-leaked-timeout": ERROR,
 
 				// Naming convention rules.
 
-				// https://eslint-react.xyz/docs/rules/naming-convention-component-name
-				"@eslint-react/naming-convention/component-name": ERROR,
 				// https://eslint-react.xyz/docs/rules/naming-convention-context-name
-				"@eslint-react/naming-convention/context-name": ERROR,
-				// https://eslint-react.xyz/docs/rules/naming-convention-filename
-				// The "unicorn/filename-case" rule takes care of it.
-				"@eslint-react/naming-convention/filename": DISABLED,
-				// https://eslint-react.xyz/docs/rules/naming-convention-filename-extension
-				"@eslint-react/naming-convention/filename-extension": ERROR,
-				// https://eslint-react.xyz/docs/rules/naming-convention-use-state
-				"@eslint-react/naming-convention/use-state": ERROR,
+				"@eslint-react/naming-convention-context-name": ERROR,
+				// https://eslint-react.xyz/docs/rules/naming-convention-id-name
+				"@eslint-react/naming-convention-id-name": ERROR,
+				// https://eslint-react.xyz/docs/rules/naming-convention-ref-name
+				"@eslint-react/naming-convention-ref-name": ERROR,
 
 				/*
 					==================================================
@@ -2537,10 +2543,38 @@ const eslintConfig = disableAutofix(
 					==================================================
 				*/
 
-				// https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/config
+				"react-hooks/config": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/error-boundaries
+				"react-hooks/error-boundaries": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/exhaustive-deps
 				"react-hooks/exhaustive-deps": WARNING,
-				// https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/gating
+				"react-hooks/gating": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/globals
+				"react-hooks/globals": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/immutability
+				"react-hooks/immutability": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/incompatible-library
+				"react-hooks/incompatible-library": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/preserve-manual-memoization
+				"react-hooks/preserve-manual-memoization": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/purity
+				"react-hooks/purity": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/refs
+				"react-hooks/refs": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/rules-of-hooks
 				"react-hooks/rules-of-hooks": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-effect
+				"react-hooks/set-state-in-effect": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/set-state-in-render
+				"react-hooks/set-state-in-render": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/static-components
+				"react-hooks/static-components": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/unsupported-syntax
+				"react-hooks/unsupported-syntax": ERROR,
+				// https://react.dev/reference/eslint-plugin-react-hooks/lints/use-memo
+				"react-hooks/use-memo": ERROR,
 
 				/*
 					==================================================
@@ -2548,7 +2582,7 @@ const eslintConfig = disableAutofix(
 					==================================================
 				*/
 
-				// https://github.com/ArnaudBarre/eslint-plugin-react-refresh?tab=readme-ov-file#usage
+				// https://github.com/ArnaudBarre/eslint-plugin-react-refresh#options
 				"react-refresh/only-export-components": ERROR,
 
 				/*
@@ -2583,10 +2617,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.style/rules/default/jsx-equals-spacing
 				"@stylistic/jsx-equals-spacing": ERROR,
 				// https://eslint.style/rules/default/jsx-first-prop-new-line
-				"@stylistic/jsx-first-prop-new-line": [
-					ERROR,
-					"always",
-				],
+				// The "@stylistic/exp-jsx-props-style" rule takes care of it.
+				"@stylistic/jsx-first-prop-new-line": DISABLED,
 				// https://eslint.style/rules/default/jsx-function-call-newline
 				"@stylistic/jsx-function-call-newline": [
 					ERROR,
@@ -2598,7 +2630,8 @@ const eslintConfig = disableAutofix(
 					"tab",
 				],
 				// https://eslint.style/rules/default/jsx-max-props-per-line
-				"@stylistic/jsx-max-props-per-line": ERROR,
+				// The "@stylistic/exp-jsx-props-style" rule takes care of it.
+				"@stylistic/jsx-max-props-per-line": DISABLED,
 				// https://eslint.style/rules/default/jsx-newline
 				// This rule is disabled because separating JSX blocks by newlines makes the code more readable.
 				"@stylistic/jsx-newline": [
@@ -2612,6 +2645,23 @@ const eslintConfig = disableAutofix(
 				"@stylistic/jsx-one-expression-per-line": ERROR,
 				// https://eslint.style/rules/default/jsx-pascal-case
 				"@stylistic/jsx-pascal-case": ERROR,
+				// https://eslint.style/rules/jsx-props-style
+				/*
+					1. Each prop starts on a new line after the opening tag name
+					2. At most one prop per line
+				*/
+				"@stylistic/exp-jsx-props-style": [
+					ERROR,
+					{
+						singleLine: {
+							maxItems: 0,
+						},
+						multiLine: {
+							minItems: 0,
+							maxItemsPerLine: 1,
+						},
+					},
+				],
 				// https://eslint.style/rules/default/jsx-quotes
 				"@stylistic/jsx-quotes": ERROR,
 				// https://eslint.style/rules/default/jsx-self-closing-comp
@@ -2622,8 +2672,6 @@ const eslintConfig = disableAutofix(
 						html: true,
 					},
 				],
-				// https://eslint.style/rules/default/jsx-sort-props
-				"@stylistic/jsx-sort-props": ERROR,
 				// https://eslint.style/rules/default/jsx-tag-spacing
 				"@stylistic/jsx-tag-spacing": [
 					ERROR,
