@@ -238,7 +238,8 @@ const eslintConfig = disableAutofix(
 				// The "@typescript-eslint/no-unused-vars" rule takes care of it.
 				"no-unused-vars": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-use-before-define
-				"no-use-before-define": ERROR,
+				// The "@typescript-eslint/no-use-before-define" rule takes care of it.
+				"no-use-before-define": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-useless-assignment
 				"no-useless-assignment": ERROR,
 				// https://eslint.org/docs/latest/rules/no-useless-backreference
@@ -408,7 +409,8 @@ const eslintConfig = disableAutofix(
 				*/
 				"no-alert": ERROR,
 				// https://eslint.org/docs/latest/rules/no-array-constructor
-				"no-array-constructor": ERROR,
+				// The "@typescript-eslint/no-array-constructor" rule takes care of it.
+				"no-array-constructor": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-bitwise
 				/*
 					The severity is set to "error" because we don't need bitwise operators, so if they are presented, it is possibly
@@ -701,8 +703,8 @@ const eslintConfig = disableAutofix(
 					ERROR,
 					{
 						/*
-							The value is set to `true` to avoid conflicts with the "no-use-before-define" rule (as described in the
-							documentation).
+							The value is set to `true` to avoid conflicts with the "@typescript-eslint/no-use-before-define" rule (as
+							described in the documentation).
 						*/
 						ignoreReadBeforeAssign: true,
 					},
@@ -767,7 +769,12 @@ const eslintConfig = disableAutofix(
 				*/
 				"sort-vars": DISABLED,
 				// https://eslint.org/docs/latest/rules/strict
-				strict: ERROR,
+				/*
+					This rule is disabled because ECMAScript modules are always in strict mode (see "sourceType" in
+					"languageOptions"), and CommonJS patterns are handled by the "import-x/no-commonjs" and
+					"unicorn/prefer-module" rules.
+				*/
+				strict: DISABLED,
 				// https://eslint.org/docs/latest/rules/symbol-description
 				"symbol-description": ERROR,
 				// https://eslint.org/docs/latest/rules/vars-on-top
@@ -912,6 +919,10 @@ const eslintConfig = disableAutofix(
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-nested-ternary.md
 				"unicorn/no-nested-ternary": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-new-array.md
+				/*
+					The "@typescript-eslint/no-array-constructor" rule allows `new Array(singleArg)` (sparse length). This rule
+					covers that ambiguous case.
+				*/
 				"unicorn/no-new-array": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-new-buffer.md
 				// The rule is disabled because Node.js is not used.
@@ -2302,16 +2313,16 @@ const eslintConfig = disableAutofix(
 				"@typescript-eslint/switch-exhaustiveness-check": ERROR,
 				// https://typescript-eslint.io/rules/triple-slash-reference
 				"@typescript-eslint/triple-slash-reference": ERROR,
-				// https://typescript-eslint.io/rules/typedef
-				// This rule is disabled because "strict" setting in the TypeScript configs cover this rule's cases.
-				"@typescript-eslint/typedef": DISABLED,
 				// https://typescript-eslint.io/rules/unbound-method
 				"@typescript-eslint/unbound-method": ERROR,
 				// https://typescript-eslint.io/rules/unified-signatures
 				"@typescript-eslint/unified-signatures": ERROR,
 				// https://typescript-eslint.io/rules/use-unknown-in-catch-callback-variable
-				// This rule is disabled because "strict" setting in the TypeScript configs cover this rule's cases.
-				"@typescript-eslint/use-unknown-in-catch-callback-variable": DISABLED,
+				/*
+					TypeScript's "useUnknownInCatchVariables" (enabled by default in TypeScript 6) covers synchronous `try/catch`
+					only. This rule covers `Promise` rejection callbacks, which stay implicitly `any` otherwise.
+				*/
+				"@typescript-eslint/use-unknown-in-catch-callback-variable": ERROR,
 			},
 		},
 		{
