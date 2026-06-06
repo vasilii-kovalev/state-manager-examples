@@ -27,12 +27,9 @@
 		"jsx": "react-jsx",
 
 		/* Linting */
-		// Enable after adjusting ESLint config.
-		// "noUnusedLocals": true,
-		// Enable after adjusting ESLint config.
-		// "noUnusedParameters": true,
 		"erasableSyntaxOnly": true,
 		"noFallthroughCasesInSwitch": true,
+		"noImplicitReturns": true,
 		"noUncheckedIndexedAccess": true
 	},
 	"include": [

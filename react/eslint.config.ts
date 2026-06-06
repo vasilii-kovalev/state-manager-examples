@@ -164,7 +164,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-ex-assign
 				"no-ex-assign": ERROR,
 				// https://eslint.org/docs/latest/rules/no-fallthrough
-				"no-fallthrough": ERROR,
+				// TypeScript takes care of it.
+				"no-fallthrough": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-func-assign
 				"no-func-assign": ERROR,
 				// https://eslint.org/docs/latest/rules/no-import-assign
@@ -2044,7 +2045,11 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/no-implied-eval
 				"@typescript-eslint/no-implied-eval": ERROR,
 				// https://typescript-eslint.io/rules/no-import-type-side-effects
-				// This rule is disabled because we don't use (and don't need) "verbatimModuleSyntax" TypeScript config flag.
+				/*
+					Conflicts with "import-x/consistent-type-specifier-style" and
+					"@typescript-eslint/consistent-type-imports" (both prefer inline type qualifiers).
+					"verbatimModuleSyntax" TypeScript config flag takes care of side-effect imports.
+				*/
 				"@typescript-eslint/no-import-type-side-effects": DISABLED,
 				// https://typescript-eslint.io/rules/no-inferrable-types
 				"@typescript-eslint/no-inferrable-types": ERROR,
