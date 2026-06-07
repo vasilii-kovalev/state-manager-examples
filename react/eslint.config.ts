@@ -57,6 +57,26 @@ const DISABLED: Linter.RuleSeverity = "off";
 	Additional comments are provided for the rules if necessary.
 */
 
+/*
+	Overlapping enforcers are set this way:
+	* Coverage:
+		* The same concern can be checked by several enforcers - core ESLint rules, plugin
+			rules, and the TypeScript compiler among them
+		* They are grouped by what they check, not by package or tsconfig origin
+		* Only the minimal set that matches the intended policy stays on; the rest are off
+			to avoid duplicate reports
+	* Disabled rules:
+		* Each off rule names what actually covers the concern:
+			* Another rule: "The "<rule>" rule takes care of it."
+			* The compiler: "TypeScript takes care of it (<detail>)."
+		* An off rule is never pointed at another rule that is also off
+		* Compiler-delegated "<detail>" is a tsconfig flag when the compiler exposes one, or
+			built-in check when the behavior is always on
+	* Rule entries:
+		* Severity, options, and why a rule is off live on that rule's own entry, not on a
+			related rule's comment
+*/
+
 const eslintConfig = disableAutofix(
 	defineConfig(
 		globalIgnores([
@@ -108,19 +128,19 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				// https://eslint.org/docs/latest/rules/constructor-super
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in class inheritance check).
 				"constructor-super": DISABLED,
 				// https://eslint.org/docs/latest/rules/for-direction
 				"for-direction": ERROR,
 				// https://eslint.org/docs/latest/rules/getter-return
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in accessor check).
 				"getter-return": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-async-promise-executor
 				"no-async-promise-executor": ERROR,
 				// https://eslint.org/docs/latest/rules/no-await-in-loop
 				"no-await-in-loop": ERROR,
 				// https://eslint.org/docs/latest/rules/no-class-assign
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in assignment check).
 				"no-class-assign": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-compare-neg-zero
 				"no-compare-neg-zero": ERROR,
@@ -130,7 +150,7 @@ const eslintConfig = disableAutofix(
 					"always",
 				],
 				// https://eslint.org/docs/latest/rules/no-const-assign
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in assignment check).
 				"no-const-assign": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-constant-binary-expression
 				"no-constant-binary-expression": ERROR,
@@ -144,15 +164,15 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-debugger
 				"no-debugger": ERROR,
 				// https://eslint.org/docs/latest/rules/no-dupe-args
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in duplicate identifier check).
 				"no-dupe-args": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-dupe-class-members
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in duplicate class member check).
 				"no-dupe-class-members": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-dupe-else-if
 				"no-dupe-else-if": ERROR,
 				// https://eslint.org/docs/latest/rules/no-dupe-keys
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in duplicate property check).
 				"no-dupe-keys": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-duplicate-case
 				"no-duplicate-case": ERROR,
@@ -166,13 +186,13 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-ex-assign
 				"no-ex-assign": ERROR,
 				// https://eslint.org/docs/latest/rules/no-fallthrough
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (noFallthroughCasesInSwitch: true).
 				"no-fallthrough": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-func-assign
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in assignment check).
 				"no-func-assign": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-import-assign
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in assignment check).
 				"no-import-assign": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-inner-declarations
 				"no-inner-declarations": [
@@ -193,10 +213,10 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-misleading-character-class
 				"no-misleading-character-class": ERROR,
 				// https://eslint.org/docs/latest/rules/no-new-native-nonconstructor
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in constructability check).
 				"no-new-native-nonconstructor": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-obj-calls
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in callability check).
 				"no-obj-calls": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-promise-executor-return
 				"no-promise-executor-return": ERROR,
@@ -207,14 +227,14 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-self-compare
 				"no-self-compare": ERROR,
 				// https://eslint.org/docs/latest/rules/no-setter-return
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in accessor check).
 				"no-setter-return": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-sparse-arrays
 				"no-sparse-arrays": ERROR,
 				// https://eslint.org/docs/latest/rules/no-template-curly-in-string
 				"no-template-curly-in-string": ERROR,
 				// https://eslint.org/docs/latest/rules/no-this-before-super
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in class inheritance check).
 				"no-this-before-super": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-unassigned-vars
 				"no-unassigned-vars": ERROR,
@@ -225,7 +245,7 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-unmodified-loop-condition
 				"no-unmodified-loop-condition": ERROR,
 				// https://eslint.org/docs/latest/rules/no-unreachable
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (allowUnreachableCode: false).
 				"no-unreachable": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-unreachable-loop
 				"no-unreachable-loop": ERROR,
@@ -383,7 +403,7 @@ const eslintConfig = disableAutofix(
 				// This rule is disabled because enforcing any naming convention is unnecessary.
 				"id-match": DISABLED,
 				// https://eslint.org/docs/latest/rules/init-declarations
-				// This rule is disabled because necessity of variables' initialization heavily depends on particular situation.
+				// The rule "@typescript-eslint/init-declarations" takes care of it.
 				"init-declarations": DISABLED,
 				// https://eslint.org/docs/latest/rules/logical-assignment-operators
 				"logical-assignment-operators": [
@@ -454,7 +474,7 @@ const eslintConfig = disableAutofix(
 				// This rule is disabled because it is used in `for...of` loops.
 				"no-continue": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-delete-var
-				// This rule is disabled because `var`-s are prohibited (see the "no-var"rule).
+				// This rule is disabled because `var`-s are prohibited (see the "no-var" rule).
 				"no-delete-var": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-div-regex
 				"no-div-regex": ERROR,
@@ -1832,6 +1852,7 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/explicit-module-boundary-types
 				"@typescript-eslint/explicit-module-boundary-types": ERROR,
 				// https://typescript-eslint.io/rules/init-declarations
+				// This rule is disabled because necessity of variables' initialization heavily depends on particular situation.
 				"@typescript-eslint/init-declarations": DISABLED,
 				// https://typescript-eslint.io/rules/max-params
 				"@typescript-eslint/max-params": ERROR,
@@ -2029,7 +2050,7 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/no-deprecated
 				"@typescript-eslint/no-deprecated": ERROR,
 				// https://typescript-eslint.io/rules/no-dupe-class-members
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (built-in duplicate class member check).
 				"@typescript-eslint/no-dupe-class-members": DISABLED,
 				// https://typescript-eslint.io/rules/no-duplicate-enum-values
 				// This rule is disabled because `enum` declarations are forbidden by "erasableSyntaxOnly" in TypeScript.
@@ -2280,7 +2301,7 @@ const eslintConfig = disableAutofix(
 				// This rule is disabled because `enum` declarations are forbidden by "erasableSyntaxOnly" in TypeScript.
 				"@typescript-eslint/prefer-literal-enum-member": DISABLED,
 				// https://typescript-eslint.io/rules/prefer-namespace-keyword
-				// TypeScript takes care of it.
+				// TypeScript takes care of it (erasableSyntaxOnly: true).
 				"@typescript-eslint/prefer-namespace-keyword": DISABLED,
 				// https://typescript-eslint.io/rules/prefer-nullish-coalescing
 				"@typescript-eslint/prefer-nullish-coalescing": [
@@ -2448,8 +2469,8 @@ const eslintConfig = disableAutofix(
 				"@eslint-react/no-missing-context-display-name": ERROR,
 				// https://eslint-react.xyz/docs/rules/no-missing-key
 				"@eslint-react/no-missing-key": ERROR,
-				// This rule is disabled because the functionality is not going to be used.
 				// https://eslint-react.xyz/docs/rules/no-misused-capture-owner-stack
+				// This rule is disabled because the functionality is not going to be used.
 				"@eslint-react/no-misused-capture-owner-stack": DISABLED,
 				// https://eslint-react.xyz/docs/rules/no-nested-component-definitions
 				"@eslint-react/no-nested-component-definitions": ERROR,
