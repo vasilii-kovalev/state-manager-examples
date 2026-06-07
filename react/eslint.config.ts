@@ -81,7 +81,6 @@ const eslintConfig = disableAutofix(
 				],
 			},
 			languageOptions: {
-				globals: globals.browser,
 				parserOptions: {
 					sourceType: "module",
 					ecmaVersion: "latest",
@@ -143,7 +142,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-dupe-args
 				"no-dupe-args": ERROR,
 				// https://eslint.org/docs/latest/rules/no-dupe-class-members
-				"no-dupe-class-members": ERROR,
+				// The "@typescript-eslint/no-dupe-class-members" rule takes care of it.
+				"no-dupe-class-members": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-dupe-else-if
 				"no-dupe-else-if": ERROR,
 				// https://eslint.org/docs/latest/rules/no-dupe-keys
@@ -151,12 +151,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-duplicate-case
 				"no-duplicate-case": ERROR,
 				// https://eslint.org/docs/latest/rules/no-duplicate-imports
-				"no-duplicate-imports": [
-					ERROR,
-					{
-						includeExports: true,
-					},
-				],
+				// The "import-x/no-duplicates" rule takes care of it.
+				"no-duplicate-imports": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-empty-character-class
 				"no-empty-character-class": ERROR,
 				// https://eslint.org/docs/latest/rules/no-empty-pattern
@@ -297,11 +293,13 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				// https://eslint.org/docs/latest/rules/class-methods-use-this
-				"class-methods-use-this": ERROR,
+				// The "@typescript-eslint/class-methods-use-this" rule takes care of it.
+				"class-methods-use-this": DISABLED,
 				// https://eslint.org/docs/latest/rules/complexity
 				complexity: ERROR,
 				// https://eslint.org/docs/latest/rules/consistent-return
-				"consistent-return": ERROR,
+				// The "@typescript-eslint/consistent-return" rule takes care of it.
+				"consistent-return": DISABLED,
 				// https://eslint.org/docs/latest/rules/consistent-this
 				"consistent-this": ERROR,
 				// https://eslint.org/docs/latest/rules/curly
@@ -311,9 +309,11 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/default-case-last
 				"default-case-last": ERROR,
 				// https://eslint.org/docs/latest/rules/default-param-last
-				"default-param-last": ERROR,
+				// The "@typescript-eslint/default-param-last" rule takes care of it.
+				"default-param-last": DISABLED,
 				// https://eslint.org/docs/latest/rules/dot-notation
-				"dot-notation": ERROR,
+				// The "@typescript-eslint/dot-notation" rule takes care of it.
+				"dot-notation": DISABLED,
 				// https://eslint.org/docs/latest/rules/eqeqeq
 				eqeqeq: ERROR,
 				// https://eslint.org/docs/latest/rules/func-name-matching
@@ -395,7 +395,8 @@ const eslintConfig = disableAutofix(
 				// The "complexity" rule takes care of it.
 				"max-nested-callbacks": DISABLED,
 				// https://eslint.org/docs/latest/rules/max-params
-				"max-params": ERROR,
+				// The "@typescript-eslint/max-params" rule takes care of it.
+				"max-params": DISABLED,
 				// https://eslint.org/docs/latest/rules/max-statements
 				// The "complexity" rule takes care of it.
 				"max-statements": DISABLED,
@@ -460,8 +461,8 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				// https://eslint.org/docs/latest/rules/no-empty-function
-				// If a callback should be empty, use `noop` function instead.
-				"no-empty-function": ERROR,
+				// The "@typescript-eslint/no-empty-function" rule takes care of it.
+				"no-empty-function": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-empty-static-block
 				"no-empty-static-block": ERROR,
 				// https://eslint.org/docs/latest/rules/no-eq-null
@@ -496,7 +497,8 @@ const eslintConfig = disableAutofix(
 				// This rule is disabled because we work with modules, so cases this rule handles won't happen.
 				"no-implicit-globals": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-implied-eval
-				"no-implied-eval": ERROR,
+				// The "@typescript-eslint/no-implied-eval" rule takes care of it.
+				"no-implied-eval": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-inline-comments
 				/*
 					There is an overlap with the "@stylistic/line-comment-position" rule, but that rule handles only single line
@@ -504,7 +506,8 @@ const eslintConfig = disableAutofix(
 				*/
 				"no-inline-comments": ERROR,
 				// https://eslint.org/docs/latest/rules/no-invalid-this
-				"no-invalid-this": ERROR,
+				// The "@typescript-eslint/no-invalid-this" rule takes care of it.
+				"no-invalid-this": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-iterator
 				"no-iterator": ERROR,
 				// https://eslint.org/docs/latest/rules/no-label-var
@@ -517,7 +520,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-lonely-if
 				"no-lonely-if": ERROR,
 				// https://eslint.org/docs/latest/rules/no-loop-func
-				"no-loop-func": ERROR,
+				// The "@typescript-eslint/no-loop-func" rule takes care of it.
+				"no-loop-func": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-magic-numbers
 				// This rule is disabled because it hinders more than helps.
 				"no-magic-numbers": DISABLED,
@@ -557,7 +561,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-proto
 				"no-proto": ERROR,
 				// https://eslint.org/docs/latest/rules/no-redeclare
-				"no-redeclare": ERROR,
+				// The "@typescript-eslint/no-redeclare" rule takes care of it.
+				"no-redeclare": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-regex-spaces
 				"no-regex-spaces": ERROR,
 				// https://eslint.org/docs/latest/rules/no-restricted-exports
@@ -608,7 +613,8 @@ const eslintConfig = disableAutofix(
 				// This rule is disabled because ternaries are allowed.
 				"no-ternary": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-throw-literal
-				"no-throw-literal": ERROR,
+				// The "@typescript-eslint/only-throw-error" rule takes care of it.
+				"no-throw-literal": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-undef-init
 				"no-undef-init": ERROR,
 				// https://eslint.org/docs/latest/rules/no-undefined
@@ -631,7 +637,8 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				// https://eslint.org/docs/latest/rules/no-unused-expressions
-				"no-unused-expressions": ERROR,
+				// The "@typescript-eslint/no-unused-expressions" rule takes care of it.
+				"no-unused-expressions": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-unused-labels
 				// The "no-labels" rule takes care of it.
 				"no-unused-labels": DISABLED,
@@ -644,7 +651,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-useless-concat
 				"no-useless-concat": ERROR,
 				// https://eslint.org/docs/latest/rules/no-useless-constructor
-				"no-useless-constructor": ERROR,
+				// The "@typescript-eslint/no-useless-constructor" rule takes care of it.
+				"no-useless-constructor": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-useless-escape
 				"no-useless-escape": ERROR,
 				// https://eslint.org/docs/latest/rules/no-useless-rename
@@ -710,13 +718,8 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				// https://eslint.org/docs/latest/rules/prefer-destructuring
-				"prefer-destructuring": [
-					ERROR,
-					{
-						array: true,
-						object: true,
-					},
-				],
+				// The "@typescript-eslint/prefer-destructuring" rule takes care of it.
+				"prefer-destructuring": DISABLED,
 				// https://eslint.org/docs/latest/rules/prefer-exponentiation-operator
 				"prefer-exponentiation-operator": ERROR,
 				// https://eslint.org/docs/latest/rules/prefer-named-capture-group
@@ -728,7 +731,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/prefer-object-spread
 				"prefer-object-spread": ERROR,
 				// https://eslint.org/docs/latest/rules/prefer-promise-reject-errors
-				"prefer-promise-reject-errors": ERROR,
+				// The "@typescript-eslint/prefer-promise-reject-errors" rule takes care of it.
+				"prefer-promise-reject-errors": DISABLED,
 				// https://eslint.org/docs/latest/rules/prefer-regex-literals
 				"prefer-regex-literals": [
 					ERROR,
@@ -752,7 +756,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/radix
 				radix: ERROR,
 				// https://eslint.org/docs/latest/rules/require-await
-				"require-await": ERROR,
+				// The "@typescript-eslint/require-await" rule takes care of it.
+				"require-await": DISABLED,
 				// https://eslint.org/docs/latest/rules/require-unicode-regexp
 				"require-unicode-regexp": ERROR,
 				// https://eslint.org/docs/latest/rules/require-yield
@@ -1078,7 +1083,7 @@ const eslintConfig = disableAutofix(
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-negative-index.md
 				"unicorn/prefer-negative-index": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-node-protocol.md
-				// The rule is disabled because Node.js is not used.
+				// Enabled for config files only.
 				"unicorn/prefer-node-protocol": DISABLED,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-number-properties.md
 				"unicorn/prefer-number-properties": [
@@ -1119,7 +1124,8 @@ const eslintConfig = disableAutofix(
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-string-slice.md
 				"unicorn/prefer-string-slice": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-string-starts-ends-with.md
-				"unicorn/prefer-string-starts-ends-with": ERROR,
+				// The "@typescript-eslint/prefer-string-starts-ends-with" rule takes care of it.
+				"unicorn/prefer-string-starts-ends-with": DISABLED,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-string-trim-start-end.md
 				"unicorn/prefer-string-trim-start-end": ERROR,
 				// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-structured-clone.md
@@ -1232,7 +1238,8 @@ const eslintConfig = disableAutofix(
 				// https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-import-module-exports.md
 				"import-x/no-import-module-exports": ERROR,
 				// https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/no-nodejs-modules.md
-				"import-x/no-nodejs-modules": ERROR,
+				// Enabled for application source files only.
+				"import-x/no-nodejs-modules": DISABLED,
 				// https://github.com/un-ts/eslint-plugin-import-x/blob/master/docs/rules/unambiguous.md
 				// This rule is disabled because we work with modules only.
 				"import-x/unambiguous": DISABLED,
@@ -1772,8 +1779,11 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/consistent-indexed-object-style
 				"@typescript-eslint/consistent-indexed-object-style": ERROR,
 				// https://typescript-eslint.io/rules/consistent-return
-				// TypeScript takes care of it.
-				"@typescript-eslint/consistent-return": DISABLED,
+				/*
+					TypeScript's "noImplicitReturns" requires returns on all code paths but does not flag mixed value/undefined
+					returns (e.g. `return true` in one branch and bare `return` in another).
+				*/
+				"@typescript-eslint/consistent-return": ERROR,
 				// https://typescript-eslint.io/rules/consistent-type-assertions
 				"@typescript-eslint/consistent-type-assertions": ERROR,
 				// https://typescript-eslint.io/rules/consistent-type-definitions
@@ -1897,7 +1907,6 @@ const eslintConfig = disableAutofix(
 					},
 					{
 						selector: [
-							"enum",
 							"interface",
 							"typeAlias",
 							"typeParameter",
@@ -1913,14 +1922,6 @@ const eslintConfig = disableAutofix(
 							regex: "^(I|T)[A-Z]",
 							match: false,
 						},
-						leadingUnderscore: "forbid",
-						trailingUnderscore: "forbid",
-					},
-					{
-						selector: "enumMember",
-						format: [
-							"UPPER_CASE",
-						],
 						leadingUnderscore: "forbid",
 						trailingUnderscore: "forbid",
 					},
@@ -2018,7 +2019,8 @@ const eslintConfig = disableAutofix(
 				// TypeScript takes care of it.
 				"@typescript-eslint/no-dupe-class-members": DISABLED,
 				// https://typescript-eslint.io/rules/no-duplicate-enum-values
-				"@typescript-eslint/no-duplicate-enum-values": ERROR,
+				// This rule is disabled because `enum` declarations are forbidden by "erasableSyntaxOnly" in TypeScript.
+				"@typescript-eslint/no-duplicate-enum-values": DISABLED,
 				// https://typescript-eslint.io/rules/no-duplicate-type-constituents
 				"@typescript-eslint/no-duplicate-type-constituents": [
 					ERROR,
@@ -2030,6 +2032,7 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/no-dynamic-delete
 				"@typescript-eslint/no-dynamic-delete": ERROR,
 				// https://typescript-eslint.io/rules/no-empty-function
+				// If a callback should be empty, use `noop` function instead.
 				"@typescript-eslint/no-empty-function": ERROR,
 				// https://typescript-eslint.io/rules/no-empty-object-type
 				"@typescript-eslint/no-empty-object-type": DISABLED,
@@ -2065,8 +2068,12 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/no-inferrable-types
 				"@typescript-eslint/no-inferrable-types": ERROR,
 				// https://typescript-eslint.io/rules/no-invalid-this
-				// TypeScript takes care of it.
-				"@typescript-eslint/no-invalid-this": DISABLED,
+				/*
+					TypeScript's "noImplicitThis" uses type checking; this rule uses ESLint heuristics and covers cases the
+					compiler does not model the same way. For example, `function foo() { this.a = 0; }` is reported, while
+					`function bar(this: MyType) { this.a = 0; }` is allowed.
+				*/
+				"@typescript-eslint/no-invalid-this": ERROR,
 				// https://typescript-eslint.io/rules/no-invalid-void-type
 				"@typescript-eslint/no-invalid-void-type": ERROR,
 				// https://typescript-eslint.io/rules/no-loop-func
@@ -2083,9 +2090,11 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/no-misused-spread
 				"@typescript-eslint/no-misused-spread": ERROR,
 				// https://typescript-eslint.io/rules/no-mixed-enums
-				"@typescript-eslint/no-mixed-enums": ERROR,
+				// This rule is disabled because `enum` declarations are forbidden by "erasableSyntaxOnly" in TypeScript.
+				"@typescript-eslint/no-mixed-enums": DISABLED,
 				// https://typescript-eslint.io/rules/no-namespace
-				"@typescript-eslint/no-namespace": ERROR,
+				// Enabled for application source files only.
+				"@typescript-eslint/no-namespace": DISABLED,
 				// https://typescript-eslint.io/rules/no-non-null-asserted-nullish-coalescing
 				"@typescript-eslint/no-non-null-asserted-nullish-coalescing": ERROR,
 				// https://typescript-eslint.io/rules/no-non-null-asserted-optional-chain
@@ -2094,8 +2103,7 @@ const eslintConfig = disableAutofix(
 				// Please add a comment about why the non-null assertion is used.
 				"@typescript-eslint/no-non-null-assertion": ERROR,
 				// https://typescript-eslint.io/rules/no-redeclare
-				// TypeScript takes care of it.
-				"@typescript-eslint/no-redeclare": DISABLED,
+				"@typescript-eslint/no-redeclare": ERROR,
 				// https://typescript-eslint.io/rules/no-redundant-type-constituents
 				"@typescript-eslint/no-redundant-type-constituents": ERROR,
 				// https://typescript-eslint.io/rules/no-require-imports
@@ -2176,7 +2184,8 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/no-unsafe-declaration-merging/
 				"@typescript-eslint/no-unsafe-declaration-merging": ERROR,
 				// https://typescript-eslint.io/rules/no-unsafe-enum-comparison
-				"@typescript-eslint/no-unsafe-enum-comparison": ERROR,
+				// This rule is disabled because `enum` declarations are forbidden by "erasableSyntaxOnly" in TypeScript.
+				"@typescript-eslint/no-unsafe-enum-comparison": DISABLED,
 				// https://typescript-eslint.io/rules/no-unsafe-function-type
 				"@typescript-eslint/no-unsafe-function-type": ERROR,
 				// https://typescript-eslint.io/rules/no-unsafe-member-access
@@ -2217,7 +2226,17 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/non-nullable-type-assertion-style
 				"@typescript-eslint/non-nullable-type-assertion-style": ERROR,
 				// https://typescript-eslint.io/rules/only-throw-error
-				"@typescript-eslint/only-throw-error": ERROR,
+				"@typescript-eslint/only-throw-error": [
+					ERROR,
+					/*
+						"allowThrowingAny" and "allowThrowingUnknown" are set to `false` to
+						match the base rule's strictness.
+					*/
+					{
+						allowThrowingAny: false,
+						allowThrowingUnknown: false,
+					},
+				],
 				// https://typescript-eslint.io/rules/parameter-properties
 				"@typescript-eslint/parameter-properties": ERROR,
 				// https://typescript-eslint.io/rules/prefer-as-const
@@ -2234,7 +2253,8 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				// https://typescript-eslint.io/rules/prefer-enum-initializers
-				"@typescript-eslint/prefer-enum-initializers": ERROR,
+				// This rule is disabled because `enum` declarations are forbidden by "erasableSyntaxOnly" in TypeScript.
+				"@typescript-eslint/prefer-enum-initializers": DISABLED,
 				// https://typescript-eslint.io/rules/prefer-find
 				"@typescript-eslint/prefer-find": ERROR,
 				// https://typescript-eslint.io/rules/prefer-for-of
@@ -2244,9 +2264,11 @@ const eslintConfig = disableAutofix(
 				// https://typescript-eslint.io/rules/prefer-includes
 				"@typescript-eslint/prefer-includes": ERROR,
 				// https://typescript-eslint.io/rules/prefer-literal-enum-member
-				"@typescript-eslint/prefer-literal-enum-member": ERROR,
+				// This rule is disabled because `enum` declarations are forbidden by "erasableSyntaxOnly" in TypeScript.
+				"@typescript-eslint/prefer-literal-enum-member": DISABLED,
 				// https://typescript-eslint.io/rules/prefer-namespace-keyword
-				"@typescript-eslint/prefer-namespace-keyword": ERROR,
+				// TypeScript takes care of it.
+				"@typescript-eslint/prefer-namespace-keyword": DISABLED,
 				// https://typescript-eslint.io/rules/prefer-nullish-coalescing
 				"@typescript-eslint/prefer-nullish-coalescing": [
 					ERROR,
@@ -2323,6 +2345,18 @@ const eslintConfig = disableAutofix(
 					only. This rule covers `Promise` rejection callbacks, which stay implicitly `any` otherwise.
 				*/
 				"@typescript-eslint/use-unknown-in-catch-callback-variable": ERROR,
+			},
+		},
+		{
+			files: [
+				"src/**/*.{ts,tsx}",
+			],
+			languageOptions: {
+				globals: globals.browser,
+			},
+			rules: {
+				"import-x/no-nodejs-modules": ERROR,
+				"@typescript-eslint/no-namespace": ERROR,
 			},
 		},
 		{
@@ -2739,11 +2773,17 @@ const eslintConfig = disableAutofix(
 		{
 			files: [
 				"eslint.config.ts",
+				"uno.config.ts",
+				"vite.config.ts",
 			],
+			languageOptions: {
+				globals: globals.node,
+			},
 			rules: {
 				"capitalized-comments": DISABLED,
 				"sort-keys": DISABLED,
 				"unicorn/no-null": DISABLED,
+				"unicorn/prefer-node-protocol": ERROR,
 				"unicorn/prevent-abbreviations": DISABLED,
 				"@typescript-eslint/naming-convention": DISABLED,
 			},
@@ -2760,14 +2800,6 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				"@typescript-eslint/no-dynamic-delete": DISABLED,
-			},
-		},
-		{
-			files: [
-				"uno.config.ts",
-			],
-			rules: {
-				"@typescript-eslint/naming-convention": DISABLED,
 			},
 		},
 		{
