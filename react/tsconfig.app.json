@@ -27,6 +27,7 @@
 		"jsx": "react-jsx",
 
 		/* Linting */
+		"allowUnreachableCode": false,
 		"erasableSyntaxOnly": true,
 		"noFallthroughCasesInSwitch": true,
 		"noImplicitReturns": true,

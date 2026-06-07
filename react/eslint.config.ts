@@ -108,17 +108,20 @@ const eslintConfig = disableAutofix(
 					},
 				],
 				// https://eslint.org/docs/latest/rules/constructor-super
-				"constructor-super": ERROR,
+				// TypeScript takes care of it.
+				"constructor-super": DISABLED,
 				// https://eslint.org/docs/latest/rules/for-direction
 				"for-direction": ERROR,
 				// https://eslint.org/docs/latest/rules/getter-return
-				"getter-return": ERROR,
+				// TypeScript takes care of it.
+				"getter-return": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-async-promise-executor
 				"no-async-promise-executor": ERROR,
 				// https://eslint.org/docs/latest/rules/no-await-in-loop
 				"no-await-in-loop": ERROR,
 				// https://eslint.org/docs/latest/rules/no-class-assign
-				"no-class-assign": ERROR,
+				// TypeScript takes care of it.
+				"no-class-assign": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-compare-neg-zero
 				"no-compare-neg-zero": ERROR,
 				// https://eslint.org/docs/latest/rules/no-cond-assign
@@ -127,7 +130,8 @@ const eslintConfig = disableAutofix(
 					"always",
 				],
 				// https://eslint.org/docs/latest/rules/no-const-assign
-				"no-const-assign": ERROR,
+				// TypeScript takes care of it.
+				"no-const-assign": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-constant-binary-expression
 				"no-constant-binary-expression": ERROR,
 				// https://eslint.org/docs/latest/rules/no-constant-condition
@@ -140,14 +144,16 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-debugger
 				"no-debugger": ERROR,
 				// https://eslint.org/docs/latest/rules/no-dupe-args
-				"no-dupe-args": ERROR,
+				// TypeScript takes care of it.
+				"no-dupe-args": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-dupe-class-members
-				// The "@typescript-eslint/no-dupe-class-members" rule takes care of it.
+				// TypeScript takes care of it.
 				"no-dupe-class-members": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-dupe-else-if
 				"no-dupe-else-if": ERROR,
 				// https://eslint.org/docs/latest/rules/no-dupe-keys
-				"no-dupe-keys": ERROR,
+				// TypeScript takes care of it.
+				"no-dupe-keys": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-duplicate-case
 				"no-duplicate-case": ERROR,
 				// https://eslint.org/docs/latest/rules/no-duplicate-imports
@@ -163,9 +169,11 @@ const eslintConfig = disableAutofix(
 				// TypeScript takes care of it.
 				"no-fallthrough": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-func-assign
-				"no-func-assign": ERROR,
+				// TypeScript takes care of it.
+				"no-func-assign": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-import-assign
-				"no-import-assign": ERROR,
+				// TypeScript takes care of it.
+				"no-import-assign": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-inner-declarations
 				"no-inner-declarations": [
 					ERROR,
@@ -185,9 +193,11 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-misleading-character-class
 				"no-misleading-character-class": ERROR,
 				// https://eslint.org/docs/latest/rules/no-new-native-nonconstructor
-				"no-new-native-nonconstructor": ERROR,
+				// TypeScript takes care of it.
+				"no-new-native-nonconstructor": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-obj-calls
-				"no-obj-calls": ERROR,
+				// TypeScript takes care of it.
+				"no-obj-calls": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-promise-executor-return
 				"no-promise-executor-return": ERROR,
 				// https://eslint.org/docs/latest/rules/no-prototype-builtins
@@ -197,13 +207,15 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-self-compare
 				"no-self-compare": ERROR,
 				// https://eslint.org/docs/latest/rules/no-setter-return
-				"no-setter-return": ERROR,
+				// TypeScript takes care of it.
+				"no-setter-return": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-sparse-arrays
 				"no-sparse-arrays": ERROR,
 				// https://eslint.org/docs/latest/rules/no-template-curly-in-string
 				"no-template-curly-in-string": ERROR,
 				// https://eslint.org/docs/latest/rules/no-this-before-super
-				"no-this-before-super": ERROR,
+				// TypeScript takes care of it.
+				"no-this-before-super": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-unassigned-vars
 				"no-unassigned-vars": ERROR,
 				// https://eslint.org/docs/latest/rules/no-undef
@@ -213,7 +225,8 @@ const eslintConfig = disableAutofix(
 				// https://eslint.org/docs/latest/rules/no-unmodified-loop-condition
 				"no-unmodified-loop-condition": ERROR,
 				// https://eslint.org/docs/latest/rules/no-unreachable
-				"no-unreachable": ERROR,
+				// TypeScript takes care of it.
+				"no-unreachable": DISABLED,
 				// https://eslint.org/docs/latest/rules/no-unreachable-loop
 				"no-unreachable-loop": ERROR,
 				// https://eslint.org/docs/latest/rules/no-unsafe-finally
