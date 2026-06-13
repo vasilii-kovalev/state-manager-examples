@@ -94,7 +94,9 @@ const Tooltip = <TargetElement extends HTMLElement>(
 				}
 				id={tooltipId()}
 				popover="auto"
-				ref={setTooltipRef}
+				ref={(tooltipElement) => {
+					setTooltipRef(tooltipElement);
+				}}
 				role="tooltip"
 				style={{
 					"--anchor-name": `--${props.targetId}`,

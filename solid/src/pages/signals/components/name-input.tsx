@@ -26,7 +26,10 @@ interface NameInputProps<Name extends string> {
 	) => void;
 	placeholder: string;
 	setNameLocal: Setter<string>;
-	validationSchema: GenericSchema<string, Name>;
+	validationSchema: GenericSchema<
+		string,
+		Name
+	>;
 }
 
 const NameInput = <Name extends string>(
@@ -34,13 +37,19 @@ const NameInput = <Name extends string>(
 ): JSX.Element => {
 	const isBusy = useIsBusy();
 
-	const handleNameChange: JSX.ChangeEventHandler<HTMLInputElement, Event> = (
+	const handleNameChange: JSX.ChangeEventHandler<
+		HTMLInputElement,
+		Event
+	> = (
 		event,
 	) => {
 		props.setNameLocal(event.target.value);
 	};
 
-	const handleBlur: JSX.EventHandler<HTMLInputElement, FocusEvent> = () => {
+	const handleBlur: JSX.EventHandler<
+		HTMLInputElement,
+		FocusEvent
+	> = () => {
 		if (isEmpty(props.nameLocal)) {
 			// @ts-expect-error The type is correct.
 			props.setNameLocal(props.name);

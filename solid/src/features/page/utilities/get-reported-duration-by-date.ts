@@ -18,7 +18,12 @@ import {
 
 const getReportedDurationByDate = (
 	worklogs: Array<Worklog>,
-): Partial<Record<DateString, Duration>> => {
+): Partial<
+	Record<
+		DateString,
+		Duration
+	>
+> => {
 	const worklogsByDate = Object.groupBy(
 		worklogs,
 		(worklog) => {

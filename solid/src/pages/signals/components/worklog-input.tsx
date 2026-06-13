@@ -82,7 +82,10 @@ const WorklogInput: Component<WorklogCellProps> = (
 		setDurationLocal(getInitialDurationLocalValue(props.duration));
 	});
 
-	const handleDurationChange: JSX.ChangeEventHandler<HTMLInputElement, Event> = (
+	const handleDurationChange: JSX.ChangeEventHandler<
+		HTMLInputElement,
+		Event
+	> = (
 		event,
 	) => {
 		const parsedInput = safeParse(

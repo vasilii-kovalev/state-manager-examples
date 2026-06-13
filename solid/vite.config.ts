@@ -11,7 +11,6 @@ import {
 	defineConfig,
 } from "vite";
 import solid from "vite-plugin-solid";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vite.dev/config
 const config = defineConfig({
@@ -22,11 +21,6 @@ const config = defineConfig({
 	plugins: [
 		devtools(),
 		solidDevtools(),
-		tsconfigPaths({
-			configNames: [
-				"tsconfig.app.json",
-			],
-		}),
 		tanstackRouter({
 			autoCodeSplitting: true,
 			target: "solid",
@@ -35,6 +29,9 @@ const config = defineConfig({
 		solid(),
 		sonda(),
 	],
+	resolve: {
+		tsconfigPaths: true,
+	},
 });
 
 export default config;

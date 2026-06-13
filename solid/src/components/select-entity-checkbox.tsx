@@ -34,7 +34,10 @@ const SelectEntityCheckbox: Component<SelectEntityCheckboxProps> = (
 
 	const isBusy = useIsBusy();
 
-	const handleSelectionChange: JSX.ChangeEventHandler<HTMLInputElement, Event> = (
+	const handleSelectionChange: JSX.ChangeEventHandler<
+		HTMLInputElement,
+		Event
+	> = (
 		event,
 	) => {
 		props.onSelectionChange(event.target.checked);
