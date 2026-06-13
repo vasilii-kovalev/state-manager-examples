@@ -2840,14 +2840,6 @@ const eslintConfig = disableAutofix(
 				"@typescript-eslint/no-dynamic-delete": DISABLED,
 			},
 		},
-		{
-			files: [
-				"src/vite-env.d.ts",
-			],
-			rules: {
-				"unicorn/prevent-abbreviations": DISABLED,
-			},
-		},
 	),
 );
 
