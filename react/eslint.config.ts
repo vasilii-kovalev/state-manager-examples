@@ -1,3 +1,4 @@
+import js from "@eslint/js";
 import react from "@eslint-react/eslint-plugin";
 import {
 	disableAutofix,
@@ -60,8 +61,7 @@ const DISABLED: Linter.RuleSeverity = "off";
 /*
 	Overlapping enforcers are set this way:
 	* Coverage:
-		* The same concern can be checked by several enforcers - core ESLint rules, plugin
-			rules, and the TypeScript compiler among them
+		* The same concern can be checked by several enforcers - plugin rules and TypeScript compiler
 		* They are grouped by what they check, not by package or tsconfig origin
 		* Only the minimal set that matches the intended policy stays on; the rest are off
 			to avoid duplicate reports
@@ -88,6 +88,7 @@ const eslintConfig = disableAutofix(
 				"**/*.{ts,tsx}",
 			],
 			extends: [
+				js.configs.all,
 				typeScriptConfigs.all,
 				eslintPluginUnicorn.configs.all,
 				importConfigs.react,
@@ -108,13 +109,16 @@ const eslintConfig = disableAutofix(
 					tsconfigRootDir: import.meta.dirname,
 				},
 			},
+			linterOptions: {
+				reportUnusedDisableDirectives: ERROR,
+			},
 			plugins: {
 				"simple-import-sort": simpleImportSort,
 			},
 			rules: {
 				/*
 					==================================================
-					Built-in rules
+					JavaScript plugin
 					==================================================
 				*/
 
@@ -2814,7 +2818,7 @@ const eslintConfig = disableAutofix(
 				globals: globals.node,
 			},
 			rules: {
-				"capitalized-comments": DISABLED,
+				"no-autofix/capitalized-comments": DISABLED,
 				"sort-keys": DISABLED,
 				"unicorn/no-null": DISABLED,
 				"unicorn/prefer-node-protocol": ERROR,
