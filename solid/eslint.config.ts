@@ -2591,7 +2591,6 @@ const eslintConfig = disableAutofix(
 				// The rule is disabled because compile class transformer is not used.
 				"unocss/enforce-class-compile": DISABLED,
 			},
-
 		},
 		{
 			files: [
