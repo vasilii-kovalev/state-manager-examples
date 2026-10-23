@@ -56,5 +56,17 @@
 		"solid-devtools": {
 			"vite": "$vite"
 		}
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "npm",
+			"version": "^12.0.0",
+			"onFail": "error"
+		},
+		"runtime": {
+			"name": "node",
+			"version": "^22.22.2 || ^24.15.0 || >=26.0.0",
+			"onFail": "error"
+		}
 	}
 }
