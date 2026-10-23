@@ -1,0 +1,57 @@
+import { type ActivityId } from "packages/shared/src/features/activity/types";
+import { isUndefined } from "packages/shared/src/utilities/is-undefined";
+
+import { type Thunk } from "../store";
+import { unselectWorklogs, updateStateFromTransaction } from "../store/page/slice";
+import { moveWorklogToActivity } from "./move-worklog-to-activity";
+import { performTransaction } from "./perform-transaction";
+
+const moveWorklogsToActivity = (activityId: ActivityId): Thunk<void> => {
+	return (dispatch, getState) => {
+		const { activitiesById, selectedWorklogIds, worklogsById } = getState().page;
+
+		for (const worklogId of selectedWorklogIds) {
+			const worklog = worklogsById[worklogId];
+
+			if (isUndefined(worklog)) {
+				continue;
+			}
+
+			// No need to move if worklog is already in the target activity.
+			if (worklog.activityId === activityId) {
+				continue;
+			}
+
+			const activity = activitiesById[activityId];
+
+			if (isUndefined(activity)) {
+				continue;
+			}
+
+			dispatch(
+				moveWorklogToActivity({
+					activityId: activity.id,
+					groupId: activity.groupId,
+					id: worklog.id,
+				}),
+			);
+		}
+
+		dispatch(unselectWorklogs());
+	};
+};
+
+const moveWorklogsToActivityWithTransaction: typeof moveWorklogsToActivity = (...params) => {
+	return performTransaction({
+		onFinish: (dispatch, getState) => {
+			const pageStateNext = getState().page;
+
+			dispatch(updateStateFromTransaction(pageStateNext));
+		},
+		transaction: (dispatch) => {
+			dispatch(moveWorklogsToActivity(...params));
+		},
+	});
+};
+
+export { moveWorklogsToActivityWithTransaction as moveWorklogsToActivity };

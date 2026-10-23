@@ -1,0 +1,13 @@
+{
+	"name": "shared",
+	"version": "0.0.0",
+	"private": true,
+	"type": "module",
+	"sideEffects": false,
+	"dependencies": {
+		"date-fns": "4.4.0",
+		"es-toolkit": "1.52.0",
+		"nanoid": "6.0.2",
+		"valibot": "1.5.0"
+	}
+}

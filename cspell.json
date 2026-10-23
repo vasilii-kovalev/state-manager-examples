@@ -1,0 +1,20 @@
+{
+	"files": ["**"],
+	"ignorePaths": ["LICENSE", "**/*.snap", "**/*.svg", "**/normalize.css"],
+	"useGitignore": true,
+	"version": "0.2",
+	"words": [
+		"borderless",
+		"interestfor",
+		"linaria",
+		"neue",
+		"noto",
+		"rumdl",
+		"segoe",
+		"sonda",
+		"timesheet",
+		"voidzero",
+		"worklog",
+		"worklogs"
+	]
+}

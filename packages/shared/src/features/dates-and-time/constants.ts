@@ -1,0 +1,8 @@
+const WORKING_DAY_NORM_HOURS = 8;
+
+const DATE_FORMAT = {
+	DAY_WITH_LEADING_ZERO: "dd",
+	WEEKDAY_SHORT: "EEE",
+} as const;
+
+export { DATE_FORMAT, WORKING_DAY_NORM_HOURS };

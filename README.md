@@ -87,27 +87,27 @@ type GroupName = string;
 type WorklogId = string;
 
 interface Activity {
-  groupId: GroupId;
-  id: ActivityId;
-  name: ActivityName;
+	groupId: GroupId;
+	id: ActivityId;
+	name: ActivityName;
 }
 
 interface Group {
-  id: GroupId;
-  name: GroupName;
+	id: GroupId;
+	name: GroupName;
 }
 
 interface Worklog {
-  activityId: ActivityId;
-  date: DateString;
-  duration: Duration;
-  groupId: GroupId;
-  id: WorklogId;
+	activityId: ActivityId;
+	date: DateString;
+	duration: Duration;
+	groupId: GroupId;
+	id: WorklogId;
 }
 
 interface CalendarDay {
-  date: DateString;
-  norm: Duration;
+	date: DateString;
+	norm: Duration;
 }
 ```
 
@@ -115,10 +115,10 @@ interface CalendarDay {
 
 ```ts
 interface PageData {
-  activities: Array<Activity>;
-  calendar: Array<CalendarDay>;
-  groups: Array<Group>;
-  worklogs: Array<Worklog>;
+	activities: Array<Activity>;
+	calendar: Array<CalendarDay>;
+	groups: Array<Group>;
+	worklogs: Array<Worklog>;
 }
 ```
 
@@ -128,24 +128,24 @@ It can be implemented as a single state or multiple ones containing parts of it.
 
 ```ts
 interface PageState {
-  activitiesById: Record<ActivityId, Activity>;
-  activityIds: Array<ActivityId>;
-  calendar: Array<CalendarDay>;
-  groupIds: Array<GroupId>;
-  groupsById: Record<GroupId, Group>;
-  hasChanges: boolean;
-  selectedWorklogIds: Array<WorklogId>;
-  worklogIds: Array<WorklogId>;
-  worklogsById: Record<WorklogId, Worklog>;
+	activitiesById: Record<ActivityId, Activity>;
+	activityIds: Array<ActivityId>;
+	calendar: Array<CalendarDay>;
+	groupIds: Array<GroupId>;
+	groupsById: Record<GroupId, Group>;
+	hasChanges: boolean;
+	selectedWorklogIds: Array<WorklogId>;
+	worklogIds: Array<WorklogId>;
+	worklogsById: Record<WorklogId, Worklog>;
 }
 ```
 
 ## Examples
 
-- [React](./react)
-  - [Redux](./react/src/pages/redux)
-- [Solid](./solid)
-  - [Signals](./solid/src/pages/signals)
+- [React](./apps/react)
+  - [Redux](./apps/react/src/pages/redux)
+- [Solid](./apps/solid)
+  - [Signals](./apps/solid/src/pages/signals)
 
 ## License
 

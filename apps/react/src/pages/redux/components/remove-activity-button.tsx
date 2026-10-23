@@ -1,0 +1,53 @@
+import { type FC } from "react";
+
+import { type ActivityId } from "packages/shared/src/features/activity/types";
+import { getClass } from "packages/shared/src/utilities/get-class";
+
+import { Tooltip } from "../../../components/tooltip";
+import { useIsBusy } from "../../../hooks/use-is-busy";
+import { control, iconButton } from "../../../styles/control.css";
+import { useApplicationDispatch } from "../store";
+import { removeActivity } from "../store/page/slice";
+
+interface RemoveActivityButtonProps {
+	activityId: ActivityId;
+}
+
+const RemoveActivityButton: FC<RemoveActivityButtonProps> = (props) => {
+	const { activityId } = props;
+
+	const dispatch = useApplicationDispatch();
+
+	const isBusy = useIsBusy();
+
+	const handleRemoveActivity = (): void => {
+		dispatch(removeActivity(activityId));
+	};
+
+	return (
+		<Tooltip<HTMLButtonElement>
+			renderBody={() => {
+				return "Remove activity and its worklogs";
+			}}
+			renderTarget={(targetProps) => {
+				const { className, ...otherTargetProps } = targetProps;
+
+				return (
+					<button
+						{...otherTargetProps}
+						aria-describedby={otherTargetProps.popoverTarget}
+						className={getClass([className, control, iconButton])}
+						disabled={isBusy}
+						onClick={handleRemoveActivity}
+						type="button"
+					>
+						-
+					</button>
+				);
+			}}
+			targetId={`remove-activity-button-${activityId}`}
+		/>
+	);
+};
+
+export { RemoveActivityButton };

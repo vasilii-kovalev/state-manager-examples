@@ -1,0 +1,5 @@
+{
+	// Type-checks the shared Vite, Linaria, and Vitest helpers in Node. Listed in the root `tsconfig.json` so `tsc -b` covers shared config code.
+	"extends": "./tsconfig.node.json",
+	"include": ["*.ts"]
+}

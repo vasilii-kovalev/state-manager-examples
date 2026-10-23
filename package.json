@@ -1,0 +1,65 @@
+{
+	"name": "state-manager-examples",
+	"private": true,
+	"workspaces": [
+		"apps/*",
+		"packages/*"
+	],
+	"type": "module",
+	"scripts": {
+		"dev:react": "vp -C apps/react dev",
+		"dev:solid": "vp -C apps/solid dev",
+		"build": "vp run --filter ./apps/* --parallel build",
+		"preview:react": "vp -C apps/react preview",
+		"preview:solid": "vp -C apps/solid preview",
+		"format:check": "vp run fmt:check",
+		"format:fix": "vp run fmt:fix",
+		"lint:css:check": "vp run stylelint:check",
+		"lint:css:fix": "vp run stylelint:fix",
+		"lint:markdown:check": "rumdl check .",
+		"lint:markdown:fix": "npm run lint:markdown:check -- --fix",
+		"lint:spell:check": "vp run cspell:check",
+		"lint:ts:check": "vp run lint:check",
+		"lint:ts:fix": "vp run lint:fix",
+		"check-and-fix": "vp run stylelint:fix && npm run lint:markdown:fix && vp run lint:fix && vp run cspell:check && vp run fmt:fix",
+		"test": "vp test",
+		"test:ui": "vp test watch --ui",
+		"test:bench": "vp test bench --run"
+	},
+	"devDependencies": {
+		"@types/node": "22.20.5",
+		"@vitest/ui": "5.0.5",
+		"cspell": "10.4.0",
+		"cspell-check-unused-words": "1.6.3",
+		"oxc-transform-react": "0.152.0",
+		"postcss-styled-syntax": "0.7.4",
+		"rumdl": "0.3.0",
+		"stylelint": "17.16.0",
+		"stylelint-config-standard": "40.0.0",
+		"stylelint-order": "8.1.2",
+		"typescript": "7.0.2",
+		"vite-plus": "1.3.0"
+	},
+	"overrides": {
+		"solid-devtools": {
+			"vite": "$vite"
+		},
+		"vite": "npm:@voidzero-dev/vite-plus-core@1.3.0",
+		"vite-plugin-solid": {
+			"vite": "$vite"
+		},
+		"vitest": "5.0.5"
+	},
+	"devEngines": {
+		"packageManager": {
+			"name": "npm",
+			"version": "^12.0.0",
+			"onFail": "error"
+		},
+		"runtime": {
+			"name": "node",
+			"version": "^22.22.2 || ^24.15.0 || >=26.0.0",
+			"onFail": "error"
+		}
+	}
+}

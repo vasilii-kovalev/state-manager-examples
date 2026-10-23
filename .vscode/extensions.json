@@ -1,5 +1,11 @@
 {
 	"recommendations": [
-		"EditorConfig.EditorConfig"
+		"EditorConfig.EditorConfig",
+		"oxc.oxc-vscode",
+		"rvben.rumdl",
+		"streetsidesoftware.code-spell-checker",
+		"styled-components.vscode-styled-components",
+		"stylelint.vscode-stylelint",
+		"TypeScriptTeam.native-preview"
 	]
 }

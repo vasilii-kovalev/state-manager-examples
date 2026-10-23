@@ -1,0 +1,14 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"target": "ESNext",
+		"lib": ["ESNext", "DOM", "DOM.Iterable"],
+		"types": ["vite/client"],
+		"paths": {
+			"packages/*": ["../../packages/*"]
+		}
+	},
+	// Not used on its own. Workspace `tsconfig.app.json` files extend this and set `include`.
+	"files": [],
+	"exclude": ["${configDir}/src/**/*.test.ts", "${configDir}/src/**/*.test.tsx", "${configDir}/src/**/*.bench.ts"]
+}

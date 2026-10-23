@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"module": "esnext",
+		"skipLibCheck": true,
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		// Interferes with the linter config for inline `type` on exports.
+		"verbatimModuleSyntax": false,
+		"moduleDetection": "force",
+		"noEmit": true,
+		"jsx": "react-jsx",
+		// Oxlint checks unused locals and allows names starting with "_"; TypeScript cannot configure that exception.
+		"noUnusedLocals": false,
+		"noUnusedParameters": true,
+		// No enums, namespaces, or other syntax that would need emit.
+		"erasableSyntaxOnly": true,
+		"noFallthroughCasesInSwitch": true,
+		// Indexed access, implicit returns, and unreachable code match the checks this application was written against.
+		"allowUnreachableCode": false,
+		"noImplicitReturns": true,
+		"noUncheckedIndexedAccess": true
+	}
+}
