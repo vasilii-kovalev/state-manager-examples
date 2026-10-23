@@ -2,7 +2,7 @@ import { type ReactNode } from "react";
 
 import { type DateString, type Duration } from "packages/shared/src/features/dates-and-time/types";
 import { formatDuration } from "packages/shared/src/features/dates-and-time/utilities/format-duration";
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { Tooltip } from "../../../components/tooltip";
 import { Cell } from "./cell";
@@ -33,7 +33,7 @@ const TotalDurationCell = (props: TotalDurationCellProps): ReactNode => {
 					const { className, ...otherTargetProps } = targetProps;
 
 					return (
-						<div {...otherTargetProps} className={getClass([className, totalDurationValue])}>
+						<div {...otherTargetProps} className={buildClass(className, totalDurationValue)}>
 							<TotalDuration duration={duration} />
 						</div>
 					);

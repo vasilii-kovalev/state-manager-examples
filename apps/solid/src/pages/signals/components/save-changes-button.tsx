@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/solid-query";
 import { type JSX } from "solid-js";
 
 import { QUERY_KEYS } from "packages/shared/src/constants";
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { Tooltip } from "../../../components/tooltip";
 import { useIsBusy } from "../../../hooks/use-is-busy";
@@ -38,7 +38,7 @@ const SaveChangesButton = (): JSX.Element => {
 					<button
 						{...targetProps}
 						aria-describedby={targetProps.popoverTarget}
-						class={getClass([targetProps.class, control])}
+						class={buildClass(targetProps.class, control)}
 						disabled={!selectHasChanges() || isBusy()}
 						onClick={() => {
 							saveChangesMutation.mutate();

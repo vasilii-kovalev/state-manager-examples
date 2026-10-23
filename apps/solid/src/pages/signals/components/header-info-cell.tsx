@@ -1,6 +1,6 @@
 import { type JSX } from "solid-js";
 
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { FlexRow } from "../../../components/flex-row";
 import { cell, infoColumn } from "./cell.css";
@@ -8,7 +8,7 @@ import { normLabel, reportedLabel, reportedNorm } from "./header-info-cell.css";
 
 const HeaderInfoCell = (): JSX.Element => {
 	return (
-		<th class={getClass([cell, infoColumn])}>
+		<th class={buildClass(cell, infoColumn)}>
 			<FlexRow>
 				<div class={reportedNorm}>
 					<span class={reportedLabel}>Reported</span>

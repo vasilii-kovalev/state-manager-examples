@@ -1,6 +1,6 @@
 import { type JSX, Show } from "solid-js";
 
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { Tooltip } from "../../../components/tooltip";
 import { duplicateIcon, duplicatePlaceholder } from "./duplicated-name-icon.css";
@@ -29,7 +29,7 @@ const DuplicatedNameIcon = (props: DuplicatedNameIconProps): JSX.Element => {
 						<div
 							{...targetProps}
 							aria-describedby={targetProps.popoverTarget}
-							class={getClass([targetProps.class, duplicateIcon])}
+							class={buildClass(targetProps.class, duplicateIcon)}
 						>
 							!
 						</div>

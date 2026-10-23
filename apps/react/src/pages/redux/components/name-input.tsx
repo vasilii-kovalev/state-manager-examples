@@ -1,7 +1,7 @@
 import { type ChangeEventHandler, type Dispatch, type ReactNode, type SetStateAction } from "react";
 import { type GenericSchema, safeParse } from "valibot";
 
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 import { isEmpty } from "packages/shared/src/utilities/is-empty";
 
 import { useIsBusy } from "../../../hooks/use-is-busy";
@@ -60,7 +60,7 @@ const NameInput = <Name extends string>({
 
 	return (
 		<input
-			className={getClass([control, className])}
+			className={buildClass(control, className)}
 			disabled={isBusy}
 			onBlur={handleBlur}
 			onChange={handleNameChange}

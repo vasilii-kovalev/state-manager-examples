@@ -1,6 +1,6 @@
 import { type ComponentProps, type ReactNode } from "react";
 
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 import { isEmpty } from "packages/shared/src/utilities/is-empty";
 
 import { useApplicationSelector } from "../store";
@@ -24,7 +24,7 @@ const Table = (props: TableProps): ReactNode => {
 	}
 
 	return (
-		<table className={getClass([className, table])}>
+		<table className={buildClass(className, table)}>
 			<thead>
 				<HeaderRow />
 			</thead>

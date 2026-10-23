@@ -1,6 +1,6 @@
 import { type JSX } from "solid-js";
 
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { Tooltip } from "../../../components/tooltip";
 import { useIsBusy } from "../../../hooks/use-is-busy";
@@ -38,7 +38,7 @@ const AddGroupsButton = (): JSX.Element => {
 					<button
 						{...targetProps}
 						aria-describedby={targetProps.popoverTarget}
-						class={getClass([targetProps.class, control, iconButton, iconButtonCompact])}
+						class={buildClass(targetProps.class, control, iconButton, iconButtonCompact)}
 						disabled={isBusy()}
 						onClick={handleAddGroups}
 						type="button"

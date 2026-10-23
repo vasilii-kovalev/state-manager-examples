@@ -3,7 +3,7 @@ import { type ReactNode } from "react";
 import { type Duration } from "packages/shared/src/features/dates-and-time/types";
 import { formatDuration } from "packages/shared/src/features/dates-and-time/utilities/format-duration";
 import { REPORTED_TO_NORM_PERCENT_SCALE } from "packages/shared/src/features/page/constants";
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { Tooltip } from "../../../components/tooltip";
 import { useApplicationSelector } from "../store";
@@ -38,7 +38,7 @@ const ReportedDurationOfNorm = (props: ReportedDurationOfNormProps): ReactNode =
 				const { className, ...otherTargetProps } = targetProps;
 
 				return (
-					<div {...otherTargetProps} className={getClass([className, reportedDuration])}>
+					<div {...otherTargetProps} className={buildClass(className, reportedDuration)}>
 						<TotalDuration className={reportedValue} duration={reported} shouldRenderZero />
 						/
 						<TotalDuration className={normValue} duration={normTotal} shouldRenderZero />

@@ -1,7 +1,7 @@
 import { type JSX, type Setter } from "solid-js";
 import { type GenericSchema, safeParse } from "valibot";
 
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 import { isEmpty } from "packages/shared/src/utilities/is-empty";
 
 import { useIsBusy } from "../../../hooks/use-is-busy";
@@ -54,7 +54,7 @@ const NameInput = <Name extends string>(props: NameInputProps<Name>): JSX.Elemen
 
 	return (
 		<input
-			class={getClass([control, props.class])}
+			class={buildClass(control, props.class)}
 			disabled={isBusy()}
 			onBlur={handleBlur}
 			onChange={handleNameChange}

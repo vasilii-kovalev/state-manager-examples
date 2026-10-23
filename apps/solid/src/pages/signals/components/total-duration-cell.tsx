@@ -2,7 +2,7 @@ import { type JSX, mergeProps } from "solid-js";
 
 import { type DateString, type Duration } from "packages/shared/src/features/dates-and-time/types";
 import { formatDuration } from "packages/shared/src/features/dates-and-time/utilities/format-duration";
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { Tooltip } from "../../../components/tooltip";
 import { Cell } from "./cell";
@@ -36,7 +36,7 @@ const TotalDurationCell = (props: TotalDurationCellProps): JSX.Element => {
 				}}
 				renderTarget={(targetProps) => {
 					return (
-						<div {...targetProps} class={getClass([targetProps.class, totalDurationValue])}>
+						<div {...targetProps} class={buildClass(targetProps.class, totalDurationValue)}>
 							<TotalDuration duration={mergedProps.duration} />
 						</div>
 					);

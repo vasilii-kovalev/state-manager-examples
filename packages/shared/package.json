@@ -5,6 +5,7 @@
 	"type": "module",
 	"sideEffects": false,
 	"dependencies": {
+		"clsx": "2.1.1",
 		"date-fns": "4.4.0",
 		"es-toolkit": "1.52.0",
 		"nanoid": "6.0.2",

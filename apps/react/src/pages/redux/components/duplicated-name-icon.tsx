@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { Tooltip } from "../../../components/tooltip";
 import { duplicateIcon, duplicatePlaceholder } from "./duplicated-name-icon.css";
@@ -31,7 +31,7 @@ const DuplicatedNameIcon = (props: DuplicatedNameIconProps): ReactNode => {
 					<div
 						{...otherTargetProps}
 						aria-describedby={otherTargetProps.popoverTarget}
-						className={getClass([className, duplicateIcon])}
+						className={buildClass(className, duplicateIcon)}
 					>
 						!
 					</div>

@@ -8,7 +8,7 @@ import { type GroupId } from "packages/shared/src/features/group/types";
 import { WorklogInputSchema } from "packages/shared/src/features/page/schemas";
 import { getNewWorklog } from "packages/shared/src/features/page/utilities/get-new-worklog";
 import { type WorklogId } from "packages/shared/src/features/worklog/types";
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 import { isUndefined } from "packages/shared/src/utilities/is-undefined";
 
 import { useIsBusy } from "../../../hooks/use-is-busy";
@@ -92,7 +92,7 @@ const WorklogInput = (props: WorklogCellProps): JSX.Element => {
 
 	return (
 		<input
-			class={getClass([control, borderlessControl, worklogInput])}
+			class={buildClass(control, borderlessControl, worklogInput)}
 			disabled={isBusy()}
 			inputMode="numeric"
 			onBlur={handleBlur}

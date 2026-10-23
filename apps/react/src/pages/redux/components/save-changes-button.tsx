@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { type ReactNode } from "react";
 
 import { QUERY_KEYS } from "packages/shared/src/constants";
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { Tooltip } from "../../../components/tooltip";
 import { useIsBusy } from "../../../hooks/use-is-busy";
@@ -45,7 +45,7 @@ const SaveChangesButton = (): ReactNode => {
 					<button
 						{...otherTargetProps}
 						aria-describedby={otherTargetProps.popoverTarget}
-						className={getClass([className, control])}
+						className={buildClass(className, control)}
 						disabled={!hasChanges || isBusy}
 						onClick={() => {
 							handleSaveChanges();

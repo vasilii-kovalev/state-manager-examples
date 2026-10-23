@@ -1,6 +1,6 @@
 import { type ReactNode } from "react";
 
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 
 import { Tooltip } from "../../../components/tooltip";
 import { useIsBusy } from "../../../hooks/use-is-busy";
@@ -45,7 +45,7 @@ const AddGroupsButton = (): ReactNode => {
 					<button
 						{...otherTargetProps}
 						aria-describedby={otherTargetProps.popoverTarget}
-						className={getClass([className, control, iconButton, iconButtonCompact])}
+						className={buildClass(className, control, iconButton, iconButtonCompact)}
 						disabled={isBusy}
 						onClick={handleAddGroups}
 						type="button"

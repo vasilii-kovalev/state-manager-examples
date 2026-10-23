@@ -1,6 +1,6 @@
 import { type ComponentProps, type JSX, Show } from "solid-js";
 
-import { getClass } from "packages/shared/src/utilities/get-class";
+import { buildClass } from "packages/shared/src/utilities/build-class";
 import { isEmpty } from "packages/shared/src/utilities/is-empty";
 
 import { selectCalendar } from "../signals/page/derived";
@@ -18,7 +18,7 @@ type TableProps = ComponentProps<"table">;
 const Table = (props: TableProps): JSX.Element => {
 	return (
 		<Show fallback={null} when={!isCalendarEmpty()}>
-			<table class={getClass([props.class, table])}>
+			<table class={buildClass(props.class, table)}>
 				<thead>
 					<HeaderRow />
 				</thead>
