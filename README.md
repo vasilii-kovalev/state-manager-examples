@@ -147,6 +147,58 @@ interface PageState {
 - [Solid](./apps/solid)
   - [Signals](./apps/solid/src/pages/signals)
 
+## Installation
+
+### Node.js and npm
+
+The root `package.json` `devEngines` field requires:
+
+- Node.js `^22.22.2 || ^24.15.0 || >=26.0.0`
+- npm `^12.0.0`
+
+Incompatible versions fail at install.
+
+### Setup
+
+From the repository root, run the following commands to install dependencies:
+
+```sh
+npm ci
+```
+
+## Scripts
+
+- `dev:react` — Run the React application locally.
+- `dev:solid` — Run the Solid application locally.
+- `prod:build` — Build all applications.
+- `prod:preview:react` — Serve the built React application locally.
+- `prod:preview:solid` — Serve the built Solid application locally.
+- `format:check` — Check formatting.
+- `format:fix` — Apply formatting.
+- `lint:css:check` — Check CSS and Linaria styles.
+- `lint:css:fix` — Fix CSS and Linaria styles.
+- `lint:markdown:check` — Check Markdown.
+- `lint:markdown:fix` — Fix Markdown.
+- `lint:spell:check` — Check spelling and report unused words in the CSpell configuration.
+- `lint:ts:check` — Lint TypeScript and report type errors.
+- `lint:ts:fix` — Apply TypeScript lint fixes.
+- `check-and-fix` — Run project checks and apply automatic fixes.
+- `test` — Run the test suite.
+- `test:ui` — Run tests with the Vitest UI.
+- `test:bench` — Run benchmarks.
+
+### Recommended extensions
+
+The workspace recommends these extensions. The same list is in [`.vscode/extensions.json`](./.vscode/extensions.json):
+
+- Code Spell Checker
+- EditorConfig
+- Oxc
+- rumdl
+- Stylelint
+- TypeScript 7/TypeScript (Native Preview)
+- vscode-styled-components
+
 ## License
 
 [MIT](./LICENSE)

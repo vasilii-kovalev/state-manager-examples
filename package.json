@@ -9,9 +9,9 @@
 	"scripts": {
 		"dev:react": "vp -C apps/react dev",
 		"dev:solid": "vp -C apps/solid dev",
-		"build": "vp run --filter ./apps/* --parallel build",
-		"preview:react": "vp -C apps/react preview",
-		"preview:solid": "vp -C apps/solid preview",
+		"prod:build": "vp run --filter ./apps/* --parallel build",
+		"prod:preview:react": "vp -C apps/react preview",
+		"prod:preview:solid": "vp -C apps/solid preview",
 		"format:check": "vp run fmt:check",
 		"format:fix": "vp run fmt:fix",
 		"lint:css:check": "vp run stylelint:check",
