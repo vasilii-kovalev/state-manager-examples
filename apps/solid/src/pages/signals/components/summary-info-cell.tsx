@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { FlexRow } from "../../../components/flex-row";
 import { AddGroupButton } from "./add-group-button";
@@ -11,7 +11,7 @@ import { SelectGroupsCheckbox } from "./select-groups-checkbox";
 import { summaryPlaceholder } from "./summary-info-cell.css";
 import { SummaryReportedDurationOfNorm } from "./summary-reported-duration-of-norm";
 
-const SummaryInfoCell: Component = () => {
+const SummaryInfoCell = (): JSX.Element => {
 	return (
 		<Cell class={infoColumn}>
 			<FlexRow class={infoRow}>

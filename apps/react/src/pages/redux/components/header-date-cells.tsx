@@ -1,10 +1,10 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { useApplicationSelector } from "../store";
 import { selectCalendar } from "../store/page/selectors";
 import { HeaderDateCell } from "./header-date-cell";
 
-const HeaderDateCells: FC = () => {
+const HeaderDateCells = (): ReactNode => {
 	const calendar = useApplicationSelector((state) => {
 		return selectCalendar(state.page);
 	});

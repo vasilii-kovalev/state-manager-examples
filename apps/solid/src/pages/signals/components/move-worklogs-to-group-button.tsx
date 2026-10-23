@@ -1,4 +1,4 @@
-import { type Component, Show } from "solid-js";
+import { type JSX, Show } from "solid-js";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -13,7 +13,7 @@ interface MoveWorklogsToGroupButtonProps {
 	groupId: GroupId;
 }
 
-const MoveWorklogsToGroupButton: Component<MoveWorklogsToGroupButtonProps> = (props) => {
+const MoveWorklogsToGroupButton = (props: MoveWorklogsToGroupButtonProps): JSX.Element => {
 	const isBusy = useIsBusy();
 
 	const handleMoveWorklogsToGroup = (): void => {

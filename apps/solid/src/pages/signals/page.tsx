@@ -1,4 +1,4 @@
-import { type Component, onCleanup } from "solid-js";
+import { type JSX, onCleanup } from "solid-js";
 
 import { PAGE_STATE_DEFAULT } from "packages/shared/src/features/page/constants";
 import { convertPageDataToPageState } from "packages/shared/src/features/page/utilities/convert-page-data-to-page-state";
@@ -14,7 +14,7 @@ import { tableOffset } from "./components/table.css";
 import { resetState } from "./utilities/reset-state";
 import { setInitialState } from "./utilities/set-initial-state";
 
-const SignalsPage: Component = () => {
+const SignalsPage = (): JSX.Element => {
 	usePageData({
 		onSuccess: (pageData) => {
 			try {

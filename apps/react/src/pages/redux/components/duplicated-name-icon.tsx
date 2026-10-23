@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 
@@ -11,7 +11,7 @@ interface DuplicatedNameIconProps {
 	tooltipIconId: string;
 }
 
-const DuplicatedNameIcon: FC<DuplicatedNameIconProps> = (props) => {
+const DuplicatedNameIcon = (props: DuplicatedNameIconProps): ReactNode => {
 	const { hasDuplicate, tooltipBodyText, tooltipIconId } = props;
 
 	if (!hasDuplicate) {

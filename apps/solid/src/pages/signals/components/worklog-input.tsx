@@ -1,4 +1,4 @@
-import { type Component, createEffect, createSignal, type JSX } from "solid-js";
+import { createEffect, createSignal, type JSX } from "solid-js";
 import { safeParse } from "valibot";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
@@ -34,7 +34,7 @@ interface WorklogCellProps {
 	groupId: GroupId;
 }
 
-const WorklogInput: Component<WorklogCellProps> = (props) => {
+const WorklogInput = (props: WorklogCellProps): JSX.Element => {
 	const isBusy = useIsBusy();
 
 	const [durationLocal, setDurationLocal] = createSignal<string>(getInitialDurationLocalValue());

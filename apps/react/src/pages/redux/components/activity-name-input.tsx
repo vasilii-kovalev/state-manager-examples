@@ -1,4 +1,4 @@
-import { type FC, useState } from "react";
+import { type ReactNode, useState } from "react";
 
 import { ActivityNameSchema } from "packages/shared/src/features/activity/schemas";
 import { type ActivityId, type ActivityName } from "packages/shared/src/features/activity/types";
@@ -17,7 +17,7 @@ interface ActivityNameInputProps {
 	name: ActivityName;
 }
 
-const ActivityNameInput: FC<ActivityNameInputProps> = (props) => {
+const ActivityNameInput = (props: ActivityNameInputProps): ReactNode => {
 	const { activityId, groupId, name } = props;
 
 	const dispatch = useApplicationDispatch();

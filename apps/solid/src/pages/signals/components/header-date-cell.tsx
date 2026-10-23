@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type DateString } from "packages/shared/src/features/dates-and-time/types";
 import { formatDayWithLeadingZero } from "packages/shared/src/features/dates-and-time/utilities/format-day-with-leading-zero";
@@ -12,7 +12,7 @@ interface HeaderDateCellProps {
 	date: DateString;
 }
 
-const HeaderDateCell: Component<HeaderDateCellProps> = (props) => {
+const HeaderDateCell = (props: HeaderDateCellProps): JSX.Element => {
 	return (
 		<th class={cell}>
 			<FlexColumn class={headerDate}>

@@ -1,6 +1,6 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
-const PageTitle: Component = () => {
+const PageTitle = (): JSX.Element => {
 	return <h1>Signals page</h1>;
 };
 

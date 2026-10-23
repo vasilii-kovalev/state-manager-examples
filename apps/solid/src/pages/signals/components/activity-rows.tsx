@@ -1,4 +1,4 @@
-import { type Component, For } from "solid-js";
+import { For, type JSX } from "solid-js";
 
 import { type Activity } from "packages/shared/src/features/activity/types";
 import { type GroupId } from "packages/shared/src/features/group/types";
@@ -10,7 +10,7 @@ interface ActivityRowsProps {
 	groupId: GroupId;
 }
 
-const ActivityRows: Component<ActivityRowsProps> = (props) => {
+const ActivityRows = (props: ActivityRowsProps): JSX.Element => {
 	const activities = (): Array<Activity> => {
 		return selectActivitiesForGroup(props.groupId);
 	};

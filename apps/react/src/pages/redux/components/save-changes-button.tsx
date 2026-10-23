@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { QUERY_KEYS } from "packages/shared/src/constants";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -11,7 +11,7 @@ import { useApplicationDispatch, useApplicationSelector } from "../store";
 import { selectHasChanges } from "../store/page/selectors";
 import { savePageState } from "../utilities/save-page-state";
 
-const SaveChangesButton: FC = () => {
+const SaveChangesButton = (): ReactNode => {
 	const dispatch = useApplicationDispatch();
 
 	const hasChanges = useApplicationSelector((state) => {

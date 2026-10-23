@@ -1,4 +1,4 @@
-import { type Component, createMemo, Show } from "solid-js";
+import { createMemo, type JSX, Show } from "solid-js";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 import { type DateString, type Duration } from "packages/shared/src/features/dates-and-time/types";
@@ -17,7 +17,7 @@ interface WorklogCellProps {
 	norm: Duration;
 }
 
-const WorklogCell: Component<WorklogCellProps> = (props) => {
+const WorklogCell = (props: WorklogCellProps): JSX.Element => {
 	const worklog = createMemo(() => {
 		return selectWorklogsForActivityForDate(props.activityId, props.date);
 	});

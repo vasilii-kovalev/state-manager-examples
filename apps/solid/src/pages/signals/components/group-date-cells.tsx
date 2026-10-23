@@ -1,4 +1,4 @@
-import { type Component, For } from "solid-js";
+import { For, type JSX } from "solid-js";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 
@@ -9,7 +9,7 @@ interface GroupDateCellsProps {
 	groupId: GroupId;
 }
 
-const GroupDateCells: Component<GroupDateCellsProps> = (props) => {
+const GroupDateCells = (props: GroupDateCellsProps): JSX.Element => {
 	return (
 		<For each={selectCalendar()}>
 			{(calendarDay) => {

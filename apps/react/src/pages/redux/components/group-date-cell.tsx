@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type DateString } from "packages/shared/src/features/dates-and-time/types";
 import { type GroupId } from "packages/shared/src/features/group/types";
@@ -12,7 +12,7 @@ interface GroupDateCellProps {
 	date: DateString;
 }
 
-const GroupDateCell: FC<GroupDateCellProps> = (props) => {
+const GroupDateCell = (props: GroupDateCellProps): ReactNode => {
 	const { groupId, date } = props;
 
 	const reportedDuration = useApplicationSelector((state) => {

@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type Activity } from "packages/shared/src/features/activity/types";
 
@@ -16,7 +16,7 @@ interface ActivityInfoCellProps {
 	activity: Activity;
 }
 
-const ActivityInfoCell: FC<ActivityInfoCellProps> = (props) => {
+const ActivityInfoCell = (props: ActivityInfoCellProps): ReactNode => {
 	const { activity } = props;
 
 	return (

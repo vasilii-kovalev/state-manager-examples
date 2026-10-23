@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 
@@ -19,7 +19,7 @@ const handleAddGroups = (): void => {
 	});
 };
 
-const AddGroupsButton: Component = () => {
+const AddGroupsButton = (): JSX.Element => {
 	const isBusy = useIsBusy();
 
 	return (

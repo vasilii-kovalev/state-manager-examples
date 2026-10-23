@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type ActivityId, type ActivityName } from "packages/shared/src/features/activity/types";
 import { type GroupId } from "packages/shared/src/features/group/types";
@@ -12,7 +12,7 @@ interface DuplicatedActivityNameIconProps {
 	groupId: GroupId;
 }
 
-const DuplicatedActivityNameIcon: Component<DuplicatedActivityNameIconProps> = (props) => {
+const DuplicatedActivityNameIcon = (props: DuplicatedActivityNameIconProps): JSX.Element => {
 	const hasDuplicate = (): boolean => {
 		const existingActivityNames = selectActivityNamesInGroup(props.groupId, props.activityId);
 

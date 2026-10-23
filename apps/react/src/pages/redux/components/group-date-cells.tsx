@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 
@@ -10,7 +10,7 @@ interface GroupDateCellsProps {
 	groupId: GroupId;
 }
 
-const GroupDateCells: FC<GroupDateCellsProps> = (props) => {
+const GroupDateCells = (props: GroupDateCellsProps): ReactNode => {
 	const { groupId } = props;
 
 	const calendar = useApplicationSelector((state) => {

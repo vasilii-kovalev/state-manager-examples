@@ -1,9 +1,9 @@
-import { type Component, For } from "solid-js";
+import { For, type JSX } from "solid-js";
 
 import { selectCalendar } from "../signals/page/derived";
 import { SummaryDateCell } from "./summary-date-cell";
 
-const SummaryDateCells: Component = () => {
+const SummaryDateCells = (): JSX.Element => {
 	return (
 		<For each={selectCalendar()}>
 			{(calendarDay) => {

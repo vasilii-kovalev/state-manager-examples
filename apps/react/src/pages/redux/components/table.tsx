@@ -1,4 +1,4 @@
-import { type ComponentProps, type FC } from "react";
+import { type ComponentProps, type ReactNode } from "react";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 import { isEmpty } from "packages/shared/src/utilities/is-empty";
@@ -12,7 +12,7 @@ import { table } from "./table.css";
 
 type TableProps = ComponentProps<"table">;
 
-const Table: FC<TableProps> = (props) => {
+const Table = (props: TableProps): ReactNode => {
 	const { className } = props;
 
 	const calendar = useApplicationSelector((state) => {

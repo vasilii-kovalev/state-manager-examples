@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 import { type Duration } from "packages/shared/src/features/dates-and-time/types";
@@ -10,7 +10,7 @@ interface ActivityReportedDurationOfNormProps {
 	activityId: ActivityId;
 }
 
-const ActivityReportedDurationOfNorm: Component<ActivityReportedDurationOfNormProps> = (props) => {
+const ActivityReportedDurationOfNorm = (props: ActivityReportedDurationOfNormProps): JSX.Element => {
 	const reportedDurationForActivity = (): Duration => {
 		return selectReportedDurationForActivity(props.activityId);
 	};

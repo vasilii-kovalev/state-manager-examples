@@ -1,6 +1,6 @@
-import { type FC, type PropsWithChildren } from "react";
+import { type PropsWithChildren, type ReactNode } from "react";
 
-const Row: FC<PropsWithChildren> = (props) => {
+const Row = (props: PropsWithChildren): ReactNode => {
 	const { children } = props;
 
 	return <tr>{children}</tr>;

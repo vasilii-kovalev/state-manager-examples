@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -13,7 +13,7 @@ interface RemoveActivityButtonProps {
 	activityId: ActivityId;
 }
 
-const RemoveActivityButton: FC<RemoveActivityButtonProps> = (props) => {
+const RemoveActivityButton = (props: RemoveActivityButtonProps): ReactNode => {
 	const { activityId } = props;
 
 	const dispatch = useApplicationDispatch();

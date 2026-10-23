@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 
@@ -11,7 +11,7 @@ interface SelectGroupCheckboxProps {
 	groupId: GroupId;
 }
 
-const SelectGroupCheckbox: FC<SelectGroupCheckboxProps> = (props) => {
+const SelectGroupCheckbox = (props: SelectGroupCheckboxProps): ReactNode => {
 	const { groupId } = props;
 
 	const dispatch = useApplicationDispatch();

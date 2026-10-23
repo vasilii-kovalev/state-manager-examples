@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -14,7 +14,7 @@ interface MoveWorklogsToGroupButtonProps {
 	groupId: GroupId;
 }
 
-const MoveWorklogsToGroupButton: FC<MoveWorklogsToGroupButtonProps> = (props) => {
+const MoveWorklogsToGroupButton = (props: MoveWorklogsToGroupButtonProps): ReactNode => {
 	const { groupId } = props;
 
 	const dispatch = useApplicationDispatch();

@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type GroupId, type GroupName } from "packages/shared/src/features/group/types";
 
@@ -11,7 +11,7 @@ interface DuplicatedGroupNameIconProps {
 	groupId: GroupId;
 }
 
-const DuplicatedGroupNameIcon: FC<DuplicatedGroupNameIconProps> = (props) => {
+const DuplicatedGroupNameIcon = (props: DuplicatedGroupNameIconProps): ReactNode => {
 	const { name, groupId } = props;
 
 	const existingGroupNames = useApplicationSelector((state) => {

@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { SelectEntityCheckbox } from "../../../components/select-entity-checkbox";
 import { selectHasWorklogs, selectSelectionStateForGroups } from "../signals/page/derived";
@@ -10,7 +10,7 @@ const handleSelectionChange = (isSelectedNext: boolean): void => {
 	});
 };
 
-const SelectGroupsCheckbox: Component = () => {
+const SelectGroupsCheckbox = (): JSX.Element => {
 	return (
 		<SelectEntityCheckbox
 			isDisabled={!selectHasWorklogs()}

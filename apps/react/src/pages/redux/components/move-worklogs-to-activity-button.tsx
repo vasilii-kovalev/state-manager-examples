@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -14,7 +14,7 @@ interface MoveWorklogsToActivityButtonProps {
 	activityId: ActivityId;
 }
 
-const MoveWorklogsToActivityButton: FC<MoveWorklogsToActivityButtonProps> = (props) => {
+const MoveWorklogsToActivityButton = (props: MoveWorklogsToActivityButtonProps): ReactNode => {
 	const { activityId } = props;
 
 	const dispatch = useApplicationDispatch();

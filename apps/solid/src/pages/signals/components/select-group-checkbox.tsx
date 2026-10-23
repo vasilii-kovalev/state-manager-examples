@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 import { type EntitySelectionState } from "packages/shared/src/features/page/types";
@@ -11,7 +11,7 @@ interface SelectGroupCheckboxProps {
 	groupId: GroupId;
 }
 
-const SelectGroupCheckbox: Component<SelectGroupCheckboxProps> = (props) => {
+const SelectGroupCheckbox = (props: SelectGroupCheckboxProps): JSX.Element => {
 	const selectionState = (): EntitySelectionState => {
 		return selectSelectionStateForGroup(props.groupId);
 	};

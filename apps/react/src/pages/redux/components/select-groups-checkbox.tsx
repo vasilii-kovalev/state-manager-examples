@@ -1,11 +1,11 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { SelectEntityCheckbox } from "../../../components/select-entity-checkbox";
 import { useApplicationDispatch, useApplicationSelector } from "../store";
 import { selectHasWorklogs, selectSelectionStateForGroups } from "../store/page/selectors";
 import { updateAllWorklogsSelection } from "../utilities/update-all-worklogs-selection";
 
-const SelectGroupsCheckbox: FC = () => {
+const SelectGroupsCheckbox = (): ReactNode => {
 	const dispatch = useApplicationDispatch();
 
 	const selectionState = useApplicationSelector((state) => {

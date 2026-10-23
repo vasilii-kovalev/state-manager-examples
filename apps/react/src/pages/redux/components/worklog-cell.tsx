@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 import { type DateString, type Duration } from "packages/shared/src/features/dates-and-time/types";
@@ -18,7 +18,7 @@ interface WorklogCellProps {
 	norm: Duration;
 }
 
-const WorklogCell: FC<WorklogCellProps> = (props) => {
+const WorklogCell = (props: WorklogCellProps): ReactNode => {
 	const { activityId, date, groupId, norm } = props;
 
 	const worklog = useApplicationSelector((state) => {

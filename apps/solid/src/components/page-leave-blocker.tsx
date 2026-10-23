@@ -1,13 +1,13 @@
 // The deprecation of `useBlocker` is set incorrectly.
 /* eslint-disable import-x/no-deprecated */
 import { useBlocker } from "@tanstack/solid-router";
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 interface PageLeaveBlockerProps {
 	hasChanges: boolean;
 }
 
-const PageLeaveBlocker: Component<PageLeaveBlockerProps> = (props) => {
+const PageLeaveBlocker = (props: PageLeaveBlockerProps): JSX.Element => {
 	useBlocker({
 		enableBeforeUnload: () => {
 			return props.hasChanges;

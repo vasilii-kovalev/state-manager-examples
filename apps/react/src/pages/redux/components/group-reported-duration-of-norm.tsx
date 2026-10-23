@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 
@@ -10,7 +10,7 @@ interface GroupReportedDurationOfNormProps {
 	groupId: GroupId;
 }
 
-const GroupReportedDurationOfNorm: FC<GroupReportedDurationOfNormProps> = (props) => {
+const GroupReportedDurationOfNorm = (props: GroupReportedDurationOfNormProps): ReactNode => {
 	const { groupId } = props;
 
 	const reportedDurationForGroup = useApplicationSelector((state) => {

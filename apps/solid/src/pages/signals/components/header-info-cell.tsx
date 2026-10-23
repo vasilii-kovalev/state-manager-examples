@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 
@@ -6,7 +6,7 @@ import { FlexRow } from "../../../components/flex-row";
 import { cell, infoColumn } from "./cell.css";
 import { normLabel, reportedLabel, reportedNorm } from "./header-info-cell.css";
 
-const HeaderInfoCell: Component = () => {
+const HeaderInfoCell = (): JSX.Element => {
 	return (
 		<th class={getClass([cell, infoColumn])}>
 			<FlexRow>

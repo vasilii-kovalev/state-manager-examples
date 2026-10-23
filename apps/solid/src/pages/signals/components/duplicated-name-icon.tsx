@@ -1,4 +1,4 @@
-import { type Component, type JSX, Show } from "solid-js";
+import { type JSX, Show } from "solid-js";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 
@@ -11,7 +11,7 @@ interface DuplicatedNameIconProps {
 	tooltipIconId: string;
 }
 
-const DuplicatedNameIcon: Component<DuplicatedNameIconProps> = (props) => {
+const DuplicatedNameIcon = (props: DuplicatedNameIconProps): JSX.Element => {
 	return (
 		<Show
 			fallback={

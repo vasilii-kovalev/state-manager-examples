@@ -1,4 +1,4 @@
-import { type Component, createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, type JSX } from "solid-js";
 
 import { GroupNameSchema } from "packages/shared/src/features/group/schemas";
 import { type GroupId, type GroupName } from "packages/shared/src/features/group/types";
@@ -14,7 +14,7 @@ interface GroupNameInputProps {
 	name: GroupName;
 }
 
-const GroupNameInput: Component<GroupNameInputProps> = (props) => {
+const GroupNameInput = (props: GroupNameInputProps): JSX.Element => {
 	const [nameLocal, setNameLocal] = createSignal<string>("");
 
 	createEffect(() => {

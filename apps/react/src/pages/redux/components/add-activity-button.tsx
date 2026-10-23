@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -13,7 +13,7 @@ interface AddActivityButtonProps {
 	groupId: GroupId;
 }
 
-const AddActivityButton: FC<AddActivityButtonProps> = (props) => {
+const AddActivityButton = (props: AddActivityButtonProps): ReactNode => {
 	const { groupId } = props;
 
 	const dispatch = useApplicationDispatch();

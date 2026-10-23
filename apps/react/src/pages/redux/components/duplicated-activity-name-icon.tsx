@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type ActivityId, type ActivityName } from "packages/shared/src/features/activity/types";
 import { type GroupId } from "packages/shared/src/features/group/types";
@@ -13,7 +13,7 @@ interface DuplicatedActivityNameIconProps {
 	groupId: GroupId;
 }
 
-const DuplicatedActivityNameIcon: FC<DuplicatedActivityNameIconProps> = (props) => {
+const DuplicatedActivityNameIcon = (props: DuplicatedActivityNameIconProps): ReactNode => {
 	const { activityId, name, groupId } = props;
 
 	const existingActivityNames = useApplicationSelector((state) => {

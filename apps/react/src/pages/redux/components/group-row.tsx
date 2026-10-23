@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type Group } from "packages/shared/src/features/group/types";
 
@@ -10,7 +10,7 @@ interface GroupRowProps {
 	group: Group;
 }
 
-const GroupRow: FC<GroupRowProps> = (props) => {
+const GroupRow = (props: GroupRowProps): ReactNode => {
 	const { group } = props;
 
 	return (

@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type Activity } from "packages/shared/src/features/activity/types";
 
@@ -16,7 +16,7 @@ interface ActivityInfoCellProps {
 	activity: Activity;
 }
 
-const ActivityInfoCell: Component<ActivityInfoCellProps> = (props) => {
+const ActivityInfoCell = (props: ActivityInfoCellProps): JSX.Element => {
 	return (
 		<Cell class={infoColumn}>
 			<FlexRow class={infoRow}>

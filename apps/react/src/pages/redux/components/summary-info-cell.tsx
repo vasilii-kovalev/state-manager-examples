@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { FlexRow } from "../../../components/flex-row";
 import { AddGroupButton } from "./add-group-button";
@@ -11,7 +11,7 @@ import { SelectGroupsCheckbox } from "./select-groups-checkbox";
 import { summaryPlaceholder } from "./summary-info-cell.css";
 import { SummaryReportedDurationOfNorm } from "./summary-reported-duration-of-norm";
 
-const SummaryInfoCell: FC = () => {
+const SummaryInfoCell = (): ReactNode => {
 	return (
 		<Cell className={infoColumn}>
 			<FlexRow className={infoRow}>

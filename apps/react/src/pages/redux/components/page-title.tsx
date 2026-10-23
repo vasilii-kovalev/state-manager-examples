@@ -1,6 +1,6 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
-const PageTitle: FC = () => {
+const PageTitle = (): ReactNode => {
 	return <h1>Redux page</h1>;
 };
 

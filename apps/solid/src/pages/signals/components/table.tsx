@@ -1,4 +1,4 @@
-import { type Component, type ComponentProps, Show } from "solid-js";
+import { type ComponentProps, type JSX, Show } from "solid-js";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 import { isEmpty } from "packages/shared/src/utilities/is-empty";
@@ -15,7 +15,7 @@ const isCalendarEmpty = (): boolean => {
 
 type TableProps = ComponentProps<"table">;
 
-const Table: Component<TableProps> = (props) => {
+const Table = (props: TableProps): JSX.Element => {
 	return (
 		<Show fallback={null} when={!isCalendarEmpty()}>
 			<table class={getClass([props.class, table])}>

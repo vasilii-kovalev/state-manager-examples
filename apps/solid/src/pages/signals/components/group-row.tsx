@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type Group } from "packages/shared/src/features/group/types";
 
@@ -10,7 +10,7 @@ interface GroupRowProps {
 	group: Group;
 }
 
-const GroupRow: Component<GroupRowProps> = (props) => {
+const GroupRow = (props: GroupRowProps): JSX.Element => {
 	return (
 		<Row>
 			<GroupInfoCell group={props.group} />

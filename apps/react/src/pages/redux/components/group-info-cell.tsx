@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type Group } from "packages/shared/src/features/group/types";
 
@@ -17,7 +17,7 @@ interface GroupInfoCellProps {
 	group: Group;
 }
 
-const GroupInfoCell: FC<GroupInfoCellProps> = (props) => {
+const GroupInfoCell = (props: GroupInfoCellProps): ReactNode => {
 	const { group } = props;
 
 	return (

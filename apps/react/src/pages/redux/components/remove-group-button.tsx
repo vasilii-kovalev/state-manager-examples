@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -13,7 +13,7 @@ interface RemoveGroupButtonProps {
 	groupId: GroupId;
 }
 
-const RemoveGroupButton: FC<RemoveGroupButtonProps> = (props) => {
+const RemoveGroupButton = (props: RemoveGroupButtonProps): ReactNode => {
 	const { groupId } = props;
 
 	const dispatch = useApplicationDispatch();

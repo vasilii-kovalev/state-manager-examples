@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 
@@ -10,7 +10,7 @@ interface ActivityReportedDurationOfNormProps {
 	activityId: ActivityId;
 }
 
-const ActivityReportedDurationOfNorm: FC<ActivityReportedDurationOfNormProps> = (props) => {
+const ActivityReportedDurationOfNorm = (props: ActivityReportedDurationOfNormProps): ReactNode => {
 	const { activityId } = props;
 
 	const reportedDurationForActivity = useApplicationSelector((state) => {

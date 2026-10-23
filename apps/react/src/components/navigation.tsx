@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type FileRouteTypes } from "../routeTree.gen";
 import { list } from "./navigation.css";
@@ -16,7 +16,7 @@ const libraryLinks: Array<LibraryLink> = [
 	},
 ];
 
-const Navigation: FC = () => {
+const Navigation = (): ReactNode => {
 	return (
 		<nav>
 			<ul className={list}>

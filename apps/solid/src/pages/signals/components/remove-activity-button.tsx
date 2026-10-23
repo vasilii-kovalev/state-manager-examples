@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -12,7 +12,7 @@ interface RemoveActivityButtonProps {
 	activityId: ActivityId;
 }
 
-const RemoveActivityButton: Component<RemoveActivityButtonProps> = (props) => {
+const RemoveActivityButton = (props: RemoveActivityButtonProps): JSX.Element => {
 	const isBusy = useIsBusy();
 
 	const handleRemoveActivity = (): void => {

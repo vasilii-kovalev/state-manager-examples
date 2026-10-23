@@ -1,4 +1,4 @@
-import { type Component, Show } from "solid-js";
+import { type JSX, Show } from "solid-js";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -13,7 +13,7 @@ interface MoveWorklogsToActivityButtonProps {
 	activityId: ActivityId;
 }
 
-const MoveWorklogsToActivityButton: Component<MoveWorklogsToActivityButtonProps> = (props) => {
+const MoveWorklogsToActivityButton = (props: MoveWorklogsToActivityButtonProps): JSX.Element => {
 	const isBusy = useIsBusy();
 
 	const handleMoveWorklogsToActivity = (): void => {

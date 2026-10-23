@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 import { type EntitySelectionState } from "packages/shared/src/features/page/types";
@@ -11,7 +11,7 @@ interface SelectActivityCheckboxProps {
 	activityId: ActivityId;
 }
 
-const SelectActivityCheckbox: Component<SelectActivityCheckboxProps> = (props) => {
+const SelectActivityCheckbox = (props: SelectActivityCheckboxProps): JSX.Element => {
 	const selectionState = (): EntitySelectionState => {
 		return selectSelectionStateForActivity(props.activityId);
 	};

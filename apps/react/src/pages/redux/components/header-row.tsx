@@ -1,10 +1,10 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { HeaderDateCells } from "./header-date-cells";
 import { HeaderInfoCell } from "./header-info-cell";
 import { Row } from "./row";
 
-const HeaderRow: FC = () => {
+const HeaderRow = (): ReactNode => {
 	return (
 		<Row>
 			<HeaderInfoCell />

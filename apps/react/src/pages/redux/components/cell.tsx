@@ -1,4 +1,4 @@
-import { type ComponentProps, type FC } from "react";
+import { type ComponentProps, type ReactNode } from "react";
 
 import { type DateString } from "packages/shared/src/features/dates-and-time/types";
 import { getIsWeekend } from "packages/shared/src/features/dates-and-time/utilities/get-is-weekend";
@@ -11,7 +11,7 @@ interface CellProps extends ComponentProps<"td"> {
 	date?: DateString;
 }
 
-const Cell: FC<CellProps> = (props) => {
+const Cell = (props: CellProps): ReactNode => {
 	const { className, date } = props;
 
 	const isDateCell = !isUndefined(date);

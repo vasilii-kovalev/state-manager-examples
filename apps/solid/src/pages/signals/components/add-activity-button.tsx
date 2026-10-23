@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -12,7 +12,7 @@ interface AddActivityButtonProps {
 	groupId: GroupId;
 }
 
-const AddActivityButton: Component<AddActivityButtonProps> = (props) => {
+const AddActivityButton = (props: AddActivityButtonProps): JSX.Element => {
 	const isBusy = useIsBusy();
 
 	const handleAddActivity = (): void => {

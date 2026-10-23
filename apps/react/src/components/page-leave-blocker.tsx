@@ -1,13 +1,13 @@
 // The deprecation of `useBlocker` is set incorrectly.
 /* eslint-disable import-x/no-deprecated */
 import { useBlocker } from "@tanstack/react-router";
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 interface PageLeaveBlockerProps {
 	hasChanges: boolean;
 }
 
-const PageLeaveBlocker: FC<PageLeaveBlockerProps> = (props) => {
+const PageLeaveBlocker = (props: PageLeaveBlockerProps): ReactNode => {
 	const { hasChanges } = props;
 
 	useBlocker({

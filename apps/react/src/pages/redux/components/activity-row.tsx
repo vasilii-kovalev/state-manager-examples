@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type Activity } from "packages/shared/src/features/activity/types";
 
@@ -10,7 +10,7 @@ interface ActivityRowProps {
 	activity: Activity;
 }
 
-const ActivityRow: FC<ActivityRowProps> = (props) => {
+const ActivityRow = (props: ActivityRowProps): ReactNode => {
 	const { activity } = props;
 
 	return (

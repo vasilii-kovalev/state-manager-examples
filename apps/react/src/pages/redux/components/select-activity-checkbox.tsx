@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 
@@ -11,7 +11,7 @@ interface SelectActivityCheckboxProps {
 	activityId: ActivityId;
 }
 
-const SelectActivityCheckbox: FC<SelectActivityCheckboxProps> = (props) => {
+const SelectActivityCheckbox = (props: SelectActivityCheckboxProps): ReactNode => {
 	const { activityId } = props;
 
 	const dispatch = useApplicationDispatch();

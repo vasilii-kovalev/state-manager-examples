@@ -1,11 +1,11 @@
-import { type FC, Fragment } from "react";
+import { Fragment, type ReactNode } from "react";
 
 import { useApplicationSelector } from "../store";
 import { selectGroups } from "../store/page/selectors";
 import { ActivityRows } from "./activity-rows";
 import { GroupRow } from "./group-row";
 
-const GroupRows: FC = () => {
+const GroupRows = (): ReactNode => {
 	const groups = useApplicationSelector((state) => {
 		return selectGroups(state.page);
 	});

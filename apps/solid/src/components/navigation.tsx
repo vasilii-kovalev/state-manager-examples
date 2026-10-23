@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/solid-router";
-import { type Component, For } from "solid-js";
+import { For, type JSX } from "solid-js";
 
 import { type FileRouteTypes } from "../routeTree.gen";
 import { list } from "./navigation.css";
@@ -16,7 +16,7 @@ const libraryLinks: Array<LibraryLink> = [
 	},
 ];
 
-const Navigation: Component = () => {
+const Navigation = (): JSX.Element => {
 	return (
 		<nav>
 			<ul class={list}>

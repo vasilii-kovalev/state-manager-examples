@@ -1,10 +1,10 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { useApplicationSelector } from "../store";
 import { selectCalendar } from "../store/page/selectors";
 import { SummaryDateCell } from "./summary-date-cell";
 
-const SummaryDateCells: FC = () => {
+const SummaryDateCells = (): ReactNode => {
 	const calendar = useApplicationSelector((state) => {
 		return selectCalendar(state.page);
 	});

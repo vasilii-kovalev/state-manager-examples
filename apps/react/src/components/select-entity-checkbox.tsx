@@ -1,4 +1,4 @@
-import { type ChangeEventHandler, type FC, useLayoutEffect, useRef } from "react";
+import { type ChangeEventHandler, type ReactNode, useLayoutEffect, useRef } from "react";
 
 import { ENTITY_SELECTION_STATE } from "packages/shared/src/features/page/constants";
 import { type EntitySelectionState } from "packages/shared/src/features/page/types";
@@ -13,7 +13,7 @@ interface SelectEntityCheckboxProps {
 	selectionState: EntitySelectionState;
 }
 
-const SelectEntityCheckbox: FC<SelectEntityCheckboxProps> = (props) => {
+const SelectEntityCheckbox = (props: SelectEntityCheckboxProps): ReactNode => {
 	const { isDisabled, selectionState, onSelectionChange } = props;
 
 	const ref = useRef<HTMLInputElement | null>(null);

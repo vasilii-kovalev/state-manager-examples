@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type DateString, type Duration } from "packages/shared/src/features/dates-and-time/types";
 import { type GroupId } from "packages/shared/src/features/group/types";
@@ -11,7 +11,7 @@ interface GroupDateCellProps {
 	date: DateString;
 }
 
-const GroupDateCell: Component<GroupDateCellProps> = (props) => {
+const GroupDateCell = (props: GroupDateCellProps): JSX.Element => {
 	const reportedDuration = (): Duration => {
 		return selectReportedDurationForGroupForDate(props.groupId, props.date);
 	};

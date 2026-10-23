@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 
@@ -12,7 +12,7 @@ const handleRemoveGroups = (): void => {
 	removeGroups();
 };
 
-const RemoveGroupsButton: Component = () => {
+const RemoveGroupsButton = (): JSX.Element => {
 	const isBusy = useIsBusy();
 
 	return (

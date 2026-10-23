@@ -1,10 +1,10 @@
-import { type Component, For } from "solid-js";
+import { For, type JSX } from "solid-js";
 
 import { selectGroups } from "../signals/page/derived";
 import { ActivityRows } from "./activity-rows";
 import { GroupRow } from "./group-row";
 
-const GroupRows: Component = () => {
+const GroupRows = (): JSX.Element => {
 	return (
 		<For each={selectGroups()}>
 			{(group) => {

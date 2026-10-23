@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
 import { type GroupId } from "packages/shared/src/features/group/types";
@@ -12,7 +12,7 @@ interface WorklogCellsProps {
 	groupId: GroupId;
 }
 
-const WorklogCells: FC<WorklogCellsProps> = (props) => {
+const WorklogCells = (props: WorklogCellsProps): ReactNode => {
 	const { activityId, groupId } = props;
 
 	const calendar = useApplicationSelector((state) => {

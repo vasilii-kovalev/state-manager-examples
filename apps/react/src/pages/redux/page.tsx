@@ -1,4 +1,4 @@
-import { type FC, useEffect } from "react";
+import { type ReactNode, useEffect } from "react";
 import { Provider } from "react-redux";
 
 import { PAGE_STATE_DEFAULT } from "packages/shared/src/features/page/constants";
@@ -14,7 +14,7 @@ import { tableOffset } from "./components/table.css";
 import { store, useApplicationDispatch } from "./store";
 import { resetState, setInitialState } from "./store/page/slice";
 
-const ReduxPage: FC = () => {
+const ReduxPage = (): ReactNode => {
 	const dispatch = useApplicationDispatch();
 
 	usePageData({
@@ -50,7 +50,7 @@ const ReduxPage: FC = () => {
 	);
 };
 
-const ReduxPageWithContext: FC = () => {
+const ReduxPageWithContext = (): ReactNode => {
 	return (
 		<Provider store={store}>
 			<ReduxPage />

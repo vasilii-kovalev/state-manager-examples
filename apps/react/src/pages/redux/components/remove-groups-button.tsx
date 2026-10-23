@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 
@@ -9,7 +9,7 @@ import { useApplicationDispatch, useApplicationSelector } from "../store";
 import { selectHasGroups } from "../store/page/selectors";
 import { removeGroups } from "../store/page/slice";
 
-const RemoveGroupsButton: FC = () => {
+const RemoveGroupsButton = (): ReactNode => {
 	const dispatch = useApplicationDispatch();
 
 	const hasGroups = useApplicationSelector((state) => {

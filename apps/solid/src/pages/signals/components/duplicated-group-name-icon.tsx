@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type GroupId, type GroupName } from "packages/shared/src/features/group/types";
 
@@ -10,7 +10,7 @@ interface DuplicatedGroupNameIconProps {
 	groupId: GroupId;
 }
 
-const DuplicatedGroupNameIcon: Component<DuplicatedGroupNameIconProps> = (props) => {
+const DuplicatedGroupNameIcon = (props: DuplicatedGroupNameIconProps): JSX.Element => {
 	const hasDuplicate = (): boolean => {
 		const existingGroupNames = selectGroupNames(props.groupId);
 

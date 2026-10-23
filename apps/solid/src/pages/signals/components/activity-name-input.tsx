@@ -1,4 +1,4 @@
-import { type Component, createEffect, createSignal } from "solid-js";
+import { createEffect, createSignal, type JSX } from "solid-js";
 
 import { ActivityNameSchema } from "packages/shared/src/features/activity/schemas";
 import { type ActivityId, type ActivityName } from "packages/shared/src/features/activity/types";
@@ -16,7 +16,7 @@ interface ActivityNameInputProps {
 	name: ActivityName;
 }
 
-const ActivityNameInput: Component<ActivityNameInputProps> = (props) => {
+const ActivityNameInput = (props: ActivityNameInputProps): JSX.Element => {
 	const [nameLocal, setNameLocal] = createSignal<string>("");
 
 	createEffect(() => {

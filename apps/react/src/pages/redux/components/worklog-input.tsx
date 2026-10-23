@@ -1,4 +1,4 @@
-import { type ChangeEventHandler, type FC, useState } from "react";
+import { type ChangeEventHandler, type ReactNode, useState } from "react";
 import { safeParse } from "valibot";
 
 import { type ActivityId } from "packages/shared/src/features/activity/types";
@@ -33,7 +33,7 @@ interface WorklogCellProps {
 	groupId: GroupId;
 }
 
-const WorklogInput: FC<WorklogCellProps> = (props) => {
+const WorklogInput = (props: WorklogCellProps): ReactNode => {
 	const { activityId, date, duration, id, groupId } = props;
 
 	const dispatch = useApplicationDispatch();

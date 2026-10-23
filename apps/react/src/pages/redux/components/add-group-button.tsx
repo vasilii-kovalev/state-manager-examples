@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 
@@ -8,7 +8,7 @@ import { control, iconButton } from "../../../styles/control.css";
 import { useApplicationDispatch } from "../store";
 import { addGroup } from "../utilities/add-group";
 
-const AddGroupButton: FC = () => {
+const AddGroupButton = (): ReactNode => {
 	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();

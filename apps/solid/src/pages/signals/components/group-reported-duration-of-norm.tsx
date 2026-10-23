@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type Duration } from "packages/shared/src/features/dates-and-time/types";
 import { type GroupId } from "packages/shared/src/features/group/types";
@@ -10,7 +10,7 @@ interface GroupReportedDurationOfNormProps {
 	groupId: GroupId;
 }
 
-const GroupReportedDurationOfNorm: Component<GroupReportedDurationOfNormProps> = (props) => {
+const GroupReportedDurationOfNorm = (props: GroupReportedDurationOfNormProps): JSX.Element => {
 	const reportedDurationForGroup = (): Duration => {
 		return selectReportedDurationForGroup(props.groupId);
 	};

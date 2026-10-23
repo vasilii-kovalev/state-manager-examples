@@ -1,4 +1,4 @@
-import { type Component, createMemo } from "solid-js";
+import { createMemo, type JSX } from "solid-js";
 
 import { type Duration } from "packages/shared/src/features/dates-and-time/types";
 import { formatDuration } from "packages/shared/src/features/dates-and-time/utilities/format-duration";
@@ -15,7 +15,7 @@ interface ReportedDurationOfNormProps {
 	reported: Duration;
 }
 
-const ReportedDurationOfNorm: Component<ReportedDurationOfNormProps> = (props) => {
+const ReportedDurationOfNorm = (props: ReportedDurationOfNormProps): JSX.Element => {
 	const normTotal = createMemo(() => {
 		return selectNormTotal();
 	});

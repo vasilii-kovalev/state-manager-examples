@@ -1,4 +1,4 @@
-import { type FC, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 import { type DateString, type Duration } from "packages/shared/src/features/dates-and-time/types";
 import { formatDuration } from "packages/shared/src/features/dates-and-time/utilities/format-duration";
@@ -16,7 +16,7 @@ interface TotalDurationCellProps {
 	duration: Duration | undefined;
 }
 
-const TotalDurationCell: FC<TotalDurationCellProps> = (props) => {
+const TotalDurationCell = (props: TotalDurationCellProps): ReactNode => {
 	const { date, location, duration = 0 } = props;
 
 	const renderTotalDuration = (): ReactNode => {

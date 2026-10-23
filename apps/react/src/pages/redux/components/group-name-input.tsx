@@ -1,4 +1,4 @@
-import { type FC, useState } from "react";
+import { type ReactNode, useState } from "react";
 
 import { GroupNameSchema } from "packages/shared/src/features/group/schemas";
 import { type GroupId, type GroupName } from "packages/shared/src/features/group/types";
@@ -15,7 +15,7 @@ interface GroupNameInputProps {
 	name: GroupName;
 }
 
-const GroupNameInput: FC<GroupNameInputProps> = (props) => {
+const GroupNameInput = (props: GroupNameInputProps): ReactNode => {
 	const { id, name } = props;
 
 	const dispatch = useApplicationDispatch();

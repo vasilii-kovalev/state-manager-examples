@@ -1,6 +1,6 @@
-import { type ParentComponent } from "solid-js";
+import { type JSX, type ParentProps } from "solid-js";
 
-const Row: ParentComponent = (props) => {
+const Row = (props: ParentProps): JSX.Element => {
 	return <tr>{props.children}</tr>;
 };
 

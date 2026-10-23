@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { getClass } from "packages/shared/src/utilities/get-class";
 
@@ -12,7 +12,7 @@ const GROUPS_COUNT = 30;
 const ACTIVITIES_PER_GROUP_COUNT = 2;
 const WORKLOG_DURATION = 8;
 
-const AddGroupsButton: FC = () => {
+const AddGroupsButton = (): ReactNode => {
 	const dispatch = useApplicationDispatch();
 
 	const isBusy = useIsBusy();

@@ -1,4 +1,4 @@
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { type DateString, type Duration } from "packages/shared/src/features/dates-and-time/types";
 
@@ -9,7 +9,7 @@ interface SummaryDateCellProps {
 	date: DateString;
 }
 
-const SummaryDateCell: Component<SummaryDateCellProps> = (props) => {
+const SummaryDateCell = (props: SummaryDateCellProps): JSX.Element => {
 	const reportedDuration = (): Duration => {
 		return selectReportedDurationForDate(props.date);
 	};

@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type DateString } from "packages/shared/src/features/dates-and-time/types";
 
@@ -10,7 +10,7 @@ interface SummaryDateCellProps {
 	date: DateString;
 }
 
-const SummaryDateCell: FC<SummaryDateCellProps> = (props) => {
+const SummaryDateCell = (props: SummaryDateCellProps): ReactNode => {
 	const { date } = props;
 
 	const reportedDuration = useApplicationSelector((state) => {

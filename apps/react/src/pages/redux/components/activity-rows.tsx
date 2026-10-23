@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type GroupId } from "packages/shared/src/features/group/types";
 
@@ -10,7 +10,7 @@ interface ActivityRowsProps {
 	groupId: GroupId;
 }
 
-const ActivityRows: FC<ActivityRowsProps> = (props) => {
+const ActivityRows = (props: ActivityRowsProps): ReactNode => {
 	const { groupId } = props;
 
 	const activities = useApplicationSelector((state) => {

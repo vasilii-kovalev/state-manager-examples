@@ -1,4 +1,4 @@
-import { type Component, createEffect, type JSX } from "solid-js";
+import { createEffect, type JSX } from "solid-js";
 
 import { ENTITY_SELECTION_STATE } from "packages/shared/src/features/page/constants";
 import { type EntitySelectionState } from "packages/shared/src/features/page/types";
@@ -13,7 +13,7 @@ interface SelectEntityCheckboxProps {
 	selectionState: EntitySelectionState;
 }
 
-const SelectEntityCheckbox: Component<SelectEntityCheckboxProps> = (props) => {
+const SelectEntityCheckbox = (props: SelectEntityCheckboxProps): JSX.Element => {
 	// `ref` should be modifiable.
 	// eslint-disable-next-line prefer-const
 	let ref = undefined as HTMLInputElement | undefined;

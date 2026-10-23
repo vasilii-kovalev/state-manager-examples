@@ -1,4 +1,4 @@
-import { type Component, mergeProps, Show } from "solid-js";
+import { type JSX, mergeProps, Show } from "solid-js";
 
 import { type Duration } from "packages/shared/src/features/dates-and-time/types";
 import { formatDuration } from "packages/shared/src/features/dates-and-time/utilities/format-duration";
@@ -9,7 +9,7 @@ interface TotalDurationProps {
 	shouldRenderZero?: boolean;
 }
 
-const TotalDuration: Component<TotalDurationProps> = (props) => {
+const TotalDuration = (props: TotalDurationProps): JSX.Element => {
 	const mergedProps = mergeProps(
 		{
 			shouldRenderZero: false,

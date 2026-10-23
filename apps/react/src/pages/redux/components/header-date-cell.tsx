@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type DateString } from "packages/shared/src/features/dates-and-time/types";
 import { formatDayWithLeadingZero } from "packages/shared/src/features/dates-and-time/utilities/format-day-with-leading-zero";
@@ -12,7 +12,7 @@ interface HeaderDateCellProps {
 	date: DateString;
 }
 
-const HeaderDateCell: FC<HeaderDateCellProps> = (props) => {
+const HeaderDateCell = (props: HeaderDateCellProps): ReactNode => {
 	const { date } = props;
 
 	return (

@@ -1,4 +1,4 @@
-import { type FC } from "react";
+import { type ReactNode } from "react";
 
 import { type Duration } from "packages/shared/src/features/dates-and-time/types";
 import { formatDuration } from "packages/shared/src/features/dates-and-time/utilities/format-duration";
@@ -16,7 +16,7 @@ interface ReportedDurationOfNormProps {
 	reported: Duration;
 }
 
-const ReportedDurationOfNorm: FC<ReportedDurationOfNormProps> = (props) => {
+const ReportedDurationOfNorm = (props: ReportedDurationOfNormProps): ReactNode => {
 	const { location, reported } = props;
 
 	const normTotal = useApplicationSelector((state) => {

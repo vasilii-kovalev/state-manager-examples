@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/solid-query";
-import { type Component } from "solid-js";
+import { type JSX } from "solid-js";
 
 import { QUERY_KEYS } from "packages/shared/src/constants";
 import { getClass } from "packages/shared/src/utilities/get-class";
@@ -10,7 +10,7 @@ import { control } from "../../../styles/control.css";
 import { selectHasChanges } from "../signals/page/derived";
 import { savePageState } from "../utilities/save-page-state";
 
-const SaveChangesButton: Component = () => {
+const SaveChangesButton = (): JSX.Element => {
 	const queryClient = useQueryClient();
 
 	const saveChangesMutation = useMutation(() => {
