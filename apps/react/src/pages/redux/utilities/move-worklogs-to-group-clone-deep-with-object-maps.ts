@@ -104,7 +104,6 @@ const moveWorklogsToGroup = (groupId: GroupId): Thunk<void> => {
 				return;
 			}
 
-			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 			delete worklogsMap[`${worklog.activityId}-${worklog.date}`];
 
 			worklog.activityId = activityId;
@@ -141,10 +140,8 @@ const moveWorklogsToGroup = (groupId: GroupId): Thunk<void> => {
 				return;
 			}
 
-			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 			delete worklogsMap[`${worklog.activityId}-${worklog.date}`];
 
-			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 			delete stateNextDraft.worklogsById[worklogId];
 
 			stateNextDraft.worklogIds = stateNextDraft.worklogIds.filter((worklogIdCurrent) => {

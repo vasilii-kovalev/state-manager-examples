@@ -28,11 +28,9 @@ test("moves worklogs from activities with different names among all groups", () 
 
 	const action = dispatch.mock.lastCall?.at(0);
 
-	expect(action).toBeDefined();
+	expect.assert.isDefined(action);
 
-	// `undefined` case checked above.
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	const expectedPageState = getExpectedPageState(action!.payload);
+	const expectedPageState = getExpectedPageState(action.payload);
 
 	expect(expectedPageState).toMatchSnapshot("expected");
 
@@ -53,11 +51,9 @@ test("moves worklogs from activities with different names within groups", () => 
 
 	const action = dispatch.mock.lastCall?.at(0);
 
-	expect(action).toBeDefined();
+	expect.assert.isDefined(action);
 
-	// `undefined` case checked above.
-	// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-	const expectedPageState = getExpectedPageState(action!.payload);
+	const expectedPageState = getExpectedPageState(action.payload);
 
 	expect(getExpectedPageState(initialState)).toMatchSnapshot("initial");
 

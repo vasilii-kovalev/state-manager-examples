@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/solid-query";
 import { SolidQueryDevtoolsPanel } from "@tanstack/solid-query-devtools";
 import { createRouter, RouterProvider } from "@tanstack/solid-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/solid-router-devtools";
-// eslint-disable-next-line import-x/no-unassigned-import
 import "solid-devtools";
 import { render } from "solid-js/web";
 

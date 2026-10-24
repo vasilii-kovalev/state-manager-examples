@@ -14,8 +14,8 @@ interface SelectEntityCheckboxProps {
 }
 
 const SelectEntityCheckbox = (props: SelectEntityCheckboxProps): JSX.Element => {
-	// `ref` should be modifiable.
-	// eslint-disable-next-line prefer-const
+	// Solid writes the element into `ref`.
+	// oxlint-disable-next-line eslint/prefer-const
 	let ref = undefined as HTMLInputElement | undefined;
 
 	const isBusy = useIsBusy();

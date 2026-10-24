@@ -1,4 +1,4 @@
-import { type CSSProperties, type ReactNode, type RefObject, useLayoutEffect, useRef } from "react";
+import { type ReactNode, type RefObject, useLayoutEffect, useRef } from "react";
 
 import { isNull } from "packages/shared/src/utilities/is-null";
 
@@ -66,11 +66,9 @@ const Tooltip = <TargetElement extends HTMLElement>({
 				popover="auto"
 				ref={tooltipRef}
 				role="tooltip"
-				style={
-					{
-						"--anchor-name": `--${targetId}`,
-					} as CSSProperties
-				}
+				style={{
+					"--anchor-name": `--${targetId}`,
+				}}
 			>
 				{renderBody()}
 			</div>

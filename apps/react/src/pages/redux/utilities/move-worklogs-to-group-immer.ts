@@ -1,5 +1,4 @@
 // We need to use the Redux Toolkit's version whatever it is.
-// eslint-disable-next-line import-x/no-extraneous-dependencies
 import { produce } from "immer";
 
 import { type ActivityId, type ActivityName } from "packages/shared/src/features/activity/types";
@@ -65,12 +64,10 @@ const moveWorklogsToGroup = (groupId: GroupId): Thunk<void> => {
 					name: activityName,
 				});
 
-				// eslint-disable-next-line no-param-reassign
 				stateNextDraft.activitiesById[activity.id] = activity;
 
 				stateNextDraft.activityIds.unshift(activity.id);
 
-				// eslint-disable-next-line no-param-reassign
 				stateNextDraft.hasChanges = true;
 
 				return activity.id;
@@ -91,7 +88,6 @@ const moveWorklogsToGroup = (groupId: GroupId): Thunk<void> => {
 
 				worklog.groupId = groupId;
 
-				// eslint-disable-next-line no-param-reassign
 				stateNextDraft.hasChanges = true;
 			};
 
@@ -108,20 +104,16 @@ const moveWorklogsToGroup = (groupId: GroupId): Thunk<void> => {
 
 				worklog.duration = duration;
 
-				// eslint-disable-next-line no-param-reassign
 				stateNextDraft.hasChanges = true;
 			};
 
 			const removeWorklog = (worklogId: WorklogId): void => {
-				// eslint-disable-next-line @typescript-eslint/no-dynamic-delete, no-param-reassign
 				delete stateNextDraft.worklogsById[worklogId];
 
-				// eslint-disable-next-line no-param-reassign
 				stateNextDraft.worklogIds = stateNextDraft.worklogIds.filter((worklogIdCurrent) => {
 					return worklogIdCurrent !== worklogId;
 				});
 
-				// eslint-disable-next-line no-param-reassign
 				stateNextDraft.hasChanges = true;
 			};
 
@@ -157,7 +149,6 @@ const moveWorklogsToGroup = (groupId: GroupId): Thunk<void> => {
 			};
 
 			const unselectWorklogs = (): void => {
-				// eslint-disable-next-line no-param-reassign
 				stateNextDraft.selectedWorklogIds = PAGE_STATE_DEFAULT.selectedWorklogIds;
 			};
 

@@ -1,4 +1,5 @@
-/* eslint-disable capitalized-comments */
+// Commented lines are alternate move implementations. Uncommenting one export switches the variant.
+/* oxlint-disable eslint/capitalized-comments */
 export { moveWorklogsToGroupActions as moveWorklogsToGroup } from "./move-worklogs-to-group-actions";
 // export { moveWorklogsToGroupCloneDeep as moveWorklogsToGroup } from "./move-worklogs-to-group-clone-deep";
 // export { moveWorklogsToGroupCloneDeepWithMaps as moveWorklogsToGroup } from "./move-worklogs-to-group-clone-deep-with-maps";

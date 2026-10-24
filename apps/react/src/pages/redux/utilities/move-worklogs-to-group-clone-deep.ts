@@ -106,7 +106,6 @@ const moveWorklogsToGroup = (groupId: GroupId): Thunk<void> => {
 		};
 
 		const removeWorklog = (worklogId: WorklogId): void => {
-			// eslint-disable-next-line @typescript-eslint/no-dynamic-delete
 			delete stateNextDraft.worklogsById[worklogId];
 
 			stateNextDraft.worklogIds = stateNextDraft.worklogIds.filter((worklogIdCurrent) => {

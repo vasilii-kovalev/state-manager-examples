@@ -1,4 +1,5 @@
-// eslint-disable-next-line @typescript-eslint/no-restricted-imports
+// This module is the wrapper. Callers import it, and only it imports the library.
+// oxlint-disable-next-line eslint/no-restricted-imports
 import { isWeekend } from "date-fns";
 
 import { type DateString } from "../types";

@@ -2,7 +2,6 @@ import { type EntityId, type EntityWithId, type NormalizedEntities } from "../ty
 
 const getNormalizedEntities = <
 	// The ID is not inferred correctly otherwise.
-	// eslint-disable-next-line @typescript-eslint/no-use-before-define
 	Entity extends EntityWithId<Id>,
 	Id extends EntityId = Entity["id"],
 >(
@@ -11,6 +10,8 @@ const getNormalizedEntities = <
 	type NormalizedEntitiesType = NormalizedEntities<Id, Entity>;
 
 	const normalizedEntities: NormalizedEntitiesType = {
+		// A generic record does not accept `{}`. The loop below fills this dictionary.
+		// oxlint-disable-next-line typescript/no-unsafe-type-assertion
 		byId: {} as NormalizedEntitiesType["byId"],
 		ids: [],
 	};

@@ -8,7 +8,6 @@ const rootReducer = combineReducers({
 });
 
 const store = configureStore({
-	// eslint-disable-next-line unicorn/prevent-abbreviations
 	devTools: import.meta.env.DEV,
 	reducer: rootReducer,
 });

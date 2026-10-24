@@ -20,10 +20,9 @@ const performTransaction = <ReturnType>({
 			return draftState;
 		};
 
-		const dispatch = ((
-			action: unknown,
-			// eslint-disable-next-line @typescript-eslint/promise-function-async
-		) => {
+		// The wrapper applies thunks and plain actions to a draft. Callers use it as the store dispatch.
+		// oxlint-disable-next-line typescript/no-unsafe-type-assertion
+		const dispatch = ((action: unknown) => {
 			if (isFunction(action)) {
 				return (action as Thunk<unknown>)(dispatch, getState);
 			}
